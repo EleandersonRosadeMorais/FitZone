@@ -1,11 +1,11 @@
 
 package FitZone;
 
-import tela.FrLogin;
+import tela.FrLogar;
 
 public class FitZone {
         public static void main(String[] args) {
-        FrLogin Interface = new FrLogin();
+        FrLogar Interface = new FrLogar();
         Interface.setVisible(true);
     }
 }

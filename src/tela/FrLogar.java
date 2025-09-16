@@ -5,19 +5,21 @@
  */
 package tela;
 
+import controlar.ControladorDeUsuario;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import utilidade.Util;
 
 /**
  *
  * @author eleaa
  */
-public class FrLogin extends javax.swing.JFrame {
+public class FrLogar extends javax.swing.JFrame {
 
     /**
      * Creates new form FrLogin
      */
-    public FrLogin() {
+    public FrLogar() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -33,19 +35,19 @@ public class FrLogin extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlSecundario = new javax.swing.JPanel();
-        lblCadastrar1 = new javax.swing.JLabel();
+        lblCadastrar = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         lblTextoCadastrar1 = new javax.swing.JLabel();
         lblTextoCadastrar2 = new javax.swing.JLabel();
         lblTextoCadastrar3 = new javax.swing.JLabel();
         iconCadastrar = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        lblLogar1 = new javax.swing.JLabel();
-        lblEmail1 = new javax.swing.JLabel();
-        edtSenha = new javax.swing.JTextField();
+        lblLogar = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         edtEmail = new javax.swing.JTextField();
         btnLogar1 = new javax.swing.JButton();
         iconLogar = new javax.swing.JLabel();
+        edtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de Login - FitZone");
@@ -63,10 +65,10 @@ public class FrLogin extends javax.swing.JFrame {
         pnlSecundario.setPreferredSize(new java.awt.Dimension(740, 720));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCadastrar1.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCadastrar1.setForeground(new java.awt.Color(0, 0, 0));
-        lblCadastrar1.setText("CADASTRAR");
-        pnlSecundario.add(lblCadastrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        lblCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        lblCadastrar.setText("CADASTRAR");
+        pnlSecundario.add(lblCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
         btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -104,30 +106,15 @@ public class FrLogin extends javax.swing.JFrame {
         lblSenha.setText("Senha");
         pnlPrincipal.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
 
-        lblLogar1.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblLogar1.setForeground(new java.awt.Color(0, 0, 0));
-        lblLogar1.setText("LOGAR");
-        pnlPrincipal.add(lblLogar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+        lblLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblLogar.setForeground(new java.awt.Color(0, 0, 0));
+        lblLogar.setText("LOGAR");
+        pnlPrincipal.add(lblLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
 
-        lblEmail1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblEmail1.setForeground(new java.awt.Color(0, 0, 0));
-        lblEmail1.setText("E-Mail");
-        pnlPrincipal.add(lblEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
-
-        edtSenha.setBackground(new java.awt.Color(251, 186, 0));
-        edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtSenhaActionPerformed(evt);
-            }
-        });
-        edtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                edtSenhaKeyPressed(evt);
-            }
-        });
-        pnlPrincipal.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 480, 50));
-        edtSenha.getAccessibleContext().setAccessibleName("");
+        lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmail.setText("E-Mail");
+        pnlPrincipal.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         edtEmail.setBackground(new java.awt.Color(251, 186, 0));
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -147,6 +134,11 @@ public class FrLogin extends javax.swing.JFrame {
         btnLogar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/chave.png"))); // NOI18N
         btnLogar1.setText("LOGAR");
         btnLogar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogar1MouseClicked(evt);
+            }
+        });
         btnLogar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogar1ActionPerformed(evt);
@@ -157,14 +149,26 @@ public class FrLogin extends javax.swing.JFrame {
         iconLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilLogar.png"))); // NOI18N
         pnlPrincipal.add(iconLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
+        edtSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSenha.setForeground(new java.awt.Color(0, 0, 0));
+        edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtSenhaActionPerformed(evt);
+            }
+        });
+        edtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtSenhaKeyPressed(evt);
+            }
+        });
+        pnlPrincipal.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 480, 50));
+
         getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtSenhaActionPerformed
 
     private void edtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEmailActionPerformed
         // TODO add your handling code here:
@@ -178,11 +182,49 @@ public class FrLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLogar1ActionPerformed
 
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtSenhaActionPerformed
+
+    private void btnLogar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogar1MouseClicked
+        logar();
+    }//GEN-LAST:event_btnLogar1MouseClicked
+
     private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+            logar();
         }
     }//GEN-LAST:event_edtSenhaKeyPressed
+
+    private boolean verificarCampos() {
+        if (edtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de E-mail");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de senha");
+            return false;
+        }
+        return true;
+    }
+
+    private void logar() {
+        if (!verificarCampos()) {
+            return;
+        }
+        String email = edtEmail.getText();
+        String senha = Util.calcularHash(new String(edtSenha.getPassword()));
+
+        ControladorDeUsuario controller = new ControladorDeUsuario();
+
+        if (controller.autenticar(email, senha)) {
+            FrMenu telaMenu = new FrMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado");
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -201,20 +243,21 @@ public class FrLogin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrLogar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrLogar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrLogar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrLogar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrLogin().setVisible(true);
+                new FrLogar().setVisible(true);
             }
         });
     }
@@ -223,12 +266,12 @@ public class FrLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLogar1;
     private javax.swing.JTextField edtEmail;
-    private javax.swing.JTextField edtSenha;
+    private javax.swing.JPasswordField edtSenha;
     private javax.swing.JLabel iconCadastrar;
     private javax.swing.JLabel iconLogar;
-    private javax.swing.JLabel lblCadastrar1;
-    private javax.swing.JLabel lblEmail1;
-    private javax.swing.JLabel lblLogar1;
+    private javax.swing.JLabel lblCadastrar;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblLogar;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTextoCadastrar1;
     private javax.swing.JLabel lblTextoCadastrar2;
