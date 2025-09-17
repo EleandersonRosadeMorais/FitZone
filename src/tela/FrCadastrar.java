@@ -6,6 +6,8 @@
 package tela;
 
 import controlar.ControladorDeUsuario;
+import java.io.File;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import utilidade.Util;
@@ -47,16 +49,16 @@ public class FrCadastrar extends javax.swing.JFrame {
         lblObjetivo = new javax.swing.JLabel();
         edtObjetivo = new javax.swing.JTextField();
         lblCpf = new javax.swing.JLabel();
-        edtCpf = new javax.swing.JTextField();
         edtTelefone = new javax.swing.JTextField();
         lblTelefone = new javax.swing.JLabel();
         pnlFoto = new javax.swing.JPanel();
         imgFoto = new javax.swing.JLabel();
-        btnCadastrar1 = new javax.swing.JButton();
-        edtDataNascimento = new javax.swing.JFormattedTextField();
+        btnCadastrar = new javax.swing.JButton();
+        edtCpf = new javax.swing.JFormattedTextField();
         chkAtivo = new javax.swing.JCheckBox();
         edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
+        edtDataNascimento = new javax.swing.JFormattedTextField();
         lblLogar = new javax.swing.JLabel();
         iconLogar = new javax.swing.JLabel();
         lblTextoLogar3 = new javax.swing.JLabel();
@@ -89,6 +91,11 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnEscolherImagem.setForeground(new java.awt.Color(0, 0, 0));
         btnEscolherImagem.setText("ESCOLHER IMAGEM");
         btnEscolherImagem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnEscolherImagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherImagemMouseClicked(evt);
+            }
+        });
         btnEscolherImagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEscolherImagemActionPerformed(evt);
@@ -103,6 +110,7 @@ public class FrCadastrar extends javax.swing.JFrame {
 
         edtEmail.setBackground(new java.awt.Color(255, 255, 255));
         edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setForeground(java.awt.Color.black);
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtEmail.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -121,6 +129,7 @@ public class FrCadastrar extends javax.swing.JFrame {
 
         edtNome.setBackground(new java.awt.Color(255, 255, 255));
         edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setForeground(java.awt.Color.black);
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -154,6 +163,7 @@ public class FrCadastrar extends javax.swing.JFrame {
 
         edtObjetivo.setBackground(new java.awt.Color(255, 255, 255));
         edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObjetivo.setForeground(java.awt.Color.black);
         edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -170,21 +180,9 @@ public class FrCadastrar extends javax.swing.JFrame {
         lblCpf.setText("CPF");
         pnlSecundario.add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
-        edtCpf.setBackground(new java.awt.Color(255, 255, 255));
-        edtCpf.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtCpf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtCpf.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtCpf.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCpfActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 210, 50));
-
         edtTelefone.setBackground(new java.awt.Color(255, 255, 255));
         edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setForeground(java.awt.Color.black);
         edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtTelefone.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -223,28 +221,34 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(pnlFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 100, 133));
         pnlFoto.getAccessibleContext().setAccessibleName("");
 
-        btnCadastrar1.setBackground(new java.awt.Color(255, 255, 255));
-        btnCadastrar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnCadastrar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnCadastrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCadastrar1.setText("CADASTRAR");
-        btnCadastrar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnCadastrar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
+        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCadastrar1MouseClicked(evt);
+                btnCadastrarMouseClicked(evt);
             }
         });
-        pnlSecundario.add(btnCadastrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 220, 50));
+        pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 220, 50));
 
-        edtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
-        edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        edtDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+        edtCpf.setBackground(new java.awt.Color(255, 255, 255));
+        edtCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCpf.setForeground(java.awt.Color.black);
+        try {
+            edtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        edtCpf.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDataNascimentoActionPerformed(evt);
+                edtCpfActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 210, 50));
+        pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 210, 50));
 
         chkAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         chkAtivo.setText("ATIVO");
@@ -261,6 +265,18 @@ public class FrCadastrar extends javax.swing.JFrame {
         edtSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 210, 50));
+
+        edtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
+        edtDataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDataNascimento.setForeground(java.awt.Color.black);
+        edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        edtDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtDataNascimentoActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 210, 50));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
 
@@ -296,6 +312,11 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/chave.png"))); // NOI18N
         btnLogar.setText("LOGAR");
         btnLogar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogarMouseClicked(evt);
+            }
+        });
         btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogarActionPerformed(evt);
@@ -333,10 +354,6 @@ public class FrCadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtObjetivoActionPerformed
 
-    private void edtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCpfActionPerformed
-
     private void edtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtTelefoneActionPerformed
@@ -346,90 +363,115 @@ public class FrCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEscolherImagemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-          this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
+
+    private void edtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCpfActionPerformed
+
+    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
+        cadastrar();
+    }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDataNascimentoActionPerformed
 
-    private void btnCadastrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrar1MouseClicked
-        cadastrar();
-    }//GEN-LAST:event_btnCadastrar1MouseClicked
+    private void btnEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherImagemMouseClicked
+  
+    File arquivo = Util.escolherImagem();
+    
+    if(arquivo != null){
+      Icon icone = Util.converterFileToIcon(arquivo);
+    
+      Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
+      
+      imgFoto.setIcon(iconeNovo);
+    }
+    }//GEN-LAST:event_btnEscolherImagemMouseClicked
 
+    private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
+         new FrLogar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogarMouseClicked
     
-  private void cadastrar(){
-    //validar o preenchimento dos campos
-    if(!verificarCampos()){
-      return;
-    }
-    
-    //ler os campos e guardar num objeto
-    Usuario cliente = new Usuario();
-    cliente.setNome(edtNome.getText()); 
-    cliente.setEmail(edtEmail.getText());
-    cliente.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
-    cliente.setDataNascimento(Util.converterStringToDate(edtDataNascimento.getText()));    
-    cliente.setAtivo(chkAtivo.isSelected());
-    cliente.setImagem(imgFoto.getIcon());
-    
-    //enviar para o banco de dados
-    ControladorDeUsuario controller = new ControladorDeUsuario();
-    if(controller.inserir(cliente)){
-      JOptionPane.showMessageDialog(null, "Usuário inserido");
-      this.dispose();
-    }
-  }
-  
-  private boolean verificarCampos(){
-    if(edtNome.getText().isEmpty()){
-      JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de nome");
-      return false;
-    }
-    if(edtEmail.getText().isEmpty()){
-      JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de e-mail");
-      return false;
-    }
-    if(new String(edtSenha.getPassword()).isEmpty()){
-      JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de senha");
-      return false;
-    }
-    if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Nome' possui formato inválido");
-      return false;
-    }
-    if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Email' possui formato inválido");
-      return false;
-    }
-    if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
-      JOptionPane.showMessageDialog(null,
-              "O campo 'Data Nascimento' possui formato inválido");
-      return false;
-    }
-    if(new String(edtSenha.getPassword()).length() < 8){
-      JOptionPane.showMessageDialog(null,
-              "A senha deve ser maior que 8 dígitos");
-      return false;
+    private void cadastrar() {
+        if (!verificarCampos()) {
+            return;
+        }
+        Usuario cliente = new Usuario();
+        cliente.setNome(edtNome.getText());
+        cliente.setEmail(edtEmail.getText());
+        cliente.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
+        cliente.setTelefone(edtTelefone.getText());
+        cliente.setDataNascimento(Util.converterStringToDate(edtDataNascimento.getText()));
+        cliente.setObjetivo(edtObjetivo.getText());
+        cliente.setImagem(imgFoto.getIcon());
+        cliente.setCpf(cliente.removerCpf(edtCpf.getText()));
+        cliente.setAtivo(chkAtivo.isSelected());
+
+        ControladorDeUsuario controller = new ControladorDeUsuario();
+        if (controller.inserir(cliente)) {
+            JOptionPane.showMessageDialog(null, "Usuário inserido");
+            this.dispose();
+        }
     }
     
-    
-    
-    
-    String senha = new String(edtSenha.getPassword());
-    String confirmarSenha = new String(edtConfirmarSenha.getPassword());
-    if(!senha.equals(confirmarSenha)){
-      JOptionPane.showMessageDialog(null,
-              "Revise sua senha, pois ambas tem que serem iguais");
-      return false;
+    private boolean verificarCampos() {
+        Usuario cliente = new Usuario();
+        if (edtNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de nome");
+            return false;
+        }
+        if (edtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de e-mail");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de senha");
+            return false;
+        }
+        if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui formato inválido");
+            return false;
+        }
+        if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' possui formato inválido");
+            return false;
+        }
+        if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Data Nascimento' possui formato inválido");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).length() < 8) {
+            JOptionPane.showMessageDialog(null,
+                    "A senha deve ser maior que 8 dígitos");
+            return false;
+        }
+        
+        if (cliente.removerCpf(edtCpf.getText()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo do CPF do seu usuario nao pode estar vazio");
+            return false;
+        }
+        if (!(cliente.validarCPF(edtCpf.getText()))) {
+            JOptionPane.showMessageDialog(null, "Seu CPF deve ser valido e deve conter 11 numeros, ex: 123.456.789-00");
+            return false;
+        }
+        String senha = new String(edtSenha.getPassword());
+        String confirmarSenha = new String(edtConfirmarSenha.getPassword());
+        if (!senha.equals(confirmarSenha)) {
+            JOptionPane.showMessageDialog(null,
+                    "Revise sua senha, pois ambas tem que serem iguais");
+            return false;
+        }
+        
+        return true;
     }
-    
-    return true;
-  }
-  
-    
+
     /**
      * @param args the command line arguments
      */
@@ -466,12 +508,12 @@ public class FrCadastrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar1;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEscolherImagem;
     private javax.swing.JButton btnLogar;
     private javax.swing.JCheckBox chkAtivo;
     private javax.swing.JPasswordField edtConfirmarSenha;
-    private javax.swing.JTextField edtCpf;
+    private javax.swing.JFormattedTextField edtCpf;
     private javax.swing.JFormattedTextField edtDataNascimento;
     private javax.swing.JTextField edtEmail;
     private javax.swing.JTextField edtNome;

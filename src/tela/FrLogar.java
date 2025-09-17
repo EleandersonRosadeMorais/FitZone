@@ -76,6 +76,11 @@ public class FrLogar extends javax.swing.JFrame {
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
         btnCadastrar.setText("CADASTRAR");
         btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarMouseClicked(evt);
+            }
+        });
         pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, 220, 50));
 
         lblTextoCadastrar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -117,6 +122,8 @@ public class FrLogar extends javax.swing.JFrame {
         pnlPrincipal.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         edtEmail.setBackground(new java.awt.Color(251, 186, 0));
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setForeground(new java.awt.Color(0, 0, 0));
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtEmail.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -195,6 +202,11 @@ public class FrLogar extends javax.swing.JFrame {
             logar();
         }
     }//GEN-LAST:event_edtSenhaKeyPressed
+
+    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
+        new FrCadastrar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private boolean verificarCampos() {
         if (edtEmail.getText().isEmpty()) {

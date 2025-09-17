@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -16,7 +17,9 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Util {
 
@@ -79,5 +82,44 @@ public class Util {
                     "Erro ao converter a data");
         }
         return data;
+    }
+
+    public static File escolherImagem() {
+        File arquivo = null;
+
+        JFileChooser exploradorArquivos = new JFileChooser();
+
+        exploradorArquivos.setDialogTitle("Escolha um arquivo");
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter(
+                "Imagens", "jpg", "jpeg", "png");
+        exploradorArquivos.setFileFilter(filtro);
+
+        exploradorArquivos.setMultiSelectionEnabled(false);
+
+        int resultado = exploradorArquivos.showOpenDialog(null);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            arquivo = exploradorArquivos.getSelectedFile();
+        }
+
+        return arquivo;
+    }
+
+    public static Icon converterFileToIcon(File arquivo) {
+        ImageIcon icon = new ImageIcon(arquivo.getAbsolutePath());
+        return icon;
+    }
+
+    public static ImageIcon redimensionarImagem(Icon icone,
+            int largura, int altura) {
+
+        Image imagemOriginal = ((ImageIcon) icone).getImage();
+
+        Image novaImagem = imagemOriginal.getScaledInstance(
+                largura, altura, Image.SCALE_SMOOTH);
+
+        return new ImageIcon(novaImagem);
+
     }
 }

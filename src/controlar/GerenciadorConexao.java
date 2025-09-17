@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class GerenciadorConexao {
 // Configurações de conexão com o banco de dados MySQL
 
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/FitZone";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/fitzone";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
 // Objeto de conexão com o banco

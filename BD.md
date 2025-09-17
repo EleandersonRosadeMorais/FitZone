@@ -119,3 +119,16 @@ CREATE TABLE PLANO_BENEFICIO (
     FOREIGN KEY (fkPlano) REFERENCES PLANO(pkPlano),
     FOREIGN KEY (fkBeneficio) REFERENCES BENEFICIO(pkBeneficio)
 );
+
+use fitzone;
+
+insert into instrutor(nome, especialidade, cref, telefone, email) values ("Rogerio", "tirar peso", "1231232131", "5199999999999", "rogerio@gmail.com");
+insert into exercicio(nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade) values ("Rosca direta", "usado para aumentar o biceps", "seila", "biceps", "halter", 5);
+insert into exercicio_treino(fkExercicio, carga, repeticoes, series, ordem) values (1, 40, 12, 4, 1);
+insert into treino(fkUsuario, fkInstrutor,nome, descricao, objetivo, duracao_minutos, fkExercicioTreino) 
+values (1, 1, "Braços", "queimar os biceps", "aumentar", 50, 1);
+
+insert into exercicio(nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade) values ("Supino reto", "usado para aumentar a força no peito", "seila", "peitoral", "barra", 4);
+insert into exercicio_treino(fkExercicio, carga, repeticoes, series, ordem) values (2, 60, 10, 4, 1);
+insert into treino(fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos, fkExercicioTreino) 
+values (1, 1, "Peito", "fortalecer o peitoral", "hipertrofia", 60, 2);
