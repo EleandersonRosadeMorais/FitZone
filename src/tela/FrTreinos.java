@@ -567,26 +567,25 @@ public class FrTreinos extends javax.swing.JDialog {
     }//GEN-LAST:event_edtNome1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-           this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
 
-    //Carregar os dados do usuário
-    ControladorDeUsuario controller = new ControladorDeUsuario();
+        //Carregar os dados do usuário
+        ControladorDeUsuario controller = new ControladorDeUsuario();
 
-    //consultei os usuários com o código igual ao que recebi 
-    // na tela de consulta
-    //List<Usuario> lista = controller.consultar(0, String.valueOf(pkUsuario));
+        //consultei os usuários com o código igual ao que recebi 
+        // na tela de consulta
+        List<Usuario> lista = controller.consultar(0, String.valueOf(pkUsuario));
 
-    Usuario usu = null;
-    //usu = lista.get(0);
+        Usuario usu = null;
+        usu = lista.get(0);
 
-    //Preencher os campos como a variável usu
-   // edtCodigo.setText(String.valueOf(usu.getPkUsuario()));
-    //edtNome.setText(usu.getNome());
-   // edtEmail.setText(usu.getEmail());
-    //edtDataNascimento.setText(
-          //  Util.converterDateToString(usu.getDataNascimento()));
-   // chkAtivo.setSelected(usu.isAtivo());
-   // imgFoto.setIcon(usu.getImagem());
+        .setText(String.valueOf(usu.getPkUsuario()));
+        edtNome.setText(usu.getNome());
+        edtEmail.setText(usu.getEmail());
+        edtDataNascimento.setText(
+                Util.converterDateToString(usu.getDataNascimento()));
+        chkAtivo.setSelected(usu.isAtivo());
+        imgFoto.setIcon(usu.getImagem());
     }//GEN-LAST:event_formWindowOpened
 
     /**

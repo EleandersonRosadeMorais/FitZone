@@ -179,7 +179,7 @@ public class FrMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-       
+
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -187,7 +187,7 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
-       new FrMenu().setVisible(true);
+        new FrMenu().setVisible(true);
     }//GEN-LAST:event_btnTreinosMouseClicked
 
     private void btnTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTreinosActionPerformed
@@ -195,7 +195,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTreinosActionPerformed
 
     private void btnSaudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaudeMouseClicked
-        // TODO add your handling code here:
+        new FrSaude().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSaudeMouseClicked
 
     private void btnSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaudeActionPerformed

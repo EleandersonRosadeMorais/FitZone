@@ -18,6 +18,10 @@ public class GerenciadorConexao {
 // Objeto de conexão com o banco
     private Connection conexao;
 
+    public Connection getConexao() {
+        return conexao;
+    }
+
     public GerenciadorConexao() {
         try {
             // Estabelece conexão com o banco de dados
