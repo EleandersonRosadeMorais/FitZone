@@ -9,20 +9,10 @@ public class Treino {
     private String descricao;
     private String objetivo;
     private int duracao_minutos;
+    private boolean concluido;
     private int fkExercicioTreino;
 
     public Treino() {
-    }
-
-    public Treino(int pkTreino, int fkUsuario, int fkInstrutor, String nome, String descricao, String objetivo, int duracao_minutos, int fkExercicioTreino) {
-        this.pkTreino = pkTreino;
-        this.fkUsuario = fkUsuario;
-        this.fkInstrutor = fkInstrutor;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.objetivo = objetivo;
-        this.duracao_minutos = duracao_minutos;
-        this.fkExercicioTreino = fkExercicioTreino;
     }
 
     public int getPkTreino() {
@@ -81,6 +71,14 @@ public class Treino {
         this.duracao_minutos = duracao_minutos;
     }
 
+    public boolean isConcluido() {
+        return concluido;
+    }
+
+    public void setConcluido(boolean concluido) {
+        this.concluido = concluido;
+    }
+
     public int getFkExercicioTreino() {
         return fkExercicioTreino;
     }
@@ -88,6 +86,18 @@ public class Treino {
     public void setFkExercicioTreino(int fkExercicioTreino) {
         this.fkExercicioTreino = fkExercicioTreino;
     }
-    
+
+    public Treino(int pkTreino, int fkUsuario, int fkInstrutor, String nome, String descricao, String objetivo, int duracao_minutos, boolean concluido, int fkExercicioTreino) {
+        this.pkTreino = pkTreino;
+        this.fkUsuario = fkUsuario;
+        this.fkInstrutor = fkInstrutor;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.objetivo = objetivo;
+        this.duracao_minutos = duracao_minutos;
+        this.concluido = concluido;
+        this.fkExercicioTreino = fkExercicioTreino;
+    }
+
     
 }

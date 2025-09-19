@@ -1,45 +1,50 @@
 package controlar;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Treino;
 
 public class ControladorDeTreino {
 
-    public List<Treino> InserirTreino() {
-        List<Treino> Treinos = new ArrayList<>();
+    public List<Treino> consultar(String id) {
+        String sql = "SELECT * from treino WHERE fkUsuario = " + id;
 
-        String sql = "SELECT pkExercicioTreino, fkExercicio, carga, repeticoes, series, ordem FROM treino";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
 
-        try (Connection conn = new GerenciadorConexao().getConexao();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
 
-            while (rs.next()) {
-                // Pega os valores da linha do banco
-                int pkTreino = rs.getInt("pkTreino");
-                int fkUsuario = rs.getInt("fkUsuario");
-                int fkInstrutor = rs.getInt("fkInstrutor");
-                String nome = rs.getString("nome");
-                String descricao = rs.getString("descricao");
-                String objetivo = rs.getString("objetivo");
-                int duracao_minutos = rs.getInt("duracao_minutos");
-                int fkExercicioTreino = rs.getInt("fkExercicioTreino");
-                // Instancia o objeto
-                Treino e = new Treino(pkTreino, fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos, fkExercicioTreino);
+        List<Treino> lista = new ArrayList<>();
 
-                // Adiciona na lista
-                Treinos.add(e);
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            resultado = comando.executeQuery();
+         
+            while (resultado.next()) {
+                Treino tre = new Treino();
+
+                tre.setPkTreino(resultado.getInt("pkTreino"));
+                tre.setFkUsuario(resultado.getInt("fkUsuario"));
+                tre.setFkInstrutor(resultado.getInt("fkInstrutor"));
+                tre.setNome(resultado.getString("nome"));
+                tre.setDescricao(resultado.getString("descricao"));
+                tre.setObjetivo(resultado.getString("objetivo"));
+                tre.setDuracao_minutos(resultado.getInt("duracao_minutos"));
+                tre.setConcluido(resultado.getBoolean("concluido"));
+                tre.setFkExercicioTreino(resultado.getInt("fkExercicioTreino"));
+                
+                lista.add(tre);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
         }
-
-        return Treinos;
+        return lista;
     }
 }

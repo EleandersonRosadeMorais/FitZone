@@ -1,44 +1,46 @@
 package controlar;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Instrutor;
 
 public class ControladorDeInstrutor {
 
-    public List<Instrutor> InserirInstrutor() {
-        List<Instrutor> instrutores = new ArrayList<>();
+    public List<Instrutor> consultar(String id) {
+        String sql = "SELECT * from Instrutor WHERE pkInstrutor = " + id;
 
-        String sql = "SELECT pkInstrutor, nome, especialidade, cref, telefone, email FROM instrutor";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
 
-        try (Connection conn = new GerenciadorConexao().getConexao();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
 
-            while (rs.next()) {
-                // Pega os valores da linha do banco
-                int pkInstrutor = rs.getInt("pkInstrutor");
-                String nome = rs.getString("nome");
-                String especialidade = rs.getString("especialidade");
-                String cref = rs.getString("cref");
-                String telefone = rs.getString("telefone");
-                String email = rs.getString("email");
+        List<Instrutor> lista = new ArrayList<>();
 
-                // Instancia o objeto
-                Instrutor i = new Instrutor(pkInstrutor, nome, especialidade, cref, telefone, email);
+        try {
+            comando = gerenciador.prepararComando(sql);
 
-                // Adiciona na lista
-                instrutores.add(i);
+            resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                Instrutor ins = new Instrutor();
+                ins.setPkInstrutor(resultado.getInt("pkInstrutor"));
+                ins.setNome(resultado.getString("nome"));
+                ins.setEspecialidade(resultado.getString("especialidade"));
+                ins.setCreft(resultado.getString("cref"));
+                ins.setTelefone(resultado.getString(("telefone")));
+                ins.setEmail(resultado.getString("email"));
+                
+                lista.add(ins);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
         }
-
-        return instrutores;
+        return lista;
     }
 }

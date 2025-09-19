@@ -1,44 +1,63 @@
 package controlar;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import modelo.Exercicio;
 import modelo.ExercicioTreino;
 
 public class ControladorDeExercicioTreino {
 
-    public List<ExercicioTreino> InserirExercicioTreino() {
-        List<ExercicioTreino> exercicioTreinos = new ArrayList<>();
+    public List<ExercicioTreino> consultar(String id) {
+        String sql = "SELECT * "
+                   + "FROM exercicio_Treino et "
+                   + "INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio "
+                   + "WHERE e.pkExercicio = ?";
 
-        String sql = "SELECT pkExercicioTreino, fkExercicio, carga, repeticoes, series, ordem FROM exerciciotreino";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
 
-        try (Connection conn = new GerenciadorConexao().getConexao();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
 
-            while (rs.next()) {
-                // Pega os valores da linha do banco
-                int pkExercicioTreino = rs.getInt("pkInstrutor");
-                int fkExercicio = rs.getInt("fkExercicio");
-                int carga = rs.getInt("carga");
-                int repeticoes = rs.getInt("repeticoes");
-                int series = rs.getInt("series");
-                int ordem = rs.getInt("ordem");
+        List<ExercicioTreino> lista = new ArrayList<>();
 
-                // Instancia o objeto
-                ExercicioTreino e = new ExercicioTreino(pkExercicioTreino, fkExercicio, carga, repeticoes, series, ordem);
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setInt(1, Integer.parseInt(id));
+            resultado = comando.executeQuery();
 
-                // Adiciona na lista
-                exercicioTreinos.add(e);
+            while (resultado.next()) {
+                ExercicioTreino exeTre = new ExercicioTreino();
+                exeTre.setPkExercicioTreino(resultado.getInt("pkExercicioTreino"));
+                exeTre.setFkExercicio(resultado.getInt("fkExercicio"));
+                exeTre.setCarga(resultado.getInt("carga"));
+                exeTre.setRepeticoes(resultado.getInt("repeticoes"));
+                exeTre.setSeries(resultado.getInt("series"));
+                exeTre.setOrdem(resultado.getInt("ordem"));
+
+                Exercicio exe = new Exercicio();
+                exe.setPkExercicio(resultado.getInt("pkExercicio"));
+                exe.setNome(resultado.getString("nome"));
+                exe.setDescricao(resultado.getString("descricao"));
+                exe.setTipo(resultado.getString("tipo"));
+                exe.setGrupo_muscular(resultado.getString("grupo_muscular"));
+                exe.setEquipamento(resultado.getString("equipamento"));
+                exe.setNivel_dificuldade(resultado.getString("nivel_dificuldade"));
+
+                exeTre.setExercicio(exe);
+                lista.add(exeTre);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao consultar ExercicioTreino: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "ID inválido informado: " + id);
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
         }
 
-        return exercicioTreinos;
+        return lista;
     }
 }

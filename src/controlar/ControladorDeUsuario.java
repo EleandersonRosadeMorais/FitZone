@@ -9,13 +9,14 @@ import utilidade.Util;
 
 public class ControladorDeUsuario {
 
-    public boolean autenticar(String email, String senha) {
+    public Usuario autenticar(String email, String senha) {
         String sql = "SELECT * from USUARIO  WHERE email = ? and senha = ? and ativo = true";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
 
         PreparedStatement comando = null;
         ResultSet resultado = null;
+        Usuario usu = null;
 
         try {
             comando = gerenciador.prepararComando(sql);
@@ -26,14 +27,24 @@ public class ControladorDeUsuario {
             resultado = comando.executeQuery();
 
             if (resultado.next()) {
-                return true;
+                Usuario cliente = new Usuario();
+                
+                comando.setString(1, cliente.getNome());
+                comando.setString(2, cliente.getEmail());
+                comando.setString(3, cliente.getSenha());
+                comando.setString(4, cliente.getTelefone());
+                comando.setDate(5, new java.sql.Date(cliente.getDataNascimento().getTime()));
+                comando.setString(6, cliente.getObjetivo());
+                comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
+                comando.setString(8, cliente.getCpf());
+                comando.setBoolean(9, cliente.isAtivo());
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
-        return false;
+        return usu;
     }
 
     public boolean inserir(Usuario cliente) {
@@ -45,15 +56,15 @@ public class ControladorDeUsuario {
 
         try {
             comando = gerenciador.prepararComando(sql);
-            
+
             comando.setString(1, cliente.getNome());
             comando.setString(2, cliente.getEmail());
             comando.setString(3, cliente.getSenha());
-            comando.setString(4,cliente.getTelefone());
+            comando.setString(4, cliente.getTelefone());
             comando.setDate(5, new java.sql.Date(cliente.getDataNascimento().getTime()));
             comando.setString(6, cliente.getObjetivo());
-             comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
-             comando.setString(8, cliente.getCpf());
+            comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
+            comando.setString(8, cliente.getCpf());
             comando.setBoolean(9, cliente.isAtivo());
 
             comando.executeUpdate();

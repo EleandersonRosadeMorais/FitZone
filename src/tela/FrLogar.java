@@ -8,6 +8,8 @@ package tela;
 import controlar.ControladorDeUsuario;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import modelo.Usuario;
+import modelo.UsuarioLogado;
 import utilidade.Util;
 
 /**
@@ -229,11 +231,17 @@ public class FrLogar extends javax.swing.JFrame {
 
         ControladorDeUsuario controller = new ControladorDeUsuario();
 
-        if (controller.autenticar(email, senha)) {
+        Usuario usu = controller.autenticar(email, senha);
+
+        if (usu != null) {
+            UsuarioLogado.setUsuarioLogado(usu);
+
+            //Entra no sistema
             FrMenu telaMenu = new FrMenu();
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
+            //Mensagem de usuário não encontrado
             JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado");
         }
     }

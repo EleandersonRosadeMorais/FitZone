@@ -1,45 +1,46 @@
 package controlar;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Exercicio;
 
 public class ControladorDeExercicio {
 
-    public List<Exercicio> InserirExercicio() {
-        List<Exercicio> exercicios = new ArrayList<>();
+    public List<Exercicio> consultar(String id) {
+        String sql = "SELECT * from exercicio WHERE pkExercicio = " + id;
 
-        String sql = "SELECT pkExercicio, nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade FROM exercicio";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
 
-        try (Connection conn = new GerenciadorConexao().getConexao();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
 
-            while (rs.next()) {
-                // Pega os valores da linha do banco
-                int pkExercicio = rs.getInt("pkInstrutor");
-                String nome = rs.getString("nome");
-                String descricao = rs.getString("descricao");
-                String tipo = rs.getString("tipo");
-                String grupo_muscular = rs.getString("grupo_muscular");
-                String equipamento = rs.getString("equipamento");
-                String nivel_dificuldade = rs.getString("nivel_dificuldade");
+        List<Exercicio> lista = new ArrayList<>();
 
-                // Instancia o objeto
-                Exercicio e = new Exercicio(pkExercicio, nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade);
+        try {
+            comando = gerenciador.prepararComando(sql);
 
-                // Adiciona na lista
-                exercicios.add(e);
+            resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                Exercicio exe = new Exercicio();
+                exe.setPkExercicio(resultado.getInt("pkExercicio"));
+                exe.setNome(resultado.getString("nome"));
+                exe.setDescricao(resultado.getString("descricao"));
+                exe.setTipo(resultado.getString("tipo"));
+                exe.setGrupo_muscular(resultado.getString("grupo_muscular"));
+                exe.setEquipamento(resultado.getString("equipamento"));
+                exe.setNivel_dificuldade(resultado.getString("nivel_dificuldade"));
+                lista.add(exe);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
         }
-
-        return exercicios;
+        return lista;
     }
 }

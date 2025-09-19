@@ -8,18 +8,29 @@ public class ExercicioTreino {
     private int repeticoes;
     private int series;
     private int ordem;
+    private Exercicio exercicio;
 
     public ExercicioTreino() {
     }
 
-    public ExercicioTreino(int pkExercicioTreino, int fkExercicio, int carga, int repeticoes, int series, int ordem) {
+    public ExercicioTreino(int pkExercicioTreino, int fkExercicio, int carga, int repeticoes, int series, int ordem, Exercicio exercicio) {
         this.pkExercicioTreino = pkExercicioTreino;
         this.fkExercicio = fkExercicio;
         this.carga = carga;
         this.repeticoes = repeticoes;
         this.series = series;
         this.ordem = ordem;
+        this.exercicio = exercicio;
     }
+
+    public Exercicio getExercicio() {
+        return exercicio;
+    }
+
+    public void setExercicio(Exercicio exercicio) {
+        this.exercicio = exercicio;
+    }
+
 
     public int getPkExercicioTreino() {
         return pkExercicioTreino;

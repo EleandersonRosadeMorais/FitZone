@@ -52,6 +52,7 @@ CREATE TABLE TREINO (
     descricao TEXT,
     objetivo VARCHAR(255),
     duracao_minutos INT,
+    concluido boolean,
     fkExercicioTreino INT,
     FOREIGN KEY (fkUsuario) REFERENCES USUARIO(pkUsuario),
     FOREIGN KEY (fkInstrutor) REFERENCES INSTRUTOR(pkInstrutor),

@@ -5,9 +5,14 @@
  */
 package tela;
 
-import controlar.ControladorDeUsuario;
+import controlar.ControladorDeExercicio;
+import controlar.ControladorDeExercicioTreino;
+import controlar.ControladorDeTreino;
 import java.util.List;
-import modelo.Usuario;
+import modelo.Exercicio;
+import modelo.ExercicioTreino;
+import modelo.Treino;
+import modelo.UsuarioLogado;
 import utilidade.Util;
 
 /**
@@ -45,6 +50,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblNomeDoTreino2 = new javax.swing.JLabel();
         lblTreinoSegSex1 = new javax.swing.JLabel();
         edtDuracao = new javax.swing.JTextField();
+        chkConcluido = new javax.swing.JCheckBox();
         pnlInferior = new javax.swing.JPanel();
         lblTreinoSegSex = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -103,7 +109,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblNomeDoTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNomeDoTreino1.setForeground(new java.awt.Color(251, 186, 0));
         lblNomeDoTreino1.setText("Descrição");
-        pnlSuperior.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, -1, -1));
+        pnlSuperior.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
         lblDuracao.setBackground(new java.awt.Color(0, 0, 0));
         lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -123,7 +129,7 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtDescricaoActionPerformed(evt);
             }
         });
-        pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 240, 80));
+        pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 240, 70));
 
         edtNomeTreino.setBackground(new java.awt.Color(251, 186, 0));
         edtNomeTreino.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -178,6 +184,12 @@ public class FrTreinos extends javax.swing.JDialog {
             }
         });
         pnlSuperior.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 300, 30));
+
+        chkConcluido.setBackground(new java.awt.Color(251, 186, 0));
+        chkConcluido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        chkConcluido.setForeground(new java.awt.Color(0, 0, 0));
+        chkConcluido.setText("Concluido");
+        pnlSuperior.add(chkConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
 
         pnlPrincipal.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 870, 210));
 
@@ -470,7 +482,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblNome1.setText("Nome");
         pnlInferior.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, -1, -1));
 
-        pnlPrincipal.add(pnlInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 1210, 420));
+        pnlPrincipal.add(pnlInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 1210, 420));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/treinos.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -482,7 +494,7 @@ public class FrTreinos extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,24 +580,69 @@ public class FrTreinos extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
+        ControladorDeTreino conTre = new ControladorDeTreino();
+        List<Treino> listaTre = conTre.consultar(String.valueOf(UsuarioLogado.getUsuarioLogado()));
+        Treino tre = listaTre.get(0); // Pega o primeiro treino (ajuste se necessário)
 
-        //Carregar os dados do usuário
-        ControladorDeUsuario controller = new ControladorDeUsuario();
+// Exibe info do treino
+        edtNomeTreino.setText(tre.getNome());
+        edtObjetivo.setText(tre.getObjetivo());
+        edtDuracao.setText(String.valueOf(tre.getDuracao_minutos()));
+        edtDescricao.setText(tre.getDescricao());
 
-        //consultei os usuários com o código igual ao que recebi 
-        // na tela de consulta
-        List<Usuario> lista = controller.consultar(0, String.valueOf(pkUsuario));
+        ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
+        List<ExercicioTreino> listaExeTre = conExeTre.consultar(String.valueOf(tre.getFkExercicioTreino()));
 
-        Usuario usu = null;
-        usu = lista.get(0);
+// Preenche campos dos exercícios (até 4)
+        for (int i = 0; i < listaExeTre.size(); i++) {
+            if (i >= 4) {
+                break; // Limita a 4 exercícios
+            }
+            ExercicioTreino exeTre = listaExeTre.get(i);
+            Exercicio exe = exeTre.getExercicio();
 
-        .setText(String.valueOf(usu.getPkUsuario()));
-        edtNome.setText(usu.getNome());
-        edtEmail.setText(usu.getEmail());
-        edtDataNascimento.setText(
-                Util.converterDateToString(usu.getDataNascimento()));
-        chkAtivo.setSelected(usu.isAtivo());
-        imgFoto.setIcon(usu.getImagem());
+            switch (i) {
+                case 0:
+                    edtNome.setText(exe.getNome());
+                    edtEquipamento.setText(exe.getEquipamento());
+                    edtGrupoMuscular.setText(exe.getGrupo_muscular());
+                    edtDificuldade.setText(exe.getNivel_dificuldade());
+                    edtSeries.setText(String.valueOf(exeTre.getSeries()));
+                    edtRepeticoes.setText(String.valueOf(exeTre.getRepeticoes()));
+                    edtCarga.setText(String.valueOf(exeTre.getCarga()));
+                    break;
+
+                case 1:
+                    edtNome1.setText(exe.getNome());
+                    edtEquipamento1.setText(exe.getEquipamento());
+                    edtGrupoMuscular1.setText(exe.getGrupo_muscular());
+                    edtDificuldade1.setText(exe.getNivel_dificuldade());
+                    edtSeries1.setText(String.valueOf(exeTre.getSeries()));
+                    edtRepeticoes1.setText(String.valueOf(exeTre.getRepeticoes()));
+                    edtCarga1.setText(String.valueOf(exeTre.getCarga()));
+                    break;
+
+                case 2:
+                    edtNome2.setText(exe.getNome());
+                    edtEquipamento2.setText(exe.getEquipamento());
+                    edtGrupoMuscular2.setText(exe.getGrupo_muscular());
+                    edtDificuldade2.setText(exe.getNivel_dificuldade());
+                    edtSeries2.setText(String.valueOf(exeTre.getSeries()));
+                    edtRepeticoes2.setText(String.valueOf(exeTre.getRepeticoes()));
+                    edtCarga2.setText(String.valueOf(exeTre.getCarga()));
+                    break;
+
+                case 3:
+                    edtNome3.setText(exe.getNome());
+                    edtEquipamento3.setText(exe.getEquipamento());
+                    edtGrupoMuscular3.setText(exe.getGrupo_muscular());
+                    edtDificuldade3.setText(exe.getNivel_dificuldade());
+                    edtSeries3.setText(String.valueOf(exeTre.getSeries()));
+                    edtRepeticoes3.setText(String.valueOf(exeTre.getRepeticoes()));
+                    edtCarga3.setText(String.valueOf(exeTre.getCarga()));
+                    break;
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -632,6 +689,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JCheckBox chkConcluido;
     private javax.swing.JTextField edtCarga;
     private javax.swing.JTextField edtCarga1;
     private javax.swing.JTextField edtDescricao;
