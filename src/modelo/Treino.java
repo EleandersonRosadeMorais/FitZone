@@ -10,7 +10,6 @@ public class Treino {
     private String objetivo;
     private int duracao_minutos;
     private boolean concluido;
-    private int fkExercicioTreino;
 
     public Treino() {
     }
@@ -79,14 +78,6 @@ public class Treino {
         this.concluido = concluido;
     }
 
-    public int getFkExercicioTreino() {
-        return fkExercicioTreino;
-    }
-
-    public void setFkExercicioTreino(int fkExercicioTreino) {
-        this.fkExercicioTreino = fkExercicioTreino;
-    }
-
     public Treino(int pkTreino, int fkUsuario, int fkInstrutor, String nome, String descricao, String objetivo, int duracao_minutos, boolean concluido, int fkExercicioTreino) {
         this.pkTreino = pkTreino;
         this.fkUsuario = fkUsuario;
@@ -96,7 +87,6 @@ public class Treino {
         this.objetivo = objetivo;
         this.duracao_minutos = duracao_minutos;
         this.concluido = concluido;
-        this.fkExercicioTreino = fkExercicioTreino;
     }
 
     

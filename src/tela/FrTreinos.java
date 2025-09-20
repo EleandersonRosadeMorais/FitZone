@@ -5,7 +5,6 @@
  */
 package tela;
 
-import controlar.ControladorDeExercicio;
 import controlar.ControladorDeExercicioTreino;
 import controlar.ControladorDeTreino;
 import java.util.List;
@@ -25,7 +24,6 @@ public class FrTreinos extends javax.swing.JDialog {
      * Creates new form FrTreinos
      */
     public FrTreinos(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
         initComponents();
     }
 
@@ -581,22 +579,21 @@ public class FrTreinos extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
         ControladorDeTreino conTre = new ControladorDeTreino();
-        List<Treino> listaTre = conTre.consultar(String.valueOf(UsuarioLogado.getUsuarioLogado()));
-        Treino tre = listaTre.get(0); // Pega o primeiro treino (ajuste se necessário)
+        List<Treino> listaTre = conTre.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+        Treino tre = listaTre.get(0);
 
-// Exibe info do treino
         edtNomeTreino.setText(tre.getNome());
+        chkConcluido.setSelected(tre.isConcluido());
         edtObjetivo.setText(tre.getObjetivo());
         edtDuracao.setText(String.valueOf(tre.getDuracao_minutos()));
         edtDescricao.setText(tre.getDescricao());
 
         ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
-        List<ExercicioTreino> listaExeTre = conExeTre.consultar(String.valueOf(tre.getFkExercicioTreino()));
+        List<ExercicioTreino> listaExeTre = conExeTre.consultarPorTreino(tre.getPkTreino());
 
-// Preenche campos dos exercícios (até 4)
         for (int i = 0; i < listaExeTre.size(); i++) {
             if (i >= 4) {
-                break; // Limita a 4 exercícios
+                break;
             }
             ExercicioTreino exeTre = listaExeTre.get(i);
             Exercicio exe = exeTre.getExercicio();
@@ -620,26 +617,6 @@ public class FrTreinos extends javax.swing.JDialog {
                     edtSeries1.setText(String.valueOf(exeTre.getSeries()));
                     edtRepeticoes1.setText(String.valueOf(exeTre.getRepeticoes()));
                     edtCarga1.setText(String.valueOf(exeTre.getCarga()));
-                    break;
-
-                case 2:
-                    edtNome2.setText(exe.getNome());
-                    edtEquipamento2.setText(exe.getEquipamento());
-                    edtGrupoMuscular2.setText(exe.getGrupo_muscular());
-                    edtDificuldade2.setText(exe.getNivel_dificuldade());
-                    edtSeries2.setText(String.valueOf(exeTre.getSeries()));
-                    edtRepeticoes2.setText(String.valueOf(exeTre.getRepeticoes()));
-                    edtCarga2.setText(String.valueOf(exeTre.getCarga()));
-                    break;
-
-                case 3:
-                    edtNome3.setText(exe.getNome());
-                    edtEquipamento3.setText(exe.getEquipamento());
-                    edtGrupoMuscular3.setText(exe.getGrupo_muscular());
-                    edtDificuldade3.setText(exe.getNivel_dificuldade());
-                    edtSeries3.setText(String.valueOf(exeTre.getSeries()));
-                    edtRepeticoes3.setText(String.valueOf(exeTre.getRepeticoes()));
-                    edtCarga3.setText(String.valueOf(exeTre.getCarga()));
                     break;
             }
         }

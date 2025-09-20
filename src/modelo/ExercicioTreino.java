@@ -3,6 +3,7 @@ package modelo;
 
 public class ExercicioTreino {
     private int pkExercicioTreino;
+    private int fkTreino;
     private int fkExercicio;
     private int carga;
     private int repeticoes;
@@ -13,14 +14,23 @@ public class ExercicioTreino {
     public ExercicioTreino() {
     }
 
-    public ExercicioTreino(int pkExercicioTreino, int fkExercicio, int carga, int repeticoes, int series, int ordem, Exercicio exercicio) {
+    public ExercicioTreino(int pkExercicioTreino, int fkTreino, int fkExercicio, int carga, int repeticoes, int series, int ordem, Exercicio exercicio) {
         this.pkExercicioTreino = pkExercicioTreino;
+        this.fkTreino = fkTreino;
         this.fkExercicio = fkExercicio;
         this.carga = carga;
         this.repeticoes = repeticoes;
         this.series = series;
         this.ordem = ordem;
         this.exercicio = exercicio;
+    }
+
+    public int getFkTreino() {
+        return fkTreino;
+    }
+
+    public void setFkTreino(int fkTreino) {
+        this.fkTreino = fkTreino;
     }
 
     public Exercicio getExercicio() {

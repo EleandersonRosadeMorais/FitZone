@@ -53,12 +53,13 @@ public class FrCadastrar extends javax.swing.JFrame {
         lblTelefone = new javax.swing.JLabel();
         pnlFoto = new javax.swing.JPanel();
         imgFoto = new javax.swing.JLabel();
-        btnCadastrar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         edtCpf = new javax.swing.JFormattedTextField();
         chkAtivo = new javax.swing.JCheckBox();
         edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
         edtDataNascimento = new javax.swing.JFormattedTextField();
+        btnCadastrar = new javax.swing.JButton();
         lblLogar = new javax.swing.JLabel();
         iconLogar = new javax.swing.JLabel();
         lblTextoLogar3 = new javax.swing.JLabel();
@@ -221,18 +222,18 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(pnlFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 100, 133));
         pnlFoto.getAccessibleContext().setAccessibleName("");
 
-        btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCadastrar.setText("CADASTRAR");
-        btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLimpar.setBackground(new java.awt.Color(255, 255, 255));
+        btnLimpar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnLimpar.setForeground(new java.awt.Color(0, 0, 0));
+        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
+        btnLimpar.setText("LIMPAR");
+        btnLimpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCadastrarMouseClicked(evt);
+                btnLimparMouseClicked(evt);
             }
         });
-        pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 640, 220, 50));
+        pnlSecundario.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 180, 50));
 
         edtCpf.setBackground(new java.awt.Color(255, 255, 255));
         edtCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -277,6 +278,19 @@ public class FrCadastrar extends javax.swing.JFrame {
             }
         });
         pnlSecundario.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 210, 50));
+
+        btnCadastrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
+        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarMouseClicked(evt);
+            }
+        });
+        pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 640, 220, 50));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
 
@@ -370,31 +384,49 @@ public class FrCadastrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCpfActionPerformed
 
-    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
-        cadastrar();
-    }//GEN-LAST:event_btnCadastrarMouseClicked
+    private void btnLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMouseClicked
+        limpar();
+        
+    }//GEN-LAST:event_btnLimparMouseClicked
 
     private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDataNascimentoActionPerformed
 
     private void btnEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherImagemMouseClicked
-  
-    File arquivo = Util.escolherImagem();
-    
-    if(arquivo != null){
-      Icon icone = Util.converterFileToIcon(arquivo);
-    
-      Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
-      
-      imgFoto.setIcon(iconeNovo);
-    }
+
+        File arquivo = Util.escolherImagem();
+
+        if (arquivo != null) {
+            Icon icone = Util.converterFileToIcon(arquivo);
+
+            Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
+
+            imgFoto.setIcon(iconeNovo);
+        }
     }//GEN-LAST:event_btnEscolherImagemMouseClicked
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
-         new FrLogar().setVisible(true);
+        new FrLogar().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLogarMouseClicked
+
+    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
+     cadastrar();
+    }//GEN-LAST:event_btnCadastrarMouseClicked
+
+    
+    private void limpar(){
+        edtNome.setText("");
+        edtEmail.setText("");
+        edtSenha.setText("");
+        edtTelefone.setText("");
+        edtDataNascimento.setText("");
+        edtObjetivo.setText("");
+        imgFoto.setIcon(null);
+        edtCpf.setText("");
+        chkAtivo.setSelected(false);
+    }
     
     private void cadastrar() {
         if (!verificarCampos()) {
@@ -414,10 +446,11 @@ public class FrCadastrar extends javax.swing.JFrame {
         ControladorDeUsuario controller = new ControladorDeUsuario();
         if (controller.inserir(cliente)) {
             JOptionPane.showMessageDialog(null, "Usuário inserido");
+            new FrLogar().setVisible(true);
             this.dispose();
         }
     }
-    
+
     private boolean verificarCampos() {
         Usuario cliente = new Usuario();
         if (edtNome.getText().isEmpty()) {
@@ -452,7 +485,7 @@ public class FrCadastrar extends javax.swing.JFrame {
                     "A senha deve ser maior que 8 dígitos");
             return false;
         }
-        
+
         if (cliente.removerCpf(edtCpf.getText()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo do CPF do seu usuario nao pode estar vazio");
             return false;
@@ -468,7 +501,7 @@ public class FrCadastrar extends javax.swing.JFrame {
                     "Revise sua senha, pois ambas tem que serem iguais");
             return false;
         }
-        
+
         return true;
     }
 
@@ -510,6 +543,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEscolherImagem;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnLogar;
     private javax.swing.JCheckBox chkAtivo;
     private javax.swing.JPasswordField edtConfirmarSenha;

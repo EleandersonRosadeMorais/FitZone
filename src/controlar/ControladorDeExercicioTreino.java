@@ -11,22 +11,20 @@ import modelo.ExercicioTreino;
 
 public class ControladorDeExercicioTreino {
 
-    public List<ExercicioTreino> consultar(String id) {
+    public List<ExercicioTreino> consultarPorTreino(int fkTreino) {
         String sql = "SELECT * "
-                   + "FROM exercicio_Treino et "
-                   + "INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio "
-                   + "WHERE e.pkExercicio = ?";
+                + "FROM exercicio_treino et "
+                + "INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio "
+                + "WHERE et.fkTreino = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
         ResultSet resultado = null;
-
         List<ExercicioTreino> lista = new ArrayList<>();
 
         try {
             comando = gerenciador.prepararComando(sql);
-            comando.setInt(1, Integer.parseInt(id));
+            comando.setInt(1, fkTreino);
             resultado = comando.executeQuery();
 
             while (resultado.next()) {
@@ -37,6 +35,7 @@ public class ControladorDeExercicioTreino {
                 exeTre.setRepeticoes(resultado.getInt("repeticoes"));
                 exeTre.setSeries(resultado.getInt("series"));
                 exeTre.setOrdem(resultado.getInt("ordem"));
+                exeTre.setFkTreino(fkTreino); 
 
                 Exercicio exe = new Exercicio();
                 exe.setPkExercicio(resultado.getInt("pkExercicio"));
@@ -52,12 +51,9 @@ public class ControladorDeExercicioTreino {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar ExercicioTreino: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "ID inválido informado: " + id);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
-
         return lista;
     }
 }

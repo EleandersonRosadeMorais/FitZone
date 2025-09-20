@@ -5,6 +5,11 @@
  */
 package tela;
 
+import controlar.ControladorDeAvaliacao;
+import javax.swing.JOptionPane;
+import modelo.AvaliacaoFisica;
+import modelo.UsuarioLogado;
+
 /**
  *
  * @author eleaa
@@ -29,19 +34,19 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblAvaliacaoFisica = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         pnlSecundario = new javax.swing.JPanel();
-        edtEmail3 = new javax.swing.JTextField();
-        edtEmail4 = new javax.swing.JTextField();
-        edtEmail = new javax.swing.JTextField();
-        edtEmail1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        btnSair2 = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
+        edtObservacoes = new javax.swing.JTextField();
+        edtCircunferenciaAbdominal = new javax.swing.JTextField();
+        edtAltura = new javax.swing.JTextField();
+        edtPeso = new javax.swing.JTextField();
+        lblPeso = new javax.swing.JLabel();
+        lblAltura = new javax.swing.JLabel();
+        lblCircuferenciaAbdominal = new javax.swing.JLabel();
+        lblObservacoes = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,10 +57,10 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
         pnlPrincipal.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel2.setText("Avaliacao Fisica");
-        pnlPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        lblAvaliacaoFisica.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblAvaliacaoFisica.setForeground(new java.awt.Color(251, 186, 0));
+        lblAvaliacaoFisica.setText("Avaliacao Fisica");
+        pnlPrincipal.add(lblAvaliacaoFisica, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         btnSair.setBackground(new java.awt.Color(255, 102, 102));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -79,82 +84,92 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        edtEmail3.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail3.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail3.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail3.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtEmail3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 240, 120));
+        edtObservacoes.setBackground(new java.awt.Color(251, 186, 0));
+        edtObservacoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObservacoes.setForeground(new java.awt.Color(0, 0, 0));
+        edtObservacoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtObservacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtObservacoes.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtObservacoes.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 240, 120));
 
-        edtEmail4.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail4.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail4.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail4.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtEmail4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 240, 30));
+        edtCircunferenciaAbdominal.setBackground(new java.awt.Color(251, 186, 0));
+        edtCircunferenciaAbdominal.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCircunferenciaAbdominal.setForeground(new java.awt.Color(0, 0, 0));
+        edtCircunferenciaAbdominal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCircunferenciaAbdominal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtCircunferenciaAbdominal.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtCircunferenciaAbdominal.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtCircunferenciaAbdominal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 240, 30));
 
-        edtEmail.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 240, 30));
+        edtAltura.setBackground(new java.awt.Color(251, 186, 0));
+        edtAltura.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtAltura.setForeground(new java.awt.Color(0, 0, 0));
+        edtAltura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtAltura.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtAltura.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtAltura.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 240, 30));
 
-        edtEmail1.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail1.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 240, 30));
+        edtPeso.setBackground(new java.awt.Color(251, 186, 0));
+        edtPeso.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtPeso.setForeground(new java.awt.Color(0, 0, 0));
+        edtPeso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtPeso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtPeso.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtPeso.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 240, 30));
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel4.setText("Peso");
-        pnlSecundario.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
+        lblPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblPeso.setForeground(new java.awt.Color(251, 186, 0));
+        lblPeso.setText("Peso");
+        pnlSecundario.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel5.setText("Altura");
-        pnlSecundario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
+        lblAltura.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblAltura.setForeground(new java.awt.Color(251, 186, 0));
+        lblAltura.setText("Altura");
+        pnlSecundario.add(lblAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel7.setText("Circuferencia Abdominal");
-        pnlSecundario.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        lblCircuferenciaAbdominal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblCircuferenciaAbdominal.setForeground(new java.awt.Color(251, 186, 0));
+        lblCircuferenciaAbdominal.setText("Circunferencia Abdominal");
+        pnlSecundario.add(lblCircuferenciaAbdominal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel6.setText("Observacoes");
-        pnlSecundario.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
+        lblObservacoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblObservacoes.setForeground(new java.awt.Color(251, 186, 0));
+        lblObservacoes.setText("Observacoes");
+        pnlSecundario.add(lblObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
-        btnSair2.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair2.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair2.setText("CANCELAR");
-        btnSair2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair2ActionPerformed(evt);
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
+        btnCancelar.setText("LIMPAR");
+        btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
             }
         });
-        pnlSecundario.add(btnSair2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 60));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 220, 60));
 
-        btnSair1.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair1.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair1.setText("SALVAR");
-        btnSair1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlSecundario.add(btnSair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 190, 60));
+        btnSalvar.setBackground(new java.awt.Color(255, 102, 102));
+        btnSalvar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
+        btnSalvar.setText("SALVAR");
+        btnSalvar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
+        pnlSecundario.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 190, 60));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 570, 420));
 
@@ -176,16 +191,52 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-
+        new FrMenu().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        cadastrarAvaliacao();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        limparAvaliacao();
+    }//GEN-LAST:event_btnCancelarMouseClicked
+    private void limparAvaliacao() {
+        edtPeso.setText("");
+        edtAltura.setText("");
+        edtCircunferenciaAbdominal.setText("");
+        edtObservacoes.setText("");
+    }
+
+    private void cadastrarAvaliacao() {
+
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica();
+
+        try {
+            avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+            avaliacao.setPeso(Double.parseDouble(edtPeso.getText()));
+            avaliacao.setAltura(Double.parseDouble(edtAltura.getText()));
+            avaliacao.setCircunferencia_abdominal(Double.parseDouble(edtCircunferenciaAbdominal.getText()));
+            avaliacao.setObservacoes(edtObservacoes.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Digite valores numéricos válidos para peso, altura e circunferência.");
+        }
+
+        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+        if (conAva.inserir(avaliacao)) {
+            JOptionPane.showMessageDialog(null, "Avaliação Inserida");
+            this.dispose();
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -224,19 +275,19 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
-    private javax.swing.JButton btnSair2;
-    private javax.swing.JTextField edtEmail;
-    private javax.swing.JTextField edtEmail1;
-    private javax.swing.JTextField edtEmail3;
-    private javax.swing.JTextField edtEmail4;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JTextField edtAltura;
+    private javax.swing.JTextField edtCircunferenciaAbdominal;
+    private javax.swing.JTextField edtObservacoes;
+    private javax.swing.JTextField edtPeso;
+    private javax.swing.JLabel lblAltura;
+    private javax.swing.JLabel lblAvaliacaoFisica;
+    private javax.swing.JLabel lblCircuferenciaAbdominal;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblObservacoes;
+    private javax.swing.JLabel lblPeso;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlSecundario;
     // End of variables declaration//GEN-END:variables

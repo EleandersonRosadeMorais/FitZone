@@ -179,7 +179,8 @@ public class FrMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-
+        new FrLogar().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -187,7 +188,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
-        new FrMenu().setVisible(true);
+        FrTreinos dialog = new FrTreinos(this, true);
+        dialog.setVisible(true);
     }//GEN-LAST:event_btnTreinosMouseClicked
 
     private void btnTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTreinosActionPerformed
@@ -196,7 +198,6 @@ public class FrMenu extends javax.swing.JFrame {
 
     private void btnSaudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaudeMouseClicked
         new FrSaude().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnSaudeMouseClicked
 
     private void btnSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaudeActionPerformed
@@ -204,7 +205,7 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaudeActionPerformed
 
     private void btnAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvaliacaoMouseClicked
-        // TODO add your handling code here:
+        new FrAvaliacaoFisica().setVisible(true);
     }//GEN-LAST:event_btnAvaliacaoMouseClicked
 
     private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
@@ -220,7 +221,7 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlanosActionPerformed
 
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
-        // TODO add your handling code here:
+       new FrPerfil().setVisible(true);
     }//GEN-LAST:event_btnPerfilMouseClicked
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed

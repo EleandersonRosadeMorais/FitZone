@@ -235,13 +235,11 @@ public class FrLogar extends javax.swing.JFrame {
 
         if (usu != null) {
             UsuarioLogado.setUsuarioLogado(usu);
-
             //Entra no sistema
             FrMenu telaMenu = new FrMenu();
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
-            //Mensagem de usuário não encontrado
             JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado");
         }
     }

@@ -34,15 +34,7 @@ CREATE TABLE EXERCICIO (
     nivel_dificuldade VARCHAR(50)
 );
 
-CREATE TABLE EXERCICIO_TREINO (
-    pkExercicioTreino INT AUTO_INCREMENT PRIMARY KEY,
-    fkExercicio INT NOT NULL,
-    carga INT,
-    repeticoes INT,
-    series INT,
-    ordem INT,
-    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio)
-);
+
 
 CREATE TABLE TREINO (
     pkTreino INT AUTO_INCREMENT PRIMARY KEY,
@@ -52,13 +44,21 @@ CREATE TABLE TREINO (
     descricao TEXT,
     objetivo VARCHAR(255),
     duracao_minutos INT,
-    concluido boolean,
-    fkExercicioTreino INT,
+    concluido BOOLEAN,
     FOREIGN KEY (fkUsuario) REFERENCES USUARIO(pkUsuario),
-    FOREIGN KEY (fkInstrutor) REFERENCES INSTRUTOR(pkInstrutor),
-    FOREIGN KEY (fkExercicioTreino) REFERENCES EXERCICIO_TREINO(pkExercicioTreino)
+    FOREIGN KEY (fkInstrutor) REFERENCES INSTRUTOR(pkInstrutor)
 );
-
+CREATE TABLE EXERCICIO_TREINO (
+    pkExercicioTreino INT AUTO_INCREMENT PRIMARY KEY,
+    fkTreino INT NOT NULL,
+    fkExercicio INT NOT NULL,
+    carga INT,
+    repeticoes INT,
+    series INT,
+    ordem INT,
+    FOREIGN KEY (fkTreino) REFERENCES TREINO(pkTreino),
+    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio)
+);
 CREATE TABLE AVALIACAO_FISICA (
     pkAvaliacaoFisica INT AUTO_INCREMENT PRIMARY KEY,
     fkUsuario INT NOT NULL,
@@ -121,15 +121,43 @@ CREATE TABLE PLANO_BENEFICIO (
     FOREIGN KEY (fkBeneficio) REFERENCES BENEFICIO(pkBeneficio)
 );
 
+-- 1. Inserir instrutor
+INSERT INTO instrutor (nome, especialidade, cref, telefone, email)
+VALUES ('Instrutor João', 'Hipertrofia', '123456', '51999999999', 'joao@academia.com');
+
+-- 3. Inserir exercícios base
+INSERT INTO exercicio (nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade)
+VALUES 
+('Supino Reto', 'Trabalha peitoral maior', 'Força', 'Peitoral', 'Banco + barra', 'Intermediário'),
+('Agachamento Livre', 'Trabalha pernas e glúteos', 'Força', 'Quadríceps', 'Barra', 'Avançado');
+
+-- 4. Inserir treino para o usuário 1 e instrutor 1
+INSERT INTO treino (fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos, concluido)
+VALUES (1, 1, 'Treino A', 'Treino de peitoral e pernas', 'Hipertrofia', 60, FALSE);
+
+-- 5. Recuperar ID do treino inserido
+-- (Execute essa linha separadamente e use o ID retornado)
+SELECT LAST_INSERT_ID();
+
+-- Supondo que o ID retornado acima seja 1, continue com:
+
+-- 6. Inserir exercícios no treino (ExercicioTreino)
+INSERT INTO exercicio_treino (fkExercicio, fkTreino, carga, repeticoes, series, ordem)
+VALUES 
+(1, 1, 60, 10, 4, 1),  -- Supino reto
+(2, 1, 80, 12, 4, 2);  -- Agachamento livre
+
+
+
 use fitzone;
 
-insert into instrutor(nome, especialidade, cref, telefone, email) values ("Rogerio", "tirar peso", "1231232131", "5199999999999", "rogerio@gmail.com");
-insert into exercicio(nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade) values ("Rosca direta", "usado para aumentar o biceps", "seila", "biceps", "halter", 5);
-insert into exercicio_treino(fkExercicio, carga, repeticoes, series, ordem) values (1, 40, 12, 4, 1);
-insert into treino(fkUsuario, fkInstrutor,nome, descricao, objetivo, duracao_minutos, fkExercicioTreino) 
-values (1, 1, "Braços", "queimar os biceps", "aumentar", 50, 1);
+SELECT * 
+FROM exercicio_Treino et
+INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio
+WHERE e.pkExercicio = 1;
 
-insert into exercicio(nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade) values ("Supino reto", "usado para aumentar a força no peito", "seila", "peitoral", "barra", 4);
-insert into exercicio_treino(fkExercicio, carga, repeticoes, series, ordem) values (2, 60, 10, 4, 1);
-insert into treino(fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos, fkExercicioTreino) 
-values (1, 1, "Peito", "fortalecer o peitoral", "hipertrofia", 60, 2);
+select * from treino;
+
+UPDATE treino
+SET fkUsuario = 4
+WHERE fkUsuario <> 4;

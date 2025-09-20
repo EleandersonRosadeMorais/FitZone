@@ -131,7 +131,7 @@ public class Usuario {
   }
   
   public String toString(){
-    return nome;
+    return String.valueOf(pkUsuario);
   }
   
     public String removerCpf(String cpf) {

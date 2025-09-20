@@ -5,11 +5,21 @@
  */
 package tela;
 
+import controlar.ControladorDeUsuario;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+import modelo.UsuarioLogado;
+import utilidade.Util;
+
 /**
  *
  * @author eleaa
  */
 public class FrPerfil extends javax.swing.JFrame {
+
+    private Usuario usuarioAtual;
 
     /**
      * Creates new form FrPerfil
@@ -28,56 +38,59 @@ public class FrPerfil extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        edtEmail11 = new javax.swing.JTextField();
+        pnlSecundario = new javax.swing.JPanel();
+        lblNome = new javax.swing.JLabel();
+        edtNome = new javax.swing.JTextField();
         btnEscolherImagem = new javax.swing.JButton();
         pnlFoto = new javax.swing.JPanel();
-        imgFoto1 = new javax.swing.JLabel();
-        edtEmail12 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        edtEmail15 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        edtEmail18 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        btnSair4 = new javax.swing.JButton();
-        btnSair5 = new javax.swing.JButton();
-        btnSair6 = new javax.swing.JButton();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        imgFoto = new javax.swing.JLabel();
+        edtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        lblRepetirSenha = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        edtObjetivo = new javax.swing.JTextField();
+        lblObjetivo = new javax.swing.JLabel();
+        lblDataNascimento = new javax.swing.JLabel();
+        lblCpf = new javax.swing.JLabel();
+        edtTelefone = new javax.swing.JTextField();
+        lblTelefone = new javax.swing.JLabel();
+        btnAlterar = new javax.swing.JButton();
+        btnAlterarSenha = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        edtDataNascimento = new javax.swing.JFormattedTextField();
+        edtCpf = new javax.swing.JFormattedTextField();
+        edtRepetirSenha = new javax.swing.JPasswordField();
+        edtSenha = new javax.swing.JPasswordField();
         lblLogo = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnSair2 = new javax.swing.JButton();
-        btnSair3 = new javax.swing.JButton();
+        lblAlterarPerfil = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel10.setText("Nome");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 30));
+        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome.setText("Nome");
+        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 30));
 
-        edtEmail11.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail11.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail11.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail11.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail11.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail11.setPreferredSize(new java.awt.Dimension(10, 20));
-        jPanel2.add(edtEmail11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 510, 30));
+        edtNome.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 510, 30));
 
         btnEscolherImagem.setBackground(new java.awt.Color(255, 153, 153));
         btnEscolherImagem.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -94,7 +107,7 @@ public class FrPerfil extends javax.swing.JFrame {
                 btnEscolherImagemActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEscolherImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 160, 50));
+        pnlSecundario.add(btnEscolherImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 160, 50));
 
         pnlFoto.setBackground(new java.awt.Color(255, 255, 255));
         pnlFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -105,218 +118,182 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlFotoLayout.setHorizontalGroup(
             pnlFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFotoLayout.createSequentialGroup()
-                .addComponent(imgFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlFotoLayout.setVerticalGroup(
             pnlFotoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFotoLayout.createSequentialGroup()
-                .addComponent(imgFoto1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel2.add(pnlFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 100, 133));
+        pnlSecundario.add(pnlFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 100, 133));
 
-        edtEmail12.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail12.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail12.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail12.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail12.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail12.setPreferredSize(new java.awt.Dimension(10, 20));
-        jPanel2.add(edtEmail12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 510, 30));
+        edtEmail.setBackground(new java.awt.Color(251, 186, 0));
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtEmail.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtEmail.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 510, 30));
 
-        jLabel11.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel11.setText("E-Mail");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
+        lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(251, 186, 0));
+        lblEmail.setText("E-Mail");
+        pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
 
-        jLabel12.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel12.setText("Repetir Senha");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
+        lblRepetirSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblRepetirSenha.setForeground(new java.awt.Color(251, 186, 0));
+        lblRepetirSenha.setText("Repetir Senha");
+        pnlSecundario.add(lblRepetirSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
 
-        jLabel13.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel13.setText("Senha");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
+        lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(251, 186, 0));
+        lblSenha.setText("Senha");
+        pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
 
-        edtEmail15.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail15.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail15.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail15.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail15.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail15.setPreferredSize(new java.awt.Dimension(10, 20));
-        jPanel2.add(edtEmail15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 240, 30));
+        edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
+        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
+        edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtObjetivo.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 240, 30));
 
-        jLabel14.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel14.setText("Objetivo");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 30));
+        lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblObjetivo.setForeground(new java.awt.Color(251, 186, 0));
+        lblObjetivo.setText("Objetivo");
+        pnlSecundario.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 30));
 
-        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel15.setText("Data de nascimento");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, 30));
+        lblDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDataNascimento.setForeground(new java.awt.Color(251, 186, 0));
+        lblDataNascimento.setText("Data de nascimento");
+        pnlSecundario.add(lblDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, 30));
 
-        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel16.setText("CPF");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, 30));
+        lblCpf.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblCpf.setForeground(new java.awt.Color(251, 186, 0));
+        lblCpf.setText("CPF");
+        pnlSecundario.add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, 30));
 
-        edtEmail18.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail18.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEmail18.setForeground(new java.awt.Color(0, 0, 0));
-        edtEmail18.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEmail18.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEmail18.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEmail18.setPreferredSize(new java.awt.Dimension(10, 20));
-        jPanel2.add(edtEmail18, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 240, 30));
+        edtTelefone.setBackground(new java.awt.Color(251, 186, 0));
+        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setForeground(new java.awt.Color(0, 0, 0));
+        edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtTelefone.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtTelefone.setPreferredSize(new java.awt.Dimension(10, 20));
+        pnlSecundario.add(edtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 240, 30));
 
-        jLabel17.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel17.setText("Telefone");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, 30));
+        lblTelefone.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblTelefone.setForeground(new java.awt.Color(251, 186, 0));
+        lblTelefone.setText("Telefone");
+        pnlSecundario.add(lblTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, 30));
 
-        btnSair4.setBackground(new java.awt.Color(102, 255, 102));
-        btnSair4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnSair4.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair4.setText("ALTERAR");
-        btnSair4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAlterar.setBackground(new java.awt.Color(102, 255, 102));
+        btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterar.setText("ALTERAR");
+        btnAlterar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair4MouseClicked(evt);
+                btnAlterarMouseClicked(evt);
             }
         });
-        btnSair4.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair4ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSair4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, 100, 40));
+        pnlSecundario.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, 100, 40));
 
-        btnSair5.setBackground(new java.awt.Color(251, 186, 0));
-        btnSair5.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnSair5.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair5.setText("ALTERAR SENHA");
-        btnSair5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAlterarSenha.setBackground(new java.awt.Color(251, 186, 0));
+        btnAlterarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
+        btnAlterarSenha.setText("ALTERAR SENHA");
+        btnAlterarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnAlterarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair5MouseClicked(evt);
+                btnAlterarSenhaMouseClicked(evt);
             }
         });
-        btnSair5.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair5ActionPerformed(evt);
+                btnAlterarSenhaActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSair5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 180, 40));
+        pnlSecundario.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 180, 40));
 
-        btnSair6.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnSair6.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair6.setText("CANCELAR");
-        btnSair6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
+        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair6MouseClicked(evt);
+                btnCancelarMouseClicked(evt);
             }
         });
-        btnSair6.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair6ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSair6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 110, 40));
+        pnlSecundario.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, 110, 40));
 
-        jFormattedTextField1.setBackground(new java.awt.Color(251, 186, 0));
-        jFormattedTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        edtDataNascimento.setBackground(new java.awt.Color(251, 186, 0));
+        edtDataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        edtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                edtDataNascimentoActionPerformed(evt);
             }
         });
-        jPanel2.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 240, 30));
+        pnlSecundario.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 240, 30));
 
-        jFormattedTextField2.setBackground(new java.awt.Color(251, 186, 0));
-        jFormattedTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCpf.setBackground(new java.awt.Color(251, 186, 0));
+        edtCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,###,###-##")));
+            edtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,###,###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        edtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                edtCpfActionPerformed(evt);
             }
         });
-        jPanel2.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 240, 30));
+        pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 240, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(251, 186, 0));
-        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        edtRepetirSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtRepetirSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtRepetirSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                edtRepetirSenhaActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 510, 30));
+        pnlSecundario.add(edtRepetirSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 510, 30));
 
-        jPasswordField2.setBackground(new java.awt.Color(251, 186, 0));
-        jPasswordField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+        edtSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField2ActionPerformed(evt);
+                edtSenhaActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 510, 30));
+        pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 510, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 840, 530));
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 840, 530));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
         jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel3.setText("ALTERAR PERFIL");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
-
-        btnSair2.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair2.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair2.setText("VOLTAR");
-        btnSair2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair2MouseClicked(evt);
-            }
-        });
-        btnSair2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSair2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 10, 180, 60));
-
-        btnSair3.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair3.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair3.setText("SAIR");
-        btnSair3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair3MouseClicked(evt);
-            }
-        });
-        btnSair3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSair3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        lblAlterarPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblAlterarPerfil.setForeground(new java.awt.Color(251, 186, 0));
+        lblAlterarPerfil.setText("ALTERAR PERFIL");
+        jPanel1.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 740));
@@ -336,77 +313,109 @@ public class FrPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherImagemMouseClicked
-
-        File arquivo = Util.escolherImagem();
-
-        if(arquivo != null){
-            Icon icone = Util.converterFileToIcon(arquivo);
-
-            Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
-
-            imgFoto.setIcon(iconeNovo);
-        }
+        escolherImagem();
     }//GEN-LAST:event_btnEscolherImagemMouseClicked
 
     private void btnEscolherImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherImagemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEscolherImagemActionPerformed
 
-    private void btnSair2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair2MouseClicked
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        salvarPerfil();
+    }//GEN-LAST:event_btnAlterarMouseClicked
 
-    private void btnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair2ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair2ActionPerformed
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnSair3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair3MouseClicked
+    private void btnAlterarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarSenhaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair3MouseClicked
+    }//GEN-LAST:event_btnAlterarSenhaMouseClicked
 
-    private void btnSair3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair3ActionPerformed
+    private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair3ActionPerformed
+    }//GEN-LAST:event_btnAlterarSenhaActionPerformed
 
-    private void btnSair4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair4MouseClicked
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
-    private void btnSair4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair4ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair4ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void btnSair5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair5MouseClicked
+    private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair5MouseClicked
+    }//GEN-LAST:event_edtDataNascimentoActionPerformed
 
-    private void btnSair5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair5ActionPerformed
+    private void edtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair5ActionPerformed
+    }//GEN-LAST:event_edtCpfActionPerformed
 
-    private void btnSair6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair6MouseClicked
+    private void edtRepetirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRepetirSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair6MouseClicked
+    }//GEN-LAST:event_edtRepetirSenhaActionPerformed
 
-    private void btnSair6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair6ActionPerformed
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair6ActionPerformed
+    }//GEN-LAST:event_edtSenhaActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+        Usuario usuario = UsuarioLogado.getUsuarioLogado();
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+        edtNome.setText(usuario.getNome());
+        edtEmail.setText(usuario.getEmail());
+        edtTelefone.setText(usuario.getTelefone());
+        edtDataNascimento.setText(Util.converterDateToString(usuario.getDataNascimento()));
+        edtObjetivo.setText(usuario.getObjetivo());
+        edtCpf.setText(usuario.getCpf());;
+        imgFoto.setIcon(usuario.getImagem());
+        Icon icone = usuario.getImagem();
+        if (icone != null) {
+            Icon iconeRed = Util.redimensionarImagem(icone, 96, 129);
+            imgFoto.setIcon(iconeRed);
+        }
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField2ActionPerformed
+    }//GEN-LAST:event_formWindowOpened
+
+    private void escolherImagem() {
+        File arquivo = Util.escolherImagem();
+        if (arquivo != null) {
+            Icon icone = Util.converterFileToIcon(arquivo);
+            Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
+            imgFoto.setIcon(iconeNovo);
+            // guardar no objeto
+            usuarioAtual.setImagem(iconeNovo);
+        }
+    }
+
+    private void salvarPerfil() {
+        // verificar campos se quiser
+
+        usuarioAtual.setNome(edtNome.getText());
+        usuarioAtual.setEmail(edtEmail.getText());
+        String s = new String(edtSenha.getPassword());
+        if (!s.isEmpty()) {
+            usuarioAtual.setSenha(Util.calcularHash(s));
+        }
+        usuarioAtual.setTelefone(edtTelefone.getText());
+        usuarioAtual.setDataNascimento(Util.converterStringToDate(edtDataNascimento.getText()));
+        usuarioAtual.setObjetivo(edtObjetivo.getText());
+        usuarioAtual.setCpf(usuarioAtual.removerCpf(edtCpf.getText()));
+
+        // imagem já foi setada no escolherImagem
+        ControladorDeUsuario ctrl = new ControladorDeUsuario();
+        boolean ok = ctrl.alterar(usuarioAtual);
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Perfil atualizado com sucesso!");
+            // opcional: atualizar UsuarioLogado
+            UsuarioLogado.setUsuarioLogado(usuarioAtual);
+        } else {
+            JOptionPane.showMessageDialog(this, "Falha ao atualizar o perfil.");
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -422,16 +431,24 @@ public class FrPerfil extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrPerfil.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrPerfil.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrPerfil.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrPerfil.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -445,33 +462,31 @@ public class FrPerfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnAlterarSenha;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEscolherImagem;
-    private javax.swing.JButton btnSair2;
-    private javax.swing.JButton btnSair3;
-    private javax.swing.JButton btnSair4;
-    private javax.swing.JButton btnSair5;
-    private javax.swing.JButton btnSair6;
-    private javax.swing.JTextField edtEmail11;
-    private javax.swing.JTextField edtEmail12;
-    private javax.swing.JTextField edtEmail15;
-    private javax.swing.JTextField edtEmail18;
-    private javax.swing.JLabel imgFoto1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JFormattedTextField edtCpf;
+    private javax.swing.JFormattedTextField edtDataNascimento;
+    private javax.swing.JTextField edtEmail;
+    private javax.swing.JTextField edtNome;
+    private javax.swing.JTextField edtObjetivo;
+    private javax.swing.JPasswordField edtRepetirSenha;
+    private javax.swing.JPasswordField edtSenha;
+    private javax.swing.JTextField edtTelefone;
+    private javax.swing.JLabel imgFoto;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JLabel lblAlterarPerfil;
+    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblDataNascimento;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblObjetivo;
+    private javax.swing.JLabel lblRepetirSenha;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblTelefone;
     private javax.swing.JPanel pnlFoto;
+    private javax.swing.JPanel pnlSecundario;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,41 +10,39 @@ import modelo.Treino;
 
 public class ControladorDeTreino {
 
-    public List<Treino> consultar(String id) {
-        String sql = "SELECT * from treino WHERE fkUsuario = " + id;
+   public List<Treino> consultar(int id) {
+    String sql = "SELECT * from treino WHERE fkUsuario = " + id;
 
-        GerenciadorConexao gerenciador = new GerenciadorConexao();
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+    List<Treino> lista = new ArrayList<>();
 
-        PreparedStatement comando = null;
-        ResultSet resultado = null;
+    try {
+        comando = gerenciador.prepararComando(sql);
+        resultado = comando.executeQuery();
 
-        List<Treino> lista = new ArrayList<>();
+        while (resultado.next()) {
+            Treino tre = new Treino();
 
-        try {
-            comando = gerenciador.prepararComando(sql);
+            tre.setPkTreino(resultado.getInt("pkTreino"));
+            tre.setFkUsuario(resultado.getInt("fkUsuario"));
+            tre.setFkInstrutor(resultado.getInt("fkInstrutor"));
+            tre.setNome(resultado.getString("nome"));
+            tre.setDescricao(resultado.getString("descricao"));
+            tre.setObjetivo(resultado.getString("objetivo"));
+            tre.setDuracao_minutos(resultado.getInt("duracao_minutos"));
+            tre.setConcluido(resultado.getBoolean("concluido"));
 
-            resultado = comando.executeQuery();
-         
-            while (resultado.next()) {
-                Treino tre = new Treino();
-
-                tre.setPkTreino(resultado.getInt("pkTreino"));
-                tre.setFkUsuario(resultado.getInt("fkUsuario"));
-                tre.setFkInstrutor(resultado.getInt("fkInstrutor"));
-                tre.setNome(resultado.getString("nome"));
-                tre.setDescricao(resultado.getString("descricao"));
-                tre.setObjetivo(resultado.getString("objetivo"));
-                tre.setDuracao_minutos(resultado.getInt("duracao_minutos"));
-                tre.setConcluido(resultado.getBoolean("concluido"));
-                tre.setFkExercicioTreino(resultado.getInt("fkExercicioTreino"));
-                
-                lista.add(tre);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        } finally {
-            gerenciador.fecharConexao(comando, resultado);
+            lista.add(tre);
         }
-        return lista;
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    } finally {
+        gerenciador.fecharConexao(comando, resultado);
     }
+
+    return lista;
+}
+
 }

@@ -3,49 +3,59 @@ package controlar;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import utilidade.Util;
 
 public class ControladorDeUsuario {
 
-    public Usuario autenticar(String email, String senha) {
-        String sql = "SELECT * from USUARIO  WHERE email = ? and senha = ? and ativo = true";
+public Usuario autenticar(String email, String senha) {
+    String sql = "SELECT * FROM USUARIO WHERE email = ? AND senha = ? AND ativo = true";
 
-        GerenciadorConexao gerenciador = new GerenciadorConexao();
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+    Usuario usu = null;
 
-        PreparedStatement comando = null;
-        ResultSet resultado = null;
-        Usuario usu = null;
+    try {
+        comando = gerenciador.prepararComando(sql);
+        comando.setString(1, email);
+        comando.setString(2, senha);
 
-        try {
-            comando = gerenciador.prepararComando(sql);
+        resultado = comando.executeQuery();
 
-            comando.setString(1, email);
-            comando.setString(2, senha);
+        if (resultado.next()) {
+            usu = new Usuario();
+            usu.setPkUsuario(resultado.getInt("pkUsuario"));
+            usu.setNome(resultado.getString("nome"));
+            usu.setEmail(resultado.getString("email"));
+            usu.setSenha(resultado.getString("senha"));
+            usu.setTelefone(resultado.getString("telefone"));
+            usu.setDataNascimento(resultado.getDate("data_nascimento"));
+            usu.setObjetivo(resultado.getString("objetivo"));
+            usu.setCpf(resultado.getString("cpf"));
+            usu.setAtivo(resultado.getBoolean("ativo"));
 
-            resultado = comando.executeQuery();
-
-            if (resultado.next()) {
-                Usuario cliente = new Usuario();
-                
-                comando.setString(1, cliente.getNome());
-                comando.setString(2, cliente.getEmail());
-                comando.setString(3, cliente.getSenha());
-                comando.setString(4, cliente.getTelefone());
-                comando.setDate(5, new java.sql.Date(cliente.getDataNascimento().getTime()));
-                comando.setString(6, cliente.getObjetivo());
-                comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
-                comando.setString(8, cliente.getCpf());
-                comando.setBoolean(9, cliente.isAtivo());
+            // ** Aqui pega os bytes da imagem **
+            byte[] imagemBytes = resultado.getBytes("imagem");
+            if (imagemBytes != null && imagemBytes.length > 0) {
+                ImageIcon icon = new ImageIcon(imagemBytes);
+                // opcional: redimensionar para caber no lbl
+                Icon iconRed = Util.redimensionarImagem(icon, 96, 129);
+                usu.setImagem(iconRed);
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        } finally {
-            gerenciador.fecharConexao(comando, resultado);
         }
-        return usu;
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    } finally {
+        gerenciador.fecharConexao(comando, resultado);
     }
+
+    return usu;
+}
+
 
     public boolean inserir(Usuario cliente) {
         String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf, ativo) VALUES (?,?,?,?,?,?,?,?,?)";
@@ -77,4 +87,34 @@ public class ControladorDeUsuario {
         return false;
     }
 
+    public boolean alterar(Usuario usuario) {
+        String sql = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, objetivo = ?, imagem = ?, cpf = ?, ativo = ? WHERE pkUsuario = ?";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setString(1, usuario.getNome());
+            comando.setString(2, usuario.getEmail());
+            comando.setString(3, usuario.getSenha());
+            comando.setString(4, usuario.getTelefone());
+            comando.setDate(5, new java.sql.Date(usuario.getDataNascimento().getTime()));
+            comando.setString(6, usuario.getObjetivo());
+            comando.setBytes(7, Util.converterIconToBytes(usuario.getImagem()));
+            comando.setString(8, usuario.getCpf());
+            comando.setBoolean(9, usuario.isAtivo());
+            comando.setInt(10, usuario.getPkUsuario());
+
+            int linhas = comando.executeUpdate();
+            return linhas > 0;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar usuário: " + e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+
+        return false;
+    }
 }

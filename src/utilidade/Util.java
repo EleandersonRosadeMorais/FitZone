@@ -122,4 +122,9 @@ public class Util {
         return new ImageIcon(novaImagem);
 
     }
+
+    public static String converterDateToString(Date data) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(data);
+    }
 }
