@@ -127,4 +127,9 @@ public class Util {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return sdf.format(data);
     }
+    public static boolean validarCref(String cref) {
+    String regex = "^[0-9]{6}-[A-Z]/[A-Z]{2}$";
+    return cref.matches(regex);
+}
+
 }

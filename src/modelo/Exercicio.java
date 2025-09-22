@@ -78,5 +78,9 @@ public class Exercicio {
     public void setNivel_dificuldade(String nivel_dificuldade) {
         this.nivel_dificuldade = nivel_dificuldade;
     }
-    
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

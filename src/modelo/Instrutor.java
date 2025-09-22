@@ -1,26 +1,29 @@
-
-package modelo;
+package modelo; 
 
 public class Instrutor {
+
     private int pkInstrutor;
     private String nome;
-    private String especialidade; 
-    private String creft;
+    private String especialidade;
+    private String cref;
     private String telefone;
     private String email;
+    private String senha;
 
     public Instrutor() {
     }
 
-    public Instrutor(int pkInstrutor, String nome, String especialidade, String creft, String telefone, String email) {
+    public Instrutor(int pkInstrutor, String nome, String especialidade, String cref, String telefone, String email, String senha) {
         this.pkInstrutor = pkInstrutor;
         this.nome = nome;
         this.especialidade = especialidade;
-        this.creft = creft;
+        this.cref = cref;
         this.telefone = telefone;
         this.email = email;
+        this.senha = senha;
     }
 
+    
     public int getPkInstrutor() {
         return pkInstrutor;
     }
@@ -45,12 +48,12 @@ public class Instrutor {
         this.especialidade = especialidade;
     }
 
-    public String getCreft() {
-        return creft;
+    public String getCref() {
+        return cref;
     }
 
-    public void setCreft(String creft) {
-        this.creft = creft;
+    public void setCref(String cref) {
+        this.cref = cref;
     }
 
     public String getTelefone() {
@@ -68,5 +71,12 @@ public class Instrutor {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    } 
 }

@@ -35,7 +35,7 @@ public class ControladorDeExercicioTreino {
                 exeTre.setRepeticoes(resultado.getInt("repeticoes"));
                 exeTre.setSeries(resultado.getInt("series"));
                 exeTre.setOrdem(resultado.getInt("ordem"));
-                exeTre.setFkTreino(fkTreino); 
+                exeTre.setFkTreino(fkTreino);
 
                 Exercicio exe = new Exercicio();
                 exe.setPkExercicio(resultado.getInt("pkExercicio"));
@@ -55,5 +55,31 @@ public class ControladorDeExercicioTreino {
             gerenciador.fecharConexao(comando, resultado);
         }
         return lista;
+    }
+
+    public boolean criar(ExercicioTreino exercicio) {
+        String sql = "INSERT INTO EXERCICIO_TREINO (fkTreino, fkExercicio, carga, repeticoes, series, ordem) VALUES (?,?,?,?,?,?)";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            comando.setInt(1, exercicio.getFkTreino());
+            comando.setInt(2, exercicio.getFkExercicio());
+            comando.setInt(3, exercicio.getCarga());
+            comando.setInt(4, exercicio.getRepeticoes());
+            comando.setInt(5, exercicio.getSeries());
+            comando.setInt(6, exercicio.getOrdem());
+            comando.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+        return false;
     }
 }

@@ -12,6 +12,7 @@ CREATE TABLE USUARIO (
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     imagem LONGBLOB,
     cpf VARCHAR(14) UNIQUE,
+    sexo VARCHAR(10),
     ativo BOOLEAN DEFAULT TRUE
 );
 
@@ -21,7 +22,8 @@ CREATE TABLE INSTRUTOR (
     especialidade VARCHAR(100),
     cref VARCHAR(20) UNIQUE,
     telefone VARCHAR(20),
-    email VARCHAR(100)
+    email VARCHAR(100),
+    senha VARCHAR(500)
 );
 
 CREATE TABLE EXERCICIO (
@@ -57,7 +59,8 @@ CREATE TABLE EXERCICIO_TREINO (
     series INT,
     ordem INT,
     FOREIGN KEY (fkTreino) REFERENCES TREINO(pkTreino),
-    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio)
+    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio),
+    ON DELETE CASCADE
 );
 CREATE TABLE AVALIACAO_FISICA (
     pkAvaliacaoFisica INT AUTO_INCREMENT PRIMARY KEY,
@@ -66,6 +69,10 @@ CREATE TABLE AVALIACAO_FISICA (
     peso DECIMAL(5,2),
     altura DECIMAL(4,2),
     circunferencia_abdominal DECIMAL(5,2),
+    massa_muscular DECIMAL(5,2),      
+    gordura_corporal DECIMAL(5,2),     
+    imc DECIMAL(5,2),                  
+    tmb DECIMAL(6,2),                 
     observacoes TEXT,
     FOREIGN KEY (fkUsuario) REFERENCES USUARIO(pkUsuario)
 );
@@ -75,7 +82,7 @@ CREATE TABLE DIETA (
     fkUsuario INT NOT NULL,
     refeicao VARCHAR(100),
     peso DECIMAL(5,2),
-    calorias INT,
+    calorias DECIMAL(5,2),
     proteinas DECIMAL(5,2),
     carboidratos DECIMAL(5,2),
     gorduras DECIMAL(5,2),
@@ -88,8 +95,7 @@ CREATE TABLE PLANO (
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
     preco_mensal DECIMAL(10,2) NOT NULL,
-    duracao_minima INT,
-    ativo BOOLEAN DEFAULT TRUE
+    duracao_minima INT
 );
 
 CREATE TABLE ASSINATURA (
@@ -121,43 +127,32 @@ CREATE TABLE PLANO_BENEFICIO (
     FOREIGN KEY (fkBeneficio) REFERENCES BENEFICIO(pkBeneficio)
 );
 
--- 1. Inserir instrutor
-INSERT INTO instrutor (nome, especialidade, cref, telefone, email)
-VALUES ('Instrutor João', 'Hipertrofia', '123456', '51999999999', 'joao@academia.com');
-
 -- 3. Inserir exercícios base
 INSERT INTO exercicio (nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade)
 VALUES 
 ('Supino Reto', 'Trabalha peitoral maior', 'Força', 'Peitoral', 'Banco + barra', 'Intermediário'),
 ('Agachamento Livre', 'Trabalha pernas e glúteos', 'Força', 'Quadríceps', 'Barra', 'Avançado');
 
--- 4. Inserir treino para o usuário 1 e instrutor 1
-INSERT INTO treino (fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos, concluido)
-VALUES (1, 1, 'Treino A', 'Treino de peitoral e pernas', 'Hipertrofia', 60, FALSE);
+INSERT INTO BENEFICIO (nome, descricao, tipo) VALUES
+('Acesso à academia', 'Uso livre de todas as áreas da academia', 'serviço'),
+('Aulas coletivas', 'Participação em todas as aulas coletivas', 'serviço'),
+('Personal trainer', 'Sessão semanal com personal trainer', 'serviço'),
+('Sauna', 'Uso da sauna 2x por semana', 'serviço'),
+('Piscina', 'Acesso à piscina', 'serviço'),
+('Massagem', '1 sessão mensal de massagem', 'serviço');
 
--- 5. Recuperar ID do treino inserido
--- (Execute essa linha separadamente e use o ID retornado)
-SELECT LAST_INSERT_ID();
+INSERT INTO PLANO (nome, descricao, preco_mensal, duracao_minima) VALUES
+('Plano Básico', 'Plano com acesso à academia e aulas coletivas', 99.90, 1),
+('Plano Premium', 'Plano completo com todos os benefícios inclusos', 199.90, 1);
 
--- Supondo que o ID retornado acima seja 1, continue com:
+-- Plano Básico terá: Acesso à academia, Aulas coletivas, Piscina
+INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade) VALUES
+(1, 1, 'Uso ilimitado da academia', NULL),
+(1, 2, 'Participação em todas as aulas coletivas', NULL),
+(1, 5, 'Acesso à piscina', NULL);
 
--- 6. Inserir exercícios no treino (ExercicioTreino)
-INSERT INTO exercicio_treino (fkExercicio, fkTreino, carga, repeticoes, series, ordem)
-VALUES 
-(1, 1, 60, 10, 4, 1),  -- Supino reto
-(2, 1, 80, 12, 4, 2);  -- Agachamento livre
-
-
-
-use fitzone;
-
-SELECT * 
-FROM exercicio_Treino et
-INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio
-WHERE e.pkExercicio = 1;
-
-select * from treino;
-
-UPDATE treino
-SET fkUsuario = 4
-WHERE fkUsuario <> 4;
+-- Plano Premium terá: Personal trainer, Sauna, Massagem
+INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade) VALUES
+(2, 3, '1 sessão semanal com personal', 4),
+(2, 4, 'Uso da sauna 2x por semana', 8),
+(2, 6, '1 sessão mensal de massagem', 1);

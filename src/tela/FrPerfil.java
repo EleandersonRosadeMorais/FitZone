@@ -6,6 +6,7 @@
 package tela;
 
 import controlar.ControladorDeUsuario;
+import java.awt.Color;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
@@ -46,7 +47,7 @@ public class FrPerfil extends javax.swing.JFrame {
         imgFoto = new javax.swing.JLabel();
         edtEmail = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
-        lblRepetirSenha = new javax.swing.JLabel();
+        lblConfirmarSenha = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         edtObjetivo = new javax.swing.JTextField();
         lblObjetivo = new javax.swing.JLabel();
@@ -59,7 +60,7 @@ public class FrPerfil extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         edtDataNascimento = new javax.swing.JFormattedTextField();
         edtCpf = new javax.swing.JFormattedTextField();
-        edtRepetirSenha = new javax.swing.JPasswordField();
+        edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
         lblLogo = new javax.swing.JLabel();
         lblAlterarPerfil = new javax.swing.JLabel();
@@ -144,10 +145,10 @@ public class FrPerfil extends javax.swing.JFrame {
         lblEmail.setText("E-Mail");
         pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
 
-        lblRepetirSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblRepetirSenha.setForeground(new java.awt.Color(251, 186, 0));
-        lblRepetirSenha.setText("Repetir Senha");
-        pnlSecundario.add(lblRepetirSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
+        lblConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblConfirmarSenha.setForeground(new java.awt.Color(251, 186, 0));
+        lblConfirmarSenha.setText("Repetir Senha");
+        pnlSecundario.add(lblConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
 
         lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblSenha.setForeground(new java.awt.Color(251, 186, 0));
@@ -267,14 +268,14 @@ public class FrPerfil extends javax.swing.JFrame {
         });
         pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 240, 30));
 
-        edtRepetirSenha.setBackground(new java.awt.Color(251, 186, 0));
-        edtRepetirSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtRepetirSenha.addActionListener(new java.awt.event.ActionListener() {
+        edtConfirmarSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtRepetirSenhaActionPerformed(evt);
+                edtConfirmarSenhaActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtRepetirSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 510, 30));
+        pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 510, 30));
 
         edtSenha.setBackground(new java.awt.Color(251, 186, 0));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -329,7 +330,24 @@ public class FrPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnAlterarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarSenhaMouseClicked
-        // TODO add your handling code here:
+        if (edtSenha.isEditable()) {
+            edtSenha.setEditable(false);
+            edtConfirmarSenha.setEditable(false);
+            edtSenha.setBackground(new Color(145, 109, 7));
+            edtConfirmarSenha.setBackground(new Color(145, 109, 7));
+
+            edtSenha.setText("");
+            edtConfirmarSenha.setText("");
+
+            btnAlterarSenha.setText("Alterar Senha");
+        } else {
+            edtSenha.setEditable(true);
+            edtConfirmarSenha.setEditable(true);
+            edtSenha.setBackground(new Color(251, 186, 0));
+            edtConfirmarSenha.setBackground(new Color(251, 186, 0));
+
+            btnAlterarSenha.setText("Cancelar");
+        }
     }//GEN-LAST:event_btnAlterarSenhaMouseClicked
 
     private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
@@ -353,9 +371,9 @@ public class FrPerfil extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCpfActionPerformed
 
-    private void edtRepetirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRepetirSenhaActionPerformed
+    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtRepetirSenhaActionPerformed
+    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
 
     private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
         // TODO add your handling code here:
@@ -466,24 +484,24 @@ public class FrPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnAlterarSenha;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEscolherImagem;
+    private javax.swing.JPasswordField edtConfirmarSenha;
     private javax.swing.JFormattedTextField edtCpf;
     private javax.swing.JFormattedTextField edtDataNascimento;
     private javax.swing.JTextField edtEmail;
     private javax.swing.JTextField edtNome;
     private javax.swing.JTextField edtObjetivo;
-    private javax.swing.JPasswordField edtRepetirSenha;
     private javax.swing.JPasswordField edtSenha;
     private javax.swing.JTextField edtTelefone;
     private javax.swing.JLabel imgFoto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAlterarPerfil;
+    private javax.swing.JLabel lblConfirmarSenha;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataNascimento;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObjetivo;
-    private javax.swing.JLabel lblRepetirSenha;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JPanel pnlFoto;

@@ -6,6 +6,8 @@
 package tela;
 
 import controlar.ControladorDeAvaliacao;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.UsuarioLogado;
@@ -220,17 +222,42 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
     private void cadastrarAvaliacao() {
 
         AvaliacaoFisica avaliacao = new AvaliacaoFisica();
-
         try {
+            double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
+            peso = Double.parseDouble(edtPeso.getText());
+            altura = Double.parseDouble(edtAltura.getText());
+            circAbdominal = Double.parseDouble(edtCircunferenciaAbdominal.getText());
+            imc = peso / (altura * altura);
+            gorduraCorporal = 64 - (20 * (altura / circAbdominal));
+            massaMuscular = peso - (peso * gorduraCorporal / 100);
+            Date nascimentoDate = UsuarioLogado.getUsuarioLogado().getDataNascimento();
+            Calendar nasc = Calendar.getInstance();
+            nasc.setTime(nascimentoDate);
+            Calendar hoje = Calendar.getInstance();
+            int idade = hoje.get(Calendar.YEAR) - nasc.get(Calendar.YEAR);
+            if (hoje.get(Calendar.DAY_OF_YEAR) < nasc.get(Calendar.DAY_OF_YEAR)) {
+                idade--;
+            }
+            String sexo = UsuarioLogado.getUsuarioLogado().getSexo();
+            System.out.println(sexo);
+            if (sexo.equalsIgnoreCase("homem")) {
+                tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) + 5;
+            } else {
+                tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) - 161;
+            }
             avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-            avaliacao.setPeso(Double.parseDouble(edtPeso.getText()));
-            avaliacao.setAltura(Double.parseDouble(edtAltura.getText()));
-            avaliacao.setCircunferencia_abdominal(Double.parseDouble(edtCircunferenciaAbdominal.getText()));
+            avaliacao.setPeso(peso);
+            avaliacao.setAltura(altura);
+            avaliacao.setCircunferencia_abdominal(circAbdominal);
             avaliacao.setObservacoes(edtObservacoes.getText());
+            avaliacao.setMassa_muscular(massaMuscular);
+            avaliacao.setGordura_corporal(gorduraCorporal);
+            avaliacao.setImc(imc);
+            avaliacao.setTmb(tmb);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Digite valores numéricos válidos para peso, altura e circunferência.");
+            return;
         }
-
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         if (conAva.inserir(avaliacao)) {
             JOptionPane.showMessageDialog(null, "Avaliação Inserida");

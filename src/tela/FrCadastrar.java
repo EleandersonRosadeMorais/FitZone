@@ -35,6 +35,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlPrincipal = new javax.swing.JPanel();
         pnlSecundario = new javax.swing.JPanel();
         lblCadastrar = new javax.swing.JLabel();
@@ -55,11 +56,13 @@ public class FrCadastrar extends javax.swing.JFrame {
         imgFoto = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         edtCpf = new javax.swing.JFormattedTextField();
-        chkAtivo = new javax.swing.JCheckBox();
+        chkMulher = new javax.swing.JCheckBox();
         edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
         edtDataNascimento = new javax.swing.JFormattedTextField();
         btnCadastrar = new javax.swing.JButton();
+        chkAtivo = new javax.swing.JCheckBox();
+        chkHomem = new javax.swing.JCheckBox();
         lblLogar = new javax.swing.JLabel();
         iconLogar = new javax.swing.JLabel();
         lblTextoLogar3 = new javax.swing.JLabel();
@@ -233,7 +236,7 @@ public class FrCadastrar extends javax.swing.JFrame {
                 btnLimparMouseClicked(evt);
             }
         });
-        pnlSecundario.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 180, 50));
+        pnlSecundario.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 640, 180, 50));
 
         edtCpf.setBackground(new java.awt.Color(255, 255, 255));
         edtCpf.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -251,9 +254,15 @@ public class FrCadastrar extends javax.swing.JFrame {
         });
         pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 210, 50));
 
-        chkAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        chkAtivo.setText("ATIVO");
-        pnlSecundario.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, -1, 50));
+        buttonGroup1.add(chkMulher);
+        chkMulher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        chkMulher.setText("MULHER");
+        chkMulher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMulherActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(chkMulher, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 130, 30));
 
         edtConfirmarSenha.setBackground(new java.awt.Color(255, 255, 255));
         edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
@@ -290,7 +299,17 @@ public class FrCadastrar extends javax.swing.JFrame {
                 btnCadastrarMouseClicked(evt);
             }
         });
-        pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 640, 220, 50));
+        pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, 220, 50));
+
+        chkAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        chkAtivo.setText("ATIVO");
+        pnlSecundario.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 130, 30));
+
+        buttonGroup1.add(chkHomem);
+        chkHomem.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        chkHomem.setSelected(true);
+        chkHomem.setText("HOMEM");
+        pnlSecundario.add(chkHomem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 130, 30));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
 
@@ -386,7 +405,7 @@ public class FrCadastrar extends javax.swing.JFrame {
 
     private void btnLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMouseClicked
         limpar();
-        
+
     }//GEN-LAST:event_btnLimparMouseClicked
 
     private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
@@ -412,11 +431,13 @@ public class FrCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogarMouseClicked
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
-     cadastrar();
+        cadastrar();
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
-    
-    private void limpar(){
+    private void chkMulherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMulherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkMulherActionPerformed
+    private void limpar() {
         edtNome.setText("");
         edtEmail.setText("");
         edtSenha.setText("");
@@ -426,8 +447,9 @@ public class FrCadastrar extends javax.swing.JFrame {
         imgFoto.setIcon(null);
         edtCpf.setText("");
         chkAtivo.setSelected(false);
+        chkHomem.setSelected(true);
     }
-    
+
     private void cadastrar() {
         if (!verificarCampos()) {
             return;
@@ -442,7 +464,11 @@ public class FrCadastrar extends javax.swing.JFrame {
         cliente.setImagem(imgFoto.getIcon());
         cliente.setCpf(cliente.removerCpf(edtCpf.getText()));
         cliente.setAtivo(chkAtivo.isSelected());
-
+        if (chkHomem.isSelected()) {
+            cliente.setSexo("homem");
+        } else {
+            cliente.setSexo("mulher");
+        }
         ControladorDeUsuario controller = new ControladorDeUsuario();
         if (controller.inserir(cliente)) {
             JOptionPane.showMessageDialog(null, "Usuário inserido");
@@ -466,26 +492,21 @@ public class FrCadastrar extends javax.swing.JFrame {
             return false;
         }
         if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-            JOptionPane.showMessageDialog(null,
-                    "O campo 'Nome' possui formato inválido");
+            JOptionPane.showMessageDialog(null, "O campo 'Nome' possui formato inválido");
             return false;
         }
         if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
-            JOptionPane.showMessageDialog(null,
-                    "O campo 'Email' possui formato inválido");
+            JOptionPane.showMessageDialog(null, "O campo 'Email' possui formato inválido");
             return false;
         }
         if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
-            JOptionPane.showMessageDialog(null,
-                    "O campo 'Data Nascimento' possui formato inválido");
+            JOptionPane.showMessageDialog(null, "O campo 'Data Nascimento' possui formato inválido");
             return false;
         }
         if (new String(edtSenha.getPassword()).length() < 8) {
-            JOptionPane.showMessageDialog(null,
-                    "A senha deve ser maior que 8 dígitos");
+            JOptionPane.showMessageDialog(null, "A senha deve ser maior que 8 dígitos");
             return false;
         }
-
         if (cliente.removerCpf(edtCpf.getText()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo do CPF do seu usuario nao pode estar vazio");
             return false;
@@ -497,11 +518,9 @@ public class FrCadastrar extends javax.swing.JFrame {
         String senha = new String(edtSenha.getPassword());
         String confirmarSenha = new String(edtConfirmarSenha.getPassword());
         if (!senha.equals(confirmarSenha)) {
-            JOptionPane.showMessageDialog(null,
-                    "Revise sua senha, pois ambas tem que serem iguais");
+            JOptionPane.showMessageDialog(null, "Revise sua senha, pois ambas tem que serem iguais");
             return false;
         }
-
         return true;
     }
 
@@ -545,7 +564,10 @@ public class FrCadastrar extends javax.swing.JFrame {
     private javax.swing.JButton btnEscolherImagem;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnLogar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkAtivo;
+    private javax.swing.JCheckBox chkHomem;
+    private javax.swing.JCheckBox chkMulher;
     private javax.swing.JPasswordField edtConfirmarSenha;
     private javax.swing.JFormattedTextField edtCpf;
     private javax.swing.JFormattedTextField edtDataNascimento;

@@ -87,6 +87,7 @@ public class FrTreinos extends javax.swing.JDialog {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,6 +116,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblDuracao.setText("Duração");
         pnlSuperior.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
 
+        edtDescricao.setEditable(false);
         edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
         edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
@@ -129,6 +131,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 240, 70));
 
+        edtNomeTreino.setEditable(false);
         edtNomeTreino.setBackground(new java.awt.Color(251, 186, 0));
         edtNomeTreino.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtNomeTreino.setForeground(new java.awt.Color(0, 0, 0));
@@ -143,6 +146,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlSuperior.add(edtNomeTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 300, 30));
 
+        edtObjetivo.setEditable(false);
         edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
         edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
@@ -169,6 +173,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblTreinoSegSex1.setText("TREINO DE SEG A SEX");
         pnlSuperior.add(lblTreinoSegSex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
+        edtDuracao.setEditable(false);
         edtDuracao.setBackground(new java.awt.Color(251, 186, 0));
         edtDuracao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtDuracao.setForeground(new java.awt.Color(0, 0, 0));
@@ -242,6 +247,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblRepeticoes.setText("Repetições");
         pnlInferior.add(lblRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
 
+        edtGrupoMuscular.setEditable(false);
         edtGrupoMuscular.setBackground(new java.awt.Color(251, 186, 0));
         edtGrupoMuscular.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtGrupoMuscular.setForeground(new java.awt.Color(0, 0, 0));
@@ -256,6 +262,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtGrupoMuscular, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 300, 30));
 
+        edtNome.setEditable(false);
         edtNome.setBackground(new java.awt.Color(251, 186, 0));
         edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtNome.setForeground(new java.awt.Color(0, 0, 0));
@@ -270,6 +277,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 300, 30));
 
+        edtEquipamento.setEditable(false);
         edtEquipamento.setBackground(new java.awt.Color(251, 186, 0));
         edtEquipamento.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtEquipamento.setForeground(new java.awt.Color(0, 0, 0));
@@ -284,6 +292,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtEquipamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 300, 30));
 
+        edtCarga.setEditable(false);
         edtCarga.setBackground(new java.awt.Color(251, 186, 0));
         edtCarga.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtCarga.setForeground(new java.awt.Color(0, 0, 0));
@@ -298,6 +307,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 300, 30));
 
+        edtSeries.setEditable(false);
         edtSeries.setBackground(new java.awt.Color(251, 186, 0));
         edtSeries.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtSeries.setForeground(new java.awt.Color(0, 0, 0));
@@ -312,6 +322,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 300, 30));
 
+        edtDificuldade.setEditable(false);
         edtDificuldade.setBackground(new java.awt.Color(251, 186, 0));
         edtDificuldade.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtDificuldade.setForeground(new java.awt.Color(0, 0, 0));
@@ -326,6 +337,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtDificuldade, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 300, 30));
 
+        edtRepeticoes.setEditable(false);
         edtRepeticoes.setBackground(new java.awt.Color(251, 186, 0));
         edtRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
@@ -340,6 +352,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 300, 30));
 
+        edtCarga1.setEditable(false);
         edtCarga1.setBackground(new java.awt.Color(251, 186, 0));
         edtCarga1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtCarga1.setForeground(new java.awt.Color(0, 0, 0));
@@ -366,6 +379,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblRepeticoes1.setText("Repetições");
         pnlInferior.add(lblRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
 
+        edtRepeticoes1.setEditable(false);
         edtRepeticoes1.setBackground(new java.awt.Color(251, 186, 0));
         edtRepeticoes1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtRepeticoes1.setForeground(new java.awt.Color(0, 0, 0));
@@ -380,6 +394,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 310, 300, 30));
 
+        edtSeries1.setEditable(false);
         edtSeries1.setBackground(new java.awt.Color(251, 186, 0));
         edtSeries1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtSeries1.setForeground(new java.awt.Color(0, 0, 0));
@@ -406,6 +421,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblDificuldade1.setText("Dificuldade");
         pnlInferior.add(lblDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
 
+        edtDificuldade1.setEditable(false);
         edtDificuldade1.setBackground(new java.awt.Color(251, 186, 0));
         edtDificuldade1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtDificuldade1.setForeground(new java.awt.Color(0, 0, 0));
@@ -420,6 +436,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 300, 30));
 
+        edtGrupoMuscular1.setEditable(false);
         edtGrupoMuscular1.setBackground(new java.awt.Color(251, 186, 0));
         edtGrupoMuscular1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtGrupoMuscular1.setForeground(new java.awt.Color(0, 0, 0));
@@ -446,6 +463,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblEquipamento1.setText("Equipamento");
         pnlInferior.add(lblEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
 
+        edtEquipamento1.setEditable(false);
         edtEquipamento1.setBackground(new java.awt.Color(251, 186, 0));
         edtEquipamento1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtEquipamento1.setForeground(new java.awt.Color(0, 0, 0));
@@ -460,6 +478,7 @@ public class FrTreinos extends javax.swing.JDialog {
         });
         pnlInferior.add(edtEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, 300, 30));
 
+        edtNome1.setEditable(false);
         edtNome1.setBackground(new java.awt.Color(251, 186, 0));
         edtNome1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         edtNome1.setForeground(new java.awt.Color(0, 0, 0));
@@ -484,22 +503,9 @@ public class FrTreinos extends javax.swing.JDialog {
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/treinos.jpg"))); // NOI18N
         background.setText("jLabel1");
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 720));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 78, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
-        );
+        getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

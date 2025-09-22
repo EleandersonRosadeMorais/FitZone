@@ -89,5 +89,11 @@ public class Treino {
         this.concluido = concluido;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
+
     
 }

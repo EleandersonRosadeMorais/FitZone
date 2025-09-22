@@ -213,7 +213,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
 
     private void btnPlanosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlanosMouseClicked
-        // TODO add your handling code here:
+         new FrPlanos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnPlanosMouseClicked
 
     private void btnPlanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanosActionPerformed

@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Exercicio;
+import modelo.Treino;
 
 public class ControladorDeExercicio {
 
-    public List<Exercicio> consultar(String id) {
-        String sql = "SELECT * from exercicio WHERE pkExercicio = " + id;
+    public List<Exercicio> consultar() {
+        String sql = "SELECT * from exercicio";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
 

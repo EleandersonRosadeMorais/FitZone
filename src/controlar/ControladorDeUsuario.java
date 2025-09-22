@@ -1,8 +1,14 @@
 package controlar;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -37,6 +43,7 @@ public Usuario autenticar(String email, String senha) {
             usu.setObjetivo(resultado.getString("objetivo"));
             usu.setCpf(resultado.getString("cpf"));
             usu.setAtivo(resultado.getBoolean("ativo"));
+            usu.setSexo(resultado.getString("sexo"));
 
             // ** Aqui pega os bytes da imagem **
             byte[] imagemBytes = resultado.getBytes("imagem");
@@ -58,7 +65,7 @@ public Usuario autenticar(String email, String senha) {
 
 
     public boolean inserir(Usuario cliente) {
-        String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf, ativo) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf,sexo,  ativo) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
 
@@ -75,7 +82,8 @@ public Usuario autenticar(String email, String senha) {
             comando.setString(6, cliente.getObjetivo());
             comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
             comando.setString(8, cliente.getCpf());
-            comando.setBoolean(9, cliente.isAtivo());
+            comando.setString(9, cliente.getSexo());
+            comando.setBoolean(10, cliente.isAtivo());
 
             comando.executeUpdate();
             return true;
@@ -117,4 +125,49 @@ public Usuario autenticar(String email, String senha) {
 
         return false;
     }
+    
+    public List<Usuario> consultar(){
+    String sql = "SELECT * from USUARIO";
+   
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+  
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+    
+    List<Usuario> lista = new ArrayList<>();
+    
+    try{
+      comando = gerenciador.prepararComando(sql);
+      
+      resultado = comando.executeQuery();
+
+      while(resultado.next()){
+        Usuario usu = new Usuario();
+        
+        usu.setPkUsuario(resultado.getInt("pkUsuario"));
+        usu.setNome(resultado.getString("nome"));
+        usu.setEmail(resultado.getString("email"));
+        usu.setSenha(resultado.getString("senha")); 
+        usu.setDataNascimento(resultado.getDate("data_nascimento")); 
+        usu.setObjetivo(resultado.getString("objetivo")); 
+        byte[] bytes = resultado.getBytes("imagem");
+        
+        if (bytes != null) {
+          ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+          BufferedImage imagem = ImageIO.read(bis);
+          usu.setImagem(new ImageIcon(imagem));
+        }
+        usu.setCpf(resultado.getString("cpf"));
+        usu.setAtivo(resultado.getBoolean("ativo"));
+        
+        lista.add(usu);
+      }
+    } catch (SQLException | IOException e) {
+      JOptionPane.showMessageDialog(null, e.getMessage());      
+    } finally {
+      gerenciador.fecharConexao(comando, resultado);
+    }  
+    return lista;
+  }
+    
 }
