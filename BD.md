@@ -58,9 +58,8 @@ CREATE TABLE EXERCICIO_TREINO (
     repeticoes INT,
     series INT,
     ordem INT,
-    FOREIGN KEY (fkTreino) REFERENCES TREINO(pkTreino),
-    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio),
-    ON DELETE CASCADE
+    FOREIGN KEY (fkTreino) REFERENCES TREINO(pkTreino) ON DELETE CASCADE,
+    FOREIGN KEY (fkExercicio) REFERENCES EXERCICIO(pkExercicio)
 );
 CREATE TABLE AVALIACAO_FISICA (
     pkAvaliacaoFisica INT AUTO_INCREMENT PRIMARY KEY,
@@ -127,32 +126,48 @@ CREATE TABLE PLANO_BENEFICIO (
     FOREIGN KEY (fkBeneficio) REFERENCES BENEFICIO(pkBeneficio)
 );
 
--- 3. Inserir exercícios base
+
 INSERT INTO exercicio (nome, descricao, tipo, grupo_muscular, equipamento, nivel_dificuldade)
 VALUES 
-('Supino Reto', 'Trabalha peitoral maior', 'Força', 'Peitoral', 'Banco + barra', 'Intermediário'),
-('Agachamento Livre', 'Trabalha pernas e glúteos', 'Força', 'Quadríceps', 'Barra', 'Avançado');
+('Puxada na Barra Fixa', 'Trabalha as costas e bíceps', 'Força', 'Dorsal', 'Barra fixa', 'Intermediário'),
+('Flexão de Braço', 'Trabalha peito, ombro e tríceps', 'Força', 'Peitoral', 'Peso corporal', 'Iniciante'),
+('Leg Press', 'Trabalha quadríceps, glúteos e panturrilhas', 'Força', 'Quadríceps', 'Leg Press', 'Intermediário'),
+('Desenvolvimento com Halteres', 'Trabalha ombros e tríceps', 'Força', 'Ombros', 'Halteres', 'Intermediário'),
+('Remada Curvada', 'Trabalha costas e bíceps', 'Força', 'Dorsal', 'Barra ou halteres', 'Avançado'),
+('Deadlift', 'Trabalha costas, pernas e glúteos', 'Força', 'Glúteos', 'Barra', 'Avançado'),
+('Barra Fixa com Pegada Invertida', 'Trabalha costas e bíceps', 'Força', 'Dorsal', 'Barra fixa', 'Intermediário'),
+('Cadeira Extensora', 'Trabalha quadríceps', 'Força', 'Quadríceps', 'Cadeira extensora', 'Iniciante'),
+('Tríceps Pulley', 'Trabalha tríceps', 'Força', 'Tríceps', 'Pulley', 'Intermediário'),
+('Abdominal na Máquina', 'Trabalha a musculatura abdominal', 'Força', 'Abdominais', 'Máquina de abdominal', 'Iniciante');
 
-INSERT INTO BENEFICIO (nome, descricao, tipo) VALUES
-('Acesso à academia', 'Uso livre de todas as áreas da academia', 'serviço'),
-('Aulas coletivas', 'Participação em todas as aulas coletivas', 'serviço'),
-('Personal trainer', 'Sessão semanal com personal trainer', 'serviço'),
-('Sauna', 'Uso da sauna 2x por semana', 'serviço'),
-('Piscina', 'Acesso à piscina', 'serviço'),
-('Massagem', '1 sessão mensal de massagem', 'serviço');
+-- Inserir planos
+INSERT INTO PLANO (nome, descricao, preco_mensal, duracao_minima) 
+VALUES 
+('Plano Básico', 'Plano com recursos essenciais para iniciantes.', 49.90, 12),
+('Plano Premium', 'Plano completo com benefícios exclusivos para usuários avançados.', 149.90, 24);
 
-INSERT INTO PLANO (nome, descricao, preco_mensal, duracao_minima) VALUES
-('Plano Básico', 'Plano com acesso à academia e aulas coletivas', 99.90, 1),
-('Plano Premium', 'Plano completo com todos os benefícios inclusos', 199.90, 1);
+-- Inserir benefícios
+INSERT INTO BENEFICIO (nome, descricao, tipo) 
+VALUES 
+('Acesso a Suporte 24h', 'Suporte técnico disponível 24 horas por dia, 7 dias por semana.', 'Suporte'),
+('Armazenamento Extra', 'Espaço adicional para armazenamento de dados.', 'Armazenamento'),
+('Desconto em Produtos', 'Desconto exclusivo em produtos selecionados.', 'Desconto'),
+('Acesso a Cursos Online', 'Cursos de capacitação gratuitos e exclusivos.', 'Educação'),
+('VPN Premium', 'Acesso a VPN de alta segurança para navegação anônima.', 'Segurança'),
+('Backup Automático', 'Backup diário e automático de seus dados.', 'Segurança');
 
--- Plano Básico terá: Acesso à academia, Aulas coletivas, Piscina
-INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade) VALUES
-(1, 1, 'Uso ilimitado da academia', NULL),
-(1, 2, 'Participação em todas as aulas coletivas', NULL),
-(1, 5, 'Acesso à piscina', NULL);
+-- Associando benefícios ao Plano Básico (ID: 1)
+INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade)
+VALUES 
+(1, 1, 'Suporte técnico disponível 24 horas por dia.', 1),  -- Acesso a Suporte 24h
+(1, 2, 'Armazenamento extra de 10GB.', 10),               -- Armazenamento Extra
+(1, 6, 'Backup diário dos seus dados.', 1);                -- Backup Automático
 
--- Plano Premium terá: Personal trainer, Sauna, Massagem
-INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade) VALUES
-(2, 3, '1 sessão semanal com personal', 4),
-(2, 4, 'Uso da sauna 2x por semana', 8),
-(2, 6, '1 sessão mensal de massagem', 1);
+-- Associando benefícios ao Plano Premium (ID: 2)
+INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade)
+VALUES 
+(2, 3, 'Desconto de 15% em produtos selecionados.', 1),    -- Desconto em Produtos
+(2, 4, 'Acesso completo a cursos e workshops exclusivos.', 1), -- Acesso a Cursos Online
+(2, 5, 'VPN Premium com segurança máxima.', 1);             -- VPN Premium
+
+select * from exercicio;

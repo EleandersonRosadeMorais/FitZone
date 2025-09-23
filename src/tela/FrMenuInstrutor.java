@@ -5,6 +5,8 @@
  */
 package tela;
 
+import utilidade.Util;
+
 /**
  *
  * @author eleaa
@@ -16,6 +18,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
      */
     public FrMenuInstrutor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,8 +32,8 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlSecundario = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
         btnCriarTreino = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnConsultarTreinos = new javax.swing.JButton();
@@ -38,12 +41,20 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(251, 80, 0));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
+        pnlSecundario.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         btnLogout.setBackground(new java.awt.Color(255, 102, 102));
         btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -62,9 +73,6 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
             }
         });
         pnlSecundario.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 300, 60));
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        pnlSecundario.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         btnCriarTreino.setBackground(new java.awt.Color(255, 255, 255));
         btnCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -168,8 +176,8 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnCriarTreinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarTreinoMouseClicked
-         new FrCriarTreino().setVisible(true);
-         this.dispose();
+        new FrCriarTreino().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCriarTreinoMouseClicked
 
     private void btnCriarTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarTreinoActionPerformed
@@ -177,7 +185,8 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCriarTreinoActionPerformed
 
     private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
-        new FrSaude().setVisible(true);
+        new FrClientes().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnClientesMouseClicked
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
@@ -186,6 +195,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
 
     private void btnConsultarTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarTreinosMouseClicked
         new FrConsultarTreinos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConsultarTreinosMouseClicked
 
     private void btnConsultarTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarTreinosActionPerformed
@@ -193,13 +203,17 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarTreinosActionPerformed
 
     private void btnEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarPerfilMouseClicked
-        new FrPlanos().setVisible(true);
+        new FrEditarPerfilInstrutor().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditarPerfilMouseClicked
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

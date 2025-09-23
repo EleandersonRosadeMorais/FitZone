@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import modelo.Exercicio;
 import modelo.ExercicioTreino;
 import modelo.Treino;
+import utilidade.Util;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
      */
     public FrAdicionarExercicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -260,6 +262,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxTreinosActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
         ControladorDeTreino conTre = new ControladorDeTreino();
         List<Treino> listaTre = conTre.consultar(999999999);
         for (Treino tre : listaTre) {

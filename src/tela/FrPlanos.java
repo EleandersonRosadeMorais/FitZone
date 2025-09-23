@@ -26,6 +26,7 @@ public class FrPlanos extends javax.swing.JFrame {
      */
     public FrPlanos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

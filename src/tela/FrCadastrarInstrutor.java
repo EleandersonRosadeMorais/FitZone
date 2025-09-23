@@ -21,6 +21,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
      */
     public FrCadastrarInstrutor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -50,7 +51,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         edtCref = new javax.swing.JTextField();
         lblEspecialidade = new javax.swing.JLabel();
-        edtEspecialidade1 = new javax.swing.JTextField();
+        edtEspecialidade = new javax.swing.JTextField();
         lblLogar = new javax.swing.JLabel();
         iconLogar = new javax.swing.JLabel();
         lblTextoLogar3 = new javax.swing.JLabel();
@@ -60,6 +61,11 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         lblTextoLogar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -202,19 +208,19 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         lblEspecialidade.setText("Especialidade");
         pnlSecundario.add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, -1, -1));
 
-        edtEspecialidade1.setBackground(new java.awt.Color(255, 255, 255));
-        edtEspecialidade1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtEspecialidade1.setForeground(java.awt.Color.black);
-        edtEspecialidade1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtEspecialidade1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtEspecialidade1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtEspecialidade1.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtEspecialidade1.addActionListener(new java.awt.event.ActionListener() {
+        edtEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
+        edtEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEspecialidade.setForeground(java.awt.Color.black);
+        edtEspecialidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtEspecialidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtEspecialidade.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtEspecialidade.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtEspecialidade1ActionPerformed(evt);
+                edtEspecialidadeActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtEspecialidade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 180, 50));
+        pnlSecundario.add(edtEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 180, 50));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
 
@@ -315,9 +321,13 @@ limpar();
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCrefActionPerformed
 
-    private void edtEspecialidade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEspecialidade1ActionPerformed
+    private void edtEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEspecialidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtEspecialidade1ActionPerformed
+    }//GEN-LAST:event_edtEspecialidadeActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
 
     private void limpar() {
     edtNome.setText("");
@@ -336,7 +346,7 @@ private void cadastrar() {
 
     Instrutor instrutor = new Instrutor();
     instrutor.setNome(edtNome.getText());
-    instrutor.setEspecialidade(edtCref.getText());
+    instrutor.setEspecialidade(edtEspecialidade.getText());
     instrutor.setCref(edtCref.getText());
     instrutor.setTelefone(edtTelefone.getText());
     instrutor.setEmail(edtEmail.getText());
@@ -440,7 +450,7 @@ private boolean verificarCampos() {
     private javax.swing.JPasswordField edtConfirmarSenha;
     private javax.swing.JTextField edtCref;
     private javax.swing.JTextField edtEmail;
-    private javax.swing.JTextField edtEspecialidade1;
+    private javax.swing.JTextField edtEspecialidade;
     private javax.swing.JTextField edtNome;
     private javax.swing.JPasswordField edtSenha;
     private javax.swing.JTextField edtTelefone;

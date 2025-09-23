@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import modelo.Treino;
+import utilidade.Util;
 
 /**
  *
@@ -24,6 +25,7 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
      */
     public FrConsultarTreinos() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +50,11 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
@@ -290,6 +297,10 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
     private void btnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseClicked
         pesquisar();
     }//GEN-LAST:event_btnPesquisarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
     private void pesquisar() {
         DefaultTableModel modeloTabela = (DefaultTableModel) tblTreinos.getModel();
 

@@ -7,12 +7,10 @@ package tela;
 
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeDieta;
-import controlar.ControladorDeUsuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.Dieta;
-import modelo.Usuario;
 import modelo.UsuarioLogado;
 import utilidade.Util;
 
@@ -27,6 +25,7 @@ public class FrManterPeso extends javax.swing.JFrame {
      */
     public FrManterPeso() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -518,6 +517,7 @@ public class FrManterPeso extends javax.swing.JFrame {
     }//GEN-LAST:event_edtGorduras1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone());
         double peso, calorias, proteinas, carboidratos, gorduras;
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         List<AvaliacaoFisica> listaAva = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());

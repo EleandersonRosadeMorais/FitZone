@@ -23,6 +23,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
      */
     public FrLogarInstrutor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,6 +52,11 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         edtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal4.setBackground(new java.awt.Color(255, 255, 255));
         pnlPrincipal4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,6 +223,10 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_edtSenhaKeyPressed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
+
     private boolean verificarCampos() {
         if (edtEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de E-mail");
@@ -244,7 +254,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         if (instrutor != null) {
             InstrutorLogado.setInstrutorLogado(instrutor);
             // abre o menu do instrutor
-            FrCriarTreino telaMenu = new FrCriarTreino();
+            FrMenuInstrutor telaMenu = new FrMenuInstrutor();
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
@@ -288,20 +298,12 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCadastrar1;
-    private javax.swing.JButton btnCadastrar2;
-    private javax.swing.JButton btnCadastrar3;
     private javax.swing.JButton btnCadastrar4;
     private javax.swing.JButton btnLogar;
     private javax.swing.JTextField edtEmail;
     private javax.swing.JPasswordField edtSenha;
     private javax.swing.JLabel iconCadastrar;
     private javax.swing.JLabel iconLogar;
-    private javax.swing.JLabel lblCadastrar;
-    private javax.swing.JLabel lblCadastrar1;
-    private javax.swing.JLabel lblCadastrar2;
-    private javax.swing.JLabel lblCadastrar3;
     private javax.swing.JLabel lblCadastrar4;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblLogar;
@@ -309,15 +311,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
     private javax.swing.JLabel lblTextoCadastrar1;
     private javax.swing.JLabel lblTextoCadastrar2;
     private javax.swing.JLabel lblTextoCadastrar3;
-    private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JPanel pnlPrincipal1;
-    private javax.swing.JPanel pnlPrincipal2;
-    private javax.swing.JPanel pnlPrincipal3;
     private javax.swing.JPanel pnlPrincipal4;
-    private javax.swing.JPanel pnlSecundario;
-    private javax.swing.JPanel pnlSecundario1;
-    private javax.swing.JPanel pnlSecundario2;
-    private javax.swing.JPanel pnlSecundario3;
     private javax.swing.JPanel pnlSecundario4;
     // End of variables declaration//GEN-END:variables
 }

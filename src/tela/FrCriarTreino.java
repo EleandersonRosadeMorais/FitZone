@@ -13,6 +13,7 @@ import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import modelo.Treino;
 import modelo.Usuario;
+import utilidade.Util;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
      */
     public FrCriarTreino() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -258,9 +260,10 @@ public class FrCriarTreino extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUsuariosActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone());
         ControladorDeUsuario conUsu = new ControladorDeUsuario();
 
-        List<Usuario> lista = conUsu.consultar();
+        List<Usuario> lista = conUsu.consultar(0, "");
 
         for (Usuario usu : lista) {
             cbxUsuarios.addItem(usu);

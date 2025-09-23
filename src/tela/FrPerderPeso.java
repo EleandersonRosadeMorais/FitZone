@@ -27,6 +27,7 @@ public class FrPerderPeso extends javax.swing.JFrame {
      */
     public FrPerderPeso() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -518,6 +519,7 @@ public class FrPerderPeso extends javax.swing.JFrame {
     }//GEN-LAST:event_edtGorduras1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
         double peso, calorias, proteinas, carboidratos, gorduras;
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         List<AvaliacaoFisica> listaAva = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());

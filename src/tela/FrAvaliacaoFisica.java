@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.UsuarioLogado;
+import utilidade.Util;
 
 /**
  *
@@ -23,6 +24,7 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
      */
     public FrAvaliacaoFisica() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -52,6 +54,11 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -212,6 +219,10 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
         limparAvaliacao();
     }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
     private void limparAvaliacao() {
         edtPeso.setText("");
         edtAltura.setText("");

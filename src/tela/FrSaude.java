@@ -7,12 +7,11 @@ package tela;
 
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeDieta;
-import controlar.ControladorDeTreino;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
-import modelo.Treino;
 import modelo.UsuarioLogado;
+import utilidade.Util;
 
 /**
  *
@@ -25,6 +24,7 @@ public class FrSaude extends javax.swing.JFrame {
      */
     public FrSaude() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -416,7 +416,7 @@ public class FrSaude extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGanharActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        this.setIconImage(Util.getIcone());
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         List<AvaliacaoFisica> listaAva = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());
         AvaliacaoFisica ava = listaAva.get(0);

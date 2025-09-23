@@ -6,15 +6,10 @@
 package tela;
 
 import controlar.ControladorDeInstrutor;
-import controlar.ControladorDeUsuario;
 import java.awt.Color;
-import java.io.File;
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
-import modelo.Usuario;
-import modelo.UsuarioLogado;
 import utilidade.Util;
 
 /**
@@ -23,13 +18,14 @@ import utilidade.Util;
  */
 public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
 
-    private Instrutor instrutorAtual;
+    private Instrutor instrutorAtual = InstrutorLogado.getInstrutorLogado();
 
     /**
      * Creates new form FrPerfil
      */
     public FrEditarPerfilInstrutor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -166,7 +162,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         });
         pnlSecundario.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 40));
 
-        edtConfirmarSenha.setBackground(new java.awt.Color(251, 80, 0));
+        edtConfirmarSenha.setEditable(false);
+        edtConfirmarSenha.setBackground(new java.awt.Color(184, 74, 22));
         edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +172,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         });
         pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 590, 40));
 
-        edtSenha.setBackground(new java.awt.Color(251, 80, 0));
+        edtSenha.setEditable(false);
+        edtSenha.setBackground(new java.awt.Color(184, 74, 22));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,8 +278,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         if (edtSenha.isEditable()) {
             edtSenha.setEditable(false);
             edtConfirmarSenha.setEditable(false);
-            edtSenha.setBackground(new Color(145, 109, 7));
-            edtConfirmarSenha.setBackground(new Color(145, 109, 7));
+            edtSenha.setBackground(new Color(251, 80, 0));
+            edtConfirmarSenha.setBackground(new Color(251, 80, 0));
 
             edtSenha.setText("");
             edtConfirmarSenha.setText("");
@@ -290,8 +288,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         } else {
             edtSenha.setEditable(true);
             edtConfirmarSenha.setEditable(true);
-            edtSenha.setBackground(new Color(251, 186, 0));
-            edtConfirmarSenha.setBackground(new Color(251, 186, 0));
+            edtSenha.setBackground(new Color(184, 74, 22));
+            edtConfirmarSenha.setBackground(new Color(184, 74, 22));
 
             btnAlterarSenha.setText("Cancelar");
         }
@@ -319,7 +317,7 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_edtSenhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        this.setIconImage(Util.getIcone());
         Instrutor instrutor = InstrutorLogado.getInstrutorLogado();
         edtNome.setText(instrutor.getNome());
         edtEmail.setText(instrutor.getEmail());
@@ -341,7 +339,6 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCrefActionPerformed
 
-
     private void salvarPerfil() {
 
         instrutorAtual.setNome(edtNome.getText());
@@ -352,7 +349,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         }
         instrutorAtual.setTelefone(edtTelefone.getText());
         instrutorAtual.setEspecialidade(edtEspecialidade.getText());
-        
+        instrutorAtual.setCref(edtCref.getText());
+
         ControladorDeInstrutor conIns = new ControladorDeInstrutor();
         boolean ok = conIns.alterar(instrutorAtual);
         if (ok) {

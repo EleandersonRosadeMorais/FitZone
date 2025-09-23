@@ -25,6 +25,7 @@ public class FrTreinos extends javax.swing.JDialog {
      */
     public FrTreinos(java.awt.Frame parent, boolean modal) {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

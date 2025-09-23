@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Instrutor;
-import modelo.Usuario;
-import utilidade.Util;
 
 public class ControladorDeInstrutor {
 
@@ -71,8 +69,6 @@ public class ControladorDeInstrutor {
     }
     
     
-    
-    
     public boolean alterar(Instrutor instrutor) {
         String sql = "UPDATE INSTRUTOR SET nome = ?, especialidade = ?, cref = ?, telefone = ?, email = ?, senha = ? WHERE pkInstrutor = ?";
 
@@ -82,11 +78,12 @@ public class ControladorDeInstrutor {
         try {
             comando = gerenciador.prepararComando(sql);
             comando.setString(1, instrutor.getNome());
-            comando.setString(2, instrutor.getCref());
-            comando.setString(3, instrutor.getTelefone());
-            comando.setString(4, instrutor.getEmail());
-            comando.setString(5, instrutor.getSenha());
-            comando.setInt(6, instrutor.getPkInstrutor());
+            comando.setString(2, instrutor.getEspecialidade());
+            comando.setString(3, instrutor.getCref());
+            comando.setString(4, instrutor.getTelefone());
+            comando.setString(5, instrutor.getEmail());
+            comando.setString(6, instrutor.getSenha());
+            comando.setInt(7, instrutor.getPkInstrutor());
 
             int linhas = comando.executeUpdate();
             return linhas > 0;

@@ -20,13 +20,14 @@ import utilidade.Util;
  */
 public class FrPerfil extends javax.swing.JFrame {
 
-    private Usuario usuarioAtual;
+    private Usuario usuarioAtual = UsuarioLogado.getUsuarioLogado();
 
     /**
      * Creates new form FrPerfil
      */
     public FrPerfil() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -380,7 +381,7 @@ public class FrPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_edtSenhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        this.setIconImage(Util.getIcone());
         Usuario usuario = UsuarioLogado.getUsuarioLogado();
 
         edtNome.setText(usuario.getNome());

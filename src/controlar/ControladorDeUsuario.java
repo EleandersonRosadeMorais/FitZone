@@ -17,52 +17,51 @@ import utilidade.Util;
 
 public class ControladorDeUsuario {
 
-public Usuario autenticar(String email, String senha) {
-    String sql = "SELECT * FROM USUARIO WHERE email = ? AND senha = ? AND ativo = true";
+    public Usuario autenticar(String email, String senha) {
+        String sql = "SELECT * FROM USUARIO WHERE email = ? AND senha = ? AND ativo = true";
 
-    GerenciadorConexao gerenciador = new GerenciadorConexao();
-    PreparedStatement comando = null;
-    ResultSet resultado = null;
-    Usuario usu = null;
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+        Usuario usu = null;
 
-    try {
-        comando = gerenciador.prepararComando(sql);
-        comando.setString(1, email);
-        comando.setString(2, senha);
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setString(1, email);
+            comando.setString(2, senha);
 
-        resultado = comando.executeQuery();
+            resultado = comando.executeQuery();
 
-        if (resultado.next()) {
-            usu = new Usuario();
-            usu.setPkUsuario(resultado.getInt("pkUsuario"));
-            usu.setNome(resultado.getString("nome"));
-            usu.setEmail(resultado.getString("email"));
-            usu.setSenha(resultado.getString("senha"));
-            usu.setTelefone(resultado.getString("telefone"));
-            usu.setDataNascimento(resultado.getDate("data_nascimento"));
-            usu.setObjetivo(resultado.getString("objetivo"));
-            usu.setCpf(resultado.getString("cpf"));
-            usu.setAtivo(resultado.getBoolean("ativo"));
-            usu.setSexo(resultado.getString("sexo"));
+            if (resultado.next()) {
+                usu = new Usuario();
+                usu.setPkUsuario(resultado.getInt("pkUsuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setEmail(resultado.getString("email"));
+                usu.setSenha(resultado.getString("senha"));
+                usu.setTelefone(resultado.getString("telefone"));
+                usu.setDataNascimento(resultado.getDate("data_nascimento"));
+                usu.setObjetivo(resultado.getString("objetivo"));
+                usu.setCpf(resultado.getString("cpf"));
+                usu.setAtivo(resultado.getBoolean("ativo"));
+                usu.setSexo(resultado.getString("sexo"));
 
-            // ** Aqui pega os bytes da imagem **
-            byte[] imagemBytes = resultado.getBytes("imagem");
-            if (imagemBytes != null && imagemBytes.length > 0) {
-                ImageIcon icon = new ImageIcon(imagemBytes);
-                // opcional: redimensionar para caber no lbl
-                Icon iconRed = Util.redimensionarImagem(icon, 96, 129);
-                usu.setImagem(iconRed);
+                // ** Aqui pega os bytes da imagem **
+                byte[] imagemBytes = resultado.getBytes("imagem");
+                if (imagemBytes != null && imagemBytes.length > 0) {
+                    ImageIcon icon = new ImageIcon(imagemBytes);
+                    // opcional: redimensionar para caber no lbl
+                    Icon iconRed = Util.redimensionarImagem(icon, 96, 129);
+                    usu.setImagem(iconRed);
+                }
             }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e.getMessage());
-    } finally {
-        gerenciador.fecharConexao(comando, resultado);
+
+        return usu;
     }
-
-    return usu;
-}
-
 
     public boolean inserir(Usuario cliente) {
         String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf,sexo,  ativo) VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -125,49 +124,61 @@ public Usuario autenticar(String email, String senha) {
 
         return false;
     }
-    
-    public List<Usuario> consultar(){
-    String sql = "SELECT * from USUARIO";
-   
-    GerenciadorConexao gerenciador = new GerenciadorConexao();
-  
-    PreparedStatement comando = null;
-    ResultSet resultado = null;
-    
-    List<Usuario> lista = new ArrayList<>();
-    
-    try{
-      comando = gerenciador.prepararComando(sql);
-      
-      resultado = comando.executeQuery();
 
-      while(resultado.next()){
-        Usuario usu = new Usuario();
-        
-        usu.setPkUsuario(resultado.getInt("pkUsuario"));
-        usu.setNome(resultado.getString("nome"));
-        usu.setEmail(resultado.getString("email"));
-        usu.setSenha(resultado.getString("senha")); 
-        usu.setDataNascimento(resultado.getDate("data_nascimento")); 
-        usu.setObjetivo(resultado.getString("objetivo")); 
-        byte[] bytes = resultado.getBytes("imagem");
-        
-        if (bytes != null) {
-          ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-          BufferedImage imagem = ImageIO.read(bis);
-          usu.setImagem(new ImageIcon(imagem));
+    public List<Usuario> consultar(int opcaoFiltro, String opcao) {
+        String sql = "SELECT * from USUARIO";
+
+        switch (opcaoFiltro) {
+            case 0:
+                sql = sql;
+                break;
+            case 1:
+                sql += " Where nome like '%" + opcao + "%'";
+                break;
+            case 2:
+                sql += " Where data_nascimento like '%" + opcao + "%'";
         }
-        usu.setCpf(resultado.getString("cpf"));
-        usu.setAtivo(resultado.getBoolean("ativo"));
-        
-        lista.add(usu);
-      }
-    } catch (SQLException | IOException e) {
-      JOptionPane.showMessageDialog(null, e.getMessage());      
-    } finally {
-      gerenciador.fecharConexao(comando, resultado);
-    }  
-    return lista;
-  }
-    
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+
+        List<Usuario> lista = new ArrayList<>();
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                Usuario usu = new Usuario();
+
+                usu.setPkUsuario(resultado.getInt("pkUsuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setEmail(resultado.getString("email"));
+                usu.setSenha(resultado.getString("senha"));
+                usu.setDataNascimento(resultado.getDate("data_nascimento"));
+                usu.setObjetivo(resultado.getString("objetivo"));
+                byte[] bytes = resultado.getBytes("imagem");
+
+                if (bytes != null) {
+                    ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+                    BufferedImage imagem = ImageIO.read(bis);
+                    usu.setImagem(new ImageIcon(imagem));
+                }
+                usu.setDataCadastro(resultado.getDate("data_cadastro"));
+                usu.setCpf(resultado.getString("cpf"));
+                usu.setAtivo(resultado.getBoolean("ativo"));
+
+                lista.add(usu);
+            }
+        } catch (SQLException | IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
+        }
+        return lista;
+    }
+
 }
