@@ -11,17 +11,17 @@ import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 
 public class ControladorDeAvaliacao {
-    
+
     public boolean inserir(AvaliacaoFisica avaliacao) {
         String sql = "INSERT INTO AVALIACAO_FISICA (fkUsuario, data_avaliacao, peso, altura, circunferencia_abdominal, massa_muscular, gordura_corporal, imc, tmb, observacoes) VALUES (?,?,?,?,?,?,?,?,?,?)";
-        
+
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-        
+
         PreparedStatement comando = null;
-        
+
         try {
             comando = gerenciador.prepararComando(sql);
-            
+
             comando.setInt(1, avaliacao.getFkUsuario());
             comando.setDate(2, Date.valueOf(LocalDate.now()));
             comando.setDouble(3, avaliacao.getPeso());
@@ -32,7 +32,7 @@ public class ControladorDeAvaliacao {
             comando.setDouble(8, avaliacao.getImc());
             comando.setDouble(9, avaliacao.getTmb());
             comando.setString(10, avaliacao.getObservacoes());
-            
+
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -42,22 +42,22 @@ public class ControladorDeAvaliacao {
         }
         return false;
     }
-    
+
     public List<AvaliacaoFisica> consultar(int id) {
         String sql = "SELECT * from avaliacao_fisica WHERE fkUsuario = " + id;
-        
+
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
         ResultSet resultado = null;
         List<AvaliacaoFisica> lista = new ArrayList<>();
-        
+
         try {
             comando = gerenciador.prepararComando(sql);
             resultado = comando.executeQuery();
-            
+
             while (resultado.next()) {
                 AvaliacaoFisica avaFis = new AvaliacaoFisica();
-                
+
                 avaFis.setPkAvaliacaoFisica(resultado.getInt("pkAvaliacaoFisica"));
                 avaFis.setFkUsuario(resultado.getInt("fkUsuario"));
                 avaFis.setPeso(resultado.getDouble("peso"));
@@ -67,7 +67,7 @@ public class ControladorDeAvaliacao {
                 avaFis.setImc(resultado.getDouble("imc"));
                 avaFis.setTmb(resultado.getDouble("tmb"));
                 avaFis.setObservacoes(resultado.getString("observacoes"));
-                
+
                 lista.add(avaFis);
             }
         } catch (SQLException e) {
@@ -75,8 +75,28 @@ public class ControladorDeAvaliacao {
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
-        
+
         return lista;
     }
-    
+
+    public boolean consultarExiste(int id) {
+        String sql = "SELECT * FROM AVALIACAO_FISICA WHERE fkUsuario = ?";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+        ResultSet rs = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setInt(1, id);
+
+            rs = comando.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, rs);
+        }
+        return false;
+
+    }
 }

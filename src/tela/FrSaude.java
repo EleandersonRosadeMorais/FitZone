@@ -381,7 +381,8 @@ public class FrSaude extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalcularMouseClicked
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        new FrMenu().setVisible(true);
+        new FrSaude().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

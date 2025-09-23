@@ -5,6 +5,9 @@
  */
 package tela;
 
+import controlar.ControladorDeAvaliacao;
+import javax.swing.JOptionPane;
+import modelo.UsuarioLogado;
 import utilidade.Util;
 
 /**
@@ -32,7 +35,7 @@ public class FrMenu extends javax.swing.JFrame {
 
         pnlPrincipal = new javax.swing.JPanel();
         pnlSecundario = new javax.swing.JPanel();
-        btnSair = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         btnTreinos = new javax.swing.JButton();
         btnSaude = new javax.swing.JButton();
@@ -55,23 +58,23 @@ public class FrMenu extends javax.swing.JFrame {
         pnlSecundario.setBackground(new java.awt.Color(251, 186, 0));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
-        btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnLogout.setBackground(new java.awt.Color(255, 102, 102));
+        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 0, 0));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
+        btnLogout.setText("LOGOUT");
+        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSairMouseClicked(evt);
+                btnLogoutMouseClicked(evt);
             }
         });
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 240, 60));
+        pnlSecundario.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 240, 60));
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
         pnlSecundario.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
@@ -186,14 +189,14 @@ public class FrMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
         new FrLogar().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnSairMouseClicked
+    }//GEN-LAST:event_btnLogoutMouseClicked
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
         FrTreinos dialog = new FrTreinos(this, true);
@@ -205,7 +208,14 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTreinosActionPerformed
 
     private void btnSaudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaudeMouseClicked
-        new FrSaude().setVisible(true);
+        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+            new FrSaude().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Antes de acessar essa pagina, voce precisa cadastrar suas informacoes em 'AVALIACAO'");
+        }
+
+
     }//GEN-LAST:event_btnSaudeMouseClicked
 
     private void btnSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaudeActionPerformed
@@ -214,6 +224,7 @@ public class FrMenu extends javax.swing.JFrame {
 
     private void btnAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvaliacaoMouseClicked
         new FrAvaliacaoFisica().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAvaliacaoMouseClicked
 
     private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
@@ -221,7 +232,7 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
 
     private void btnPlanosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlanosMouseClicked
-         new FrPlanos().setVisible(true);
+        new FrPlanos().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPlanosMouseClicked
 
@@ -230,7 +241,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlanosActionPerformed
 
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
-       new FrPerfil().setVisible(true);
+        new FrPerfil().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnPerfilMouseClicked
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
@@ -238,7 +250,7 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -280,9 +292,9 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel background;
     private javax.swing.JButton btnAvaliacao;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnPlanos;
-    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSaude;
     private javax.swing.JButton btnTreinos;
     private javax.swing.JPanel pnlPrincipal;

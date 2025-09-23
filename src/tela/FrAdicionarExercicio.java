@@ -71,8 +71,8 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
 
         lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
-        lblCriarTreino.setText("CRIAR TREINO");
-        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+        lblCriarTreino.setText("Adicionar Exercicio");
+        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
 
         btnSair.setBackground(new java.awt.Color(255, 102, 102));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -225,7 +225,6 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        new FrCriarTreino().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
@@ -254,7 +253,6 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         Treino tre = cbxTreinos.getItemAt(indexSelecionado);
         Exercicio exe = cbxExercicios.getItemAt(indexSelecionado);
         criar(exe.getPkExercicio(), tre.getPkTreino());
-
     }//GEN-LAST:event_btnCriarMouseClicked
 
     private void cbxTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTreinosActionPerformed

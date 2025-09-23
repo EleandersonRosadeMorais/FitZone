@@ -214,6 +214,8 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         cadastrarAvaliacao();
+        new FrMenu().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked

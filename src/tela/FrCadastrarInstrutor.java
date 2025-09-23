@@ -351,7 +351,6 @@ private void cadastrar() {
     instrutor.setTelefone(edtTelefone.getText());
     instrutor.setEmail(edtEmail.getText());
     instrutor.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
-
     ControladorDeInstrutor controller = new ControladorDeInstrutor();
     if (controller.inserir(instrutor)) {
         JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");

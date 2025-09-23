@@ -477,7 +477,8 @@ public class FrManterPeso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEscolherMouseClicked
 
     private void btnSair5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair5MouseClicked
-
+        new FrSaude().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSair5MouseClicked
 
     private void btnSair5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair5ActionPerformed
@@ -517,7 +518,7 @@ public class FrManterPeso extends javax.swing.JFrame {
     }//GEN-LAST:event_edtGorduras1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
         double peso, calorias, proteinas, carboidratos, gorduras;
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         List<AvaliacaoFisica> listaAva = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());

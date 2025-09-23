@@ -80,6 +80,7 @@ public class FrTreinos extends javax.swing.JDialog {
         edtEquipamento1 = new javax.swing.JTextField();
         edtNome1 = new javax.swing.JTextField();
         lblNome1 = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -502,9 +503,27 @@ public class FrTreinos extends javax.swing.JDialog {
 
         pnlPrincipal.add(pnlInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 1210, 420));
 
+        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
+        btnSair.setText("SAIR");
+        btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/treinos.jpg"))); // NOI18N
         background.setText("jLabel1");
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 720));
+        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -629,6 +648,15 @@ public class FrTreinos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        new FrSaude().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -673,6 +701,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btnSair;
     private javax.swing.JCheckBox chkConcluido;
     private javax.swing.JTextField edtCarga;
     private javax.swing.JTextField edtCarga1;

@@ -243,14 +243,11 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         if (!verificarCampos()) {
             return;
         }
-
         String email = edtEmail.getText();
         String senha = Util.calcularHash(new String(edtSenha.getPassword()));
-
         ControladorDeInstrutor controller = new ControladorDeInstrutor();
 
         Instrutor instrutor = controller.autenticar(email, senha);
-
         if (instrutor != null) {
             InstrutorLogado.setInstrutorLogado(instrutor);
             // abre o menu do instrutor

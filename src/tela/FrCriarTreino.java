@@ -173,7 +173,12 @@ public class FrCriarTreino extends javax.swing.JFrame {
                 btnCriarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 120, 50));
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 120, 50));
 
         cbxUsuarios.setBackground(new java.awt.Color(251, 80, 0));
         cbxUsuarios.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -203,7 +208,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
                 btnAdicionarExercicioMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAdicionarExercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 260, 50));
+        jPanel1.add(btnAdicionarExercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 590, 560));
 
@@ -248,8 +253,6 @@ public class FrCriarTreino extends javax.swing.JFrame {
         Usuario usu = cbxUsuarios.getItemAt(indexSelecionado);
         criar(usu.getPkUsuario());
         
-        
-        
         Instrutor instrutorLogado = InstrutorLogado.getInstrutorLogado();
         System.out.println(usu.getPkUsuario());
         System.out.println(instrutorLogado.getPkInstrutor());
@@ -274,6 +277,10 @@ public class FrCriarTreino extends javax.swing.JFrame {
     private void btnAdicionarExercicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarExercicioMouseClicked
          new FrAdicionarExercicio().setVisible(true);
     }//GEN-LAST:event_btnAdicionarExercicioMouseClicked
+
+    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCriarActionPerformed
 
     private void criar(int id) {
         try {

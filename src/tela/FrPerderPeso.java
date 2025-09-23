@@ -479,7 +479,8 @@ public class FrPerderPeso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEscolherMouseClicked
 
     private void btnSair5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair5MouseClicked
-
+        new FrSaude().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSair5MouseClicked
 
     private void btnSair5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair5ActionPerformed

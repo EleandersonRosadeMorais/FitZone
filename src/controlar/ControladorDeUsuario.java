@@ -27,11 +27,11 @@ public class ControladorDeUsuario {
 
         try {
             comando = gerenciador.prepararComando(sql);
-            comando.setString(1, email);
-            comando.setString(2, senha);
+            comando.setString(1, email.trim());
+            comando.setString(2, senha.trim());
 
             resultado = comando.executeQuery();
-
+            
             if (resultado.next()) {
                 usu = new Usuario();
                 usu.setPkUsuario(resultado.getInt("pkUsuario"));

@@ -18,8 +18,8 @@ public class ControladorDeInstrutor {
 
         try {
             comando = gerenciador.prepararComando(sql);
-            comando.setString(1, email);
-            comando.setString(2, senha);
+            comando.setString(1, email.trim());
+            comando.setString(2, senha.trim());
 
             resultado = comando.executeQuery();
 
@@ -67,8 +67,7 @@ public class ControladorDeInstrutor {
 
         return false;
     }
-    
-    
+
     public boolean alterar(Instrutor instrutor) {
         String sql = "UPDATE INSTRUTOR SET nome = ?, especialidade = ?, cref = ?, telefone = ?, email = ?, senha = ? WHERE pkInstrutor = ?";
 

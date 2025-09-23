@@ -5,16 +5,10 @@
  */
 package tela;
 
-import controlar.ControladorDeTreino;
 import controlar.ControladorDeUsuario;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Instrutor;
-import modelo.InstrutorLogado;
-import modelo.Treino;
 import modelo.Usuario;
-import modelo.UsuarioLogado;
 import utilidade.Util;
 
 /**
@@ -272,7 +266,8 @@ public class FrClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
+        pesquisar();
     }//GEN-LAST:event_formWindowOpened
     private void pesquisar() {
         DefaultTableModel modeloTabela = (DefaultTableModel) tblTreinos.getModel();
