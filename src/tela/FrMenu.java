@@ -6,6 +6,7 @@
 package tela;
 
 import controlar.ControladorDeAvaliacao;
+import controlar.ControladorDeTreino;
 import javax.swing.JOptionPane;
 import modelo.UsuarioLogado;
 import utilidade.Util;
@@ -199,8 +200,17 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
+       ControladorDeTreino conTre = new ControladorDeTreino();
+       if(conTre.verificarTreinoUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario())){
+        
+    } else {
+            JOptionPane.showMessageDialog(null, "Antes de você conferir seus treinos");
+            }
+        
+        
         FrTreinos dialog = new FrTreinos(this, true);
         dialog.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnTreinosMouseClicked
 
     private void btnTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTreinosActionPerformed

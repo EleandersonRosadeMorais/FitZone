@@ -44,12 +44,12 @@ public class FrTreinos extends javax.swing.JDialog {
         lblNomeDoTreino1 = new javax.swing.JLabel();
         lblDuracao = new javax.swing.JLabel();
         edtDescricao = new javax.swing.JTextField();
-        edtNomeTreino = new javax.swing.JTextField();
         edtObjetivo = new javax.swing.JTextField();
         lblNomeDoTreino2 = new javax.swing.JLabel();
         lblTreinoSegSex1 = new javax.swing.JLabel();
         edtDuracao = new javax.swing.JTextField();
         chkConcluido = new javax.swing.JCheckBox();
+        cbxTreinos1 = new javax.swing.JComboBox<>();
         pnlInferior = new javax.swing.JPanel();
         lblTreinoSegSex = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -104,19 +104,19 @@ public class FrTreinos extends javax.swing.JDialog {
         lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblObjetivo.setForeground(new java.awt.Color(251, 186, 0));
         lblObjetivo.setText("Objetivo");
-        pnlSuperior.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        pnlSuperior.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         lblNomeDoTreino1.setBackground(new java.awt.Color(0, 0, 0));
         lblNomeDoTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNomeDoTreino1.setForeground(new java.awt.Color(251, 186, 0));
         lblNomeDoTreino1.setText("Descrição");
-        pnlSuperior.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
+        pnlSuperior.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
 
         lblDuracao.setBackground(new java.awt.Color(0, 0, 0));
         lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDuracao.setForeground(new java.awt.Color(251, 186, 0));
         lblDuracao.setText("Duração");
-        pnlSuperior.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        pnlSuperior.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         edtDescricao.setEditable(false);
         edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
@@ -131,22 +131,7 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtDescricaoActionPerformed(evt);
             }
         });
-        pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 240, 70));
-
-        edtNomeTreino.setEditable(false);
-        edtNomeTreino.setBackground(new java.awt.Color(251, 186, 0));
-        edtNomeTreino.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNomeTreino.setForeground(new java.awt.Color(0, 0, 0));
-        edtNomeTreino.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNomeTreino.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNomeTreino.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNomeTreino.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtNomeTreino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtNomeTreinoActionPerformed(evt);
-            }
-        });
-        pnlSuperior.add(edtNomeTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 300, 30));
+        pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 240, 30));
 
         edtObjetivo.setEditable(false);
         edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
@@ -161,13 +146,13 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtObjetivoActionPerformed(evt);
             }
         });
-        pnlSuperior.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 300, 30));
+        pnlSuperior.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 300, 30));
 
         lblNomeDoTreino2.setBackground(new java.awt.Color(0, 0, 0));
         lblNomeDoTreino2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNomeDoTreino2.setForeground(new java.awt.Color(251, 186, 0));
         lblNomeDoTreino2.setText("Nome do Treino");
-        pnlSuperior.add(lblNomeDoTreino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        pnlSuperior.add(lblNomeDoTreino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         lblTreinoSegSex1.setBackground(new java.awt.Color(0, 0, 0));
         lblTreinoSegSex1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
@@ -188,15 +173,25 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtDuracaoActionPerformed(evt);
             }
         });
-        pnlSuperior.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 300, 30));
+        pnlSuperior.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 300, 30));
 
         chkConcluido.setBackground(new java.awt.Color(251, 186, 0));
         chkConcluido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         chkConcluido.setForeground(new java.awt.Color(0, 0, 0));
         chkConcluido.setText("Concluido");
-        pnlSuperior.add(chkConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
+        pnlSuperior.add(chkConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, 30));
 
-        pnlPrincipal.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 870, 210));
+        cbxTreinos1.setBackground(new java.awt.Color(251, 186, 0));
+        cbxTreinos1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        cbxTreinos1.setForeground(new java.awt.Color(0, 0, 0));
+        cbxTreinos1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTreinos1ItemStateChanged(evt);
+            }
+        });
+        pnlSuperior.add(cbxTreinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 300, 40));
+
+        pnlPrincipal.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 780, 210));
 
         pnlInferior.setBackground(new java.awt.Color(255, 255, 255));
         pnlInferior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -534,10 +529,6 @@ public class FrTreinos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDescricaoActionPerformed
 
-    private void edtNomeTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNomeTreinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtNomeTreinoActionPerformed
-
     private void edtObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtObjetivoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtObjetivoActionPerformed
@@ -605,25 +596,62 @@ public class FrTreinos extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
         ControladorDeTreino conTre = new ControladorDeTreino();
-        List<Treino> listaTre = conTre.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-        Treino tre = listaTre.get(0);
+        List<Treino> listaTreTotal = conTre.consultar(1, UsuarioLogado.getUsuarioLogado().getPkUsuario(), 0);
+        for (Treino trei : listaTreTotal) {
+            cbxTreinos1.addItem(trei);
+        }
 
-        edtNomeTreino.setText(tre.getNome());
-        chkConcluido.setSelected(tre.isConcluido());
-        edtObjetivo.setText(tre.getObjetivo());
-        edtDuracao.setText(String.valueOf(tre.getDuracao_minutos()));
-        edtDescricao.setText(tre.getDescricao());
+        MostrarTreino();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void cbxTreinos1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTreinos1ItemStateChanged
+        MostrarTreino();
+    }//GEN-LAST:event_cbxTreinos1ItemStateChanged
+
+    private void MostrarTreino() {
+        ControladorDeTreino conTre = new ControladorDeTreino();
+        int indexSelecionado = cbxTreinos1.getSelectedIndex();
+        Treino tre = cbxTreinos1.getItemAt(indexSelecionado);
+        List<Treino> listaTre = conTre.consultar(2, 0, tre.getPkTreino());
+
+        Treino tren = listaTre.get(0);
+
+        chkConcluido.setSelected(tren.isConcluido());
+        edtObjetivo.setText(tren.getObjetivo());
+        edtDuracao.setText(String.valueOf(tren.getDuracao_minutos()));
+        edtDescricao.setText(tren.getDescricao());
 
         ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
-        List<ExercicioTreino> listaExeTre = conExeTre.consultarPorTreino(tre.getPkTreino());
-
+        List<ExercicioTreino> listaExeTre = conExeTre.consultarPorTreino(tren.getPkTreino());
+        edtNome.setText("");
+        edtEquipamento.setText("");
+        edtGrupoMuscular.setText("");
+        edtDificuldade.setText("");
+        edtSeries.setText("");
+        edtRepeticoes.setText("");
+        edtCarga.setText("");
+        edtNome1.setText("");
+        edtEquipamento1.setText("");
+        edtGrupoMuscular1.setText("");
+        edtDificuldade1.setText("");
+        edtSeries1.setText("");
+        edtRepeticoes1.setText("");
+        edtCarga1.setText("");
         for (int i = 0; i < listaExeTre.size(); i++) {
             if (i >= 4) {
                 break;
             }
             ExercicioTreino exeTre = listaExeTre.get(i);
             Exercicio exe = exeTre.getExercicio();
-
             switch (i) {
                 case 0:
                     edtNome.setText(exe.getNome());
@@ -644,18 +672,10 @@ public class FrTreinos extends javax.swing.JDialog {
                     edtRepeticoes1.setText(String.valueOf(exeTre.getRepeticoes()));
                     edtCarga1.setText(String.valueOf(exeTre.getCarga()));
                     break;
+
             }
         }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        new FrSaude().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnSairMouseClicked
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -702,6 +722,7 @@ public class FrTreinos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btnSair;
+    private javax.swing.JComboBox<Treino> cbxTreinos1;
     private javax.swing.JCheckBox chkConcluido;
     private javax.swing.JTextField edtCarga;
     private javax.swing.JTextField edtCarga1;
@@ -715,7 +736,6 @@ public class FrTreinos extends javax.swing.JDialog {
     private javax.swing.JTextField edtGrupoMuscular1;
     private javax.swing.JTextField edtNome;
     private javax.swing.JTextField edtNome1;
-    private javax.swing.JTextField edtNomeTreino;
     private javax.swing.JTextField edtObjetivo;
     private javax.swing.JTextField edtRepeticoes;
     private javax.swing.JTextField edtRepeticoes1;

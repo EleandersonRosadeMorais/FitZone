@@ -8,6 +8,7 @@ package tela;
 import controlar.ControladorDeAvaliacao;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.UsuarioLogado;
@@ -216,6 +217,7 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         cadastrarAvaliacao();
         new FrMenu().setVisible(true);
         this.dispose();
+
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
@@ -224,6 +226,18 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
+
+        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+        List<AvaliacaoFisica> listaAvaliacoes = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+        AvaliacaoFisica avaliacao = listaAvaliacoes.get(0);
+        edtPeso.setText(String.valueOf(avaliacao.getPeso()));
+        edtAltura.setText(String.valueOf(avaliacao.getAltura()));
+        edtCircunferenciaAbdominal.setText(String.valueOf(avaliacao.getCircunferencia_abdominal()));
+        edtObservacoes.setText(avaliacao.getObservacoes());
+
+        avaliacao.getObservacoes();
+    
+
     }//GEN-LAST:event_formWindowOpened
     private void limparAvaliacao() {
         edtPeso.setText("");
@@ -233,7 +247,6 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
     }
 
     private void cadastrarAvaliacao() {
-
         AvaliacaoFisica avaliacao = new AvaliacaoFisica();
         try {
             double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
@@ -272,10 +285,18 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
             return;
         }
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
-        if (conAva.inserir(avaliacao)) {
-            JOptionPane.showMessageDialog(null, "Avaliação Inserida");
-            this.dispose();
+        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+            if (conAva.alterar(avaliacao)) {
+                JOptionPane.showMessageDialog(null, "Avaliação Alterada");
+                this.dispose();
+            }
+        } else {
+            if (conAva.inserir(avaliacao)) {
+                JOptionPane.showMessageDialog(null, "Avaliação Inserida");
+                this.dispose();
+            }
         }
+
     }
 
     /**

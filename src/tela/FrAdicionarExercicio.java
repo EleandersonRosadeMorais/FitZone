@@ -262,7 +262,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
         ControladorDeTreino conTre = new ControladorDeTreino();
-        List<Treino> listaTre = conTre.consultar(999999999);
+        List<Treino> listaTre = conTre.consultar(0, 0, 0);
         for (Treino tre : listaTre) {
             cbxTreinos.addItem(tre);
         }

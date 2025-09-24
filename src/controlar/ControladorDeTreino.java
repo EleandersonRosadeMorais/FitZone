@@ -36,13 +36,13 @@ public class ControladorDeTreino {
         return false;
     }
 
-    public List<Treino> consultar(int id) {
+    public List<Treino> consultar(int selecionar, int id, int TreinoId) {
         String sql = "SELECT * from treino ";
 
-        if (!(id == 999999999)) {
+        if (selecionar == 1) {
             sql += " WHERE FkUsuario = " + id;
-        } else {
-
+        } else if(selecionar == 2) {
+            sql += " WHERE PkTreino = " + TreinoId;
         }
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
@@ -126,11 +126,9 @@ public class ControladorDeTreino {
         switch (opcao) {
             case 1:
                 sql += " Where fkInstrutor = " + id;
-                System.out.println("2");
                 break;
             case 2:
                 sql += " where concluido = true";
-                System.out.println("3");
                 break;
         }
 
@@ -164,5 +162,25 @@ public class ControladorDeTreino {
         }
 
         return lista;
+    }
+    
+    public boolean verificarTreinoUsuario(int id) {
+        String sql = "SELECT * FROM TREINO WHERE fkUsuario = ?";
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+        ResultSet rs = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+            comando.setInt(1, id);
+
+            rs = comando.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando, rs);
+        }
+        return false;
     }
 }

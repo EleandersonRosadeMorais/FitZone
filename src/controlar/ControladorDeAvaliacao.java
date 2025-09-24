@@ -42,6 +42,35 @@ public class ControladorDeAvaliacao {
         }
         return false;
     }
+        public boolean alterar(AvaliacaoFisica avaliacao) {
+        String sql = "UPDATE AVALIACAO_FISICA SET fkUsuario = ?, peso = ?, altura = ?, circunferencia_Abdominal = ?, massa_muscular = ?, gordura_corporal = ?, imc = ?, tmb = ?, observacoes = ?";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            comando.setInt(1, avaliacao.getFkUsuario());
+            comando.setDouble(2, avaliacao.getPeso());
+            comando.setDouble(3, avaliacao.getAltura());
+            comando.setDouble(4, avaliacao.getCircunferencia_abdominal());
+            comando.setDouble(5, avaliacao.getMassa_muscular());
+            comando.setDouble(6, avaliacao.getGordura_corporal());
+            comando.setDouble(7, avaliacao.getImc());
+            comando.setDouble(8, avaliacao.getTmb());
+            comando.setString(9, avaliacao.getObservacoes());
+
+            comando.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            gerenciador.fecharConexao(comando);
+        }
+        return false;
+    }
 
     public List<AvaliacaoFisica> consultar(int id) {
         String sql = "SELECT * from avaliacao_fisica WHERE fkUsuario = " + id;
@@ -62,6 +91,7 @@ public class ControladorDeAvaliacao {
                 avaFis.setFkUsuario(resultado.getInt("fkUsuario"));
                 avaFis.setPeso(resultado.getDouble("peso"));
                 avaFis.setAltura(resultado.getDouble("altura"));
+                avaFis.setCircunferencia_abdominal(resultado.getDouble("circunferencia_abdominal"));
                 avaFis.setMassa_muscular(resultado.getDouble("massa_muscular"));
                 avaFis.setGordura_corporal(resultado.getDouble("gordura_corporal"));
                 avaFis.setImc(resultado.getDouble("imc"));
