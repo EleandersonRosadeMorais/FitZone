@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
+import utilidade.DialogManager;
 
 public class ControladorDeAvaliacao {
 
@@ -16,7 +16,6 @@ public class ControladorDeAvaliacao {
         String sql = "INSERT INTO AVALIACAO_FISICA (fkUsuario, data_avaliacao, peso, altura, circunferencia_abdominal, massa_muscular, gordura_corporal, imc, tmb, observacoes) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
@@ -36,17 +35,17 @@ public class ControladorDeAvaliacao {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao inserir avaliação: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
         return false;
     }
-        public boolean alterar(AvaliacaoFisica avaliacao) {
+    
+    public boolean alterar(AvaliacaoFisica avaliacao) {
         String sql = "UPDATE AVALIACAO_FISICA SET fkUsuario = ?, peso = ?, altura = ?, circunferencia_Abdominal = ?, massa_muscular = ?, gordura_corporal = ?, imc = ?, tmb = ?, observacoes = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
@@ -65,7 +64,7 @@ public class ControladorDeAvaliacao {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao alterar avaliação: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -101,7 +100,7 @@ public class ControladorDeAvaliacao {
                 lista.add(avaFis);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar avaliações: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -118,15 +117,13 @@ public class ControladorDeAvaliacao {
         try {
             comando = gerenciador.prepararComando(sql);
             comando.setInt(1, id);
-
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao verificar avaliação: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
         return false;
-
     }
 }

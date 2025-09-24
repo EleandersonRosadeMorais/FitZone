@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.Exercicio;
 import modelo.ExercicioTreino;
+import utilidade.DialogManager;
 
 public class ControladorDeExercicioTreino {
 
@@ -50,7 +50,7 @@ public class ControladorDeExercicioTreino {
                 lista.add(exeTre);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar ExercicioTreino: " + e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar exercícios do treino: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -61,7 +61,6 @@ public class ControladorDeExercicioTreino {
         String sql = "INSERT INTO EXERCICIO_TREINO (fkTreino, fkExercicio, carga, repeticoes, series, ordem) VALUES (?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
@@ -76,7 +75,7 @@ public class ControladorDeExercicioTreino {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao criar exercício no treino: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }

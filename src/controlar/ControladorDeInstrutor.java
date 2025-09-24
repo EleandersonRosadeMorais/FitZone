@@ -3,8 +3,8 @@ package controlar;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import modelo.Instrutor;
+import utilidade.DialogManager;
 
 public class ControladorDeInstrutor {
 
@@ -34,7 +34,7 @@ public class ControladorDeInstrutor {
                 instrutor.setSenha(resultado.getString("senha"));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro na autenticação: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -60,7 +60,7 @@ public class ControladorDeInstrutor {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao inserir instrutor: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -88,7 +88,7 @@ public class ControladorDeInstrutor {
             return linhas > 0;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar instrutor: " + e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao atualizar instrutor: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }

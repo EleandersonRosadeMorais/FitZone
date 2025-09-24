@@ -7,7 +7,7 @@ package tela;
 
 import controlar.ControladorDeTreino;
 import java.util.List;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import javax.swing.table.DefaultTableModel;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
@@ -37,19 +37,21 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
-        lblCriarTreino = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
-        btnDeletar = new javax.swing.JButton();
+        lblCriarTreino = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTreinos = new javax.swing.JTable();
         btnPesquisar = new javax.swing.JButton();
         cbxFiltro = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
+        btnDeletar = new javax.swing.JButton();
         lblTotalRegistros = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Consultar Treino - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -57,19 +59,25 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
-        lblCriarTreino.setText("CONSULTAR TREINO");
-        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jPanel3.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -81,19 +89,16 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel5.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 40, 90, 60));
 
-        btnDeletar.setBackground(new java.awt.Color(251, 80, 0));
-        btnDeletar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
-        btnDeletar.setText("Deletar");
-        btnDeletar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDeletarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 140, -1));
+        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
+        lblCriarTreino.setText("Consultar Treino");
+        jPanel5.add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 140));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -225,7 +230,7 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
         tblTreinos.setRowHeight(30);
         jScrollPane1.setViewportView(tblTreinos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 570, 196));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 570, 260));
 
         btnPesquisar.setBackground(new java.awt.Color(251, 80, 0));
         btnPesquisar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -237,27 +242,33 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
                 btnPesquisarMouseClicked(evt);
             }
         });
-        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 140, -1));
+        jPanel2.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 140, -1));
 
         cbxFiltro.setBackground(new java.awt.Color(251, 80, 0));
         cbxFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         cbxFiltro.setForeground(new java.awt.Color(0, 0, 0));
         cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Treinos", "Meus Treinos", "Treinos Concluidos" }));
         cbxFiltro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        getContentPane().add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
+        jPanel2.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 220, -1));
 
-        jPanel1.setBackground(new java.awt.Color(251, 80, 0));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnDeletar.setBackground(new java.awt.Color(251, 80, 0));
+        btnDeletar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnDeletar.setForeground(new java.awt.Color(0, 0, 0));
+        btnDeletar.setText("Deletar");
+        btnDeletar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeletarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 140, -1));
 
         lblTotalRegistros.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblTotalRegistros.setForeground(new java.awt.Color(0, 0, 0));
         lblTotalRegistros.setText("Total registros: 0");
-        jPanel1.add(lblTotalRegistros);
+        jPanel2.add(lblTotalRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 250, 60));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 730));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,13 +295,13 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
             String celula = tblTreinos.getValueAt(posicaoLinha, 0).toString();
 
             if (conTre.deletar(celula)) {
-                JOptionPane.showMessageDialog(null, "Treino Deletado");
+                DialogManager.showSuccessDialog(this, "Treino Deletado com sucesso!");
                 pesquisar();
             } else {
-                JOptionPane.showMessageDialog(null, "Falha ao deletar");
+                DialogManager.showErrorDialog(this, "Falha ao deletar treino.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Voce naum pode excluir algum treino que nao foi voce quem criou");
+            DialogManager.showWarningDialog(this, "Você não pode excluir um treino onde não foi você quem o criou");
         }
     }//GEN-LAST:event_btnDeletarMouseClicked
 
@@ -364,15 +375,16 @@ public class FrConsultarTreinos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<String> cbxFiltro;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCriarTreino;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblTotalRegistros;
     private javax.swing.JTable tblTreinos;
     // End of variables declaration//GEN-END:variables

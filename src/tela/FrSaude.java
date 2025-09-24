@@ -8,7 +8,6 @@ package tela;
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeDieta;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.UsuarioLogado;
 import utilidade.Util;
@@ -37,7 +36,9 @@ public class FrSaude extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlPrincipal = new javax.swing.JPanel();
+        btnPerder = new javax.swing.JButton();
+        btnManter = new javax.swing.JButton();
+        btnGanhar = new javax.swing.JButton();
         pnlSecundario = new javax.swing.JPanel();
         lblTmb = new javax.swing.JLabel();
         edtAltura = new javax.swing.JTextField();
@@ -54,23 +55,79 @@ public class FrSaude extends javax.swing.JFrame {
         lblImc = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
         btnRemoverDieta = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        lblLogo = new javax.swing.JLabel();
-        btnManter = new javax.swing.JButton();
-        btnPerder = new javax.swing.JButton();
-        btnGanhar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnSair1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Saúde - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnPerder.setBackground(new java.awt.Color(251, 186, 0));
+        btnPerder.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnPerder.setForeground(new java.awt.Color(0, 0, 0));
+        btnPerder.setText("Perder Peso");
+        btnPerder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnPerder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPerderMouseClicked(evt);
+            }
+        });
+        btnPerder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerderActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPerder, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 220, 240, 60));
+
+        btnManter.setBackground(new java.awt.Color(251, 186, 0));
+        btnManter.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnManter.setForeground(new java.awt.Color(0, 0, 0));
+        btnManter.setText("Manter Peso");
+        btnManter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnManter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnManterMouseClicked(evt);
+            }
+        });
+        btnManter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManterActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnManter, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 410, 240, 60));
+
+        btnGanhar.setBackground(new java.awt.Color(251, 186, 0));
+        btnGanhar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnGanhar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGanhar.setText("Ganhar Peso");
+        btnGanhar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnGanhar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGanharMouseClicked(evt);
+            }
+        });
+        btnGanhar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGanharActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGanhar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 580, 240, 60));
 
         pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
         pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -78,12 +135,12 @@ public class FrSaude extends javax.swing.JFrame {
 
         lblTmb.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblTmb.setForeground(new java.awt.Color(251, 186, 0));
-        lblTmb.setText("TMB(Taxa metabolica basal)");
+        lblTmb.setText("TMB(Taxa metabólica basal)");
         pnlSecundario.add(lblTmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
         edtAltura.setEditable(false);
         edtAltura.setBackground(new java.awt.Color(251, 186, 0));
-        edtAltura.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtAltura.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtAltura.setForeground(new java.awt.Color(0, 0, 0));
         edtAltura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtAltura.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -98,7 +155,7 @@ public class FrSaude extends javax.swing.JFrame {
 
         edtPeso.setEditable(false);
         edtPeso.setBackground(new java.awt.Color(251, 186, 0));
-        edtPeso.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtPeso.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtPeso.setForeground(new java.awt.Color(0, 0, 0));
         edtPeso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtPeso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -113,7 +170,7 @@ public class FrSaude extends javax.swing.JFrame {
 
         edtGorduraCorporal.setEditable(false);
         edtGorduraCorporal.setBackground(new java.awt.Color(251, 186, 0));
-        edtGorduraCorporal.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtGorduraCorporal.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtGorduraCorporal.setForeground(new java.awt.Color(0, 0, 0));
         edtGorduraCorporal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtGorduraCorporal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -128,7 +185,7 @@ public class FrSaude extends javax.swing.JFrame {
 
         edtMassaMuscular.setEditable(false);
         edtMassaMuscular.setBackground(new java.awt.Color(251, 186, 0));
-        edtMassaMuscular.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtMassaMuscular.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtMassaMuscular.setForeground(new java.awt.Color(0, 0, 0));
         edtMassaMuscular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtMassaMuscular.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -143,7 +200,7 @@ public class FrSaude extends javax.swing.JFrame {
 
         edtImc.setEditable(false);
         edtImc.setBackground(new java.awt.Color(251, 186, 0));
-        edtImc.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtImc.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtImc.setForeground(new java.awt.Color(0, 0, 0));
         edtImc.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtImc.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -158,7 +215,7 @@ public class FrSaude extends javax.swing.JFrame {
 
         edtTmb.setEditable(false);
         edtTmb.setBackground(new java.awt.Color(251, 186, 0));
-        edtTmb.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTmb.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtTmb.setForeground(new java.awt.Color(0, 0, 0));
         edtTmb.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTmb.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -193,19 +250,18 @@ public class FrSaude extends javax.swing.JFrame {
 
         lblGorduraCorporal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblGorduraCorporal.setForeground(new java.awt.Color(251, 186, 0));
-        lblGorduraCorporal.setText("Gordura corporal");
+        lblGorduraCorporal.setText("Gordura Corporal");
         pnlSecundario.add(lblGorduraCorporal, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
         lblImc.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblImc.setForeground(new java.awt.Color(251, 186, 0));
-        lblImc.setText("IMC(Indice de massa corporal)");
+        lblImc.setText("IMC(Índice de massa corporal)");
         pnlSecundario.add(lblImc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
-        btnCalcular.setBackground(new java.awt.Color(255, 255, 255));
+        btnCalcular.setBackground(new java.awt.Color(251, 186, 0));
         btnCalcular.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
-        btnCalcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCalcular.setText("CALCULAR");
+        btnCalcular.setText("Calcular");
         btnCalcular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,11 +270,10 @@ public class FrSaude extends javax.swing.JFrame {
         });
         pnlSecundario.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 220, 60));
 
-        btnRemoverDieta.setBackground(new java.awt.Color(255, 255, 255));
+        btnRemoverDieta.setBackground(new java.awt.Color(251, 186, 0));
         btnRemoverDieta.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnRemoverDieta.setForeground(new java.awt.Color(0, 0, 0));
-        btnRemoverDieta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnRemoverDieta.setText("REMOVER DIETA ATUAL");
+        btnRemoverDieta.setText("Remover Dieta Atual");
         btnRemoverDieta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnRemoverDieta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -232,13 +287,28 @@ public class FrSaude extends javax.swing.JFrame {
         });
         pnlSecundario.add(btnRemoverDieta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 380, 60));
 
-        pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 740, 420));
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 740, 420));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel6.add(lblLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(251, 186, 0));
+        jLabel2.setText("Saúde");
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 7, -1, 130));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,171 +320,46 @@ public class FrSaude extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        pnlPrincipal.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel6.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 50, 90, 60));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        pnlPrincipal.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 140));
 
-        btnManter.setBackground(new java.awt.Color(255, 255, 255));
-        btnManter.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnManter.setForeground(new java.awt.Color(0, 0, 0));
-        btnManter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
-        btnManter.setText("MANTER");
-        btnManter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnManter.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 145));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(251, 186, 0));
+        jLabel3.setText("Planos");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, 140));
+
+        btnSair1.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair1.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair1.setText("SAIR");
+        btnSair1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnManterMouseClicked(evt);
+                btnSair1MouseClicked(evt);
             }
         });
-        btnManter.addActionListener(new java.awt.event.ActionListener() {
+        btnSair1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManterActionPerformed(evt);
+                btnSair1ActionPerformed(evt);
             }
         });
-        pnlPrincipal.add(btnManter, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, 240, 60));
+        jPanel5.add(btnSair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 40, 90, 60));
 
-        btnPerder.setBackground(new java.awt.Color(255, 255, 255));
-        btnPerder.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnPerder.setForeground(new java.awt.Color(0, 0, 0));
-        btnPerder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
-        btnPerder.setText("PERDER");
-        btnPerder.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnPerder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPerderMouseClicked(evt);
-            }
-        });
-        btnPerder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerderActionPerformed(evt);
-            }
-        });
-        pnlPrincipal.add(btnPerder, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 160, 240, 60));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
-        btnGanhar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGanhar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnGanhar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGanhar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
-        btnGanhar.setText("GANHAR");
-        btnGanhar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnGanhar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnGanharMouseClicked(evt);
-            }
-        });
-        btnGanhar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGanharActionPerformed(evt);
-            }
-        });
-        pnlPrincipal.add(btnGanhar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 520, 240, 60));
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel2.setText("Saude");
-        pnlPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1310, 730));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1310, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void edtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtAlturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtAlturaActionPerformed
-
-    private void edtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtPesoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtPesoActionPerformed
-
-    private void edtGorduraCorporalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGorduraCorporalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtGorduraCorporalActionPerformed
-
-    private void edtMassaMuscularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtMassaMuscularActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtMassaMuscularActionPerformed
-
-    private void edtImcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtImcActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtImcActionPerformed
-
-    private void edtTmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTmbActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtTmbActionPerformed
-
-    private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
-        calcular();
-    }//GEN-LAST:event_btnCalcularMouseClicked
-
-    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        new FrSaude().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnSairMouseClicked
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
-
-    private void btnManterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManterMouseClicked
-        new FrManterPeso().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnManterMouseClicked
-
-    private void btnManterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManterActionPerformed
-
-    private void btnPerderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerderMouseClicked
-        new FrPerderPeso().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnPerderMouseClicked
-
-    private void btnPerderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerderActionPerformed
-
-    private void btnGanharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGanharMouseClicked
-        new FrGanharPeso().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnGanharMouseClicked
-
-    private void btnGanharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGanharActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGanharActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
@@ -425,13 +370,86 @@ public class FrSaude extends javax.swing.JFrame {
         edtAltura.setText(String.valueOf(ava.getAltura()));
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnRemoverDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDietaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoverDietaActionPerformed
+
     private void btnRemoverDietaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoverDietaMouseClicked
         Remover();
     }//GEN-LAST:event_btnRemoverDietaMouseClicked
 
-    private void btnRemoverDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverDietaActionPerformed
+    private void btnCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMouseClicked
+        calcular();
+    }//GEN-LAST:event_btnCalcularMouseClicked
+
+    private void edtTmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTmbActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemoverDietaActionPerformed
+    }//GEN-LAST:event_edtTmbActionPerformed
+
+    private void edtImcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtImcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtImcActionPerformed
+
+    private void edtMassaMuscularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtMassaMuscularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtMassaMuscularActionPerformed
+
+    private void edtGorduraCorporalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGorduraCorporalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtGorduraCorporalActionPerformed
+
+    private void edtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtPesoActionPerformed
+
+    private void edtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtAlturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtAlturaActionPerformed
+
+    private void btnGanharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGanharActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGanharActionPerformed
+
+    private void btnGanharMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGanharMouseClicked
+        new FrGanharPeso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGanharMouseClicked
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        new FrSaude().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
+
+    private void btnManterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManterActionPerformed
+
+    private void btnManterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManterMouseClicked
+        new FrManterPeso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManterMouseClicked
+
+    private void btnPerderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPerderActionPerformed
+
+    private void btnPerderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerderMouseClicked
+        new FrPerderPeso().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnPerderMouseClicked
+
+    private void btnSair1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseClicked
+        new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSair1MouseClicked
+
+    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1ActionPerformed
 
     private void calcular() {
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
@@ -446,9 +464,9 @@ public class FrSaude extends javax.swing.JFrame {
     private void Remover() {
         ControladorDeDieta conDie = new ControladorDeDieta();
         if (conDie.remover(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
-            JOptionPane.showMessageDialog(null, "Dieta removida com sucesso!");
+            utilidade.DialogManager.showSuccessDialog(this, "Dieta removida com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao remover a dieta.");
+            utilidade.DialogManager.showErrorDialog(this, "Erro ao remover a dieta.");
         }
     }
 
@@ -489,13 +507,13 @@ public class FrSaude extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnGanhar;
     private javax.swing.JButton btnManter;
     private javax.swing.JButton btnPerder;
     private javax.swing.JButton btnRemoverDieta;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSair1;
     private javax.swing.JTextField edtAltura;
     private javax.swing.JTextField edtGorduraCorporal;
     private javax.swing.JTextField edtImc;
@@ -503,16 +521,20 @@ public class FrSaude extends javax.swing.JFrame {
     private javax.swing.JTextField edtPeso;
     private javax.swing.JTextField edtTmb;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblAltura;
     private javax.swing.JLabel lblGorduraCorporal;
     private javax.swing.JLabel lblImc;
     private javax.swing.JLabel lblInformacoesPessoais;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
+    private javax.swing.JLabel lblLogo2;
     private javax.swing.JLabel lblMassaMuscular;
     private javax.swing.JLabel lblPeso;
     private javax.swing.JLabel lblTmb;
-    private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlSecundario;
     // End of variables declaration//GEN-END:variables
 }

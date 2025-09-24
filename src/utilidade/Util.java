@@ -127,9 +127,42 @@ public class Util {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return sdf.format(data);
     }
-    public static boolean validarCref(String cref) {
-    String regex = "^[0-9]{6}-[A-Z]/[A-Z]{2}$";
-    return cref.matches(regex);
-}
 
+    public static boolean validarCref(String cref) {
+        String regex = "^[0-9]{6}-[A-Z]/[A-Z]{2}$";
+        return cref.matches(regex);
+    }
+
+    public static String removerCpf(String cpf) {
+        return cpf = cpf.replaceAll("[^0-9]", "");
+    }
+
+    public static  boolean validarCPF(String cpf) {
+        cpf = cpf.replaceAll("[^0-9]", "");
+        if (cpf.length() != 11) {
+            return false;
+        }
+        if (cpf.matches("(\\d)\\1{10}")) {
+            return false;
+        }
+        int soma = 0;
+        int peso = 10;
+        for (int i = 0; i < 9; i++) {
+            soma += Integer.parseInt(String.valueOf(cpf.charAt(i))) * peso--;
+        }
+        int digito1 = 11 - (soma % 11);
+        if (digito1 >= 10) {
+            digito1 = 0;
+        }
+        soma = 0;
+        peso = 11;
+        for (int i = 0; i < 10; i++) {
+            soma += Integer.parseInt(String.valueOf(cpf.charAt(i))) * peso--;
+        }
+        int digito2 = 11 - (soma % 11);
+        if (digito2 >= 10) {
+            digito2 = 0;
+        }
+        return cpf.charAt(9) == (digito1 + '0') && cpf.charAt(10) == (digito2 + '0');
+    }
 }

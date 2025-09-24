@@ -9,10 +9,10 @@ import controlar.ControladorDeUsuario;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.Icon;
-import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modelo.UsuarioLogado;
 import utilidade.Util;
+import utilidade.DialogManager;
 
 /**
  *
@@ -63,11 +63,14 @@ public class FrPerfil extends javax.swing.JFrame {
         edtCpf = new javax.swing.JFormattedTextField();
         edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
-        lblLogo = new javax.swing.JLabel();
-        lblAlterarPerfil = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
+        lblDietaPerderPeso2 = new javax.swing.JLabel();
+        btnSair7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Editar Perfil - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -75,6 +78,7 @@ public class FrPerfil extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
@@ -86,7 +90,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 30));
 
         edtNome.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome.setForeground(new java.awt.Color(0, 0, 0));
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -95,9 +99,9 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 510, 30));
 
         btnEscolherImagem.setBackground(new java.awt.Color(255, 153, 153));
-        btnEscolherImagem.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        btnEscolherImagem.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnEscolherImagem.setForeground(new java.awt.Color(0, 0, 0));
-        btnEscolherImagem.setText("ESCOLHER IMAGEM");
+        btnEscolherImagem.setText("Escolher Imagem");
         btnEscolherImagem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnEscolherImagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,7 +137,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(pnlFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 100, 133));
 
         edtEmail.setBackground(new java.awt.Color(251, 186, 0));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEmail.setForeground(new java.awt.Color(0, 0, 0));
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -157,7 +161,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
 
         edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
-        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
         edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -168,11 +172,11 @@ public class FrPerfil extends javax.swing.JFrame {
         lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblObjetivo.setForeground(new java.awt.Color(251, 186, 0));
         lblObjetivo.setText("Objetivo");
-        pnlSecundario.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 30));
+        pnlSecundario.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 40));
 
         lblDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDataNascimento.setForeground(new java.awt.Color(251, 186, 0));
-        lblDataNascimento.setText("Data de nascimento");
+        lblDataNascimento.setText("Data de Nascimento");
         pnlSecundario.add(lblDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, 30));
 
         lblCpf.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -181,7 +185,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, 30));
 
         edtTelefone.setBackground(new java.awt.Color(251, 186, 0));
-        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtTelefone.setForeground(new java.awt.Color(0, 0, 0));
         edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -197,7 +201,7 @@ public class FrPerfil extends javax.swing.JFrame {
         btnAlterar.setBackground(new java.awt.Color(102, 255, 102));
         btnAlterar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnAlterar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterar.setText("ALTERAR");
+        btnAlterar.setText("Alterar");
         btnAlterar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +218,7 @@ public class FrPerfil extends javax.swing.JFrame {
         btnAlterarSenha.setBackground(new java.awt.Color(251, 186, 0));
         btnAlterarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterarSenha.setText("ALTERAR SENHA");
+        btnAlterarSenha.setText("Alterar Imagem");
         btnAlterarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnAlterarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -231,7 +235,7 @@ public class FrPerfil extends javax.swing.JFrame {
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
         btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("CANCELAR");
+        btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -248,6 +252,7 @@ public class FrPerfil extends javax.swing.JFrame {
         edtDataNascimento.setBackground(new java.awt.Color(251, 186, 0));
         edtDataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        edtDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtDataNascimentoActionPerformed(evt);
@@ -262,6 +267,7 @@ public class FrPerfil extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        edtCpf.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCpfActionPerformed(evt);
@@ -270,6 +276,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(edtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 240, 30));
 
         edtConfirmarSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +286,7 @@ public class FrPerfil extends javax.swing.JFrame {
         pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 510, 30));
 
         edtSenha.setBackground(new java.awt.Color(251, 186, 0));
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,18 +295,43 @@ public class FrPerfil extends javax.swing.JFrame {
         });
         pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 510, 30));
 
-        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 840, 530));
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 840, 470));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblAlterarPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblAlterarPerfil.setForeground(new java.awt.Color(251, 186, 0));
-        lblAlterarPerfil.setText("ALTERAR PERFIL");
-        jPanel1.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 740));
+        lblLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel6.add(lblLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblDietaPerderPeso2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblDietaPerderPeso2.setForeground(new java.awt.Color(251, 186, 0));
+        lblDietaPerderPeso2.setText("Editar Perfil");
+        jPanel6.add(lblDietaPerderPeso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, -1, 140));
+
+        btnSair7.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair7.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair7.setText("Sair");
+        btnSair7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair7MouseClicked(evt);
+            }
+        });
+        btnSair7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair7ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnSair7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 40, 90, 60));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 145));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,27 +341,59 @@ public class FrPerfil extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherImagemMouseClicked
-        escolherImagem();
-    }//GEN-LAST:event_btnEscolherImagemMouseClicked
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+        Usuario usuario = UsuarioLogado.getUsuarioLogado();
 
-    private void btnEscolherImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherImagemActionPerformed
+        edtNome.setText(usuario.getNome());
+        edtEmail.setText(usuario.getEmail());
+        edtTelefone.setText(usuario.getTelefone());
+        edtDataNascimento.setText(Util.converterDateToString(usuario.getDataNascimento()));
+        edtObjetivo.setText(usuario.getObjetivo());
+        edtCpf.setText(usuario.getCpf());
+        imgFoto.setIcon(usuario.getImagem());
+        Icon icone = usuario.getImagem();
+        if (icone != null) {
+            Icon iconeRed = Util.redimensionarImagem(icone, 96, 129);
+            imgFoto.setIcon(iconeRed);
+        }
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEscolherImagemActionPerformed
+    }//GEN-LAST:event_edtSenhaActionPerformed
 
-    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        salvarPerfil();
-    }//GEN-LAST:event_btnAlterarMouseClicked
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
+    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
+
+    private void edtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCpfActionPerformed
+
+    private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtDataNascimentoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarSenhaActionPerformed
 
     private void btnAlterarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarSenhaMouseClicked
         if (edtSenha.isEditable()) {
@@ -351,53 +416,30 @@ public class FrPerfil extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAlterarSenhaMouseClicked
 
-    private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarSenhaActionPerformed
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
-        new FrMenu().setVisible(true);
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        salvarPerfil();
+    }//GEN-LAST:event_btnAlterarMouseClicked
+
+    private void btnEscolherImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherImagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEscolherImagemActionPerformed
+
+    private void btnEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherImagemMouseClicked
+        escolherImagem();
+    }//GEN-LAST:event_btnEscolherImagemMouseClicked
+
+    private void btnSair7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair7ActionPerformed
+
+    private void btnSair7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair7MouseClicked
+        new FrSaude().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnCancelarMouseClicked
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void edtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDataNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDataNascimentoActionPerformed
-
-    private void edtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCpfActionPerformed
-
-    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
-
-    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtSenhaActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(Util.getIcone());
-        Usuario usuario = UsuarioLogado.getUsuarioLogado();
-
-        edtNome.setText(usuario.getNome());
-        edtEmail.setText(usuario.getEmail());
-        edtTelefone.setText(usuario.getTelefone());
-        edtDataNascimento.setText(Util.converterDateToString(usuario.getDataNascimento()));
-        edtObjetivo.setText(usuario.getObjetivo());
-        edtCpf.setText(usuario.getCpf());;
-        imgFoto.setIcon(usuario.getImagem());
-        Icon icone = usuario.getImagem();
-        if (icone != null) {
-            Icon iconeRed = Util.redimensionarImagem(icone, 96, 129);
-            imgFoto.setIcon(iconeRed);
-        }
-
-    }//GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_btnSair7MouseClicked
 
     private void escolherImagem() {
         File arquivo = Util.escolherImagem();
@@ -405,14 +447,11 @@ public class FrPerfil extends javax.swing.JFrame {
             Icon icone = Util.converterFileToIcon(arquivo);
             Icon iconeNovo = Util.redimensionarImagem(icone, 96, 129);
             imgFoto.setIcon(iconeNovo);
-            // guardar no objeto
             usuarioAtual.setImagem(iconeNovo);
         }
     }
 
     private void salvarPerfil() {
-        // verificar campos se quiser
-
         usuarioAtual.setNome(edtNome.getText());
         usuarioAtual.setEmail(edtEmail.getText());
         String s = new String(edtSenha.getPassword());
@@ -422,17 +461,15 @@ public class FrPerfil extends javax.swing.JFrame {
         usuarioAtual.setTelefone(edtTelefone.getText());
         usuarioAtual.setDataNascimento(Util.converterStringToDate(edtDataNascimento.getText()));
         usuarioAtual.setObjetivo(edtObjetivo.getText());
-        usuarioAtual.setCpf(usuarioAtual.removerCpf(edtCpf.getText()));
+        usuarioAtual.setCpf(Util.removerCpf(edtCpf.getText()));
 
-        // imagem já foi setada no escolherImagem
         ControladorDeUsuario ctrl = new ControladorDeUsuario();
         boolean ok = ctrl.alterar(usuarioAtual);
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Perfil atualizado com sucesso!");
-            // opcional: atualizar UsuarioLogado
+            DialogManager.showSuccessDialog(this, "Perfil atualizado com sucesso!");
             UsuarioLogado.setUsuarioLogado(usuarioAtual);
         } else {
-            JOptionPane.showMessageDialog(this, "Falha ao atualizar o perfil.");
+            DialogManager.showErrorDialog(this, "Falha ao atualizar o perfil.");
         }
     }
 
@@ -480,11 +517,11 @@ public class FrPerfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAlterarSenha;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEscolherImagem;
+    private javax.swing.JButton btnSair7;
     private javax.swing.JPasswordField edtConfirmarSenha;
     private javax.swing.JFormattedTextField edtCpf;
     private javax.swing.JFormattedTextField edtDataNascimento;
@@ -495,12 +532,14 @@ public class FrPerfil extends javax.swing.JFrame {
     private javax.swing.JTextField edtTelefone;
     private javax.swing.JLabel imgFoto;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblAlterarPerfil;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblConfirmarSenha;
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblDataNascimento;
+    private javax.swing.JLabel lblDietaPerderPeso2;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObjetivo;
     private javax.swing.JLabel lblSenha;

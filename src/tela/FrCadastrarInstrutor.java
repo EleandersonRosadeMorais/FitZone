@@ -6,7 +6,8 @@
 package tela;
 
 import controlar.ControladorDeInstrutor;
-import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import utilidade.DialogManager;
 import modelo.Instrutor;
 import utilidade.Util;
 
@@ -61,22 +62,30 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         lblTextoLogar1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Cadastrar - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(251, 80, 0));
+        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlSecundario.setPreferredSize(new java.awt.Dimension(740, 720));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblCadastrar.setForeground(new java.awt.Color(0, 0, 0));
-        lblCadastrar.setText("CADASTRAR");
+        lblCadastrar.setText("Cadastrar");
         pnlSecundario.add(lblCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -85,7 +94,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
 
         edtEmail.setBackground(new java.awt.Color(255, 255, 255));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEmail.setForeground(java.awt.Color.black);
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -96,6 +105,11 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
                 edtEmailActionPerformed(evt);
             }
         });
+        edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtEmailKeyPressed(evt);
+            }
+        });
         pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 640, 50));
 
         lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -104,7 +118,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
         edtNome.setBackground(new java.awt.Color(255, 255, 255));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome.setForeground(java.awt.Color.black);
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -133,7 +147,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(lblCref, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 70, -1));
 
         edtTelefone.setBackground(new java.awt.Color(255, 255, 255));
-        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtTelefone.setForeground(java.awt.Color.black);
         edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -155,7 +169,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         btnLimpar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnLimpar.setText("LIMPAR");
+        btnLimpar.setText("Limpar");
         btnLimpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,13 +179,13 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 620, 180, 50));
 
         edtConfirmarSenha.setBackground(new java.awt.Color(255, 255, 255));
-        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtConfirmarSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 640, 50));
 
         edtSenha.setBackground(new java.awt.Color(255, 255, 255));
-        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 640, 50));
@@ -180,7 +194,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.setText("Cadastrar");
         btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -190,7 +204,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 620, 220, 50));
 
         edtCref.setBackground(new java.awt.Color(255, 255, 255));
-        edtCref.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCref.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCref.setForeground(java.awt.Color.black);
         edtCref.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtCref.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -209,7 +223,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         pnlSecundario.add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, -1, -1));
 
         edtEspecialidade.setBackground(new java.awt.Color(255, 255, 255));
-        edtEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEspecialidade.setForeground(java.awt.Color.black);
         edtEspecialidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEspecialidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -222,15 +236,15 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         });
         pnlSecundario.add(edtEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 180, 50));
 
-        pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
+        pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 870, 720));
 
         lblLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblLogar.setForeground(new java.awt.Color(0, 0, 0));
-        lblLogar.setText("LOGAR");
+        lblLogar.setText("Logar");
         pnlPrincipal.add(lblLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         iconLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilLogar.png"))); // NOI18N
-        pnlPrincipal.add(iconLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+        pnlPrincipal.add(iconLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
 
         lblTextoLogar3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblTextoLogar3.setForeground(new java.awt.Color(0, 0, 0));
@@ -254,7 +268,7 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         btnLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLogar.setForeground(new java.awt.Color(0, 0, 0));
         btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/chave.png"))); // NOI18N
-        btnLogar.setText("LOGAR");
+        btnLogar.setText("Logar");
         btnLogar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -301,11 +315,11 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_edtTelefoneActionPerformed
 
     private void btnLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparMouseClicked
-limpar();
+        limpar();
     }//GEN-LAST:event_btnLimparMouseClicked
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
-       cadastrar();
+        cadastrar();
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
@@ -326,87 +340,96 @@ limpar();
     }//GEN-LAST:event_edtEspecialidadeActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void edtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+            new FrCadastrar().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_edtEmailKeyPressed
+
     private void limpar() {
-    edtNome.setText("");
-    edtCref.setText("");
-    edtCref.setText("");
-    edtTelefone.setText("");
-    edtEmail.setText("");
-    edtSenha.setText("");
-    edtConfirmarSenha.setText("");
-}
-
-private void cadastrar() {
-    if (!verificarCampos()) {
-        return;
+        edtNome.setText("");
+        edtCref.setText("");
+        edtCref.setText("");
+        edtTelefone.setText("");
+        edtEmail.setText("");
+        edtSenha.setText("");
+        edtConfirmarSenha.setText("");
     }
 
-    Instrutor instrutor = new Instrutor();
-    instrutor.setNome(edtNome.getText());
-    instrutor.setEspecialidade(edtEspecialidade.getText());
-    instrutor.setCref(edtCref.getText());
-    instrutor.setTelefone(edtTelefone.getText());
-    instrutor.setEmail(edtEmail.getText());
-    instrutor.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
-    ControladorDeInstrutor controller = new ControladorDeInstrutor();
-    if (controller.inserir(instrutor)) {
-        JOptionPane.showMessageDialog(null, "Instrutor cadastrado com sucesso!");
-        new FrLogarInstrutor().setVisible(true);
-        this.dispose();
-    } else {
-        JOptionPane.showMessageDialog(null, "Erro ao cadastrar instrutor.");
-    }
-}
+    private void cadastrar() {
+        if (!verificarCampos()) {
+            return;
+        }
 
-private boolean verificarCampos() {
-    if (edtNome.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de nome");
-        return false;
-    }
-    if (edtCref.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, preencha a especialidade");
-        return false;
-    }
-    if (edtCref.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o CREF");
-        return false;
-    }
-    if (!(Util.validarCref(edtCref.getText()))) {
-        JOptionPane.showMessageDialog(null, "O CREF informado é inválido! Exemplo: 123456-G/SP");
-        return false;
-    }
-    if (edtEmail.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, preencha o e-mail");
-        return false;
-    }
-    if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+\\.[a-z]+$")) {
-        JOptionPane.showMessageDialog(null, "Formato de e-mail inválido");
-        return false;
-    }
-    if (new String(edtSenha.getPassword()).isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Por favor, preencha a senha");
-        return false;
-    }
-    if (new String(edtSenha.getPassword()).length() < 8) {
-        JOptionPane.showMessageDialog(null, "A senha deve ter no mínimo 8 caracteres");
-        return false;
+        Instrutor instrutor = new Instrutor();
+        instrutor.setNome(edtNome.getText());
+        instrutor.setEspecialidade(edtEspecialidade.getText());
+        instrutor.setCref(edtCref.getText());
+        instrutor.setTelefone(edtTelefone.getText());
+        instrutor.setEmail(edtEmail.getText());
+        instrutor.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
+        ControladorDeInstrutor controller = new ControladorDeInstrutor();
+        if (controller.inserir(instrutor)) {
+            DialogManager.showSuccessDialog(this, "Instrutor cadastrado com sucesso!");
+            new FrLogarInstrutor().setVisible(true);
+            this.dispose();
+        } else {
+            DialogManager.showErrorDialog(this, "Erro ao cadastrar instrutor.");
+        }
     }
 
-    String senha = new String(edtSenha.getPassword());
-    String confirmarSenha = new String(edtConfirmarSenha.getPassword());
-    if (!senha.equals(confirmarSenha)) {
-        JOptionPane.showMessageDialog(null, "As senhas não coincidem");
-        return false;
+    private boolean verificarCampos() {
+        if (edtNome.getText().isEmpty()) {
+            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de nome");
+            return false;
+        }
+        if (edtEspecialidade.getText().isEmpty()) {
+            DialogManager.showWarningDialog(this, "Por favor, preencha a especialidade");
+            return false;
+        }
+        if (edtCref.getText().isEmpty()) {
+            DialogManager.showWarningDialog(this, "Por favor, preencha o CREF");
+            return false;
+        }
+        if (!(Util.validarCref(edtCref.getText()))) {
+            DialogManager.showWarningDialog(this, "O CREF informado é inválido! Exemplo: 123456-G/SP");
+            return false;
+        }
+        if (edtEmail.getText().isEmpty()) {
+            DialogManager.showWarningDialog(this, "Por favor, preencha o e-mail");
+            return false;
+        }
+        if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+\\.[a-z]+$")) {
+            DialogManager.showWarningDialog(this, "Formato de e-mail inválido");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).isEmpty()) {
+            DialogManager.showWarningDialog(this, "Por favor, preencha a senha");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).length() < 8) {
+            DialogManager.showWarningDialog(this, "A senha deve ter no mínimo 8 caracteres");
+            return false;
+        }
+
+        String senha = new String(edtSenha.getPassword());
+        String confirmarSenha = new String(edtConfirmarSenha.getPassword());
+        if (!senha.equals(confirmarSenha)) {
+            DialogManager.showWarningDialog(this, "As senhas não coincidem");
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
-
-    
-    
     /**
      * @param args the command line arguments
      */

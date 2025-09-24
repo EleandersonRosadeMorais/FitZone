@@ -3,8 +3,8 @@ package controlar;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import modelo.Dieta;
+import utilidade.DialogManager;
 
 public class ControladorDeDieta {
 
@@ -12,7 +12,6 @@ public class ControladorDeDieta {
         String sql = "INSERT INTO DIETA (fkUsuario, refeicao, peso, calorias, proteinas, carboidratos, gorduras, observacoes) VALUES (?,?,?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
@@ -30,7 +29,7 @@ public class ControladorDeDieta {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao inserir dieta: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -46,16 +45,14 @@ public class ControladorDeDieta {
         try {
             comando = gerenciador.prepararComando(sql);
             comando.setInt(1, id);
-
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar dieta: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
         return false;
-
     }
 
     public boolean remover(int id) {
@@ -70,11 +67,10 @@ public class ControladorDeDieta {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao remover dieta: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
         return false;
     }
-
 }

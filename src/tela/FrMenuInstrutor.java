@@ -31,16 +31,18 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlPrincipal = new javax.swing.JPanel();
-        pnlSecundario = new javax.swing.JPanel();
-        Logo = new javax.swing.JLabel();
-        btnLogout = new javax.swing.JButton();
-        btnCriarTreino = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
-        btnConsultarTreinos = new javax.swing.JButton();
+        btnCriarTreino = new javax.swing.JButton();
         btnEditarPerfil = new javax.swing.JButton();
-        background = new javax.swing.JLabel();
+        btnConsultarTreinos = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        lblAlterarPerfil = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Menu - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -48,55 +50,13 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSecundario.setBackground(new java.awt.Color(251, 80, 0));
-        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        pnlSecundario.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
-
-        btnLogout.setBackground(new java.awt.Color(255, 102, 102));
-        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnLogout.setForeground(new java.awt.Color(0, 0, 0));
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnLogout.setText("LOGOUT");
-        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLogoutMouseClicked(evt);
-            }
-        });
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 300, 60));
-
-        btnCriarTreino.setBackground(new java.awt.Color(255, 255, 255));
-        btnCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnCriarTreino.setForeground(new java.awt.Color(0, 0, 0));
-        btnCriarTreino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
-        btnCriarTreino.setText("CRIAR TREINO");
-        btnCriarTreino.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnCriarTreino.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCriarTreinoMouseClicked(evt);
-            }
-        });
-        btnCriarTreino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarTreinoActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 360, 60));
-
-        btnClientes.setBackground(new java.awt.Color(255, 255, 255));
+        btnClientes.setBackground(new java.awt.Color(251, 80, 0));
         btnClientes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(0, 0, 0));
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone Saude.png"))); // NOI18N
-        btnClientes.setText("CLIENTES");
+        btnClientes.setText("Clientes");
         btnClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,31 +68,29 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
                 btnClientesActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 300, 60));
+        pnlPrincipal.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 360, 60));
 
-        btnConsultarTreinos.setBackground(new java.awt.Color(255, 255, 255));
-        btnConsultarTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnConsultarTreinos.setForeground(new java.awt.Color(0, 0, 0));
-        btnConsultarTreinos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone avaliacao fisica.png"))); // NOI18N
-        btnConsultarTreinos.setText("CONSULTAR TREINOS");
-        btnConsultarTreinos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnConsultarTreinos.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCriarTreino.setBackground(new java.awt.Color(251, 80, 0));
+        btnCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCriarTreino.setForeground(new java.awt.Color(0, 0, 0));
+        btnCriarTreino.setText("Criar Treino");
+        btnCriarTreino.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnCriarTreino.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConsultarTreinosMouseClicked(evt);
+                btnCriarTreinoMouseClicked(evt);
             }
         });
-        btnConsultarTreinos.addActionListener(new java.awt.event.ActionListener() {
+        btnCriarTreino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarTreinosActionPerformed(evt);
+                btnCriarTreinoActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnConsultarTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 360, 60));
+        pnlPrincipal.add(btnCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 360, 60));
 
-        btnEditarPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditarPerfil.setBackground(new java.awt.Color(251, 80, 0));
         btnEditarPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnEditarPerfil.setForeground(new java.awt.Color(0, 0, 0));
-        btnEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone Planos.png"))); // NOI18N
-        btnEditarPerfil.setText("EDITAR PERFIL");
+        btnEditarPerfil.setText("Editar Perfl");
         btnEditarPerfil.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,13 +102,61 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
                 btnEditarPerfilActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 300, 60));
+        pnlPrincipal.add(btnEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 580, 360, 60));
 
-        pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 170));
+        btnConsultarTreinos.setBackground(new java.awt.Color(251, 80, 0));
+        btnConsultarTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnConsultarTreinos.setForeground(new java.awt.Color(0, 0, 0));
+        btnConsultarTreinos.setText("Consultar Treinos");
+        btnConsultarTreinos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnConsultarTreinos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarTreinosMouseClicked(evt);
+            }
+        });
+        btnConsultarTreinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarTreinosActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnConsultarTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 360, 60));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/academia.png"))); // NOI18N
-        background.setText("jLabel1");
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 810));
+        jPanel3.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblAlterarPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblAlterarPerfil.setForeground(new java.awt.Color(251, 80, 0));
+        lblAlterarPerfil.setText("Menu");
+        jPanel5.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 130, 140));
+
+        btnLogout.setBackground(new java.awt.Color(255, 102, 255));
+        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 0, 0));
+        btnLogout.setText("Logout");
+        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 40, 120, 60));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,7 +166,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
         pack();
@@ -251,14 +257,15 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logo;
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConsultarTreinos;
     private javax.swing.JButton btnCriarTreino;
     private javax.swing.JButton btnEditarPerfil;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lblAlterarPerfil;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JPanel pnlSecundario;
     // End of variables declaration//GEN-END:variables
 }

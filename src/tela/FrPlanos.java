@@ -8,7 +8,6 @@ package tela;
 import controlar.ControladorDeAssinatura;
 import controlar.ControladorDePlano;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.Beneficio;
 import modelo.Plano;
 import modelo.Plano_Beneficio;
@@ -85,12 +84,18 @@ public class FrPlanos extends javax.swing.JFrame {
         lblDescricao4 = new javax.swing.JLabel();
         lblNome5 = new javax.swing.JLabel();
         lblDescricao5 = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
-        btnSair1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
+        btnSair1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
+        lblDietaPerderPeso2 = new javax.swing.JLabel();
+        btnSair7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Planos - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -98,15 +103,17 @@ public class FrPlanos extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNomePlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNomePlano.setForeground(new java.awt.Color(251, 186, 0));
         lblNomePlano.setText("Nome");
-        pnlSecundario.add(lblNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 30));
+        pnlSecundario.add(lblNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 30));
 
         edtNomePlano.setEditable(false);
         edtNomePlano.setBackground(new java.awt.Color(251, 186, 0));
@@ -116,12 +123,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNomePlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNomePlano.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNomePlano.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 240, 30));
+        pnlSecundario.add(edtNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 240, 30));
 
         lblPrecoMensal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblPrecoMensal.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrecoMensal.setText("Preco Mensal");
-        pnlSecundario.add(lblPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 30));
+        lblPrecoMensal.setText("Preço Mensal");
+        pnlSecundario.add(lblPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
 
         edtPrecoMensal.setEditable(false);
         edtPrecoMensal.setBackground(new java.awt.Color(251, 186, 0));
@@ -131,7 +138,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtPrecoMensal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtPrecoMensal.setMinimumSize(new java.awt.Dimension(10, 20));
         edtPrecoMensal.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 240, 30));
+        pnlSecundario.add(edtPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 240, 30));
 
         edtDescricaoPlano.setEditable(false);
         edtDescricaoPlano.setBackground(new java.awt.Color(251, 186, 0));
@@ -141,12 +148,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricaoPlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricaoPlano.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricaoPlano.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 240, 30));
+        pnlSecundario.add(edtDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
 
         lblDescricaoPlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricaoPlano.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricaoPlano.setText("Descricao");
-        pnlSecundario.add(lblDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 30));
+        lblDescricaoPlano.setText("Descrição");
+        pnlSecundario.add(lblDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 30));
 
         edtDescricao.setEditable(false);
         edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
@@ -156,12 +163,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 240, 30));
+        pnlSecundario.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, 30));
 
         lblDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao.setText("Descricao");
-        pnlSecundario.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, 30));
+        lblDescricao.setText("Descrição");
+        pnlSecundario.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, 30));
 
         edtNome.setEditable(false);
         edtNome.setBackground(new java.awt.Color(251, 186, 0));
@@ -171,12 +178,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, 30));
+        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 240, 30));
 
         lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome.setForeground(new java.awt.Color(251, 186, 0));
         lblNome.setText("Nome");
-        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, 30));
+        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 30));
 
         edtContratoMinimo.setEditable(false);
         edtContratoMinimo.setBackground(new java.awt.Color(251, 186, 0));
@@ -186,12 +193,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtContratoMinimo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtContratoMinimo.setMinimumSize(new java.awt.Dimension(10, 20));
         edtContratoMinimo.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 240, 30));
+        pnlSecundario.add(edtContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
 
         lblContratoMinimo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblContratoMinimo.setForeground(new java.awt.Color(251, 186, 0));
-        lblContratoMinimo.setText("Contrato Minimo");
-        pnlSecundario.add(lblContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 30));
+        lblContratoMinimo.setText("Contrato Mínimo");
+        pnlSecundario.add(lblContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 30));
 
         edtNome2.setEditable(false);
         edtNome2.setBackground(new java.awt.Color(251, 186, 0));
@@ -201,7 +208,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome2.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome2.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 240, 30));
+        pnlSecundario.add(edtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 240, 30));
 
         edtDescricao1.setEditable(false);
         edtDescricao1.setBackground(new java.awt.Color(251, 186, 0));
@@ -211,7 +218,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 240, 30));
+        pnlSecundario.add(edtDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 240, 30));
 
         edtNome1.setEditable(false);
         edtNome1.setBackground(new java.awt.Color(251, 186, 0));
@@ -221,7 +228,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 240, 30));
+        pnlSecundario.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 240, 30));
 
         edtDescricao2.setEditable(false);
         edtDescricao2.setBackground(new java.awt.Color(251, 186, 0));
@@ -231,13 +238,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao2.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao2.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 240, 30));
+        pnlSecundario.add(edtDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 240, 30));
 
         btnAssinar.setBackground(new java.awt.Color(255, 102, 102));
         btnAssinar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnAssinar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAssinar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnAssinar.setText("ASSINAR");
+        btnAssinar.setText("Assinar");
         btnAssinar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnAssinar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -249,42 +255,43 @@ public class FrPlanos extends javax.swing.JFrame {
                 btnAssinarActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnAssinar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 200, 60));
+        pnlSecundario.add(btnAssinar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 150, 40));
 
         lblBeneficio.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblBeneficio.setForeground(new java.awt.Color(251, 186, 0));
-        lblBeneficio.setText("Beneficios:");
-        pnlSecundario.add(lblBeneficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        lblBeneficio.setText("Benefícios:");
+        pnlSecundario.add(lblBeneficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
         lblNome1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome1.setForeground(new java.awt.Color(251, 186, 0));
         lblNome1.setText("Nome");
-        pnlSecundario.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, 30));
+        pnlSecundario.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, 30));
 
         lblDescricao1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao1.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao1.setText("Descricao");
-        pnlSecundario.add(lblDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, 30));
+        lblDescricao1.setText("Descrição");
+        pnlSecundario.add(lblDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, 30));
 
         lblNome2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome2.setForeground(new java.awt.Color(251, 186, 0));
         lblNome2.setText("Nome");
-        pnlSecundario.add(lblNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, 30));
+        pnlSecundario.add(lblNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, 30));
 
         lblDescricao2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao2.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao2.setText("Descricao");
-        pnlSecundario.add(lblDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, 30));
+        lblDescricao2.setText("Descrição");
+        pnlSecundario.add(lblDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, 30));
 
-        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 470, 590));
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 470, 490));
 
         pnlTerceario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTerceario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlTerceario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNomePlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNomePlano1.setForeground(new java.awt.Color(251, 186, 0));
         lblNomePlano1.setText("Nome");
-        pnlTerceario.add(lblNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 30));
+        pnlTerceario.add(lblNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 30));
 
         edtNomePlano1.setEditable(false);
         edtNomePlano1.setBackground(new java.awt.Color(251, 186, 0));
@@ -294,12 +301,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNomePlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNomePlano1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNomePlano1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 240, 30));
+        pnlTerceario.add(edtNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 240, 30));
 
         lblPrecoMensal1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblPrecoMensal1.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrecoMensal1.setText("Preco Mensal");
-        pnlTerceario.add(lblPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, 30));
+        lblPrecoMensal1.setText("Preço Mensal");
+        pnlTerceario.add(lblPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
 
         edtPrecoMensal1.setEditable(false);
         edtPrecoMensal1.setBackground(new java.awt.Color(251, 186, 0));
@@ -309,7 +316,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtPrecoMensal1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtPrecoMensal1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtPrecoMensal1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 240, 30));
+        pnlTerceario.add(edtPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 240, 30));
 
         edtDescricaoPlano1.setEditable(false);
         edtDescricaoPlano1.setBackground(new java.awt.Color(251, 186, 0));
@@ -319,12 +326,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricaoPlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricaoPlano1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricaoPlano1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 240, 30));
+        pnlTerceario.add(edtDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
 
         lblDescricaoPlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricaoPlano1.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricaoPlano1.setText("Descricao");
-        pnlTerceario.add(lblDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 30));
+        lblDescricaoPlano1.setText("Descrição");
+        pnlTerceario.add(lblDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 30));
 
         edtDescricao3.setEditable(false);
         edtDescricao3.setBackground(new java.awt.Color(251, 186, 0));
@@ -334,12 +341,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao3.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao3.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 240, 30));
+        pnlTerceario.add(edtDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 240, 30));
 
         lblDescricao3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao3.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao3.setText("Descricao");
-        pnlTerceario.add(lblDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, 30));
+        lblDescricao3.setText("Descrição");
+        pnlTerceario.add(lblDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, 30));
 
         edtNome3.setEditable(false);
         edtNome3.setBackground(new java.awt.Color(251, 186, 0));
@@ -349,12 +356,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome3.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome3.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, 30));
+        pnlTerceario.add(edtNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 240, 30));
 
         lblNome3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome3.setForeground(new java.awt.Color(251, 186, 0));
         lblNome3.setText("Nome");
-        pnlTerceario.add(lblNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, 30));
+        pnlTerceario.add(lblNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 30));
 
         edtContratoMinimo1.setEditable(false);
         edtContratoMinimo1.setBackground(new java.awt.Color(251, 186, 0));
@@ -364,12 +371,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtContratoMinimo1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtContratoMinimo1.setMinimumSize(new java.awt.Dimension(10, 20));
         edtContratoMinimo1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 240, 30));
+        pnlTerceario.add(edtContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
 
         lblContratoMinimo1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblContratoMinimo1.setForeground(new java.awt.Color(251, 186, 0));
-        lblContratoMinimo1.setText("Contrato Minimo");
-        pnlTerceario.add(lblContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, 30));
+        lblContratoMinimo1.setText("Contrato Mínimo");
+        pnlTerceario.add(lblContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 30));
 
         edtNome5.setEditable(false);
         edtNome5.setBackground(new java.awt.Color(251, 186, 0));
@@ -379,7 +386,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome5.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome5.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 240, 30));
+        pnlTerceario.add(edtNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 240, 30));
 
         edtDescricao4.setEditable(false);
         edtDescricao4.setBackground(new java.awt.Color(251, 186, 0));
@@ -389,7 +396,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao4.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao4.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 240, 30));
+        pnlTerceario.add(edtDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 240, 30));
 
         edtNome4.setEditable(false);
         edtNome4.setBackground(new java.awt.Color(251, 186, 0));
@@ -399,7 +406,7 @@ public class FrPlanos extends javax.swing.JFrame {
         edtNome4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome4.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome4.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 240, 30));
+        pnlTerceario.add(edtNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 240, 30));
 
         edtDescricao5.setEditable(false);
         edtDescricao5.setBackground(new java.awt.Color(251, 186, 0));
@@ -409,13 +416,12 @@ public class FrPlanos extends javax.swing.JFrame {
         edtDescricao5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtDescricao5.setMinimumSize(new java.awt.Dimension(10, 20));
         edtDescricao5.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 240, 30));
+        pnlTerceario.add(edtDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 240, 30));
 
         btnAssinar1.setBackground(new java.awt.Color(255, 102, 102));
         btnAssinar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnAssinar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAssinar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnAssinar1.setText("ASSINAR");
+        btnAssinar1.setText("Assinar");
         btnAssinar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnAssinar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -427,43 +433,51 @@ public class FrPlanos extends javax.swing.JFrame {
                 btnAssinar1ActionPerformed(evt);
             }
         });
-        pnlTerceario.add(btnAssinar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 200, 60));
+        pnlTerceario.add(btnAssinar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 140, 40));
 
         lblBeneficio1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblBeneficio1.setForeground(new java.awt.Color(251, 186, 0));
-        lblBeneficio1.setText("Beneficios:");
-        pnlTerceario.add(lblBeneficio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        lblBeneficio1.setText("Benefícios:");
+        pnlTerceario.add(lblBeneficio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
         lblNome4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome4.setForeground(new java.awt.Color(251, 186, 0));
         lblNome4.setText("Nome");
-        pnlTerceario.add(lblNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, 30));
+        pnlTerceario.add(lblNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 30));
 
         lblDescricao4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao4.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao4.setText("Descricao");
-        pnlTerceario.add(lblDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, 30));
+        lblDescricao4.setText("Descrição");
+        pnlTerceario.add(lblDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, 30));
 
         lblNome5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome5.setForeground(new java.awt.Color(251, 186, 0));
         lblNome5.setText("Nome");
-        pnlTerceario.add(lblNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, 30));
+        pnlTerceario.add(lblNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, 30));
 
         lblDescricao5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDescricao5.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao5.setText("Descricao");
-        pnlTerceario.add(lblDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, 30));
+        lblDescricao5.setText("Descrição");
+        pnlTerceario.add(lblDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, 30));
 
-        jPanel1.add(pnlTerceario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, 470, 590));
+        jPanel1.add(pnlTerceario, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 470, 480));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSair1.setBackground(new java.awt.Color(255, 102, 102));
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(251, 186, 0));
+        jLabel3.setText("Planos");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, 140));
+
+        btnSair1.setBackground(new java.awt.Color(255, 102, 255));
         btnSair1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair1.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair1.setText("SAIR");
+        btnSair1.setText("Sair");
         btnSair1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -475,15 +489,45 @@ public class FrPlanos extends javax.swing.JFrame {
                 btnSair1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel5.add(btnSair1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 40, 90, 60));
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(251, 186, 0));
-        jLabel3.setText("Planos");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 740));
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel6.add(lblLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblDietaPerderPeso2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblDietaPerderPeso2.setForeground(new java.awt.Color(251, 186, 0));
+        lblDietaPerderPeso2.setText("Dieta Ganhar Peso");
+        jPanel6.add(lblDietaPerderPeso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -3, -1, 140));
+
+        btnSair7.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair7.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair7.setText("SAIR");
+        btnSair7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair7MouseClicked(evt);
+            }
+        });
+        btnSair7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair7ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnSair7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 40, 90, 60));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -591,6 +635,15 @@ public class FrPlanos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnSair7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair7MouseClicked
+        new FrSaude().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSair7MouseClicked
+
+    private void btnSair7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -635,10 +688,10 @@ public class FrPlanos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnAssinar;
     private javax.swing.JButton btnAssinar1;
     private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnSair7;
     private javax.swing.JTextField edtContratoMinimo;
     private javax.swing.JTextField edtContratoMinimo1;
     private javax.swing.JTextField edtDescricao;
@@ -661,6 +714,9 @@ public class FrPlanos extends javax.swing.JFrame {
     private javax.swing.JTextField edtPrecoMensal1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblBeneficio;
     private javax.swing.JLabel lblBeneficio1;
     private javax.swing.JLabel lblContratoMinimo;
@@ -673,7 +729,9 @@ public class FrPlanos extends javax.swing.JFrame {
     private javax.swing.JLabel lblDescricao5;
     private javax.swing.JLabel lblDescricaoPlano;
     private javax.swing.JLabel lblDescricaoPlano1;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblDietaPerderPeso2;
+    private javax.swing.JLabel lblLogo1;
+    private javax.swing.JLabel lblLogo2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblNome2;

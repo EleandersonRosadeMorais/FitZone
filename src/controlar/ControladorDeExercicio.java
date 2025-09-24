@@ -5,9 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.Exercicio;
-import modelo.Treino;
+import utilidade.DialogManager;
 
 public class ControladorDeExercicio {
 
@@ -15,15 +14,12 @@ public class ControladorDeExercicio {
         String sql = "SELECT * from exercicio";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
         ResultSet resultado = null;
-
         List<Exercicio> lista = new ArrayList<>();
 
         try {
             comando = gerenciador.prepararComando(sql);
-
             resultado = comando.executeQuery();
 
             while (resultado.next()) {
@@ -38,7 +34,7 @@ public class ControladorDeExercicio {
                 lista.add(exe);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar exercícios: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }

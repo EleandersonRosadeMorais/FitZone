@@ -7,7 +7,7 @@ package tela;
 
 import controlar.ControladorDeInstrutor;
 import java.awt.Color;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import utilidade.Util;
@@ -47,7 +47,6 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         btnAlterarSenha = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         edtConfirmarSenha = new javax.swing.JPasswordField();
         edtSenha = new javax.swing.JPasswordField();
         edtTelefone = new javax.swing.JTextField();
@@ -56,65 +55,69 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         lblTelefone = new javax.swing.JLabel();
         lblEspecialidade = new javax.swing.JLabel();
         lblCref = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
         lblAlterarPerfil = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Editar Perfil - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(251, 80, 0));
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
         lblNome.setText("Nome");
-        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 30));
+        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, 30));
 
         edtNome.setBackground(new java.awt.Color(251, 80, 0));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome.setForeground(new java.awt.Color(0, 0, 0));
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
         edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 590, 40));
+        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 590, 40));
 
         edtEmail.setBackground(new java.awt.Color(251, 80, 0));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEmail.setForeground(new java.awt.Color(0, 0, 0));
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         edtEmail.setMinimumSize(new java.awt.Dimension(10, 20));
         edtEmail.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 590, 40));
+        pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 590, 40));
 
         lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblEmail.setForeground(new java.awt.Color(251, 80, 0));
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
         lblEmail.setText("E-Mail");
-        pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
+        pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, 30));
 
         lblConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblConfirmarSenha.setForeground(new java.awt.Color(251, 80, 0));
+        lblConfirmarSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblConfirmarSenha.setText("Repetir Senha");
-        pnlSecundario.add(lblConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
+        pnlSecundario.add(lblConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, 30));
 
         lblSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblSenha.setForeground(new java.awt.Color(251, 80, 0));
+        lblSenha.setForeground(new java.awt.Color(0, 0, 0));
         lblSenha.setText("Senha");
-        pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 30));
+        pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, 30));
 
-        btnSalvar.setBackground(new java.awt.Color(102, 255, 102));
+        btnSalvar.setBackground(new java.awt.Color(251, 80, 0));
         btnSalvar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalvar.setText("ALTERAR");
+        btnSalvar.setText("Alterar");
         btnSalvar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,12 +129,12 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 190, 40));
+        pnlSecundario.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 580, 190, 40));
 
-        btnAlterarSenha.setBackground(new java.awt.Color(251, 186, 0));
+        btnAlterarSenha.setBackground(new java.awt.Color(251, 80, 0));
         btnAlterarSenha.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         btnAlterarSenha.setForeground(new java.awt.Color(0, 0, 0));
-        btnAlterarSenha.setText("ALTERAR SENHA");
+        btnAlterarSenha.setText("Alterar Senha");
         btnAlterarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnAlterarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,47 +146,32 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
                 btnAlterarSenhaActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 40));
-
-        btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("CANCELAR");
-        btnCancelar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
-            }
-        });
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 40));
+        pnlSecundario.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 580, 180, 40));
 
         edtConfirmarSenha.setEditable(false);
         edtConfirmarSenha.setBackground(new java.awt.Color(184, 74, 22));
+        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtConfirmarSenhaActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 590, 40));
+        pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 590, 40));
 
         edtSenha.setEditable(false);
         edtSenha.setBackground(new java.awt.Color(184, 74, 22));
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtSenhaActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 590, 40));
+        pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 590, 40));
 
         edtTelefone.setBackground(new java.awt.Color(251, 80, 0));
-        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtTelefone.setForeground(java.awt.Color.black);
         edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -194,10 +182,10 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
                 edtTelefoneActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 190, 40));
+        pnlSecundario.add(edtTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, 190, 40));
 
         edtEspecialidade.setBackground(new java.awt.Color(251, 80, 0));
-        edtEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEspecialidade.setForeground(java.awt.Color.black);
         edtEspecialidade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEspecialidade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -208,10 +196,10 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
                 edtEspecialidadeActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 180, 40));
+        pnlSecundario.add(edtEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, 180, 40));
 
         edtCref.setBackground(new java.awt.Color(251, 80, 0));
-        edtCref.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCref.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCref.setForeground(java.awt.Color.black);
         edtCref.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtCref.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -222,35 +210,61 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
                 edtCrefActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtCref, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 190, 40));
+        pnlSecundario.add(edtCref, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 190, 40));
 
         lblTelefone.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblTelefone.setForeground(new java.awt.Color(251, 80, 0));
+        lblTelefone.setForeground(new java.awt.Color(0, 0, 0));
         lblTelefone.setText("Telefone");
-        pnlSecundario.add(lblTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+        pnlSecundario.add(lblTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 500, -1, -1));
 
         lblEspecialidade.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblEspecialidade.setForeground(new java.awt.Color(251, 80, 0));
+        lblEspecialidade.setForeground(new java.awt.Color(0, 0, 0));
         lblEspecialidade.setText("Especialidade");
-        pnlSecundario.add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+        pnlSecundario.add(lblEspecialidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, -1, -1));
 
         lblCref.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblCref.setForeground(new java.awt.Color(251, 80, 0));
+        lblCref.setForeground(new java.awt.Color(0, 0, 0));
         lblCref.setText("CREF");
-        pnlSecundario.add(lblCref, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 70, -1));
+        pnlSecundario.add(lblCref, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 70, -1));
 
-        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 650, 480));
+        jPanel3.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair.setText("Sair");
+        btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 40, 80, 60));
 
         lblAlterarPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblAlterarPerfil.setForeground(new java.awt.Color(251, 186, 0));
-        lblAlterarPerfil.setText("EDITAR PERFIL");
-        jPanel1.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 390, -1));
+        lblAlterarPerfil.setForeground(new java.awt.Color(251, 80, 0));
+        lblAlterarPerfil.setText("Editar Perfil");
+        jPanel5.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 300, 140));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 740));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        pnlSecundario.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,13 +280,40 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        salvarPerfil();
-    }//GEN-LAST:event_btnSalvarMouseClicked
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+        Instrutor instrutor = InstrutorLogado.getInstrutorLogado();
+        edtNome.setText(instrutor.getNome());
+        edtEmail.setText(instrutor.getEmail());
+        edtCref.setText(instrutor.getCref());
+        edtEspecialidade.setText(instrutor.getEspecialidade());
+        edtTelefone.setText(instrutor.getTelefone());
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_formWindowOpened
+
+    private void edtCrefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCrefActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }//GEN-LAST:event_edtCrefActionPerformed
+
+    private void edtEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtEspecialidadeActionPerformed
+
+    private void edtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtTelefoneActionPerformed
+
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtSenhaActionPerformed
+
+    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
+
+    private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarSenhaActionPerformed
 
     private void btnAlterarSenhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarSenhaMouseClicked
         if (edtSenha.isEditable()) {
@@ -295,52 +336,24 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAlterarSenhaMouseClicked
 
-    private void btnAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarSenhaActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarSenhaActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        salvarPerfil();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
         new FrMenuInstrutor().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnCancelarMouseClicked
+    }//GEN-LAST:event_btnSairMouseClicked
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
-
-    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtSenhaActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(Util.getIcone());
-        Instrutor instrutor = InstrutorLogado.getInstrutorLogado();
-        edtNome.setText(instrutor.getNome());
-        edtEmail.setText(instrutor.getEmail());
-        edtCref.setText(instrutor.getCref());
-        edtEspecialidade.setText(instrutor.getEspecialidade());
-        edtTelefone.setText(instrutor.getTelefone());
-
-    }//GEN-LAST:event_formWindowOpened
-
-    private void edtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtTelefoneActionPerformed
-
-    private void edtEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEspecialidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtEspecialidadeActionPerformed
-
-    private void edtCrefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCrefActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCrefActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void salvarPerfil() {
-
         instrutorAtual.setNome(edtNome.getText());
         instrutorAtual.setEmail(edtEmail.getText());
         String s = new String(edtSenha.getPassword());
@@ -354,10 +367,10 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         ControladorDeInstrutor conIns = new ControladorDeInstrutor();
         boolean ok = conIns.alterar(instrutorAtual);
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Instrutor atualizado com sucesso!");
+            DialogManager.showSuccessDialog(this, "Instrutor atualizado com sucesso!");
             InstrutorLogado.setInstrutorLogado(instrutorAtual);
         } else {
-            JOptionPane.showMessageDialog(this, "Instrutor ao atualizar o perfil.");
+            DialogManager.showErrorDialog(this, "Erro ao atualizar o perfil.");
         }
     }
 
@@ -406,9 +419,8 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnAlterarSenha;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JPasswordField edtConfirmarSenha;
     private javax.swing.JTextField edtCref;
@@ -418,12 +430,14 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
     private javax.swing.JPasswordField edtSenha;
     private javax.swing.JTextField edtTelefone;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblAlterarPerfil;
     private javax.swing.JLabel lblConfirmarSenha;
     private javax.swing.JLabel lblCref;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEspecialidade;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTelefone;

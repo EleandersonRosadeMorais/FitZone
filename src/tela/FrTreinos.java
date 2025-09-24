@@ -38,18 +38,6 @@ public class FrTreinos extends javax.swing.JDialog {
     private void initComponents() {
 
         pnlPrincipal = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        pnlSuperior = new javax.swing.JPanel();
-        lblObjetivo = new javax.swing.JLabel();
-        lblNomeDoTreino1 = new javax.swing.JLabel();
-        lblDuracao = new javax.swing.JLabel();
-        edtDescricao = new javax.swing.JTextField();
-        edtObjetivo = new javax.swing.JTextField();
-        lblNomeDoTreino2 = new javax.swing.JLabel();
-        lblTreinoSegSex1 = new javax.swing.JLabel();
-        edtDuracao = new javax.swing.JTextField();
-        chkConcluido = new javax.swing.JCheckBox();
-        cbxTreinos1 = new javax.swing.JComboBox<>();
         pnlInferior = new javax.swing.JPanel();
         lblTreinoSegSex = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -80,10 +68,23 @@ public class FrTreinos extends javax.swing.JDialog {
         edtEquipamento1 = new javax.swing.JTextField();
         edtNome1 = new javax.swing.JTextField();
         lblNome1 = new javax.swing.JLabel();
+        lblObjetivo = new javax.swing.JLabel();
+        lblDuracao = new javax.swing.JLabel();
+        edtDuracao = new javax.swing.JTextField();
+        edtDescricao = new javax.swing.JTextField();
+        lblNomeDoTreino1 = new javax.swing.JLabel();
+        chkConcluido = new javax.swing.JCheckBox();
+        edtObjetivo = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
-        background = new javax.swing.JLabel();
+        lblTreinoSegSex1 = new javax.swing.JLabel();
+        cbxTreinos1 = new javax.swing.JComboBox<>();
+        lblNomeDoTreino2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("FitZone - Treino - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -92,106 +93,8 @@ public class FrTreinos extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        pnlPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
-        pnlSuperior.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblObjetivo.setBackground(new java.awt.Color(0, 0, 0));
-        lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblObjetivo.setForeground(new java.awt.Color(251, 186, 0));
-        lblObjetivo.setText("Objetivo");
-        pnlSuperior.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
-
-        lblNomeDoTreino1.setBackground(new java.awt.Color(0, 0, 0));
-        lblNomeDoTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNomeDoTreino1.setForeground(new java.awt.Color(251, 186, 0));
-        lblNomeDoTreino1.setText("Descrição");
-        pnlSuperior.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
-
-        lblDuracao.setBackground(new java.awt.Color(0, 0, 0));
-        lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDuracao.setForeground(new java.awt.Color(251, 186, 0));
-        lblDuracao.setText("Duração");
-        pnlSuperior.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
-
-        edtDescricao.setEditable(false);
-        edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtDescricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoActionPerformed(evt);
-            }
-        });
-        pnlSuperior.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 240, 30));
-
-        edtObjetivo.setEditable(false);
-        edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
-        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
-        edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtObjetivo.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtObjetivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtObjetivoActionPerformed(evt);
-            }
-        });
-        pnlSuperior.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 300, 30));
-
-        lblNomeDoTreino2.setBackground(new java.awt.Color(0, 0, 0));
-        lblNomeDoTreino2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNomeDoTreino2.setForeground(new java.awt.Color(251, 186, 0));
-        lblNomeDoTreino2.setText("Nome do Treino");
-        pnlSuperior.add(lblNomeDoTreino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        lblTreinoSegSex1.setBackground(new java.awt.Color(0, 0, 0));
-        lblTreinoSegSex1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-        lblTreinoSegSex1.setForeground(new java.awt.Color(251, 186, 0));
-        lblTreinoSegSex1.setText("TREINO DE SEG A SEX");
-        pnlSuperior.add(lblTreinoSegSex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
-
-        edtDuracao.setEditable(false);
-        edtDuracao.setBackground(new java.awt.Color(251, 186, 0));
-        edtDuracao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDuracao.setForeground(new java.awt.Color(0, 0, 0));
-        edtDuracao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDuracao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDuracao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDuracao.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtDuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDuracaoActionPerformed(evt);
-            }
-        });
-        pnlSuperior.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 300, 30));
-
-        chkConcluido.setBackground(new java.awt.Color(251, 186, 0));
-        chkConcluido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        chkConcluido.setForeground(new java.awt.Color(0, 0, 0));
-        chkConcluido.setText("Concluido");
-        pnlSuperior.add(chkConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, 30));
-
-        cbxTreinos1.setBackground(new java.awt.Color(251, 186, 0));
-        cbxTreinos1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cbxTreinos1.setForeground(new java.awt.Color(0, 0, 0));
-        cbxTreinos1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxTreinos1ItemStateChanged(evt);
-            }
-        });
-        pnlSuperior.add(cbxTreinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 300, 40));
-
-        pnlPrincipal.add(pnlSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 780, 210));
 
         pnlInferior.setBackground(new java.awt.Color(255, 255, 255));
         pnlInferior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,8 +102,8 @@ public class FrTreinos extends javax.swing.JDialog {
         lblTreinoSegSex.setBackground(new java.awt.Color(0, 0, 0));
         lblTreinoSegSex.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblTreinoSegSex.setForeground(new java.awt.Color(251, 186, 0));
-        lblTreinoSegSex.setText("EXERCÍCIOS");
-        pnlInferior.add(lblTreinoSegSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+        lblTreinoSegSex.setText("Exercícios");
+        pnlInferior.add(lblTreinoSegSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
         lblNome.setBackground(new java.awt.Color(0, 0, 0));
         lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -235,7 +138,7 @@ public class FrTreinos extends javax.swing.JDialog {
         lblSeries.setBackground(new java.awt.Color(0, 0, 0));
         lblSeries.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblSeries.setForeground(new java.awt.Color(251, 186, 0));
-        lblSeries.setText("Series");
+        lblSeries.setText("Séries");
         pnlInferior.add(lblSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
 
         lblRepeticoes.setBackground(new java.awt.Color(0, 0, 0));
@@ -246,7 +149,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtGrupoMuscular.setEditable(false);
         edtGrupoMuscular.setBackground(new java.awt.Color(251, 186, 0));
-        edtGrupoMuscular.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtGrupoMuscular.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtGrupoMuscular.setForeground(new java.awt.Color(0, 0, 0));
         edtGrupoMuscular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtGrupoMuscular.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -261,7 +164,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtNome.setEditable(false);
         edtNome.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome.setForeground(new java.awt.Color(0, 0, 0));
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -276,7 +179,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtEquipamento.setEditable(false);
         edtEquipamento.setBackground(new java.awt.Color(251, 186, 0));
-        edtEquipamento.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEquipamento.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEquipamento.setForeground(new java.awt.Color(0, 0, 0));
         edtEquipamento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEquipamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -291,7 +194,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtCarga.setEditable(false);
         edtCarga.setBackground(new java.awt.Color(251, 186, 0));
-        edtCarga.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCarga.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCarga.setForeground(new java.awt.Color(0, 0, 0));
         edtCarga.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtCarga.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -306,7 +209,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtSeries.setEditable(false);
         edtSeries.setBackground(new java.awt.Color(251, 186, 0));
-        edtSeries.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSeries.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSeries.setForeground(new java.awt.Color(0, 0, 0));
         edtSeries.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSeries.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -321,7 +224,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtDificuldade.setEditable(false);
         edtDificuldade.setBackground(new java.awt.Color(251, 186, 0));
-        edtDificuldade.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDificuldade.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtDificuldade.setForeground(new java.awt.Color(0, 0, 0));
         edtDificuldade.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtDificuldade.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -336,7 +239,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtRepeticoes.setEditable(false);
         edtRepeticoes.setBackground(new java.awt.Color(251, 186, 0));
-        edtRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
         edtRepeticoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtRepeticoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -351,7 +254,7 @@ public class FrTreinos extends javax.swing.JDialog {
 
         edtCarga1.setEditable(false);
         edtCarga1.setBackground(new java.awt.Color(251, 186, 0));
-        edtCarga1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCarga1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCarga1.setForeground(new java.awt.Color(0, 0, 0));
         edtCarga1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtCarga1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -362,23 +265,23 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtCarga1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtCarga1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 300, 30));
+        pnlInferior.add(edtCarga1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 300, 30));
 
         lblCarga1.setBackground(new java.awt.Color(0, 0, 0));
         lblCarga1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblCarga1.setForeground(new java.awt.Color(251, 186, 0));
         lblCarga1.setText("Carga");
-        pnlInferior.add(lblCarga1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 360, -1, -1));
+        pnlInferior.add(lblCarga1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 360, -1, -1));
 
         lblRepeticoes1.setBackground(new java.awt.Color(0, 0, 0));
         lblRepeticoes1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblRepeticoes1.setForeground(new java.awt.Color(251, 186, 0));
         lblRepeticoes1.setText("Repetições");
-        pnlInferior.add(lblRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
+        pnlInferior.add(lblRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 310, -1, -1));
 
         edtRepeticoes1.setEditable(false);
         edtRepeticoes1.setBackground(new java.awt.Color(251, 186, 0));
-        edtRepeticoes1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtRepeticoes1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtRepeticoes1.setForeground(new java.awt.Color(0, 0, 0));
         edtRepeticoes1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtRepeticoes1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -389,11 +292,11 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtRepeticoes1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 310, 300, 30));
+        pnlInferior.add(edtRepeticoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 310, 300, 30));
 
         edtSeries1.setEditable(false);
         edtSeries1.setBackground(new java.awt.Color(251, 186, 0));
-        edtSeries1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSeries1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSeries1.setForeground(new java.awt.Color(0, 0, 0));
         edtSeries1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSeries1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -404,23 +307,23 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtSeries1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtSeries1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 260, 300, 30));
+        pnlInferior.add(edtSeries1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 300, 30));
 
         lblSeries1.setBackground(new java.awt.Color(0, 0, 0));
         lblSeries1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblSeries1.setForeground(new java.awt.Color(251, 186, 0));
-        lblSeries1.setText("Series");
-        pnlInferior.add(lblSeries1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, -1, -1));
+        lblSeries1.setText("Séries");
+        pnlInferior.add(lblSeries1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 260, -1, -1));
 
         lblDificuldade1.setBackground(new java.awt.Color(0, 0, 0));
         lblDificuldade1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblDificuldade1.setForeground(new java.awt.Color(251, 186, 0));
         lblDificuldade1.setText("Dificuldade");
-        pnlInferior.add(lblDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
+        pnlInferior.add(lblDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 210, -1, -1));
 
         edtDificuldade1.setEditable(false);
         edtDificuldade1.setBackground(new java.awt.Color(251, 186, 0));
-        edtDificuldade1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDificuldade1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtDificuldade1.setForeground(new java.awt.Color(0, 0, 0));
         edtDificuldade1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtDificuldade1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -431,11 +334,11 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtDificuldade1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 210, 300, 30));
+        pnlInferior.add(edtDificuldade1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 210, 300, 30));
 
         edtGrupoMuscular1.setEditable(false);
         edtGrupoMuscular1.setBackground(new java.awt.Color(251, 186, 0));
-        edtGrupoMuscular1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtGrupoMuscular1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtGrupoMuscular1.setForeground(new java.awt.Color(0, 0, 0));
         edtGrupoMuscular1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtGrupoMuscular1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -446,23 +349,23 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtGrupoMuscular1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtGrupoMuscular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 170, 300, 30));
+        pnlInferior.add(edtGrupoMuscular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 300, 30));
 
         lblGrupoMuscular1.setBackground(new java.awt.Color(0, 0, 0));
         lblGrupoMuscular1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblGrupoMuscular1.setForeground(new java.awt.Color(251, 186, 0));
         lblGrupoMuscular1.setText("Grupo Muscular");
-        pnlInferior.add(lblGrupoMuscular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, -1, -1));
+        pnlInferior.add(lblGrupoMuscular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 170, -1, -1));
 
         lblEquipamento1.setBackground(new java.awt.Color(0, 0, 0));
         lblEquipamento1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblEquipamento1.setForeground(new java.awt.Color(251, 186, 0));
         lblEquipamento1.setText("Equipamento");
-        pnlInferior.add(lblEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 120, -1, -1));
+        pnlInferior.add(lblEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 120, -1, -1));
 
         edtEquipamento1.setEditable(false);
         edtEquipamento1.setBackground(new java.awt.Color(251, 186, 0));
-        edtEquipamento1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEquipamento1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEquipamento1.setForeground(new java.awt.Color(0, 0, 0));
         edtEquipamento1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEquipamento1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -473,11 +376,11 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtEquipamento1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, 300, 30));
+        pnlInferior.add(edtEquipamento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 300, 30));
 
         edtNome1.setEditable(false);
         edtNome1.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome1.setForeground(new java.awt.Color(0, 0, 0));
         edtNome1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -488,21 +391,100 @@ public class FrTreinos extends javax.swing.JDialog {
                 edtNome1ActionPerformed(evt);
             }
         });
-        pnlInferior.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 80, 300, 30));
+        pnlInferior.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, 300, 30));
 
         lblNome1.setBackground(new java.awt.Color(0, 0, 0));
         lblNome1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblNome1.setForeground(new java.awt.Color(251, 186, 0));
         lblNome1.setText("Nome");
-        pnlInferior.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, -1, -1));
+        pnlInferior.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 80, -1, -1));
 
-        pnlPrincipal.add(pnlInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 1210, 420));
+        pnlPrincipal.add(pnlInferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 1210, 390));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        lblObjetivo.setBackground(new java.awt.Color(0, 0, 0));
+        lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblObjetivo.setForeground(new java.awt.Color(251, 186, 0));
+        lblObjetivo.setText("Objetivo");
+        pnlPrincipal.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+
+        lblDuracao.setBackground(new java.awt.Color(0, 0, 0));
+        lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDuracao.setForeground(new java.awt.Color(251, 186, 0));
+        lblDuracao.setText("Duração");
+        pnlPrincipal.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, 40));
+
+        edtDuracao.setEditable(false);
+        edtDuracao.setBackground(new java.awt.Color(251, 186, 0));
+        edtDuracao.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtDuracao.setForeground(new java.awt.Color(0, 0, 0));
+        edtDuracao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDuracao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDuracao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDuracao.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtDuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtDuracaoActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 300, 30));
+
+        edtDescricao.setEditable(false);
+        edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtDescricaoActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 240, 30));
+
+        lblNomeDoTreino1.setBackground(new java.awt.Color(0, 0, 0));
+        lblNomeDoTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNomeDoTreino1.setForeground(new java.awt.Color(251, 186, 0));
+        lblNomeDoTreino1.setText("Descrição");
+        pnlPrincipal.add(lblNomeDoTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, -1, -1));
+
+        chkConcluido.setBackground(new java.awt.Color(251, 186, 0));
+        chkConcluido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        chkConcluido.setForeground(new java.awt.Color(0, 0, 0));
+        chkConcluido.setText("Concluído");
+        pnlPrincipal.add(chkConcluido, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, 30));
+
+        edtObjetivo.setEditable(false);
+        edtObjetivo.setBackground(new java.awt.Color(251, 186, 0));
+        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
+        edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtObjetivo.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtObjetivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtObjetivoActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 300, 30));
+
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel6.add(lblLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -514,36 +496,85 @@ public class FrTreinos extends javax.swing.JDialog {
                 btnSairActionPerformed(evt);
             }
         });
-        pnlPrincipal.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel6.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 40, 80, 60));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/treinos.jpg"))); // NOI18N
-        background.setText("jLabel1");
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        lblTreinoSegSex1.setBackground(new java.awt.Color(0, 0, 0));
+        lblTreinoSegSex1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        lblTreinoSegSex1.setForeground(new java.awt.Color(251, 186, 0));
+        lblTreinoSegSex1.setText("Treinos");
+        jPanel6.add(lblTreinoSegSex1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, 140));
 
-        getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        cbxTreinos1.setBackground(new java.awt.Color(251, 186, 0));
+        cbxTreinos1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        cbxTreinos1.setForeground(new java.awt.Color(0, 0, 0));
+        cbxTreinos1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTreinos1ItemStateChanged(evt);
+            }
+        });
+        pnlPrincipal.add(cbxTreinos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 300, 40));
+
+        lblNomeDoTreino2.setBackground(new java.awt.Color(0, 0, 0));
+        lblNomeDoTreino2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNomeDoTreino2.setForeground(new java.awt.Color(251, 186, 0));
+        lblNomeDoTreino2.setText("Nome do Treino");
+        pnlPrincipal.add(lblNomeDoTreino2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+
+        getContentPane().add(pnlPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void edtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+        ControladorDeTreino conTre = new ControladorDeTreino();
+        List<Treino> listaTreTotal = conTre.consultar(1, UsuarioLogado.getUsuarioLogado().getPkUsuario(), 0);
+        for (Treino trei : listaTreTotal) {
+            cbxTreinos1.addItem(trei);
+        }
+        MostrarTreino();
+    }//GEN-LAST:event_formWindowOpened
 
-    private void edtObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtObjetivoActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtObjetivoActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
-    private void edtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDuracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDuracaoActionPerformed
+    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSairMouseClicked
 
-    private void edtCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCargaActionPerformed
+    private void edtNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNome1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCargaActionPerformed
+    }//GEN-LAST:event_edtNome1ActionPerformed
 
-    private void edtSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSeriesActionPerformed
+    private void edtEquipamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEquipamento1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtSeriesActionPerformed
+    }//GEN-LAST:event_edtEquipamento1ActionPerformed
+
+    private void edtGrupoMuscular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGrupoMuscular1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtGrupoMuscular1ActionPerformed
+
+    private void edtDificuldade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDificuldade1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtDificuldade1ActionPerformed
+
+    private void edtSeries1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSeries1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtSeries1ActionPerformed
+
+    private void edtRepeticoes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRepeticoes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtRepeticoes1ActionPerformed
+
+    private void edtCarga1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCarga1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCarga1ActionPerformed
 
     private void edtRepeticoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRepeticoesActionPerformed
         // TODO add your handling code here:
@@ -553,69 +584,41 @@ public class FrTreinos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDificuldadeActionPerformed
 
-    private void edtGrupoMuscularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGrupoMuscularActionPerformed
+    private void edtSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSeriesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtGrupoMuscularActionPerformed
+    }//GEN-LAST:event_edtSeriesActionPerformed
 
-    private void edtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNomeActionPerformed
+    private void edtCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCargaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtNomeActionPerformed
+    }//GEN-LAST:event_edtCargaActionPerformed
 
     private void edtEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEquipamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtEquipamentoActionPerformed
 
-    private void edtCarga1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCarga1ActionPerformed
+    private void edtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCarga1ActionPerformed
+    }//GEN-LAST:event_edtNomeActionPerformed
 
-    private void edtRepeticoes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRepeticoes1ActionPerformed
+    private void edtGrupoMuscularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGrupoMuscularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtRepeticoes1ActionPerformed
-
-    private void edtSeries1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSeries1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtSeries1ActionPerformed
-
-    private void edtDificuldade1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDificuldade1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDificuldade1ActionPerformed
-
-    private void edtGrupoMuscular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGrupoMuscular1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtGrupoMuscular1ActionPerformed
-
-    private void edtEquipamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEquipamento1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtEquipamento1ActionPerformed
-
-    private void edtNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNome1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtNome1ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(Util.getIcone());
-        ControladorDeTreino conTre = new ControladorDeTreino();
-        List<Treino> listaTreTotal = conTre.consultar(1, UsuarioLogado.getUsuarioLogado().getPkUsuario(), 0);
-        for (Treino trei : listaTreTotal) {
-            cbxTreinos1.addItem(trei);
-        }
-
-        MostrarTreino();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        new FrMenu().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnSairMouseClicked
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_edtGrupoMuscularActionPerformed
 
     private void cbxTreinos1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTreinos1ItemStateChanged
         MostrarTreino();
     }//GEN-LAST:event_cbxTreinos1ItemStateChanged
+
+    private void edtDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDuracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtDuracaoActionPerformed
+
+    private void edtObjetivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtObjetivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtObjetivoActionPerformed
+
+    private void edtDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtDescricaoActionPerformed
 
     private void MostrarTreino() {
         ControladorDeTreino conTre = new ControladorDeTreino();
@@ -720,7 +723,6 @@ public class FrTreinos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<Treino> cbxTreinos1;
     private javax.swing.JCheckBox chkConcluido;
@@ -741,7 +743,8 @@ public class FrTreinos extends javax.swing.JDialog {
     private javax.swing.JTextField edtRepeticoes1;
     private javax.swing.JTextField edtSeries;
     private javax.swing.JTextField edtSeries1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblCarga;
     private javax.swing.JLabel lblCarga1;
     private javax.swing.JLabel lblDificuldade;
@@ -751,6 +754,7 @@ public class FrTreinos extends javax.swing.JDialog {
     private javax.swing.JLabel lblEquipamento1;
     private javax.swing.JLabel lblGrupoMuscular;
     private javax.swing.JLabel lblGrupoMuscular1;
+    private javax.swing.JLabel lblLogo2;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome1;
     private javax.swing.JLabel lblNomeDoTreino1;
@@ -764,6 +768,5 @@ public class FrTreinos extends javax.swing.JDialog {
     private javax.swing.JLabel lblTreinoSegSex1;
     private javax.swing.JPanel pnlInferior;
     private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JPanel pnlSuperior;
     // End of variables declaration//GEN-END:variables
 }

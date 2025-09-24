@@ -159,15 +159,12 @@ VALUES
 -- Associando benefícios ao Plano Básico (ID: 1)
 INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade)
 VALUES 
-(1, 1, 'Suporte técnico disponível 24 horas por dia.', 1),  -- Acesso a Suporte 24h
-(1, 2, 'Armazenamento extra de 10GB.', 10),               -- Armazenamento Extra
-(1, 6, 'Backup diário dos seus dados.', 1);                -- Backup Automático
+(1, 1, 'Suporte técnico disponível 24 horas por dia.', 1), 
+(1, 2, 'Armazenamento extra de 10GB.', 10),              
+(1, 6, 'Backup diário dos seus dados.', 1);             
 
--- Associando benefícios ao Plano Premium (ID: 2)
 INSERT INTO PLANO_BENEFICIO (fkPlano, fkBeneficio, detalhes, quantidade)
 VALUES 
-(2, 3, 'Desconto de 15% em produtos selecionados.', 1),    -- Desconto em Produtos
-(2, 4, 'Acesso completo a cursos e workshops exclusivos.', 1), -- Acesso a Cursos Online
-(2, 5, 'VPN Premium com segurança máxima.', 1);             -- VPN Premium
-
-select * from exercicio;
+(2, 3, 'Desconto de 15% em produtos selecionados.', 1), 
+(2, 4, 'Acesso completo a cursos e workshops exclusivos.', 1),
+(2, 5, 'VPN Premium com segurança máxima.', 1); 

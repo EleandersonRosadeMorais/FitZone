@@ -34,19 +34,21 @@ public class FrClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
         lblCriarTreino = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
+        edtFiltro = new javax.swing.JTextField();
+        cbxFiltro = new javax.swing.JComboBox<>();
+        lblTotalRegistros = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTreinos = new javax.swing.JTable();
-        btnPesquisar = new javax.swing.JButton();
-        cbxFiltro = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
-        lblTotalRegistros = new javax.swing.JLabel();
-        edtFiltro = new javax.swing.JTextField();
-        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Clientes - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -54,19 +56,30 @@ public class FrClientes extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
 
         lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
-        lblCriarTreino.setText("CLIENTES");
-        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
+        lblCriarTreino.setText("Clientes");
+        jPanel5.add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, 150));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,12 +91,46 @@ public class FrClientes extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel5.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 40, 80, 60));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        edtFiltro.setBackground(new java.awt.Color(251, 80, 0));
+        edtFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        edtFiltro.setForeground(new java.awt.Color(0, 0, 0));
+        edtFiltro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, 240, 50));
+
+        cbxFiltro.setBackground(new java.awt.Color(251, 80, 0));
+        cbxFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        cbxFiltro.setForeground(new java.awt.Color(0, 0, 0));
+        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Clientes", "Nomes contendo ", "Nascidos em" }));
+        cbxFiltro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 220, 50));
+
+        lblTotalRegistros.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblTotalRegistros.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotalRegistros.setText("Total Registros: 0");
+        jPanel2.add(lblTotalRegistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, -1, -1));
+
+        btnPesquisar.setBackground(new java.awt.Color(251, 80, 0));
+        btnPesquisar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPesquisarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 410, 140, 50));
 
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         tblTreinos.setBackground(new java.awt.Color(251, 80, 0));
-        tblTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        tblTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         tblTreinos.setForeground(new java.awt.Color(0, 0, 0));
         tblTreinos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,44 +257,9 @@ public class FrClientes extends javax.swing.JFrame {
         tblTreinos.setRowHeight(30);
         jScrollPane1.setViewportView(tblTreinos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 890, 196));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 890, 196));
 
-        btnPesquisar.setBackground(new java.awt.Color(251, 80, 0));
-        btnPesquisar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnPesquisar.setForeground(new java.awt.Color(0, 0, 0));
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPesquisarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 140, 50));
-
-        cbxFiltro.setBackground(new java.awt.Color(251, 80, 0));
-        cbxFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cbxFiltro.setForeground(new java.awt.Color(0, 0, 0));
-        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos Clientes", "Nomes contendo ", "Nascidos em" }));
-        cbxFiltro.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        getContentPane().add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 220, -1));
-
-        jPanel1.setBackground(new java.awt.Color(251, 80, 0));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-
-        lblTotalRegistros.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblTotalRegistros.setForeground(new java.awt.Color(0, 0, 0));
-        lblTotalRegistros.setText("Total registros: 0");
-        jPanel1.add(lblTotalRegistros);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 250, 60));
-
-        edtFiltro.setBackground(new java.awt.Color(251, 80, 0));
-        edtFiltro.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        edtFiltro.setForeground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 464, 240, 40));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 730));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -330,15 +342,16 @@ public class FrClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<String> cbxFiltro;
     private javax.swing.JTextField edtFiltro;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCriarTreino;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblTotalRegistros;
     private javax.swing.JTable tblTreinos;
     // End of variables declaration//GEN-END:variables

@@ -7,12 +7,10 @@ package tela;
 
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeDieta;
-import controlar.ControladorDeUsuario;
 import java.util.List;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.AvaliacaoFisica;
 import modelo.Dieta;
-import modelo.Usuario;
 import modelo.UsuarioLogado;
 import utilidade.Util;
 
@@ -39,22 +37,13 @@ public class FrPerderPeso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlSecundario = new javax.swing.JPanel();
-        lblObservacoes = new javax.swing.JLabel();
-        edtPeso = new javax.swing.JTextField();
-        edtRefeicao = new javax.swing.JTextField();
-        edtProteinas = new javax.swing.JTextField();
-        edtCalorias = new javax.swing.JTextField();
-        edtCarboidratos = new javax.swing.JTextField();
-        edtObservacoes = new javax.swing.JTextField();
-        lblPrimeiraRefeicao = new javax.swing.JLabel();
-        lblRefeicao = new javax.swing.JLabel();
-        lblPeso = new javax.swing.JLabel();
-        lblCalorias = new javax.swing.JLabel();
-        lblProteinas = new javax.swing.JLabel();
-        lblCarboidratos = new javax.swing.JLabel();
-        lblGorduras = new javax.swing.JLabel();
-        edtGorduras = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        lblDietaPerderPeso = new javax.swing.JLabel();
+        btnSair5 = new javax.swing.JButton();
+        btnEscolher = new javax.swing.JButton();
         pnlSecundario1 = new javax.swing.JPanel();
         lblObservacoes1 = new javax.swing.JLabel();
         edtPeso1 = new javax.swing.JTextField();
@@ -71,13 +60,25 @@ public class FrPerderPeso extends javax.swing.JFrame {
         lblCarboidratos1 = new javax.swing.JLabel();
         lblGorduras1 = new javax.swing.JLabel();
         edtGorduras1 = new javax.swing.JTextField();
-        lblLogo = new javax.swing.JLabel();
-        lblDietaPerderPeso = new javax.swing.JLabel();
-        btnSair5 = new javax.swing.JButton();
-        btnEscolher = new javax.swing.JButton();
-        background = new javax.swing.JLabel();
+        pnlSecundario = new javax.swing.JPanel();
+        lblObservacoes = new javax.swing.JLabel();
+        edtPeso = new javax.swing.JTextField();
+        edtRefeicao = new javax.swing.JTextField();
+        edtProteinas = new javax.swing.JTextField();
+        edtCalorias = new javax.swing.JTextField();
+        edtCarboidratos = new javax.swing.JTextField();
+        edtObservacoes = new javax.swing.JTextField();
+        lblPrimeiraRefeicao = new javax.swing.JLabel();
+        lblRefeicao = new javax.swing.JLabel();
+        lblPeso = new javax.swing.JLabel();
+        lblCalorias = new javax.swing.JLabel();
+        lblProteinas = new javax.swing.JLabel();
+        lblCarboidratos = new javax.swing.JLabel();
+        lblGorduras = new javax.swing.JLabel();
+        edtGorduras = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Dieta Perder Peso - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -85,165 +86,58 @@ public class FrPerderPeso extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblObservacoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblObservacoes.setForeground(new java.awt.Color(251, 186, 0));
-        lblObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblObservacoes.setText("Observacoes");
-        pnlSecundario.add(lblObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, -1));
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        edtPeso.setEditable(false);
-        edtPeso.setBackground(new java.awt.Color(251, 186, 0));
-        edtPeso.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtPeso.setForeground(new java.awt.Color(0, 0, 0));
-        edtPeso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtPeso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtPeso.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtPeso.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtPeso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtPesoActionPerformed(evt);
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblDietaPerderPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblDietaPerderPeso.setForeground(new java.awt.Color(251, 186, 0));
+        lblDietaPerderPeso.setText("Dieta Perder Peso");
+        jPanel5.add(lblDietaPerderPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, -3, -1, 150));
+
+        btnSair5.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair5.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair5.setText("Sair");
+        btnSair5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair5MouseClicked(evt);
             }
         });
-        pnlSecundario.add(edtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 30));
-
-        edtRefeicao.setEditable(false);
-        edtRefeicao.setBackground(new java.awt.Color(251, 186, 0));
-        edtRefeicao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtRefeicao.setForeground(new java.awt.Color(0, 0, 0));
-        edtRefeicao.setText("Almoco");
-        edtRefeicao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtRefeicao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtRefeicao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtRefeicao.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtRefeicao.addActionListener(new java.awt.event.ActionListener() {
+        btnSair5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtRefeicaoActionPerformed(evt);
+                btnSair5ActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
+        jPanel5.add(btnSair5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 40, 90, 60));
 
-        edtProteinas.setEditable(false);
-        edtProteinas.setBackground(new java.awt.Color(251, 186, 0));
-        edtProteinas.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtProteinas.setForeground(new java.awt.Color(0, 0, 0));
-        edtProteinas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtProteinas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtProteinas.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtProteinas.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtProteinas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtProteinasActionPerformed(evt);
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        btnEscolher.setBackground(new java.awt.Color(153, 255, 153));
+        btnEscolher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnEscolher.setForeground(new java.awt.Color(0, 0, 0));
+        btnEscolher.setText("Escolher Dieta");
+        btnEscolher.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnEscolher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherMouseClicked(evt);
             }
         });
-        pnlSecundario.add(edtProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 240, 30));
-
-        edtCalorias.setEditable(false);
-        edtCalorias.setBackground(new java.awt.Color(251, 186, 0));
-        edtCalorias.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtCalorias.setForeground(new java.awt.Color(0, 0, 0));
-        edtCalorias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtCalorias.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtCalorias.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtCalorias.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtCalorias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCaloriasActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(edtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 30));
-
-        edtCarboidratos.setEditable(false);
-        edtCarboidratos.setBackground(new java.awt.Color(251, 186, 0));
-        edtCarboidratos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtCarboidratos.setForeground(new java.awt.Color(0, 0, 0));
-        edtCarboidratos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtCarboidratos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtCarboidratos.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtCarboidratos.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtCarboidratos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCarboidratosActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(edtCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 240, 30));
-
-        edtObservacoes.setEditable(false);
-        edtObservacoes.setBackground(new java.awt.Color(251, 186, 0));
-        edtObservacoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtObservacoes.setForeground(new java.awt.Color(0, 0, 0));
-        edtObservacoes.setText("65% da Dieta");
-        edtObservacoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtObservacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtObservacoes.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtObservacoes.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtObservacoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtObservacoesActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(edtObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 240, 30));
-
-        lblPrimeiraRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-        lblPrimeiraRefeicao.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrimeiraRefeicao.setText("Primeira Refeicao");
-        pnlSecundario.add(lblPrimeiraRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
-
-        lblRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblRefeicao.setForeground(new java.awt.Color(251, 186, 0));
-        lblRefeicao.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblRefeicao.setText("Refeicao");
-        pnlSecundario.add(lblRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, -1));
-
-        lblPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblPeso.setForeground(new java.awt.Color(251, 186, 0));
-        lblPeso.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblPeso.setText("Peso");
-        pnlSecundario.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 60, -1));
-
-        lblCalorias.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblCalorias.setForeground(new java.awt.Color(251, 186, 0));
-        lblCalorias.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblCalorias.setText("Calorias");
-        pnlSecundario.add(lblCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, -1));
-
-        lblProteinas.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblProteinas.setForeground(new java.awt.Color(251, 186, 0));
-        lblProteinas.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblProteinas.setText("Proteinas");
-        pnlSecundario.add(lblProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 120, -1));
-
-        lblCarboidratos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblCarboidratos.setForeground(new java.awt.Color(251, 186, 0));
-        lblCarboidratos.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblCarboidratos.setText("Carboidratos");
-        pnlSecundario.add(lblCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, -1));
-
-        lblGorduras.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblGorduras.setForeground(new java.awt.Color(251, 186, 0));
-        lblGorduras.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        lblGorduras.setText("Gorduras");
-        pnlSecundario.add(lblGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, -1));
-
-        edtGorduras.setEditable(false);
-        edtGorduras.setBackground(new java.awt.Color(251, 186, 0));
-        edtGorduras.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtGorduras.setForeground(new java.awt.Color(0, 0, 0));
-        edtGorduras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtGorduras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtGorduras.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtGorduras.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtGorduras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtGordurasActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(edtGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 30));
-
-        getContentPane().add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 460, 390));
+        jPanel1.add(btnEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 260, 60));
 
         pnlSecundario1.setBackground(new java.awt.Color(255, 255, 255));
         pnlSecundario1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -349,7 +243,7 @@ public class FrPerderPeso extends javax.swing.JFrame {
 
         lblPrimeiraRefeicao1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblPrimeiraRefeicao1.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrimeiraRefeicao1.setText("Primeira Refeicao");
+        lblPrimeiraRefeicao1.setText("Segunda Refeição");
         pnlSecundario1.add(lblPrimeiraRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         lblRefeicao1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -403,49 +297,169 @@ public class FrPerderPeso extends javax.swing.JFrame {
         });
         pnlSecundario1.add(edtGorduras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 30));
 
-        getContentPane().add(pnlSecundario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 460, 390));
+        jPanel1.add(pnlSecundario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 460, 390));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDietaPerderPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblDietaPerderPeso.setForeground(new java.awt.Color(251, 186, 0));
-        lblDietaPerderPeso.setText("Dieta Perder Peso");
-        getContentPane().add(lblDietaPerderPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        lblObservacoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblObservacoes.setForeground(new java.awt.Color(251, 186, 0));
+        lblObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblObservacoes.setText("Observacoes");
+        pnlSecundario.add(lblObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, -1));
 
-        btnSair5.setBackground(new java.awt.Color(255, 102, 102));
-        btnSair5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSair5.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair5.setText("SAIR");
-        btnSair5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSair5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSair5MouseClicked(evt);
-            }
-        });
-        btnSair5.addActionListener(new java.awt.event.ActionListener() {
+        edtPeso.setEditable(false);
+        edtPeso.setBackground(new java.awt.Color(251, 186, 0));
+        edtPeso.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtPeso.setForeground(new java.awt.Color(0, 0, 0));
+        edtPeso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtPeso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtPeso.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtPeso.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair5ActionPerformed(evt);
+                edtPesoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        pnlSecundario.add(edtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 30));
 
-        btnEscolher.setBackground(new java.awt.Color(153, 255, 153));
-        btnEscolher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnEscolher.setForeground(new java.awt.Color(0, 0, 0));
-        btnEscolher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnEscolher.setText("Escolher Dieta");
-        btnEscolher.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnEscolher.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEscolherMouseClicked(evt);
+        edtRefeicao.setEditable(false);
+        edtRefeicao.setBackground(new java.awt.Color(251, 186, 0));
+        edtRefeicao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtRefeicao.setForeground(new java.awt.Color(0, 0, 0));
+        edtRefeicao.setText("Almoço");
+        edtRefeicao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtRefeicao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtRefeicao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtRefeicao.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtRefeicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtRefeicaoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 640, 260, 60));
+        pnlSecundario.add(edtRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 730));
+        edtProteinas.setEditable(false);
+        edtProteinas.setBackground(new java.awt.Color(251, 186, 0));
+        edtProteinas.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtProteinas.setForeground(new java.awt.Color(0, 0, 0));
+        edtProteinas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtProteinas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtProteinas.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtProteinas.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtProteinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtProteinasActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 240, 30));
+
+        edtCalorias.setEditable(false);
+        edtCalorias.setBackground(new java.awt.Color(251, 186, 0));
+        edtCalorias.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCalorias.setForeground(new java.awt.Color(0, 0, 0));
+        edtCalorias.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCalorias.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtCalorias.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtCalorias.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtCalorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCaloriasActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 30));
+
+        edtCarboidratos.setEditable(false);
+        edtCarboidratos.setBackground(new java.awt.Color(251, 186, 0));
+        edtCarboidratos.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCarboidratos.setForeground(new java.awt.Color(0, 0, 0));
+        edtCarboidratos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCarboidratos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtCarboidratos.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtCarboidratos.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtCarboidratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCarboidratosActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 240, 30));
+
+        edtObservacoes.setEditable(false);
+        edtObservacoes.setBackground(new java.awt.Color(251, 186, 0));
+        edtObservacoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObservacoes.setForeground(new java.awt.Color(0, 0, 0));
+        edtObservacoes.setText("65% da Dieta");
+        edtObservacoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtObservacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtObservacoes.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtObservacoes.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtObservacoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtObservacoesActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 240, 30));
+
+        lblPrimeiraRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        lblPrimeiraRefeicao.setForeground(new java.awt.Color(251, 186, 0));
+        lblPrimeiraRefeicao.setText("Primeira Refeição");
+        pnlSecundario.add(lblPrimeiraRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+
+        lblRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblRefeicao.setForeground(new java.awt.Color(251, 186, 0));
+        lblRefeicao.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblRefeicao.setText("Refeicao");
+        pnlSecundario.add(lblRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, -1));
+
+        lblPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblPeso.setForeground(new java.awt.Color(251, 186, 0));
+        lblPeso.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblPeso.setText("Peso");
+        pnlSecundario.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 60, -1));
+
+        lblCalorias.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblCalorias.setForeground(new java.awt.Color(251, 186, 0));
+        lblCalorias.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblCalorias.setText("Calorias");
+        pnlSecundario.add(lblCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, -1));
+
+        lblProteinas.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblProteinas.setForeground(new java.awt.Color(251, 186, 0));
+        lblProteinas.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblProteinas.setText("Proteinas");
+        pnlSecundario.add(lblProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 120, -1));
+
+        lblCarboidratos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblCarboidratos.setForeground(new java.awt.Color(251, 186, 0));
+        lblCarboidratos.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblCarboidratos.setText("Carboidratos");
+        pnlSecundario.add(lblCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, -1));
+
+        lblGorduras.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblGorduras.setForeground(new java.awt.Color(251, 186, 0));
+        lblGorduras.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblGorduras.setText("Gorduras");
+        pnlSecundario.add(lblGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, -1));
+
+        edtGorduras.setEditable(false);
+        edtGorduras.setBackground(new java.awt.Color(251, 186, 0));
+        edtGorduras.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtGorduras.setForeground(new java.awt.Color(0, 0, 0));
+        edtGorduras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtGorduras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtGorduras.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtGorduras.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtGorduras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtGordurasActionPerformed(evt);
+            }
+        });
+        pnlSecundario.add(edtGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 30));
+
+        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 460, 390));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -545,38 +559,37 @@ public class FrPerderPeso extends javax.swing.JFrame {
         edtGorduras1.setText(String.format("%.2f", (gorduras * 0.35)));
     }//GEN-LAST:event_formWindowOpened
 
-    private void Escolher() {
-        Dieta dieta = new Dieta();
-        Dieta dieta1 = new Dieta();
-        ControladorDeDieta conDie = new ControladorDeDieta();
-        if (!(conDie.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario()))) {
-            dieta.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-            dieta.setRefeicao(edtRefeicao.getText());
-            dieta.setPeso(Double.parseDouble(edtPeso.getText().replace(",", ".")));
-            dieta.setCalorias(Double.parseDouble(edtCalorias.getText().replace(",", ".")));
-            dieta.setProteinas(Double.parseDouble(edtProteinas.getText().replace(",", ".")));
-            dieta.setCarboidratos(Double.parseDouble(edtCarboidratos.getText().replace(",", ".")));
-            dieta.setGorduras(Double.parseDouble(edtGorduras.getText().replace(",", ".")));
-            dieta.setObservacoes(edtObservacoes.getText());
-            dieta1.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-            dieta1.setRefeicao(edtRefeicao1.getText());
-            dieta1.setPeso(Double.parseDouble(edtPeso1.getText().replace(",", ".")));
-            dieta1.setCalorias(Double.parseDouble(edtCalorias1.getText().replace(",", ".")));
-            dieta1.setProteinas(Double.parseDouble(edtProteinas1.getText().replace(",", ".")));
-            dieta1.setCarboidratos(Double.parseDouble(edtCarboidratos1.getText().replace(",", ".")));
-            dieta1.setGorduras(Double.parseDouble(edtGorduras1.getText().replace(",", ".")));
-            dieta1.setObservacoes(edtObservacoes1.getText());
+private void Escolher() {
+    Dieta dieta = new Dieta();
+    Dieta dieta1 = new Dieta();
+    ControladorDeDieta conDie = new ControladorDeDieta();
+    if (!(conDie.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario()))) {
+        dieta.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+        dieta.setRefeicao(edtRefeicao.getText());
+        dieta.setPeso(Double.parseDouble(edtPeso.getText().replace(",", ".")));
+        dieta.setCalorias(Double.parseDouble(edtCalorias.getText().replace(",", ".")));
+        dieta.setProteinas(Double.parseDouble(edtProteinas.getText().replace(",", ".")));
+        dieta.setCarboidratos(Double.parseDouble(edtCarboidratos.getText().replace(",", ".")));
+        dieta.setGorduras(Double.parseDouble(edtGorduras.getText().replace(",", ".")));
+        dieta.setObservacoes(edtObservacoes.getText());
+        dieta1.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+        dieta1.setRefeicao(edtRefeicao1.getText());
+        dieta1.setPeso(Double.parseDouble(edtPeso1.getText().replace(",", ".")));
+        dieta1.setCalorias(Double.parseDouble(edtCalorias1.getText().replace(",", ".")));
+        dieta1.setProteinas(Double.parseDouble(edtProteinas1.getText().replace(",", ".")));
+        dieta1.setCarboidratos(Double.parseDouble(edtCarboidratos1.getText().replace(",", ".")));
+        dieta1.setGorduras(Double.parseDouble(edtGorduras1.getText().replace(",", ".")));
+        dieta1.setObservacoes(edtObservacoes1.getText());
 
-            if (conDie.inserir(dieta) && conDie.inserir(dieta1)) {
-                JOptionPane.showMessageDialog(null, "Dieta inserida");
-                new FrSaude().setVisible(true);
-                this.dispose();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Voce ja possui uma dieta na sua rotina, caso queira muda-la, volta para o menu Saude e selecione Remover DIeta Atual!");
+        if (conDie.inserir(dieta) && conDie.inserir(dieta1)) {
+            DialogManager.showSuccessDialog(this, "Dieta inserida com sucesso!");
+            new FrSaude().setVisible(true);
+            this.dispose();
         }
+    } else {
+        DialogManager.showWarningDialog(this, "Você já possuí uma dieta em sua rotina, caso queira muda-lá, volte para o menu 'Saúde' e selecione 'Remover Dieta Atual'");
     }
-
+}
     /**
      * @param args the command line arguments
      */
@@ -621,7 +634,6 @@ public class FrPerderPeso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnEscolher;
     private javax.swing.JButton btnSair5;
     private javax.swing.JTextField edtCalorias;
@@ -638,6 +650,9 @@ public class FrPerderPeso extends javax.swing.JFrame {
     private javax.swing.JTextField edtProteinas1;
     private javax.swing.JTextField edtRefeicao;
     private javax.swing.JTextField edtRefeicao1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblCalorias;
     private javax.swing.JLabel lblCalorias1;
     private javax.swing.JLabel lblCarboidratos;
@@ -645,7 +660,7 @@ public class FrPerderPeso extends javax.swing.JFrame {
     private javax.swing.JLabel lblDietaPerderPeso;
     private javax.swing.JLabel lblGorduras;
     private javax.swing.JLabel lblGorduras1;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblObservacoes;
     private javax.swing.JLabel lblObservacoes1;
     private javax.swing.JLabel lblPeso;

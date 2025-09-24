@@ -6,11 +6,12 @@
 package tela;
 
 import controlar.ControladorDeUsuario;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.Icon;
-import javax.swing.JOptionPane;
 import modelo.Usuario;
 import utilidade.Util;
+import utilidade.DialogManager;
 
 /**
  *
@@ -71,29 +72,36 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnLogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela de Cadastro - FitZone");
+        setTitle("FitZone - Cadastrar - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario.setBackground(new java.awt.Color(251, 186, 0));
+        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlSecundario.setPreferredSize(new java.awt.Dimension(740, 720));
         pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblCadastrar.setForeground(new java.awt.Color(0, 0, 0));
-        lblCadastrar.setText("CADASTRAR");
+        lblCadastrar.setText("Cadastrar");
         pnlSecundario.add(lblCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         btnEscolherImagem.setBackground(new java.awt.Color(255, 255, 255));
         btnEscolherImagem.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         btnEscolherImagem.setForeground(new java.awt.Color(0, 0, 0));
-        btnEscolherImagem.setText("ESCOLHER IMAGEM");
+        btnEscolherImagem.setText("Escolher Imagem");
         btnEscolherImagem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnEscolherImagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -113,7 +121,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
 
         edtEmail.setBackground(new java.awt.Color(255, 255, 255));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEmail.setForeground(java.awt.Color.black);
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -124,6 +132,11 @@ public class FrCadastrar extends javax.swing.JFrame {
                 edtEmailActionPerformed(evt);
             }
         });
+        edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtEmailKeyPressed(evt);
+            }
+        });
         pnlSecundario.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 640, 50));
 
         lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
@@ -132,7 +145,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
         edtNome.setBackground(new java.awt.Color(255, 255, 255));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtNome.setForeground(java.awt.Color.black);
         edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -166,7 +179,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, -1, -1));
 
         edtObjetivo.setBackground(new java.awt.Color(255, 255, 255));
-        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtObjetivo.setForeground(java.awt.Color.black);
         edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -185,7 +198,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(lblCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         edtTelefone.setBackground(new java.awt.Color(255, 255, 255));
-        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtTelefone.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtTelefone.setForeground(java.awt.Color.black);
         edtTelefone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -229,7 +242,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnLimpar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnLimpar.setText("LIMPAR");
+        btnLimpar.setText("Limpar");
         btnLimpar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -246,7 +259,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        edtCpf.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtCpf.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCpfActionPerformed(evt);
@@ -256,7 +269,7 @@ public class FrCadastrar extends javax.swing.JFrame {
 
         buttonGroup1.add(chkMulher);
         chkMulher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        chkMulher.setText("MULHER");
+        chkMulher.setText("Mulher");
         chkMulher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkMulherActionPerformed(evt);
@@ -265,13 +278,13 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(chkMulher, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 130, 30));
 
         edtConfirmarSenha.setBackground(new java.awt.Color(255, 255, 255));
-        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtConfirmarSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtConfirmarSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtConfirmarSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 210, 50));
 
         edtSenha.setBackground(new java.awt.Color(255, 255, 255));
-        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         pnlSecundario.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 210, 50));
@@ -280,7 +293,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         edtDataNascimento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtDataNascimento.setForeground(java.awt.Color.black);
         edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
-        edtDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDataNascimento.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtDataNascimentoActionPerformed(evt);
@@ -292,7 +305,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnCadastrar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnCadastrar.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCadastrar.setText("CADASTRAR");
+        btnCadastrar.setText("Cadastrar");
         btnCadastrar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -302,20 +315,20 @@ public class FrCadastrar extends javax.swing.JFrame {
         pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, 220, 50));
 
         chkAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        chkAtivo.setText("ATIVO");
+        chkAtivo.setText("Ativo");
         pnlSecundario.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 130, 30));
 
         buttonGroup1.add(chkHomem);
         chkHomem.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         chkHomem.setSelected(true);
-        chkHomem.setText("HOMEM");
+        chkHomem.setText("Homem");
         pnlSecundario.add(chkHomem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 130, 30));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 860, 720));
 
         lblLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblLogar.setForeground(new java.awt.Color(0, 0, 0));
-        lblLogar.setText("LOGAR");
+        lblLogar.setText("Logar");
         pnlPrincipal.add(lblLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         iconLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilLogar.png"))); // NOI18N
@@ -343,7 +356,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLogar.setForeground(new java.awt.Color(0, 0, 0));
         btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/chave.png"))); // NOI18N
-        btnLogar.setText("LOGAR");
+        btnLogar.setText("Logar");
         btnLogar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -437,6 +450,17 @@ public class FrCadastrar extends javax.swing.JFrame {
     private void chkMulherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMulherActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkMulherActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void edtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+            new FrCadastrarInstrutor().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_edtEmailKeyPressed
     private void limpar() {
         edtNome.setText("");
         edtEmail.setText("");
@@ -462,7 +486,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         cliente.setDataNascimento(Util.converterStringToDate(edtDataNascimento.getText()));
         cliente.setObjetivo(edtObjetivo.getText());
         cliente.setImagem(imgFoto.getIcon());
-        cliente.setCpf(cliente.removerCpf(edtCpf.getText()));
+        cliente.setCpf(Util.removerCpf(edtCpf.getText()));
         cliente.setAtivo(chkAtivo.isSelected());
         if (chkHomem.isSelected()) {
             cliente.setSexo("homem");
@@ -471,54 +495,53 @@ public class FrCadastrar extends javax.swing.JFrame {
         }
         ControladorDeUsuario controller = new ControladorDeUsuario();
         if (controller.inserir(cliente)) {
-            JOptionPane.showMessageDialog(null, "Usuário inserido");
+            DialogManager.showSuccessDialog(this, "Usuário inserido com sucesso!");
             new FrLogar().setVisible(true);
             this.dispose();
         }
     }
 
     private boolean verificarCampos() {
-        Usuario cliente = new Usuario();
         if (edtNome.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de nome");
+            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de nome");
             return false;
         }
         if (edtEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de e-mail");
+            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de e-mail");
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de senha");
+            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de senha");
             return false;
         }
         if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Nome' possui formato inválido");
+            DialogManager.showWarningDialog(this, "O campo 'Nome' possui formato inválido");
             return false;
         }
         if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Email' possui formato inválido");
+            DialogManager.showWarningDialog(this, "O campo 'Email' possui formato inválido");
             return false;
         }
         if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Data Nascimento' possui formato inválido");
+            DialogManager.showWarningDialog(this, "O campo 'Data Nascimento' possui formato inválido");
             return false;
         }
         if (new String(edtSenha.getPassword()).length() < 8) {
-            JOptionPane.showMessageDialog(null, "A senha deve ser maior que 8 dígitos");
+            DialogManager.showWarningDialog(this, "A senha deve ser maior que 8 dígitos");
             return false;
         }
-        if (cliente.removerCpf(edtCpf.getText()).isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O campo do CPF do seu usuario nao pode estar vazio");
+        if (Util.removerCpf(edtCpf.getText()).isEmpty()) {
+            DialogManager.showWarningDialog(this, "O campo do CPF do seu usuario nao pode estar vazio");
             return false;
         }
-        if (!(cliente.validarCPF(edtCpf.getText()))) {
-            JOptionPane.showMessageDialog(null, "Seu CPF deve ser valido e deve conter 11 numeros, ex: 123.456.789-00");
+        if (!(Util.validarCPF(edtCpf.getText()))) {
+            DialogManager.showWarningDialog(this, "Seu CPF deve ser valido e deve conter 11 numeros, ex: 123.456.789-00");
             return false;
         }
         String senha = new String(edtSenha.getPassword());
         String confirmarSenha = new String(edtConfirmarSenha.getPassword());
         if (!senha.equals(confirmarSenha)) {
-            JOptionPane.showMessageDialog(null, "Revise sua senha, pois ambas tem que serem iguais");
+            DialogManager.showWarningDialog(this, "Revise sua senha, pois ambas tem que serem iguais");
             return false;
         }
         return true;

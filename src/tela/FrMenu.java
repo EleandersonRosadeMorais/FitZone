@@ -7,7 +7,7 @@ package tela;
 
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeTreino;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.UsuarioLogado;
 import utilidade.Util;
 
@@ -35,18 +35,23 @@ public class FrMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlPrincipal = new javax.swing.JPanel();
-        pnlSecundario = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
-        Logo = new javax.swing.JLabel();
-        btnTreinos = new javax.swing.JButton();
-        btnSaude = new javax.swing.JButton();
-        btnAvaliacao = new javax.swing.JButton();
         btnPlanos = new javax.swing.JButton();
+        btnSaude = new javax.swing.JButton();
+        btnTreinos = new javax.swing.JButton();
+        btnAvaliacao = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
-        background = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        lblDietaPerderPeso = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
+        lblDietaPerderPeso2 = new javax.swing.JLabel();
+        btnSair7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela de Menu - FitZone");
+        setTitle("FitZone - Menu - Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -54,91 +59,14 @@ public class FrMenu extends javax.swing.JFrame {
         });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSecundario.setBackground(new java.awt.Color(251, 186, 0));
-        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnLogout.setBackground(new java.awt.Color(255, 102, 102));
-        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnLogout.setForeground(new java.awt.Color(0, 0, 0));
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnLogout.setText("LOGOUT");
-        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLogoutMouseClicked(evt);
-            }
-        });
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 240, 60));
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        pnlSecundario.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
-
-        btnTreinos.setBackground(new java.awt.Color(255, 255, 255));
-        btnTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnTreinos.setForeground(new java.awt.Color(0, 0, 0));
-        btnTreinos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
-        btnTreinos.setText("TREINOS");
-        btnTreinos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnTreinos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTreinosMouseClicked(evt);
-            }
-        });
-        btnTreinos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTreinosActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 240, 60));
-
-        btnSaude.setBackground(new java.awt.Color(255, 255, 255));
-        btnSaude.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnSaude.setForeground(new java.awt.Color(0, 0, 0));
-        btnSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone Saude.png"))); // NOI18N
-        btnSaude.setText("SAÚDE");
-        btnSaude.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnSaude.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaudeMouseClicked(evt);
-            }
-        });
-        btnSaude.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaudeActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 240, 60));
-
-        btnAvaliacao.setBackground(new java.awt.Color(255, 255, 255));
-        btnAvaliacao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
-        btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone avaliacao fisica.png"))); // NOI18N
-        btnAvaliacao.setText("AVALIAÇÃO");
-        btnAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnAvaliacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAvaliacaoMouseClicked(evt);
-            }
-        });
-        btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAvaliacaoActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnAvaliacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 240, 60));
-
-        btnPlanos.setBackground(new java.awt.Color(255, 255, 255));
+        btnPlanos.setBackground(new java.awt.Color(251, 186, 0));
         btnPlanos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnPlanos.setForeground(new java.awt.Color(0, 0, 0));
         btnPlanos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone Planos.png"))); // NOI18N
-        btnPlanos.setText("PLANOS");
+        btnPlanos.setText("Planos");
         btnPlanos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnPlanos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -150,13 +78,67 @@ public class FrMenu extends javax.swing.JFrame {
                 btnPlanosActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnPlanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 240, 60));
+        pnlPrincipal.add(btnPlanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, 240, 60));
 
-        btnPerfil.setBackground(new java.awt.Color(255, 255, 255));
+        btnSaude.setBackground(new java.awt.Color(251, 186, 0));
+        btnSaude.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSaude.setForeground(new java.awt.Color(0, 0, 0));
+        btnSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone Saude.png"))); // NOI18N
+        btnSaude.setText("Saúde");
+        btnSaude.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSaude.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaudeMouseClicked(evt);
+            }
+        });
+        btnSaude.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaudeActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnSaude, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 240, 60));
+
+        btnTreinos.setBackground(new java.awt.Color(251, 186, 0));
+        btnTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnTreinos.setForeground(new java.awt.Color(0, 0, 0));
+        btnTreinos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeTreinos.png"))); // NOI18N
+        btnTreinos.setText("Treinos");
+        btnTreinos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnTreinos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTreinosMouseClicked(evt);
+            }
+        });
+        btnTreinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTreinosActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 240, 60));
+
+        btnAvaliacao.setBackground(new java.awt.Color(251, 186, 0));
+        btnAvaliacao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnAvaliacao.setForeground(new java.awt.Color(0, 0, 0));
+        btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone avaliacao fisica.png"))); // NOI18N
+        btnAvaliacao.setText("Avaliação");
+        btnAvaliacao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnAvaliacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAvaliacaoMouseClicked(evt);
+            }
+        });
+        btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvaliacaoActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnAvaliacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 240, 60));
+
+        btnPerfil.setBackground(new java.awt.Color(251, 186, 0));
         btnPerfil.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnPerfil.setForeground(new java.awt.Color(0, 0, 0));
         btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone perfil.png"))); // NOI18N
-        btnPerfil.setText("PERFIL");
+        btnPerfil.setText("Perfil");
         btnPerfil.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,13 +150,75 @@ public class FrMenu extends javax.swing.JFrame {
                 btnPerfilActionPerformed(evt);
             }
         });
-        pnlSecundario.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 20, 240, 60));
+        pnlPrincipal.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, 240, 60));
 
-        pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 170));
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/academia.png"))); // NOI18N
-        background.setText("jLabel1");
-        pnlPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 810));
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblDietaPerderPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblDietaPerderPeso.setForeground(new java.awt.Color(251, 186, 0));
+        lblDietaPerderPeso.setText("Menu");
+        jPanel5.add(lblDietaPerderPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, -1, 150));
+
+        btnLogout.setBackground(new java.awt.Color(255, 102, 255));
+        btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(0, 0, 0));
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseClicked(evt);
+            }
+        });
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 40, 170, 60));
+
+        pnlPrincipal.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        jPanel2.setBackground(new java.awt.Color(251, 186, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel6.add(lblLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        lblDietaPerderPeso2.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblDietaPerderPeso2.setForeground(new java.awt.Color(251, 186, 0));
+        lblDietaPerderPeso2.setText("Dieta Ganhar Peso");
+        jPanel6.add(lblDietaPerderPeso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -3, -1, 140));
+
+        btnSair7.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnSair7.setForeground(new java.awt.Color(0, 0, 0));
+        btnSair7.setText("SAIR");
+        btnSair7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnSair7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSair7MouseClicked(evt);
+            }
+        });
+        btnSair7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair7ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnSair7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 40, 90, 60));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
+
+        pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,78 +234,84 @@ public class FrMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
-        new FrLogar().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnLogoutMouseClicked
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
-       ControladorDeTreino conTre = new ControladorDeTreino();
-       if(conTre.verificarTreinoUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario())){
-        
-    } else {
-            JOptionPane.showMessageDialog(null, "Antes de você conferir seus treinos");
-            }
-        
-        
-        FrTreinos dialog = new FrTreinos(this, true);
-        dialog.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnTreinosMouseClicked
-
-    private void btnTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTreinosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTreinosActionPerformed
-
-    private void btnSaudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaudeMouseClicked
-        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
-        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
-            new FrSaude().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Antes de acessar essa pagina, voce precisa cadastrar suas informacoes em 'AVALIACAO'");
-        }
-
-
-    }//GEN-LAST:event_btnSaudeMouseClicked
-
-    private void btnSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaudeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaudeActionPerformed
-
-    private void btnAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvaliacaoMouseClicked
-        new FrAvaliacaoFisica().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAvaliacaoMouseClicked
-
-    private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAvaliacaoActionPerformed
-
-    private void btnPlanosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlanosMouseClicked
-        new FrPlanos().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnPlanosMouseClicked
-
-    private void btnPlanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlanosActionPerformed
+    }//GEN-LAST:event_btnPerfilActionPerformed
 
     private void btnPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPerfilMouseClicked
         new FrPerfil().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPerfilMouseClicked
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+    private void btnPlanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    }//GEN-LAST:event_btnPlanosActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(Util.getIcone());
-    }//GEN-LAST:event_formWindowOpened
+    private void btnPlanosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlanosMouseClicked
+        new FrPlanos().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnPlanosMouseClicked
+
+    private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAvaliacaoActionPerformed
+
+    private void btnAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAvaliacaoMouseClicked
+        new FrAvaliacaoFisica().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAvaliacaoMouseClicked
+
+    private void btnSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaudeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaudeActionPerformed
+
+    private void btnSaudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaudeMouseClicked
+        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+            new FrSaude().setVisible(true);
+        } else {
+            DialogManager.showWarningDialog(this, "Antes de você acessar a página de 'Saúde', deve preencher suas informações em 'Avaliação' na página de 'Menu'");
+        }
+    }//GEN-LAST:event_btnSaudeMouseClicked
+
+    private void btnTreinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTreinosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTreinosActionPerformed
+
+    private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
+        ControladorDeTreino conTre = new ControladorDeTreino();
+        if (conTre.verificarTreinoUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+
+        } else {
+            DialogManager.showWarningDialog(this, "Antes de você conferir seus treinos");
+        }
+
+        FrTreinos dialog = new FrTreinos(this, true);
+        dialog.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTreinosMouseClicked
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseClicked
+        new FrLogar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutMouseClicked
+
+    private void btnSair7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair7MouseClicked
+        new FrSaude().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSair7MouseClicked
+
+    private void btnSair7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,15 +349,20 @@ public class FrMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logo;
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnAvaliacao;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JButton btnPlanos;
+    private javax.swing.JButton btnSair7;
     private javax.swing.JButton btnSaude;
     private javax.swing.JButton btnTreinos;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lblDietaPerderPeso;
+    private javax.swing.JLabel lblDietaPerderPeso2;
+    private javax.swing.JLabel lblLogo1;
+    private javax.swing.JLabel lblLogo2;
     private javax.swing.JPanel pnlPrincipal;
-    private javax.swing.JPanel pnlSecundario;
     // End of variables declaration//GEN-END:variables
 }

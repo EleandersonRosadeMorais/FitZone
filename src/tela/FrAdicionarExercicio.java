@@ -9,7 +9,7 @@ import controlar.ControladorDeExercicio;
 import controlar.ControladorDeExercicioTreino;
 import controlar.ControladorDeTreino;
 import java.util.List;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.Exercicio;
 import modelo.ExercicioTreino;
 import modelo.Treino;
@@ -38,9 +38,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
-        lblCriarTreino = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         edtCarga = new javax.swing.JTextField();
         lblCarga = new javax.swing.JLabel();
@@ -55,10 +53,16 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         cbxExercicios = new javax.swing.JComboBox<>();
         lblUsuario1 = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
-        lblCriarTreino1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        lblCriarTreino = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Adicionar Exercício - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -66,19 +70,146 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
-        lblCriarTreino.setText("Adicionar Exercicio");
-        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
+        edtCarga.setBackground(new java.awt.Color(251, 80, 0));
+        edtCarga.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtCarga.setForeground(new java.awt.Color(0, 0, 0));
+        edtCarga.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtCarga.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtCarga.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtCarga.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCargaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 480, 50));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        lblCarga.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblCarga.setForeground(new java.awt.Color(0, 0, 0));
+        lblCarga.setText("Carga");
+        jPanel1.add(lblCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
+
+        edtSeries.setBackground(new java.awt.Color(251, 80, 0));
+        edtSeries.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtSeries.setForeground(new java.awt.Color(0, 0, 0));
+        edtSeries.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtSeries.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtSeries.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtSeries.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtSeries.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtSeriesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 480, 50));
+
+        lblSeries.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblSeries.setForeground(new java.awt.Color(0, 0, 0));
+        lblSeries.setText("Series");
+        jPanel1.add(lblSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
+
+        edtOrdem.setBackground(new java.awt.Color(251, 80, 0));
+        edtOrdem.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtOrdem.setForeground(new java.awt.Color(0, 0, 0));
+        edtOrdem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtOrdem.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtOrdem.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtOrdem.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtOrdem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtOrdemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 480, 50));
+
+        lblRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
+        lblRepeticoes.setText("Repetições");
+        jPanel1.add(lblRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
+
+        edtRepeticoes.setBackground(new java.awt.Color(251, 80, 0));
+        edtRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
+        edtRepeticoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtRepeticoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtRepeticoes.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtRepeticoes.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtRepeticoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtRepeticoesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 480, 50));
+
+        btnCriar.setBackground(new java.awt.Color(251, 80, 0));
+        btnCriar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCriar.setText("Criar");
+        btnCriar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        btnCriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCriarMouseClicked(evt);
+            }
+        });
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 640, 120, 50));
+
+        cbxTreinos.setBackground(new java.awt.Color(251, 80, 0));
+        cbxTreinos.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        cbxTreinos.setForeground(new java.awt.Color(0, 0, 0));
+        cbxTreinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTreinosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbxTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 210, -1));
+
+        lblOrdem.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblOrdem.setForeground(new java.awt.Color(0, 0, 0));
+        lblOrdem.setText("Ordem");
+        jPanel1.add(lblOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, -1, -1));
+
+        lblUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsuario.setText("Treinos");
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
+
+        cbxExercicios.setBackground(new java.awt.Color(251, 80, 0));
+        cbxExercicios.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        cbxExercicios.setForeground(new java.awt.Color(0, 0, 0));
+        cbxExercicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxExerciciosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbxExercicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 210, -1));
+
+        lblUsuario1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblUsuario1.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsuario1.setText("Exercícios");
+        jPanel1.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,136 +221,18 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel5.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 40, 90, 60));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
+        lblCriarTreino.setText("Adicionar Exercício");
+        jPanel5.add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -3, -1, 150));
 
-        edtCarga.setBackground(new java.awt.Color(251, 80, 0));
-        edtCarga.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtCarga.setForeground(new java.awt.Color(0, 0, 0));
-        edtCarga.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtCarga.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtCarga.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtCarga.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtCarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCargaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 480, 50));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
-        lblCarga.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblCarga.setForeground(new java.awt.Color(0, 0, 0));
-        lblCarga.setText("Carga");
-        jPanel1.add(lblCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
-        edtSeries.setBackground(new java.awt.Color(251, 80, 0));
-        edtSeries.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtSeries.setForeground(new java.awt.Color(0, 0, 0));
-        edtSeries.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtSeries.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtSeries.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtSeries.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtSeries.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtSeriesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 480, 50));
-
-        lblSeries.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblSeries.setForeground(new java.awt.Color(0, 0, 0));
-        lblSeries.setText("Series");
-        jPanel1.add(lblSeries, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
-
-        edtOrdem.setBackground(new java.awt.Color(251, 80, 0));
-        edtOrdem.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtOrdem.setForeground(new java.awt.Color(0, 0, 0));
-        edtOrdem.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtOrdem.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtOrdem.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtOrdem.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtOrdem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtOrdemActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 480, 50));
-
-        lblRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
-        lblRepeticoes.setText("Repeticoes");
-        jPanel1.add(lblRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
-
-        edtRepeticoes.setBackground(new java.awt.Color(251, 80, 0));
-        edtRepeticoes.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtRepeticoes.setForeground(new java.awt.Color(0, 0, 0));
-        edtRepeticoes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtRepeticoes.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtRepeticoes.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtRepeticoes.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtRepeticoes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtRepeticoesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtRepeticoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 480, 50));
-
-        btnCriar.setBackground(new java.awt.Color(251, 80, 0));
-        btnCriar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnCriar.setText("CRIAR");
-        btnCriar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCriarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 120, 50));
-
-        cbxTreinos.setBackground(new java.awt.Color(251, 80, 0));
-        cbxTreinos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cbxTreinos.setForeground(new java.awt.Color(0, 0, 0));
-        cbxTreinos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxTreinosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cbxTreinos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, -1));
-
-        lblOrdem.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblOrdem.setForeground(new java.awt.Color(0, 0, 0));
-        lblOrdem.setText("Ordem");
-        jPanel1.add(lblOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
-
-        lblUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        lblUsuario.setText("Treinos");
-        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
-
-        cbxExercicios.setBackground(new java.awt.Color(251, 80, 0));
-        cbxExercicios.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cbxExercicios.setForeground(new java.awt.Color(0, 0, 0));
-        cbxExercicios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxExerciciosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cbxExercicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 210, -1));
-
-        lblUsuario1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblUsuario1.setForeground(new java.awt.Color(0, 0, 0));
-        lblUsuario1.setText("Exercicios");
-        jPanel1.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 590, 560));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 730));
-
-        lblCriarTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCriarTreino1.setForeground(new java.awt.Color(251, 186, 0));
-        lblCriarTreino1.setText("CRIAR TREINO");
-        getContentPane().add(lblCriarTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -266,7 +279,6 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         for (Treino tre : listaTre) {
             cbxTreinos.addItem(tre);
         }
-
         ControladorDeExercicio conExe = new ControladorDeExercicio();
         List<Exercicio> listaExe = conExe.consultar();
         for (Exercicio exe : listaExe) {
@@ -278,29 +290,31 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxExerciciosActionPerformed
 
-    private void criar(int Exe, int Tre) {
-        try {
+    private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCriarActionPerformed
 
-            ExercicioTreino exeTre = new ExercicioTreino();
-            exeTre.setFkTreino(Tre);
-            exeTre.setFkExercicio(Exe);
-            exeTre.setCarga(Integer.parseInt(edtCarga.getText()));
-            exeTre.setRepeticoes(Integer.parseInt(edtRepeticoes.getText()));
-            exeTre.setSeries(Integer.parseInt(edtSeries.getText()));
-            exeTre.setOrdem(Integer.parseInt(edtOrdem.getText()));
-            ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
-            if (conExeTre.criar(exeTre)) {
-                JOptionPane.showMessageDialog(this, "Exercicio adicionado com sucesso!");
-                new FrAdicionarExercicio().setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Erro ao adicionar exercicio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Erro");
+private void criar(int Exe, int Tre) {
+    try {
+        ExercicioTreino exeTre = new ExercicioTreino();
+        exeTre.setFkTreino(Tre);
+        exeTre.setFkExercicio(Exe);
+        exeTre.setCarga(Integer.parseInt(edtCarga.getText()));
+        exeTre.setRepeticoes(Integer.parseInt(edtRepeticoes.getText()));
+        exeTre.setSeries(Integer.parseInt(edtSeries.getText()));
+        exeTre.setOrdem(Integer.parseInt(edtOrdem.getText()));
+        ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
+        if (conExeTre.criar(exeTre)) {
+            DialogManager.showSuccessDialog(this, "Exercício adicionado com sucesso!");
+            new FrAdicionarExercicio().setVisible(true);
+            this.dispose();
+        } else {
+            DialogManager.showErrorDialog(this, "Erro ao adicionar exercício.");
         }
+    } catch (NumberFormatException ex) {
+        DialogManager.showErrorDialog(this, "Erro: Verifique se todos os campos numéricos estão preenchidos corretamente.");
     }
+}
 
     /**
      * @param args the command line arguments
@@ -339,7 +353,6 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<Exercicio> cbxExercicios;
@@ -348,10 +361,12 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     private javax.swing.JTextField edtOrdem;
     private javax.swing.JTextField edtRepeticoes;
     private javax.swing.JTextField edtSeries;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblCarga;
     private javax.swing.JLabel lblCriarTreino;
-    private javax.swing.JLabel lblCriarTreino1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblOrdem;
     private javax.swing.JLabel lblRepeticoes;

@@ -8,7 +8,7 @@ package tela;
 import controlar.ControladorDeTreino;
 import controlar.ControladorDeUsuario;
 import java.util.List;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import modelo.Treino;
@@ -38,9 +38,6 @@ public class FrCriarTreino extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
-        lblCriarTreino = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         edtDuracao = new javax.swing.JTextField();
         lblDuracao = new javax.swing.JLabel();
@@ -54,10 +51,14 @@ public class FrCriarTreino extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         btnAdicionarExercicio = new javax.swing.JButton();
-        background = new javax.swing.JLabel();
-        lblCriarTreino1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        lblCriarTreino = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Criar Treino - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -65,19 +66,141 @@ public class FrCriarTreino extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMenor.png"))); // NOI18N
-        getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 130));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
-        lblCriarTreino.setText("CRIAR TREINO");
-        getContentPane().add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+        edtDuracao.setBackground(new java.awt.Color(251, 80, 0));
+        edtDuracao.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtDuracao.setForeground(new java.awt.Color(0, 0, 0));
+        edtDuracao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDuracao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDuracao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDuracao.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtDuracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtDuracaoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 480, 50));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 102));
+        lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDuracao.setForeground(new java.awt.Color(0, 0, 0));
+        lblDuracao.setText("Duração");
+        jPanel1.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, -1, -1));
+
+        edtObjetivo.setBackground(new java.awt.Color(251, 80, 0));
+        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
+        edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtObjetivo.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtObjetivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtObjetivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 480, 50));
+
+        lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblObjetivo.setForeground(new java.awt.Color(0, 0, 0));
+        lblObjetivo.setText("Objetivo");
+        jPanel1.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
+
+        edtNome.setBackground(new java.awt.Color(251, 80, 0));
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtNome.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtNomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 480, 50));
+
+        lblDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        lblDescricao.setText("Descrição");
+        jPanel1.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, -1, -1));
+
+        edtDescricao.setBackground(new java.awt.Color(251, 80, 0));
+        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
+        edtDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtDescricaoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 480, 50));
+
+        btnCriar.setBackground(new java.awt.Color(251, 80, 0));
+        btnCriar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnCriar.setText("Criar");
+        btnCriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCriarMouseClicked(evt);
+            }
+        });
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 640, 120, 50));
+
+        cbxUsuarios.setBackground(new java.awt.Color(251, 80, 0));
+        cbxUsuarios.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        cbxUsuarios.setForeground(new java.awt.Color(0, 0, 0));
+        cbxUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxUsuariosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbxUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 210, -1));
+
+        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
+        lblNome.setText("Nome");
+        jPanel1.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
+
+        lblUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsuario.setText("Cliente");
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
+
+        btnAdicionarExercicio.setBackground(new java.awt.Color(251, 80, 0));
+        btnAdicionarExercicio.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnAdicionarExercicio.setText("Adicionar Exercício");
+        btnAdicionarExercicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAdicionarExercicioMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAdicionarExercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 260, 40));
+
+        jPanel3.setBackground(new java.awt.Color(251, 80, 0));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
+        jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
+
+        btnSair.setBackground(new java.awt.Color(255, 102, 255));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setText("Sair");
         btnSair.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -89,136 +212,18 @@ public class FrCriarTreino extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 140, 60));
+        jPanel5.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 40, 80, 60));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        lblCriarTreino.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
+        lblCriarTreino.setForeground(new java.awt.Color(251, 80, 0));
+        lblCriarTreino.setText("Criar Treino");
+        jPanel5.add(lblCriarTreino, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, -1, 140));
 
-        edtDuracao.setBackground(new java.awt.Color(251, 80, 0));
-        edtDuracao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDuracao.setForeground(new java.awt.Color(0, 0, 0));
-        edtDuracao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDuracao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDuracao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDuracao.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtDuracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDuracaoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 480, 50));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
-        lblDuracao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDuracao.setForeground(new java.awt.Color(0, 0, 0));
-        lblDuracao.setText("Duracao");
-        jPanel1.add(lblDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
-        edtObjetivo.setBackground(new java.awt.Color(251, 80, 0));
-        edtObjetivo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtObjetivo.setForeground(new java.awt.Color(0, 0, 0));
-        edtObjetivo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtObjetivo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtObjetivo.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtObjetivo.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtObjetivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtObjetivoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 480, 50));
-
-        lblObjetivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblObjetivo.setForeground(new java.awt.Color(0, 0, 0));
-        lblObjetivo.setText("Objetivo");
-        jPanel1.add(lblObjetivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
-
-        edtNome.setBackground(new java.awt.Color(251, 80, 0));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtNomeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 480, 50));
-
-        lblDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        lblDescricao.setText("Descricao");
-        jPanel1.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
-
-        edtDescricao.setBackground(new java.awt.Color(251, 80, 0));
-        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
-        edtDescricao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 480, 50));
-
-        btnCriar.setBackground(new java.awt.Color(251, 80, 0));
-        btnCriar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnCriar.setText("CRIAR");
-        btnCriar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCriarMouseClicked(evt);
-            }
-        });
-        btnCriar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCriar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 120, 50));
-
-        cbxUsuarios.setBackground(new java.awt.Color(251, 80, 0));
-        cbxUsuarios.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        cbxUsuarios.setForeground(new java.awt.Color(0, 0, 0));
-        cbxUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxUsuariosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cbxUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 210, -1));
-
-        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(0, 0, 0));
-        lblNome.setText("Nome");
-        jPanel1.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
-
-        lblUsuario.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        lblUsuario.setText("Usuario");
-        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
-
-        btnAdicionarExercicio.setBackground(new java.awt.Color(251, 80, 0));
-        btnAdicionarExercicio.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnAdicionarExercicio.setText("Adicionar Exercicio");
-        btnAdicionarExercicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAdicionarExercicioMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnAdicionarExercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 260, 40));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 590, 560));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/background Saude.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1290, 730));
-
-        lblCriarTreino1.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
-        lblCriarTreino1.setForeground(new java.awt.Color(251, 186, 0));
-        lblCriarTreino1.setText("CRIAR TREINO");
-        getContentPane().add(lblCriarTreino1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,7 +257,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
         int indexSelecionado = cbxUsuarios.getSelectedIndex();
         Usuario usu = cbxUsuarios.getItemAt(indexSelecionado);
         criar(usu.getPkUsuario());
-        
+
         Instrutor instrutorLogado = InstrutorLogado.getInstrutorLogado();
         System.out.println(usu.getPkUsuario());
         System.out.println(instrutorLogado.getPkInstrutor());
@@ -263,7 +268,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUsuariosActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
         ControladorDeUsuario conUsu = new ControladorDeUsuario();
 
         List<Usuario> lista = conUsu.consultar(0, "");
@@ -275,19 +280,18 @@ public class FrCriarTreino extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnAdicionarExercicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarExercicioMouseClicked
-         new FrAdicionarExercicio().setVisible(true);
+        new FrAdicionarExercicio().setVisible(true);
     }//GEN-LAST:event_btnAdicionarExercicioMouseClicked
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCriarActionPerformed
-
     private void criar(int id) {
         try {
             Instrutor instrutorLogado = InstrutorLogado.getInstrutorLogado();
 
             if (instrutorLogado == null) {
-                JOptionPane.showMessageDialog(this, "Instrutor não logado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                DialogManager.showErrorDialog(this, "Instrutor não logado!");
                 return;
             }
 
@@ -306,36 +310,30 @@ public class FrCriarTreino extends javax.swing.JFrame {
 
             ControladorDeTreino conTre = new ControladorDeTreino();
             if (conTre.criar(treino)) {
-                JOptionPane.showMessageDialog(this, "Treino criado com sucesso!");
+                DialogManager.showSuccessDialog(this, "Treino criado com sucesso!");
                 new FrCriarTreino().setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Erro ao criar treino.", "Erro", JOptionPane.ERROR_MESSAGE);
+                DialogManager.showErrorDialog(this, "Erro ao criar treino.");
             }
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Duração deve ser um número válido!",
-                    "Erro de Formato",
-                    JOptionPane.ERROR_MESSAGE);
+            DialogManager.showErrorDialog(this, "Duração deve ser um número válido!");
             edtDuracao.requestFocus();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this,
-                    "Erro inesperado: " + ex.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
+            DialogManager.showErrorDialog(this, "Erro inesperado: " + ex.getMessage());
         }
     }
 
     private boolean validarCampos() {
         if (edtNome.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nome é obrigatório!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DialogManager.showWarningDialog(this, "Nome é obrigatório!");
             edtNome.requestFocus();
             return false;
         }
 
         if (edtDuracao.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Duração é obrigatória!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DialogManager.showWarningDialog(this, "Duração é obrigatória!");
             edtDuracao.requestFocus();
             return false;
         }
@@ -343,12 +341,12 @@ public class FrCriarTreino extends javax.swing.JFrame {
         try {
             int duracao = Integer.parseInt(edtDuracao.getText().trim());
             if (duracao <= 0) {
-                JOptionPane.showMessageDialog(this, "Duração deve ser maior que zero!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                DialogManager.showWarningDialog(this, "Duração deve ser maior que zero!");
                 edtDuracao.requestFocus();
                 return false;
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Duração deve ser um número!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            DialogManager.showWarningDialog(this, "Duração deve ser um número!");
             edtDuracao.requestFocus();
             return false;
         }
@@ -392,7 +390,6 @@ public class FrCriarTreino extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
     private javax.swing.JButton btnAdicionarExercicio;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnSair;
@@ -402,11 +399,12 @@ public class FrCriarTreino extends javax.swing.JFrame {
     private javax.swing.JTextField edtNome;
     private javax.swing.JTextField edtObjetivo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblCriarTreino;
-    private javax.swing.JLabel lblCriarTreino1;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblDuracao;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogo1;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblObjetivo;
     private javax.swing.JLabel lblUsuario;

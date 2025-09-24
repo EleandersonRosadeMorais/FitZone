@@ -7,7 +7,7 @@ package tela;
 
 import controlar.ControladorDeInstrutor;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import utilidade.DialogManager;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import utilidade.Util;
@@ -52,36 +52,44 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         edtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FitZone - Logar - Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         pnlPrincipal4.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPrincipal4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlPrincipal4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlSecundario4.setBackground(new java.awt.Color(251, 80, 0));
+        pnlSecundario4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         pnlSecundario4.setPreferredSize(new java.awt.Dimension(740, 720));
         pnlSecundario4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCadastrar4.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblCadastrar4.setForeground(new java.awt.Color(0, 0, 0));
-        lblCadastrar4.setText("CADASTRAR");
-        pnlSecundario4.add(lblCadastrar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        lblCadastrar4.setText("Cadastrar");
+        pnlSecundario4.add(lblCadastrar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
 
         btnCadastrar4.setBackground(new java.awt.Color(255, 255, 255));
         btnCadastrar4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnCadastrar4.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastrar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnCadastrar4.setText("CADASTRAR");
+        btnCadastrar4.setText("Cadastrar");
         btnCadastrar4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnCadastrar4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCadastrar4MouseClicked(evt);
             }
         });
-        pnlSecundario4.add(btnCadastrar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, 220, 50));
+        pnlSecundario4.add(btnCadastrar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 220, 50));
 
         lblTextoCadastrar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblTextoCadastrar1.setForeground(new java.awt.Color(0, 0, 0));
@@ -93,13 +101,13 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         lblTextoCadastrar2.setForeground(new java.awt.Color(0, 0, 0));
         lblTextoCadastrar2.setText("Clique no botão abaixo e crie");
         lblTextoCadastrar2.setToolTipText("");
-        pnlSecundario4.add(lblTextoCadastrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 326, 340, 40));
+        pnlSecundario4.add(lblTextoCadastrar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 340, 40));
 
         lblTextoCadastrar3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblTextoCadastrar3.setForeground(new java.awt.Color(0, 0, 0));
         lblTextoCadastrar3.setText("a sua agora mesmo.");
         lblTextoCadastrar3.setToolTipText("");
-        pnlSecundario4.add(lblTextoCadastrar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 240, 40));
+        pnlSecundario4.add(lblTextoCadastrar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 240, 40));
 
         iconCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilCadastrar.png"))); // NOI18N
         pnlSecundario4.add(iconCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
@@ -113,8 +121,8 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
 
         lblLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 48)); // NOI18N
         lblLogar.setForeground(new java.awt.Color(0, 0, 0));
-        lblLogar.setText("LOGAR");
-        pnlPrincipal4.add(lblLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
+        lblLogar.setText("Logar");
+        pnlPrincipal4.add(lblLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
 
         lblEmail.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,7 +130,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         pnlPrincipal4.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
         edtEmail.setBackground(new java.awt.Color(251, 80, 0));
-        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtEmail.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtEmail.setForeground(new java.awt.Color(0, 0, 0));
         edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -133,13 +141,18 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
                 edtEmailActionPerformed(evt);
             }
         });
+        edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtEmailKeyPressed(evt);
+            }
+        });
         pnlPrincipal4.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 480, 50));
 
         btnLogar.setBackground(new java.awt.Color(251, 80, 0));
         btnLogar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLogar.setForeground(new java.awt.Color(0, 0, 0));
         btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/chave.png"))); // NOI18N
-        btnLogar.setText("LOGAR");
+        btnLogar.setText("Logar");
         btnLogar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -157,7 +170,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         pnlPrincipal4.add(iconLogar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
         edtSenha.setBackground(new java.awt.Color(251, 80, 0));
-        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtSenha.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         edtSenha.setForeground(new java.awt.Color(0, 0, 0));
         edtSenha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edtSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -227,13 +240,24 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void edtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEmailKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+            new FrLogar().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_edtEmailKeyPressed
+
     private boolean verificarCampos() {
         if (edtEmail.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de E-mail");
+            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de E-mail");
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de senha");
+            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de senha");
             return false;
         }
         return true;
@@ -250,12 +274,11 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
         Instrutor instrutor = controller.autenticar(email, senha);
         if (instrutor != null) {
             InstrutorLogado.setInstrutorLogado(instrutor);
-            // abre o menu do instrutor
             FrMenuInstrutor telaMenu = new FrMenuInstrutor();
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Instrutor não encontrado");
+            DialogManager.showErrorDialog(rootPane, "Instrutor não encontrado");
         }
     }
 

@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.Treino;
+import utilidade.DialogManager;
 
 public class ControladorDeTreino {
 
@@ -14,7 +14,6 @@ public class ControladorDeTreino {
         String sql = "INSERT INTO TREINO (fkUsuario, fkInstrutor, nome, descricao, objetivo, duracao_minutos) VALUES (?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
@@ -29,7 +28,7 @@ public class ControladorDeTreino {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao criar treino: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -69,7 +68,7 @@ public class ControladorDeTreino {
                 lista.add(tre);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar treinos: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -81,19 +80,15 @@ public class ControladorDeTreino {
         String sql = "DELETE FROM TREINO WHERE nome = ? ";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
-
         PreparedStatement comando = null;
 
         try {
             comando = gerenciador.prepararComando(sql);
-
             comando.setString(1, nome);
-
             comando.executeUpdate();
-
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao deletar treino: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -109,11 +104,10 @@ public class ControladorDeTreino {
         try {
             comando = gerenciador.prepararComando(sql);
             comando.setInt(1, id);
-
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao verificar treino: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
@@ -156,7 +150,7 @@ public class ControladorDeTreino {
                 lista.add(tre);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao consultar treinos: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -173,11 +167,10 @@ public class ControladorDeTreino {
         try {
             comando = gerenciador.prepararComando(sql);
             comando.setInt(1, id);
-
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DialogManager.showErrorDialog(null, "Erro ao verificar treino do usuário: " + e.getMessage());
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
