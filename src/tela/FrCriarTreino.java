@@ -288,6 +288,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
 
     private void btnAdicionarExercicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarExercicioMouseClicked
         new FrAdicionarExercicio().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAdicionarExercicioMouseClicked
 
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed

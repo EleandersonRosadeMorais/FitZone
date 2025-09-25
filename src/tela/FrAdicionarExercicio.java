@@ -244,6 +244,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
+        new FrCriarTreino().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
@@ -268,9 +269,11 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_edtRepeticoesActionPerformed
 
     private void btnCriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarMouseClicked
-        int indexSelecionado = cbxTreinos.getSelectedIndex();
-        Treino tre = cbxTreinos.getItemAt(indexSelecionado);
-        Exercicio exe = cbxExercicios.getItemAt(indexSelecionado);
+        int indexSelecionadoTreinos = cbxTreinos.getSelectedIndex();
+        Treino tre = cbxTreinos.getItemAt(indexSelecionadoTreinos);
+
+        int indexSelecionadoExercicios = cbxExercicios.getSelectedIndex();
+        Exercicio exe = cbxExercicios.getItemAt(indexSelecionadoExercicios);
         criar(exe.getPkExercicio(), tre.getPkTreino());
     }//GEN-LAST:event_btnCriarMouseClicked
 

@@ -224,15 +224,15 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
 
         ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
         List<AvaliacaoFisica> listaAvaliacoes = conAva.consultar(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-        AvaliacaoFisica avaliacao = listaAvaliacoes.get(0);
-        edtPeso.setText(String.valueOf(avaliacao.getPeso()));
-        edtAltura.setText(String.valueOf(avaliacao.getAltura()));
-        edtCircunferenciaAbdominal.setText(String.valueOf(avaliacao.getCircunferencia_abdominal()));
-        edtObservacoes.setText(avaliacao.getObservacoes());
 
-        avaliacao.getObservacoes();
-
-
+        if (listaAvaliacoes != null && !listaAvaliacoes.isEmpty()) {
+            AvaliacaoFisica avaliacao = listaAvaliacoes.get(0);
+            edtPeso.setText(String.valueOf(avaliacao.getPeso()));
+            edtAltura.setText(String.valueOf(avaliacao.getAltura()));
+            edtCircunferenciaAbdominal.setText(String.valueOf(avaliacao.getCircunferencia_abdominal()));
+            edtObservacoes.setText(avaliacao.getObservacoes());
+        } else {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -268,57 +268,73 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         edtObservacoes.setText("");
     }
 
-private void cadastrarAvaliacao() {
-    AvaliacaoFisica avaliacao = new AvaliacaoFisica();
-    try {
-        double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
-        peso = Double.parseDouble(edtPeso.getText());
-        altura = Double.parseDouble(edtAltura.getText());
-        circAbdominal = Double.parseDouble(edtCircunferenciaAbdominal.getText());
-        imc = peso / (altura * altura);
-        gorduraCorporal = 64 - (20 * (altura / circAbdominal));
-        massaMuscular = peso - (peso * gorduraCorporal / 100);
-        Date nascimentoDate = UsuarioLogado.getUsuarioLogado().getDataNascimento();
-        Calendar nasc = Calendar.getInstance();
-        nasc.setTime(nascimentoDate);
-        Calendar hoje = Calendar.getInstance();
-        int idade = hoje.get(Calendar.YEAR) - nasc.get(Calendar.YEAR);
-        if (hoje.get(Calendar.DAY_OF_YEAR) < nasc.get(Calendar.DAY_OF_YEAR)) {
-            idade--;
+    private void cadastrarAvaliacao() {
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica();
+        try {
+            double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
+
+            peso = Double.parseDouble(edtPeso.getText());           // kg
+            altura = Double.parseDouble(edtAltura.getText());       // m
+            circAbdominal = Double.parseDouble(edtCircunferenciaAbdominal.getText()); // cm
+
+            // IMC (já está ok: kg / m²)
+            imc = peso / (altura * altura);
+
+            // Circunferência: converter altura para cm para manter unidade
+            double alturaCm = altura * 100;
+
+            // Fórmula da gordura corporal (ajustada para unidades iguais)
+            gorduraCorporal = 64 - (20 * (alturaCm / circAbdominal));
+
+            // Massa muscular estimada
+            massaMuscular = peso - (peso * gorduraCorporal / 100);
+
+            // Idade
+            Date nascimentoDate = UsuarioLogado.getUsuarioLogado().getDataNascimento();
+            Calendar nasc = Calendar.getInstance();
+            nasc.setTime(nascimentoDate);
+            Calendar hoje = Calendar.getInstance();
+            int idade = hoje.get(Calendar.YEAR) - nasc.get(Calendar.YEAR);
+            if (hoje.get(Calendar.DAY_OF_YEAR) < nasc.get(Calendar.DAY_OF_YEAR)) {
+                idade--;
+            }
+
+            // TMB (Mifflin-St Jeor) - altura em cm
+            String sexo = UsuarioLogado.getUsuarioLogado().getSexo();
+            if (sexo.equalsIgnoreCase("homem") || sexo.equalsIgnoreCase("masculino") || sexo.equalsIgnoreCase("m")) {
+                tmb = (10 * peso) + (6.25 * alturaCm) - (5 * idade) + 5;
+            } else {
+                tmb = (10 * peso) + (6.25 * alturaCm) - (5 * idade) - 161;
+            }
+
+            avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+            avaliacao.setPeso(peso);
+            avaliacao.setAltura(altura);
+            avaliacao.setCircunferencia_abdominal(circAbdominal);
+            avaliacao.setObservacoes(edtObservacoes.getText());
+            avaliacao.setMassa_muscular(massaMuscular);
+            avaliacao.setGordura_corporal(gorduraCorporal);
+            avaliacao.setImc(imc);
+            avaliacao.setTmb(tmb);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite valores numéricos válidos para peso, altura e circunferência.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        String sexo = UsuarioLogado.getUsuarioLogado().getSexo();
-        System.out.println(sexo);
-        if (sexo.equalsIgnoreCase("homem")) {
-            tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) + 5;
+
+        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+            if (conAva.alterar(avaliacao)) {
+                JOptionPane.showMessageDialog(this, "Avaliação Alterada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
         } else {
-            tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) - 161;
-        }
-        avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-        avaliacao.setPeso(peso);
-        avaliacao.setAltura(altura);
-        avaliacao.setCircunferencia_abdominal(circAbdominal);
-        avaliacao.setObservacoes(edtObservacoes.getText());
-        avaliacao.setMassa_muscular(massaMuscular);
-        avaliacao.setGordura_corporal(gorduraCorporal);
-        avaliacao.setImc(imc);
-        avaliacao.setTmb(tmb);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Digite valores numéricos válidos para peso, altura e circunferência.", "Erro", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
-    if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
-        if (conAva.alterar(avaliacao)) {
-            JOptionPane.showMessageDialog(this, "Avaliação Alterada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        }
-    } else {
-        if (conAva.inserir(avaliacao)) {
-            JOptionPane.showMessageDialog(this, "Avaliação Inserida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
+            if (conAva.inserir(avaliacao)) {
+                JOptionPane.showMessageDialog(this, "Avaliação Inserida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
         }
     }
-}
 
     /**
      * @param args the command line arguments
