@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
-import utilidade.DialogManager;
 
 public class ControladorDeAvaliacao {
 
@@ -35,7 +35,7 @@ public class ControladorDeAvaliacao {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao inserir avaliação: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao inserir avaliação: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -64,7 +64,7 @@ public class ControladorDeAvaliacao {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao alterar avaliação: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao alterar avaliação: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -100,7 +100,7 @@ public class ControladorDeAvaliacao {
                 lista.add(avaFis);
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar avaliações: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar avaliações: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -120,7 +120,7 @@ public class ControladorDeAvaliacao {
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao verificar avaliação: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao verificar avaliação: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }

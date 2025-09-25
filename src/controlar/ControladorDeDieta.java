@@ -3,8 +3,8 @@ package controlar;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import modelo.Dieta;
-import utilidade.DialogManager;
 
 public class ControladorDeDieta {
 
@@ -29,7 +29,7 @@ public class ControladorDeDieta {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao inserir dieta: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao inserir dieta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -48,7 +48,7 @@ public class ControladorDeDieta {
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar dieta: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar dieta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
@@ -67,7 +67,7 @@ public class ControladorDeDieta {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao remover dieta: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao remover dieta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }

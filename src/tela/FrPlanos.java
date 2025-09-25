@@ -8,6 +8,7 @@ package tela;
 import controlar.ControladorDeAssinatura;
 import controlar.ControladorDePlano;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Beneficio;
 import modelo.Plano;
 import modelo.Plano_Beneficio;
@@ -38,7 +39,15 @@ public class FrPlanos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlSecundario = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        lblLogo1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnSair1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblLogo2 = new javax.swing.JLabel();
+        lblDietaPerderPeso2 = new javax.swing.JLabel();
+        btnSair7 = new javax.swing.JButton();
         lblNomePlano = new javax.swing.JLabel();
         edtNomePlano = new javax.swing.JTextField();
         lblPrecoMensal = new javax.swing.JLabel();
@@ -61,7 +70,6 @@ public class FrPlanos extends javax.swing.JFrame {
         lblDescricao1 = new javax.swing.JLabel();
         lblNome2 = new javax.swing.JLabel();
         lblDescricao2 = new javax.swing.JLabel();
-        pnlTerceario = new javax.swing.JPanel();
         lblNomePlano1 = new javax.swing.JLabel();
         edtNomePlano1 = new javax.swing.JTextField();
         lblPrecoMensal1 = new javax.swing.JLabel();
@@ -84,15 +92,7 @@ public class FrPlanos extends javax.swing.JFrame {
         lblDescricao4 = new javax.swing.JLabel();
         lblNome5 = new javax.swing.JLabel();
         lblDescricao5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lblLogo1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnSair1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        lblLogo2 = new javax.swing.JLabel();
-        lblDietaPerderPeso2 = new javax.swing.JLabel();
-        btnSair7 = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Planos - Usuário");
@@ -106,362 +106,6 @@ public class FrPlanos extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblNomePlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNomePlano.setForeground(new java.awt.Color(251, 186, 0));
-        lblNomePlano.setText("Nome");
-        pnlSecundario.add(lblNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 30));
-
-        edtNomePlano.setEditable(false);
-        edtNomePlano.setBackground(new java.awt.Color(251, 186, 0));
-        edtNomePlano.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNomePlano.setForeground(new java.awt.Color(0, 0, 0));
-        edtNomePlano.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNomePlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNomePlano.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNomePlano.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 240, 30));
-
-        lblPrecoMensal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblPrecoMensal.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrecoMensal.setText("Preço Mensal");
-        pnlSecundario.add(lblPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
-
-        edtPrecoMensal.setEditable(false);
-        edtPrecoMensal.setBackground(new java.awt.Color(251, 186, 0));
-        edtPrecoMensal.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtPrecoMensal.setForeground(new java.awt.Color(0, 0, 0));
-        edtPrecoMensal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtPrecoMensal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtPrecoMensal.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtPrecoMensal.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 240, 30));
-
-        edtDescricaoPlano.setEditable(false);
-        edtDescricaoPlano.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricaoPlano.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricaoPlano.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricaoPlano.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricaoPlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricaoPlano.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricaoPlano.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
-
-        lblDescricaoPlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricaoPlano.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricaoPlano.setText("Descrição");
-        pnlSecundario.add(lblDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 30));
-
-        edtDescricao.setEditable(false);
-        edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 240, 30));
-
-        lblDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao.setText("Descrição");
-        pnlSecundario.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, 30));
-
-        edtNome.setEditable(false);
-        edtNome.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 240, 30));
-
-        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome.setText("Nome");
-        pnlSecundario.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, 30));
-
-        edtContratoMinimo.setEditable(false);
-        edtContratoMinimo.setBackground(new java.awt.Color(251, 186, 0));
-        edtContratoMinimo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtContratoMinimo.setForeground(new java.awt.Color(0, 0, 0));
-        edtContratoMinimo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtContratoMinimo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtContratoMinimo.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtContratoMinimo.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
-
-        lblContratoMinimo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblContratoMinimo.setForeground(new java.awt.Color(251, 186, 0));
-        lblContratoMinimo.setText("Contrato Mínimo");
-        pnlSecundario.add(lblContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 30));
-
-        edtNome2.setEditable(false);
-        edtNome2.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome2.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome2.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome2.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 240, 30));
-
-        edtDescricao1.setEditable(false);
-        edtDescricao1.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao1.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 240, 30));
-
-        edtNome1.setEditable(false);
-        edtNome1.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome1.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 240, 30));
-
-        edtDescricao2.setEditable(false);
-        edtDescricao2.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao2.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao2.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao2.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlSecundario.add(edtDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 240, 30));
-
-        btnAssinar.setBackground(new java.awt.Color(255, 102, 102));
-        btnAssinar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnAssinar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAssinar.setText("Assinar");
-        btnAssinar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnAssinar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAssinarMouseClicked(evt);
-            }
-        });
-        btnAssinar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssinarActionPerformed(evt);
-            }
-        });
-        pnlSecundario.add(btnAssinar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 150, 40));
-
-        lblBeneficio.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblBeneficio.setForeground(new java.awt.Color(251, 186, 0));
-        lblBeneficio.setText("Benefícios:");
-        pnlSecundario.add(lblBeneficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
-
-        lblNome1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome1.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome1.setText("Nome");
-        pnlSecundario.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, 30));
-
-        lblDescricao1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao1.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao1.setText("Descrição");
-        pnlSecundario.add(lblDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, 30));
-
-        lblNome2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome2.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome2.setText("Nome");
-        pnlSecundario.add(lblNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, 30));
-
-        lblDescricao2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao2.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao2.setText("Descrição");
-        pnlSecundario.add(lblDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, 30));
-
-        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 470, 490));
-
-        pnlTerceario.setBackground(new java.awt.Color(255, 255, 255));
-        pnlTerceario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlTerceario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblNomePlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNomePlano1.setForeground(new java.awt.Color(251, 186, 0));
-        lblNomePlano1.setText("Nome");
-        pnlTerceario.add(lblNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 30));
-
-        edtNomePlano1.setEditable(false);
-        edtNomePlano1.setBackground(new java.awt.Color(251, 186, 0));
-        edtNomePlano1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNomePlano1.setForeground(new java.awt.Color(0, 0, 0));
-        edtNomePlano1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNomePlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNomePlano1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNomePlano1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 240, 30));
-
-        lblPrecoMensal1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblPrecoMensal1.setForeground(new java.awt.Color(251, 186, 0));
-        lblPrecoMensal1.setText("Preço Mensal");
-        pnlTerceario.add(lblPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 30));
-
-        edtPrecoMensal1.setEditable(false);
-        edtPrecoMensal1.setBackground(new java.awt.Color(251, 186, 0));
-        edtPrecoMensal1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtPrecoMensal1.setForeground(new java.awt.Color(0, 0, 0));
-        edtPrecoMensal1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtPrecoMensal1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtPrecoMensal1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtPrecoMensal1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 240, 30));
-
-        edtDescricaoPlano1.setEditable(false);
-        edtDescricaoPlano1.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricaoPlano1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricaoPlano1.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricaoPlano1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricaoPlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricaoPlano1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricaoPlano1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
-
-        lblDescricaoPlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricaoPlano1.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricaoPlano1.setText("Descrição");
-        pnlTerceario.add(lblDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, 30));
-
-        edtDescricao3.setEditable(false);
-        edtDescricao3.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao3.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao3.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao3.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 240, 30));
-
-        lblDescricao3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao3.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao3.setText("Descrição");
-        pnlTerceario.add(lblDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, 30));
-
-        edtNome3.setEditable(false);
-        edtNome3.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome3.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome3.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome3.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 240, 30));
-
-        lblNome3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome3.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome3.setText("Nome");
-        pnlTerceario.add(lblNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, 30));
-
-        edtContratoMinimo1.setEditable(false);
-        edtContratoMinimo1.setBackground(new java.awt.Color(251, 186, 0));
-        edtContratoMinimo1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtContratoMinimo1.setForeground(new java.awt.Color(0, 0, 0));
-        edtContratoMinimo1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtContratoMinimo1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtContratoMinimo1.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtContratoMinimo1.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
-
-        lblContratoMinimo1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblContratoMinimo1.setForeground(new java.awt.Color(251, 186, 0));
-        lblContratoMinimo1.setText("Contrato Mínimo");
-        pnlTerceario.add(lblContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, 30));
-
-        edtNome5.setEditable(false);
-        edtNome5.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome5.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome5.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome5.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 240, 30));
-
-        edtDescricao4.setEditable(false);
-        edtDescricao4.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao4.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao4.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao4.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 240, 30));
-
-        edtNome4.setEditable(false);
-        edtNome4.setBackground(new java.awt.Color(251, 186, 0));
-        edtNome4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtNome4.setForeground(new java.awt.Color(0, 0, 0));
-        edtNome4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtNome4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtNome4.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtNome4.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 240, 30));
-
-        edtDescricao5.setEditable(false);
-        edtDescricao5.setBackground(new java.awt.Color(251, 186, 0));
-        edtDescricao5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        edtDescricao5.setForeground(new java.awt.Color(0, 0, 0));
-        edtDescricao5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        edtDescricao5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        edtDescricao5.setMinimumSize(new java.awt.Dimension(10, 20));
-        edtDescricao5.setPreferredSize(new java.awt.Dimension(10, 20));
-        pnlTerceario.add(edtDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 240, 30));
-
-        btnAssinar1.setBackground(new java.awt.Color(255, 102, 102));
-        btnAssinar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnAssinar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAssinar1.setText("Assinar");
-        btnAssinar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnAssinar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAssinar1MouseClicked(evt);
-            }
-        });
-        btnAssinar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssinar1ActionPerformed(evt);
-            }
-        });
-        pnlTerceario.add(btnAssinar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 140, 40));
-
-        lblBeneficio1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblBeneficio1.setForeground(new java.awt.Color(251, 186, 0));
-        lblBeneficio1.setText("Benefícios:");
-        pnlTerceario.add(lblBeneficio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
-
-        lblNome4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome4.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome4.setText("Nome");
-        pnlTerceario.add(lblNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, 30));
-
-        lblDescricao4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao4.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao4.setText("Descrição");
-        pnlTerceario.add(lblDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, 30));
-
-        lblNome5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblNome5.setForeground(new java.awt.Color(251, 186, 0));
-        lblNome5.setText("Nome");
-        pnlTerceario.add(lblNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, -1, 30));
-
-        lblDescricao5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        lblDescricao5.setForeground(new java.awt.Color(251, 186, 0));
-        lblDescricao5.setText("Descrição");
-        pnlTerceario.add(lblDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, 30));
-
-        jPanel1.add(pnlTerceario, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 470, 480));
-
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -474,7 +118,7 @@ public class FrPlanos extends javax.swing.JFrame {
         jLabel3.setText("Planos");
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, 140));
 
-        btnSair1.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair1.setBackground(new java.awt.Color(255, 0, 0));
         btnSair1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair1.setForeground(new java.awt.Color(0, 0, 0));
         btnSair1.setText("Sair");
@@ -529,6 +173,345 @@ public class FrPlanos extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
+        lblNomePlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNomePlano.setForeground(new java.awt.Color(251, 186, 0));
+        lblNomePlano.setText("Nome");
+        jPanel1.add(lblNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, 30));
+
+        edtNomePlano.setEditable(false);
+        edtNomePlano.setBackground(new java.awt.Color(251, 186, 0));
+        edtNomePlano.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNomePlano.setForeground(new java.awt.Color(0, 0, 0));
+        edtNomePlano.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNomePlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNomePlano.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNomePlano.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNomePlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 240, 30));
+
+        lblPrecoMensal.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblPrecoMensal.setForeground(new java.awt.Color(251, 186, 0));
+        lblPrecoMensal.setText("Preço Mensal");
+        jPanel1.add(lblPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, 30));
+
+        edtPrecoMensal.setEditable(false);
+        edtPrecoMensal.setBackground(new java.awt.Color(251, 186, 0));
+        edtPrecoMensal.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtPrecoMensal.setForeground(new java.awt.Color(0, 0, 0));
+        edtPrecoMensal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtPrecoMensal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtPrecoMensal.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtPrecoMensal.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtPrecoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 240, 30));
+
+        edtDescricaoPlano.setEditable(false);
+        edtDescricaoPlano.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricaoPlano.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricaoPlano.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricaoPlano.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricaoPlano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricaoPlano.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricaoPlano.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 240, 30));
+
+        lblDescricaoPlano.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricaoPlano.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricaoPlano.setText("Descrição");
+        jPanel1.add(lblDescricaoPlano, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, 30));
+
+        edtDescricao.setEditable(false);
+        edtDescricao.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 240, 30));
+
+        lblDescricao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao.setText("Descrição");
+        jPanel1.add(lblDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, 30));
+
+        edtNome.setEditable(false);
+        edtNome.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 240, 30));
+
+        lblNome.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome.setText("Nome");
+        jPanel1.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, -1, 30));
+
+        edtContratoMinimo.setEditable(false);
+        edtContratoMinimo.setBackground(new java.awt.Color(251, 186, 0));
+        edtContratoMinimo.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtContratoMinimo.setForeground(new java.awt.Color(0, 0, 0));
+        edtContratoMinimo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtContratoMinimo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtContratoMinimo.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtContratoMinimo.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 240, 30));
+
+        lblContratoMinimo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblContratoMinimo.setForeground(new java.awt.Color(251, 186, 0));
+        lblContratoMinimo.setText("Contrato Mínimo");
+        jPanel1.add(lblContratoMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, 30));
+
+        edtNome2.setEditable(false);
+        edtNome2.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome2.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome2.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome2.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, 240, 30));
+
+        edtDescricao1.setEditable(false);
+        edtDescricao1.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao1.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 240, 30));
+
+        edtNome1.setEditable(false);
+        edtNome1.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome1.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 240, 30));
+
+        edtDescricao2.setEditable(false);
+        edtDescricao2.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao2.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao2.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao2.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao2.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 600, 240, 30));
+
+        btnAssinar.setBackground(new java.awt.Color(255, 102, 102));
+        btnAssinar.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnAssinar.setForeground(new java.awt.Color(0, 0, 0));
+        btnAssinar.setText("Assinar");
+        btnAssinar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnAssinar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAssinarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAssinar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 150, 40));
+
+        lblBeneficio.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblBeneficio.setForeground(new java.awt.Color(251, 186, 0));
+        lblBeneficio.setText("Benefícios:");
+        jPanel1.add(lblBeneficio, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
+
+        lblNome1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome1.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome1.setText("Nome");
+        jPanel1.add(lblNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, -1, 30));
+
+        lblDescricao1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao1.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao1.setText("Descrição");
+        jPanel1.add(lblDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, -1, 30));
+
+        lblNome2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome2.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome2.setText("Nome");
+        jPanel1.add(lblNome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, -1, 30));
+
+        lblDescricao2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao2.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao2.setText("Descrição");
+        jPanel1.add(lblDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, -1, 30));
+
+        lblNomePlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNomePlano1.setForeground(new java.awt.Color(251, 186, 0));
+        lblNomePlano1.setText("Nome");
+        jPanel1.add(lblNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 210, -1, 30));
+
+        edtNomePlano1.setEditable(false);
+        edtNomePlano1.setBackground(new java.awt.Color(251, 186, 0));
+        edtNomePlano1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNomePlano1.setForeground(new java.awt.Color(0, 0, 0));
+        edtNomePlano1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNomePlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNomePlano1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNomePlano1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNomePlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 210, 240, 30));
+
+        lblPrecoMensal1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblPrecoMensal1.setForeground(new java.awt.Color(251, 186, 0));
+        lblPrecoMensal1.setText("Preço Mensal");
+        jPanel1.add(lblPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 250, -1, 30));
+
+        edtPrecoMensal1.setEditable(false);
+        edtPrecoMensal1.setBackground(new java.awt.Color(251, 186, 0));
+        edtPrecoMensal1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtPrecoMensal1.setForeground(new java.awt.Color(0, 0, 0));
+        edtPrecoMensal1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtPrecoMensal1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtPrecoMensal1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtPrecoMensal1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtPrecoMensal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 240, 30));
+
+        edtDescricaoPlano1.setEditable(false);
+        edtDescricaoPlano1.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricaoPlano1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricaoPlano1.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricaoPlano1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricaoPlano1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricaoPlano1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricaoPlano1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 290, 240, 30));
+
+        lblDescricaoPlano1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricaoPlano1.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricaoPlano1.setText("Descrição");
+        jPanel1.add(lblDescricaoPlano1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, -1, 30));
+
+        edtDescricao3.setEditable(false);
+        edtDescricao3.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao3.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao3.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao3.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 430, 240, 30));
+
+        lblDescricao3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao3.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao3.setText("Descrição");
+        jPanel1.add(lblDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 430, -1, 30));
+
+        edtNome3.setEditable(false);
+        edtNome3.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome3.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome3.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome3.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 390, 240, 30));
+
+        lblNome3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome3.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome3.setText("Nome");
+        jPanel1.add(lblNome3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 390, -1, 30));
+
+        edtContratoMinimo1.setEditable(false);
+        edtContratoMinimo1.setBackground(new java.awt.Color(251, 186, 0));
+        edtContratoMinimo1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtContratoMinimo1.setForeground(new java.awt.Color(0, 0, 0));
+        edtContratoMinimo1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtContratoMinimo1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtContratoMinimo1.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtContratoMinimo1.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 330, 240, 30));
+
+        lblContratoMinimo1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblContratoMinimo1.setForeground(new java.awt.Color(251, 186, 0));
+        lblContratoMinimo1.setText("Contrato Mínimo");
+        jPanel1.add(lblContratoMinimo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, -1, 30));
+
+        edtNome5.setEditable(false);
+        edtNome5.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome5.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome5.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome5.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 550, 240, 30));
+
+        edtDescricao4.setEditable(false);
+        edtDescricao4.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao4.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao4.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao4.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 510, 240, 30));
+
+        edtNome4.setEditable(false);
+        edtNome4.setBackground(new java.awt.Color(251, 186, 0));
+        edtNome4.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtNome4.setForeground(new java.awt.Color(0, 0, 0));
+        edtNome4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtNome4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtNome4.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtNome4.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 470, 240, 30));
+
+        edtDescricao5.setEditable(false);
+        edtDescricao5.setBackground(new java.awt.Color(251, 186, 0));
+        edtDescricao5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        edtDescricao5.setForeground(new java.awt.Color(0, 0, 0));
+        edtDescricao5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        edtDescricao5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtDescricao5.setMinimumSize(new java.awt.Dimension(10, 20));
+        edtDescricao5.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel1.add(edtDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 590, 240, 30));
+
+        btnAssinar1.setBackground(new java.awt.Color(255, 102, 102));
+        btnAssinar1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnAssinar1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAssinar1.setText("Assinar");
+        btnAssinar1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnAssinar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAssinar1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnAssinar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 630, 140, 40));
+
+        lblBeneficio1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblBeneficio1.setForeground(new java.awt.Color(251, 186, 0));
+        lblBeneficio1.setText("Benefícios:");
+        jPanel1.add(lblBeneficio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 360, -1, -1));
+
+        lblNome4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome4.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome4.setText("Nome");
+        jPanel1.add(lblNome4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, -1, 30));
+
+        lblDescricao4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao4.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao4.setText("Descrição");
+        jPanel1.add(lblDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 510, -1, 30));
+
+        lblNome5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblNome5.setForeground(new java.awt.Color(251, 186, 0));
+        lblNome5.setText("Nome");
+        jPanel1.add(lblNome5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, -1, 30));
+
+        lblDescricao5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        lblDescricao5.setForeground(new java.awt.Color(251, 186, 0));
+        lblDescricao5.setText("Descrição");
+        jPanel1.add(lblDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 590, -1, 30));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -551,29 +534,6 @@ public class FrPlanos extends javax.swing.JFrame {
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair1ActionPerformed
-
-    private void btnAssinarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssinarMouseClicked
-
-        int fkUsuario = UsuarioLogado.getUsuarioLogado().getPkUsuario();
-        int fkPlano = 1;
-        ControladorDeAssinatura conAss = new ControladorDeAssinatura();
-        conAss.assinarPlano(fkUsuario, fkPlano);
-    }//GEN-LAST:event_btnAssinarMouseClicked
-
-    private void btnAssinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssinarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssinarActionPerformed
-
-    private void btnAssinar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssinar1MouseClicked
-        int fkUsuario = UsuarioLogado.getUsuarioLogado().getPkUsuario();
-        int fkPlano = 2;
-        ControladorDeAssinatura conAss = new ControladorDeAssinatura();
-        conAss.assinarPlano(fkUsuario, fkPlano);
-    }//GEN-LAST:event_btnAssinar1MouseClicked
-
-    private void btnAssinar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssinar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAssinar1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
@@ -644,6 +604,18 @@ public class FrPlanos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair7ActionPerformed
 
+    private void btnAssinarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssinarMouseClicked
+        JOptionPane.showMessageDialog(null, "Plano selecionado com sucesso!");
+           new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAssinarMouseClicked
+
+    private void btnAssinar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssinar1MouseClicked
+                JOptionPane.showMessageDialog(null, "Plano selecionado com sucesso!");
+           new FrMenu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAssinar1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -688,6 +660,7 @@ public class FrPlanos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnAssinar;
     private javax.swing.JButton btnAssinar1;
     private javax.swing.JButton btnSair1;
@@ -742,7 +715,5 @@ public class FrPlanos extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomePlano1;
     private javax.swing.JLabel lblPrecoMensal;
     private javax.swing.JLabel lblPrecoMensal1;
-    private javax.swing.JPanel pnlSecundario;
-    private javax.swing.JPanel pnlTerceario;
     // End of variables declaration//GEN-END:variables
 }

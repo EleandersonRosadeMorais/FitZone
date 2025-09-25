@@ -5,17 +5,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Exercicio;
 import modelo.ExercicioTreino;
-import utilidade.DialogManager;
 
 public class ControladorDeExercicioTreino {
 
     public List<ExercicioTreino> consultarPorTreino(int fkTreino) {
         String sql = "SELECT * "
                 + "FROM exercicio_treino et "
-                + "INNER JOIN exercicio e ON e.pkExercicio = et.fkExercicio "
-                + "WHERE et.fkTreino = ?";
+                + "INNER JOIN exercicio e "
+                + "ON e.pkExercicio = et.fkExercicio "
+                + "WHERE et.fkTreino = ?"; 
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -50,7 +51,7 @@ public class ControladorDeExercicioTreino {
                 lista.add(exeTre);
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar exercícios do treino: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar exercícios do treino: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -75,7 +76,7 @@ public class ControladorDeExercicioTreino {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao criar exercício no treino: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao criar exercício no treino: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }

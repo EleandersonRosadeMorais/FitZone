@@ -7,9 +7,10 @@ package tela;
 
 import controlar.ControladorDeInstrutor;
 import java.awt.event.KeyEvent;
-import utilidade.DialogManager;
 import modelo.Instrutor;
 import utilidade.Util;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -378,52 +379,52 @@ public class FrCadastrarInstrutor extends javax.swing.JFrame {
         instrutor.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
         ControladorDeInstrutor controller = new ControladorDeInstrutor();
         if (controller.inserir(instrutor)) {
-            DialogManager.showSuccessDialog(this, "Instrutor cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Instrutor cadastrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             new FrLogarInstrutor().setVisible(true);
             this.dispose();
         } else {
-            DialogManager.showErrorDialog(this, "Erro ao cadastrar instrutor.");
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar instrutor.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private boolean verificarCampos() {
         if (edtNome.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de nome");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o campo de nome", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (edtEspecialidade.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha a especialidade");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha a especialidade", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (edtCref.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o CREF");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o CREF", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!(Util.validarCref(edtCref.getText()))) {
-            DialogManager.showWarningDialog(this, "O CREF informado é inválido! Exemplo: 123456-G/SP");
+            JOptionPane.showMessageDialog(this, "O CREF informado é inválido! Exemplo: 123456-G/SP", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (edtEmail.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o e-mail");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o e-mail", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+\\.[a-z]+$")) {
-            DialogManager.showWarningDialog(this, "Formato de e-mail inválido");
+            JOptionPane.showMessageDialog(this, "Formato de e-mail inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha a senha");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha a senha", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).length() < 8) {
-            DialogManager.showWarningDialog(this, "A senha deve ter no mínimo 8 caracteres");
+            JOptionPane.showMessageDialog(this, "A senha deve ter no mínimo 8 caracteres", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
         String senha = new String(edtSenha.getPassword());
         String confirmarSenha = new String(edtConfirmarSenha.getPassword());
         if (!senha.equals(confirmarSenha)) {
-            DialogManager.showWarningDialog(this, "As senhas não coincidem");
+            JOptionPane.showMessageDialog(this, "As senhas não coincidem", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
 

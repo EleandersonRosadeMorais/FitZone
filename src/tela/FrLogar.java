@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import modelo.Usuario;
 import modelo.UsuarioLogado;
 import utilidade.Util;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +24,7 @@ public class FrLogar extends javax.swing.JFrame {
     public FrLogar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setExtendedState(FrLogar.MAXIMIZED_BOTH);
     }
 
     /**
@@ -235,11 +236,11 @@ public class FrLogar extends javax.swing.JFrame {
 
     private boolean verificarCampos() {
         if (edtEmail.getText().isEmpty()) {
-            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de E-mail");
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de E-mail", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de senha");
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de senha", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
@@ -262,7 +263,7 @@ public class FrLogar extends javax.swing.JFrame {
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
-            DialogManager.showErrorDialog(rootPane, "Usuário não encontrado");
+            JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

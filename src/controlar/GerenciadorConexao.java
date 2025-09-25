@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 
 public class GerenciadorConexao {
 
@@ -24,7 +24,7 @@ public class GerenciadorConexao {
         try {
             conexao = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro de conexão: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro de conexão: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -34,7 +34,7 @@ public class GerenciadorConexao {
         try {
             comando = conexao.prepareStatement(sql);
         } catch (SQLException erro) {
-            DialogManager.showErrorDialog(null, "Erro ao preparar comando: " + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao preparar comando: " + erro.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
         return comando;
     }

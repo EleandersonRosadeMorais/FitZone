@@ -16,12 +16,11 @@ public class Usuario {
     private Icon imagem;
     private String cpf;
     private String sexo;
-    private boolean ativo;
 
     public Usuario() {
     }
 
-    public Usuario(int pkUsuario, String nome, String email, String senha, String telefone, Date dataNascimento, String objetivo, Date dataCadastro, Icon imagem, String cpf, String sexo, boolean ativo) {
+    public Usuario(int pkUsuario, String nome, String email, String senha, String telefone, Date dataNascimento, String objetivo, Date dataCadastro, Icon imagem, String cpf, String sexo) {
         this.pkUsuario = pkUsuario;
         this.nome = nome;
         this.email = email;
@@ -33,7 +32,6 @@ public class Usuario {
         this.imagem = imagem;
         this.cpf = cpf;
         this.sexo = sexo;
-        this.ativo = ativo;
     }
 
     public int getPkUsuario() {
@@ -124,22 +122,6 @@ public class Usuario {
         this.sexo = sexo;
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-
-
-   public String getAtivoString(){
-    if(ativo){
-      return "Ativo";
-    }else{
-      return "Inativo";
-    }
-  }
   
   public String toString(){
     return nome;

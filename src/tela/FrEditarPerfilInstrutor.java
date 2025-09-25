@@ -7,10 +7,11 @@ package tela;
 
 import controlar.ControladorDeInstrutor;
 import java.awt.Color;
-import utilidade.DialogManager;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import utilidade.Util;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +61,7 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         lblLogo1 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         lblAlterarPerfil = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Editar Perfil - Instrutor");
@@ -238,7 +240,7 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
         jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair.setBackground(new java.awt.Color(255, 0, 0));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
         btnSair.setText("Sair");
@@ -263,6 +265,11 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
         pnlSecundario.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        pnlSecundario.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -367,10 +374,10 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
         ControladorDeInstrutor conIns = new ControladorDeInstrutor();
         boolean ok = conIns.alterar(instrutorAtual);
         if (ok) {
-            DialogManager.showSuccessDialog(this, "Instrutor atualizado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Instrutor atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             InstrutorLogado.setInstrutorLogado(instrutorAtual);
         } else {
-            DialogManager.showErrorDialog(this, "Erro ao atualizar o perfil.");
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar o perfil.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -419,6 +426,7 @@ public class FrEditarPerfilInstrutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnAlterarSenha;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;

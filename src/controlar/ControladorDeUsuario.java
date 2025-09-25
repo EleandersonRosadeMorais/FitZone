@@ -11,14 +11,14 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import modelo.Usuario;
-import utilidade.DialogManager;
 import utilidade.Util;
 
 public class ControladorDeUsuario {
 
     public Usuario autenticar(String email, String senha) {
-        String sql = "SELECT * FROM USUARIO WHERE email = ? AND senha = ? AND ativo = true";
+        String sql = "SELECT * FROM USUARIO WHERE email = ? AND senha = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -42,7 +42,6 @@ public class ControladorDeUsuario {
                 usu.setDataNascimento(resultado.getDate("data_nascimento"));
                 usu.setObjetivo(resultado.getString("objetivo"));
                 usu.setCpf(resultado.getString("cpf"));
-                usu.setAtivo(resultado.getBoolean("ativo"));
                 usu.setSexo(resultado.getString("sexo"));
 
                 byte[] imagemBytes = resultado.getBytes("imagem");
@@ -53,7 +52,7 @@ public class ControladorDeUsuario {
                 }
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro na autenticação: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro na autenticação: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -62,7 +61,7 @@ public class ControladorDeUsuario {
     }
 
     public boolean inserir(Usuario cliente) {
-        String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf, sexo, ativo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO USUARIO (nome, email, senha, telefone, data_nascimento, objetivo, imagem, cpf, sexo) VALUES (?,?,?,?,?,?,?,?,?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -79,12 +78,11 @@ public class ControladorDeUsuario {
             comando.setBytes(7, Util.converterIconToBytes(cliente.getImagem()));
             comando.setString(8, cliente.getCpf());
             comando.setString(9, cliente.getSexo());
-            comando.setBoolean(10, cliente.isAtivo());
 
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao inserir usuário: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao inserir usuário: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -92,7 +90,8 @@ public class ControladorDeUsuario {
     }
 
     public boolean alterar(Usuario usuario) {
-        String sql = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, objetivo = ?, imagem = ?, cpf = ?, ativo = ? WHERE pkUsuario = ?";
+        String sql = "UPDATE USUARIO SET nome = ?, email = ?, senha = ?, telefone = ?, data_nascimento = ?, objetivo = ?, imagem = ?, cpf = ?"
+                + " WHERE pkUsuario = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -107,14 +106,13 @@ public class ControladorDeUsuario {
             comando.setString(6, usuario.getObjetivo());
             comando.setBytes(7, Util.converterIconToBytes(usuario.getImagem()));
             comando.setString(8, usuario.getCpf());
-            comando.setBoolean(9, usuario.isAtivo());
-            comando.setInt(10, usuario.getPkUsuario());
+            comando.setInt(9, usuario.getPkUsuario());
 
             int linhas = comando.executeUpdate();
             return linhas > 0;
 
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao atualizar usuário: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar usuário: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -163,12 +161,11 @@ public class ControladorDeUsuario {
                 }
                 usu.setDataCadastro(resultado.getDate("data_cadastro"));
                 usu.setCpf(resultado.getString("cpf"));
-                usu.setAtivo(resultado.getBoolean("ativo"));
 
                 lista.add(usu);
             }
         } catch (SQLException | IOException e) {
-            DialogManager.showErrorDialog(null, "Erro na consulta: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro na consulta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }

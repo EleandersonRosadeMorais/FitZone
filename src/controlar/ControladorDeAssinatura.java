@@ -2,7 +2,7 @@ package controlar;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 
 public class ControladorDeAssinatura {
 
@@ -17,10 +17,10 @@ public class ControladorDeAssinatura {
             ps.setInt(1, fkUsuario);
             ps.setInt(2, fkPlano);
             ps.executeUpdate();
-            DialogManager.showSuccessDialog(null, "Plano assinado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Plano assinado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao assinar plano: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao assinar plano: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally {
             gerenciador.fecharConexao(ps);
@@ -40,7 +40,7 @@ public class ControladorDeAssinatura {
             }
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao remover assinatura: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao remover assinatura: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } finally {
             gerenciador.fecharConexao(ps);

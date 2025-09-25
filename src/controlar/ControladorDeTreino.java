@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Treino;
-import utilidade.DialogManager;
 
 public class ControladorDeTreino {
 
@@ -28,7 +28,7 @@ public class ControladorDeTreino {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao criar treino: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao criar treino: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -63,12 +63,11 @@ public class ControladorDeTreino {
                 tre.setDescricao(resultado.getString("descricao"));
                 tre.setObjetivo(resultado.getString("objetivo"));
                 tre.setDuracao_minutos(resultado.getInt("duracao_minutos"));
-                tre.setConcluido(resultado.getBoolean("concluido"));
 
                 lista.add(tre);
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar treinos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar treinos: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -88,7 +87,7 @@ public class ControladorDeTreino {
             comando.executeUpdate();
             return true;
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao deletar treino: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao deletar treino: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando);
         }
@@ -107,7 +106,7 @@ public class ControladorDeTreino {
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao verificar treino: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao verificar treino: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }
@@ -120,9 +119,6 @@ public class ControladorDeTreino {
         switch (opcao) {
             case 1:
                 sql += " Where fkInstrutor = " + id;
-                break;
-            case 2:
-                sql += " where concluido = true";
                 break;
         }
 
@@ -145,12 +141,11 @@ public class ControladorDeTreino {
                 tre.setDescricao(resultado.getString("descricao"));
                 tre.setObjetivo(resultado.getString("objetivo"));
                 tre.setDuracao_minutos(resultado.getInt("duracao_minutos"));
-                tre.setConcluido(resultado.getBoolean("concluido"));
 
                 lista.add(tre);
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar treinos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar treinos: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }
@@ -170,7 +165,7 @@ public class ControladorDeTreino {
             rs = comando.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao verificar treino do usuário: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao verificar treino do usuário: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, rs);
         }

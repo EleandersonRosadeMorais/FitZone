@@ -8,7 +8,7 @@ package tela;
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeDieta;
 import java.util.List;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 import modelo.AvaliacaoFisica;
 import modelo.Dieta;
 import modelo.UsuarioLogado;
@@ -47,7 +47,7 @@ public class FrManterPeso extends javax.swing.JFrame {
         lblLogo2 = new javax.swing.JLabel();
         lblDietaPerderPeso2 = new javax.swing.JLabel();
         btnSair7 = new javax.swing.JButton();
-        pnlSecundario = new javax.swing.JPanel();
+        btnEscolher = new javax.swing.JButton();
         lblObservacoes = new javax.swing.JLabel();
         edtPeso = new javax.swing.JTextField();
         edtRefeicao = new javax.swing.JTextField();
@@ -63,7 +63,6 @@ public class FrManterPeso extends javax.swing.JFrame {
         lblCarboidratos = new javax.swing.JLabel();
         lblGorduras = new javax.swing.JLabel();
         edtGorduras = new javax.swing.JTextField();
-        pnlSecundario1 = new javax.swing.JPanel();
         lblObservacoes1 = new javax.swing.JLabel();
         edtPeso1 = new javax.swing.JTextField();
         edtRefeicao1 = new javax.swing.JTextField();
@@ -79,7 +78,7 @@ public class FrManterPeso extends javax.swing.JFrame {
         lblCarboidratos1 = new javax.swing.JLabel();
         lblGorduras1 = new javax.swing.JLabel();
         edtGorduras1 = new javax.swing.JTextField();
-        btnEscolher = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Dieta Manter Peso - Usuário");
@@ -106,7 +105,7 @@ public class FrManterPeso extends javax.swing.JFrame {
         lblDietaPerderPeso.setText("Dieta Manter Peso");
         jPanel5.add(lblDietaPerderPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, 150));
 
-        btnSair5.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair5.setBackground(new java.awt.Color(255, 0, 0));
         btnSair5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair5.setForeground(new java.awt.Color(0, 0, 0));
         btnSair5.setText("Sair");
@@ -161,15 +160,24 @@ public class FrManterPeso extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
-        pnlSecundario.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSecundario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlSecundario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnEscolher.setBackground(new java.awt.Color(153, 255, 153));
+        btnEscolher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        btnEscolher.setForeground(new java.awt.Color(0, 0, 0));
+        btnEscolher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
+        btnEscolher.setText("Escolher Dieta");
+        btnEscolher.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnEscolher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 260, 60));
 
         lblObservacoes.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblObservacoes.setForeground(new java.awt.Color(251, 186, 0));
         lblObservacoes.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblObservacoes.setText("Observacoes");
-        pnlSecundario.add(lblObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, -1));
+        jPanel1.add(lblObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 530, 150, -1));
 
         edtPeso.setEditable(false);
         edtPeso.setBackground(new java.awt.Color(251, 186, 0));
@@ -184,7 +192,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtPesoActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 30));
+        jPanel1.add(edtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 240, 30));
 
         edtRefeicao.setEditable(false);
         edtRefeicao.setBackground(new java.awt.Color(251, 186, 0));
@@ -200,7 +208,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtRefeicaoActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
+        jPanel1.add(edtRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 240, 30));
 
         edtProteinas.setEditable(false);
         edtProteinas.setBackground(new java.awt.Color(251, 186, 0));
@@ -215,7 +223,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtProteinasActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 240, 30));
+        jPanel1.add(edtProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 240, 30));
 
         edtCalorias.setEditable(false);
         edtCalorias.setBackground(new java.awt.Color(251, 186, 0));
@@ -230,7 +238,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtCaloriasActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 30));
+        jPanel1.add(edtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 240, 30));
 
         edtCarboidratos.setEditable(false);
         edtCarboidratos.setBackground(new java.awt.Color(251, 186, 0));
@@ -245,7 +253,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtCarboidratosActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 240, 30));
+        jPanel1.add(edtCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 240, 30));
 
         edtObservacoes.setEditable(false);
         edtObservacoes.setBackground(new java.awt.Color(251, 186, 0));
@@ -261,48 +269,48 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtObservacoesActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 240, 30));
+        jPanel1.add(edtObservacoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, 240, 30));
 
         lblPrimeiraRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblPrimeiraRefeicao.setForeground(new java.awt.Color(251, 186, 0));
         lblPrimeiraRefeicao.setText("Primeira Refeição");
-        pnlSecundario.add(lblPrimeiraRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jPanel1.add(lblPrimeiraRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
 
         lblRefeicao.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblRefeicao.setForeground(new java.awt.Color(251, 186, 0));
         lblRefeicao.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblRefeicao.setText("Refeicao");
-        pnlSecundario.add(lblRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, -1));
+        jPanel1.add(lblRefeicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 110, -1));
 
         lblPeso.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblPeso.setForeground(new java.awt.Color(251, 186, 0));
         lblPeso.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPeso.setText("Peso");
-        pnlSecundario.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 60, -1));
+        jPanel1.add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 60, -1));
 
         lblCalorias.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblCalorias.setForeground(new java.awt.Color(251, 186, 0));
         lblCalorias.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCalorias.setText("Calorias");
-        pnlSecundario.add(lblCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, -1));
+        jPanel1.add(lblCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 110, -1));
 
         lblProteinas.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblProteinas.setForeground(new java.awt.Color(251, 186, 0));
         lblProteinas.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblProteinas.setText("Proteinas");
-        pnlSecundario.add(lblProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 120, -1));
+        jPanel1.add(lblProteinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 120, -1));
 
         lblCarboidratos.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblCarboidratos.setForeground(new java.awt.Color(251, 186, 0));
         lblCarboidratos.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCarboidratos.setText("Carboidratos");
-        pnlSecundario.add(lblCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, -1));
+        jPanel1.add(lblCarboidratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 160, -1));
 
         lblGorduras.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblGorduras.setForeground(new java.awt.Color(251, 186, 0));
         lblGorduras.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblGorduras.setText("Gorduras");
-        pnlSecundario.add(lblGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, -1));
+        jPanel1.add(lblGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, 110, -1));
 
         edtGorduras.setEditable(false);
         edtGorduras.setBackground(new java.awt.Color(251, 186, 0));
@@ -317,19 +325,13 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtGordurasActionPerformed(evt);
             }
         });
-        pnlSecundario.add(edtGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 30));
-
-        jPanel1.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 460, 390));
-
-        pnlSecundario1.setBackground(new java.awt.Color(255, 255, 255));
-        pnlSecundario1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        pnlSecundario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(edtGorduras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 240, 30));
 
         lblObservacoes1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblObservacoes1.setForeground(new java.awt.Color(251, 186, 0));
         lblObservacoes1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblObservacoes1.setText("Observacoes");
-        pnlSecundario1.add(lblObservacoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 150, -1));
+        jPanel1.add(lblObservacoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, 150, -1));
 
         edtPeso1.setEditable(false);
         edtPeso1.setBackground(new java.awt.Color(251, 186, 0));
@@ -344,7 +346,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtPeso1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtPeso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 240, 30));
+        jPanel1.add(edtPeso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 320, 240, 30));
 
         edtRefeicao1.setEditable(false);
         edtRefeicao1.setBackground(new java.awt.Color(251, 186, 0));
@@ -360,7 +362,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtRefeicao1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 240, 30));
+        jPanel1.add(edtRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 280, 240, 30));
 
         edtProteinas1.setEditable(false);
         edtProteinas1.setBackground(new java.awt.Color(251, 186, 0));
@@ -375,7 +377,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtProteinas1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtProteinas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 240, 30));
+        jPanel1.add(edtProteinas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 400, 240, 30));
 
         edtCalorias1.setEditable(false);
         edtCalorias1.setBackground(new java.awt.Color(251, 186, 0));
@@ -390,7 +392,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtCalorias1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtCalorias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 240, 30));
+        jPanel1.add(edtCalorias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 240, 30));
 
         edtCarboidratos1.setEditable(false);
         edtCarboidratos1.setBackground(new java.awt.Color(251, 186, 0));
@@ -405,7 +407,7 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtCarboidratos1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtCarboidratos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 240, 30));
+        jPanel1.add(edtCarboidratos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 240, 30));
 
         edtObservacoes1.setEditable(false);
         edtObservacoes1.setBackground(new java.awt.Color(251, 186, 0));
@@ -421,48 +423,48 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtObservacoes1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtObservacoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 240, 30));
+        jPanel1.add(edtObservacoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 520, 240, 30));
 
         lblPrimeiraRefeicao1.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
         lblPrimeiraRefeicao1.setForeground(new java.awt.Color(251, 186, 0));
         lblPrimeiraRefeicao1.setText("Segunda Refeição");
-        pnlSecundario1.add(lblPrimeiraRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
+        jPanel1.add(lblPrimeiraRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
         lblRefeicao1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblRefeicao1.setForeground(new java.awt.Color(251, 186, 0));
         lblRefeicao1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblRefeicao1.setText("Refeicao");
-        pnlSecundario1.add(lblRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 110, -1));
+        jPanel1.add(lblRefeicao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 110, -1));
 
         lblPeso1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblPeso1.setForeground(new java.awt.Color(251, 186, 0));
         lblPeso1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblPeso1.setText("Peso");
-        pnlSecundario1.add(lblPeso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 60, -1));
+        jPanel1.add(lblPeso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, 60, -1));
 
         lblCalorias1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblCalorias1.setForeground(new java.awt.Color(251, 186, 0));
         lblCalorias1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCalorias1.setText("Calorias");
-        pnlSecundario1.add(lblCalorias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, -1));
+        jPanel1.add(lblCalorias1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 110, -1));
 
         lblProteinas1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblProteinas1.setForeground(new java.awt.Color(251, 186, 0));
         lblProteinas1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblProteinas1.setText("Proteinas");
-        pnlSecundario1.add(lblProteinas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 120, -1));
+        jPanel1.add(lblProteinas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 120, -1));
 
         lblCarboidratos1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblCarboidratos1.setForeground(new java.awt.Color(251, 186, 0));
         lblCarboidratos1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCarboidratos1.setText("Carboidratos");
-        pnlSecundario1.add(lblCarboidratos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 160, -1));
+        jPanel1.add(lblCarboidratos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 160, -1));
 
         lblGorduras1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         lblGorduras1.setForeground(new java.awt.Color(251, 186, 0));
         lblGorduras1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblGorduras1.setText("Gorduras");
-        pnlSecundario1.add(lblGorduras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, -1));
+        jPanel1.add(lblGorduras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, 110, -1));
 
         edtGorduras1.setEditable(false);
         edtGorduras1.setBackground(new java.awt.Color(251, 186, 0));
@@ -477,51 +479,17 @@ public class FrManterPeso extends javax.swing.JFrame {
                 edtGorduras1ActionPerformed(evt);
             }
         });
-        pnlSecundario1.add(edtGorduras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 30));
+        jPanel1.add(edtGorduras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 480, 240, 30));
 
-        jPanel1.add(pnlSecundario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 460, 390));
-
-        btnEscolher.setBackground(new java.awt.Color(153, 255, 153));
-        btnEscolher.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        btnEscolher.setForeground(new java.awt.Color(0, 0, 0));
-        btnEscolher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cadastrar.png"))); // NOI18N
-        btnEscolher.setText("Escolher Dieta");
-        btnEscolher.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        btnEscolher.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEscolherMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnEscolher, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 260, 60));
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void edtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtPesoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtPesoActionPerformed
-
-    private void edtRefeicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRefeicaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtRefeicaoActionPerformed
-
-    private void edtProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtProteinasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtProteinasActionPerformed
-
-    private void edtCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCaloriasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCaloriasActionPerformed
-
-    private void edtCarboidratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCarboidratosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCarboidratosActionPerformed
-
-    private void edtObservacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtObservacoesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtObservacoesActionPerformed
 
     private void btnEscolherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherMouseClicked
         Escolher();
@@ -535,10 +503,6 @@ public class FrManterPeso extends javax.swing.JFrame {
     private void btnSair5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair5ActionPerformed
-
-    private void edtGordurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGordurasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtGordurasActionPerformed
 
     private void edtPeso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtPeso1ActionPerformed
         // TODO add your handling code here:
@@ -603,6 +567,34 @@ public class FrManterPeso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair7ActionPerformed
 
+    private void edtGordurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtGordurasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtGordurasActionPerformed
+
+    private void edtObservacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtObservacoesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtObservacoesActionPerformed
+
+    private void edtCarboidratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCarboidratosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCarboidratosActionPerformed
+
+    private void edtCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCaloriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCaloriasActionPerformed
+
+    private void edtProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtProteinasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtProteinasActionPerformed
+
+    private void edtRefeicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtRefeicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtRefeicaoActionPerformed
+
+    private void edtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtPesoActionPerformed
+
     private void Escolher() {
         Dieta dieta = new Dieta();
         Dieta dieta1 = new Dieta();
@@ -624,14 +616,13 @@ public class FrManterPeso extends javax.swing.JFrame {
             dieta1.setCarboidratos(Double.parseDouble(edtCarboidratos1.getText().replace(",", ".")));
             dieta1.setGorduras(Double.parseDouble(edtGorduras1.getText().replace(",", ".")));
             dieta1.setObservacoes(edtObservacoes1.getText());
-
             if (conDie.inserir(dieta) && conDie.inserir(dieta1)) {
-                DialogManager.showSuccessDialog(this, "Dieta inserida com sucesso!");
+                JOptionPane.showMessageDialog(this, "Dieta inserida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 new FrSaude().setVisible(true);
                 this.dispose();
             }
         } else {
-            DialogManager.showWarningDialog(this, "Você já possuí uma dieta em sua rotina, caso queira muda-lá, volte para o menu 'Saúde' e selecione 'Remover Dieta Atual'");
+            JOptionPane.showMessageDialog(this, "Você já possuí uma dieta em sua rotina, caso queira muda-lá, volte para o menu 'Saúde' e selecione 'Remover Dieta Atual'", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -680,6 +671,7 @@ public class FrManterPeso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnEscolher;
     private javax.swing.JButton btnSair5;
     private javax.swing.JButton btnSair7;
@@ -721,7 +713,5 @@ public class FrManterPeso extends javax.swing.JFrame {
     private javax.swing.JLabel lblProteinas1;
     private javax.swing.JLabel lblRefeicao;
     private javax.swing.JLabel lblRefeicao1;
-    private javax.swing.JPanel pnlSecundario;
-    private javax.swing.JPanel pnlSecundario1;
     // End of variables declaration//GEN-END:variables
 }

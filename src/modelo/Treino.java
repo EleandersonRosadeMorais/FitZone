@@ -9,7 +9,6 @@ public class Treino {
     private String descricao;
     private String objetivo;
     private int duracao_minutos;
-    private boolean concluido;
 
     public Treino() {
     }
@@ -70,15 +69,8 @@ public class Treino {
         this.duracao_minutos = duracao_minutos;
     }
 
-    public boolean isConcluido() {
-        return concluido;
-    }
 
-    public void setConcluido(boolean concluido) {
-        this.concluido = concluido;
-    }
-
-    public Treino(int pkTreino, int fkUsuario, int fkInstrutor, String nome, String descricao, String objetivo, int duracao_minutos, boolean concluido, int fkExercicioTreino) {
+    public Treino(int pkTreino, int fkUsuario, int fkInstrutor, String nome, String descricao, String objetivo, int duracao_minutos, int fkExercicioTreino) {
         this.pkTreino = pkTreino;
         this.fkUsuario = fkUsuario;
         this.fkInstrutor = fkInstrutor;
@@ -86,14 +78,11 @@ public class Treino {
         this.descricao = descricao;
         this.objetivo = objetivo;
         this.duracao_minutos = duracao_minutos;
-        this.concluido = concluido;
     }
 
     @Override
     public String toString() {
         return nome;
     }
-    
-
     
 }

@@ -5,10 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Beneficio;
 import modelo.Plano;
 import modelo.Plano_Beneficio;
-import utilidade.DialogManager;
 
 public class ControladorDePlano {
 
@@ -57,7 +57,7 @@ public class ControladorDePlano {
             }
 
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao carregar planos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao carregar planos: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(psPlano, rsPlano);
             gerenciador.fecharConexao(psBen, rsBen);

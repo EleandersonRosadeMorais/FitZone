@@ -8,12 +8,13 @@ package tela;
 import controlar.ControladorDeTreino;
 import controlar.ControladorDeUsuario;
 import java.util.List;
-import utilidade.DialogManager;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import modelo.Treino;
 import modelo.Usuario;
 import utilidade.Util;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
         lblLogo1 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         lblCriarTreino = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Criar Treino - Instrutor");
@@ -197,7 +199,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
         lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
         jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair.setBackground(new java.awt.Color(255, 0, 0));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
         btnSair.setText("Sair");
@@ -222,6 +224,11 @@ public class FrCriarTreino extends javax.swing.JFrame {
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -291,7 +298,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
             Instrutor instrutorLogado = InstrutorLogado.getInstrutorLogado();
 
             if (instrutorLogado == null) {
-                DialogManager.showErrorDialog(this, "Instrutor não logado!");
+                JOptionPane.showMessageDialog(this, "Instrutor não logado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -310,30 +317,30 @@ public class FrCriarTreino extends javax.swing.JFrame {
 
             ControladorDeTreino conTre = new ControladorDeTreino();
             if (conTre.criar(treino)) {
-                DialogManager.showSuccessDialog(this, "Treino criado com sucesso!");
+                JOptionPane.showMessageDialog(this, "Treino criado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 new FrCriarTreino().setVisible(true);
                 this.dispose();
             } else {
-                DialogManager.showErrorDialog(this, "Erro ao criar treino.");
+                JOptionPane.showMessageDialog(this, "Erro ao criar treino.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (NumberFormatException ex) {
-            DialogManager.showErrorDialog(this, "Duração deve ser um número válido!");
+            JOptionPane.showMessageDialog(this, "Duração deve ser um número válido!", "Erro", JOptionPane.ERROR_MESSAGE);
             edtDuracao.requestFocus();
         } catch (Exception ex) {
-            DialogManager.showErrorDialog(this, "Erro inesperado: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro inesperado: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private boolean validarCampos() {
         if (edtNome.getText().trim().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Nome é obrigatório!");
+            JOptionPane.showMessageDialog(this, "Nome é obrigatório!", "Aviso", JOptionPane.WARNING_MESSAGE);
             edtNome.requestFocus();
             return false;
         }
 
         if (edtDuracao.getText().trim().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Duração é obrigatória!");
+            JOptionPane.showMessageDialog(this, "Duração é obrigatória!", "Aviso", JOptionPane.WARNING_MESSAGE);
             edtDuracao.requestFocus();
             return false;
         }
@@ -341,12 +348,12 @@ public class FrCriarTreino extends javax.swing.JFrame {
         try {
             int duracao = Integer.parseInt(edtDuracao.getText().trim());
             if (duracao <= 0) {
-                DialogManager.showWarningDialog(this, "Duração deve ser maior que zero!");
+                JOptionPane.showMessageDialog(this, "Duração deve ser maior que zero!", "Aviso", JOptionPane.WARNING_MESSAGE);
                 edtDuracao.requestFocus();
                 return false;
             }
         } catch (NumberFormatException ex) {
-            DialogManager.showWarningDialog(this, "Duração deve ser um número!");
+            JOptionPane.showMessageDialog(this, "Duração deve ser um número!", "Aviso", JOptionPane.WARNING_MESSAGE);
             edtDuracao.requestFocus();
             return false;
         }
@@ -390,6 +397,7 @@ public class FrCriarTreino extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnAdicionarExercicio;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnSair;

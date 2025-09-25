@@ -9,10 +9,10 @@ import controlar.ControladorDeAvaliacao;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import utilidade.DialogManager;
 import modelo.AvaliacaoFisica;
 import modelo.UsuarioLogado;
 import utilidade.Util;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,6 +54,7 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         lblLogo1 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         lblAvaliacaoFisica = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Avaliação Física - Usuário");
@@ -171,7 +172,7 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         lblLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
         jPanel5.add(lblLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair.setBackground(new java.awt.Color(255, 0, 0));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
         btnSair.setText("Sair");
@@ -196,6 +197,11 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
         pnlSecundario.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        pnlSecundario.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pnlPrincipal.add(pnlSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -262,57 +268,57 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
         edtObservacoes.setText("");
     }
 
-    private void cadastrarAvaliacao() {
-        AvaliacaoFisica avaliacao = new AvaliacaoFisica();
-        try {
-            double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
-            peso = Double.parseDouble(edtPeso.getText());
-            altura = Double.parseDouble(edtAltura.getText());
-            circAbdominal = Double.parseDouble(edtCircunferenciaAbdominal.getText());
-            imc = peso / (altura * altura);
-            gorduraCorporal = 64 - (20 * (altura / circAbdominal));
-            massaMuscular = peso - (peso * gorduraCorporal / 100);
-            Date nascimentoDate = UsuarioLogado.getUsuarioLogado().getDataNascimento();
-            Calendar nasc = Calendar.getInstance();
-            nasc.setTime(nascimentoDate);
-            Calendar hoje = Calendar.getInstance();
-            int idade = hoje.get(Calendar.YEAR) - nasc.get(Calendar.YEAR);
-            if (hoje.get(Calendar.DAY_OF_YEAR) < nasc.get(Calendar.DAY_OF_YEAR)) {
-                idade--;
-            }
-            String sexo = UsuarioLogado.getUsuarioLogado().getSexo();
-            System.out.println(sexo);
-            if (sexo.equalsIgnoreCase("homem")) {
-                tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) + 5;
-            } else {
-                tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) - 161;
-            }
-            avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
-            avaliacao.setPeso(peso);
-            avaliacao.setAltura(altura);
-            avaliacao.setCircunferencia_abdominal(circAbdominal);
-            avaliacao.setObservacoes(edtObservacoes.getText());
-            avaliacao.setMassa_muscular(massaMuscular);
-            avaliacao.setGordura_corporal(gorduraCorporal);
-            avaliacao.setImc(imc);
-            avaliacao.setTmb(tmb);
-        } catch (NumberFormatException e) {
-            DialogManager.showErrorDialog(this, "Digite valores numéricos válidos para peso, altura e circunferência.");
-            return;
+private void cadastrarAvaliacao() {
+    AvaliacaoFisica avaliacao = new AvaliacaoFisica();
+    try {
+        double peso, altura, circAbdominal, imc, gorduraCorporal, massaMuscular, tmb;
+        peso = Double.parseDouble(edtPeso.getText());
+        altura = Double.parseDouble(edtAltura.getText());
+        circAbdominal = Double.parseDouble(edtCircunferenciaAbdominal.getText());
+        imc = peso / (altura * altura);
+        gorduraCorporal = 64 - (20 * (altura / circAbdominal));
+        massaMuscular = peso - (peso * gorduraCorporal / 100);
+        Date nascimentoDate = UsuarioLogado.getUsuarioLogado().getDataNascimento();
+        Calendar nasc = Calendar.getInstance();
+        nasc.setTime(nascimentoDate);
+        Calendar hoje = Calendar.getInstance();
+        int idade = hoje.get(Calendar.YEAR) - nasc.get(Calendar.YEAR);
+        if (hoje.get(Calendar.DAY_OF_YEAR) < nasc.get(Calendar.DAY_OF_YEAR)) {
+            idade--;
         }
-        ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
-        if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
-            if (conAva.alterar(avaliacao)) {
-                DialogManager.showSuccessDialog(this, "Avaliação Alterada com sucesso!");
-                this.dispose();
-            }
+        String sexo = UsuarioLogado.getUsuarioLogado().getSexo();
+        System.out.println(sexo);
+        if (sexo.equalsIgnoreCase("homem")) {
+            tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) + 5;
         } else {
-            if (conAva.inserir(avaliacao)) {
-                DialogManager.showSuccessDialog(this, "Avaliação Inserida com sucesso!");
-                this.dispose();
-            }
+            tmb = (10 * peso) + (6.25 * (altura * 100)) - (5 * idade) - 161;
+        }
+        avaliacao.setFkUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario());
+        avaliacao.setPeso(peso);
+        avaliacao.setAltura(altura);
+        avaliacao.setCircunferencia_abdominal(circAbdominal);
+        avaliacao.setObservacoes(edtObservacoes.getText());
+        avaliacao.setMassa_muscular(massaMuscular);
+        avaliacao.setGordura_corporal(gorduraCorporal);
+        avaliacao.setImc(imc);
+        avaliacao.setTmb(tmb);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Digite valores numéricos válidos para peso, altura e circunferência.", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    ControladorDeAvaliacao conAva = new ControladorDeAvaliacao();
+    if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
+        if (conAva.alterar(avaliacao)) {
+            JOptionPane.showMessageDialog(this, "Avaliação Alterada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+    } else {
+        if (conAva.inserir(avaliacao)) {
+            JOptionPane.showMessageDialog(this, "Avaliação Inserida com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         }
     }
+}
 
     /**
      * @param args the command line arguments
@@ -350,6 +356,7 @@ public class FrAvaliacaoFisica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;

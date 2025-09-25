@@ -12,8 +12,7 @@ CREATE TABLE USUARIO (
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     imagem LONGBLOB,
     cpf VARCHAR(14) UNIQUE,
-    sexo VARCHAR(10),
-    ativo BOOLEAN DEFAULT TRUE
+    sexo VARCHAR(10)
 );
 
 CREATE TABLE INSTRUTOR (
@@ -46,7 +45,6 @@ CREATE TABLE TREINO (
     descricao TEXT,
     objetivo VARCHAR(255),
     duracao_minutos INT,
-    concluido BOOLEAN,
     FOREIGN KEY (fkUsuario) REFERENCES USUARIO(pkUsuario),
     FOREIGN KEY (fkInstrutor) REFERENCES INSTRUTOR(pkInstrutor)
 );

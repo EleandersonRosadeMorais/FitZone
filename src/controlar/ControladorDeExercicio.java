@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Exercicio;
-import utilidade.DialogManager;
 
 public class ControladorDeExercicio {
 
@@ -34,7 +34,7 @@ public class ControladorDeExercicio {
                 lista.add(exe);
             }
         } catch (SQLException e) {
-            DialogManager.showErrorDialog(null, "Erro ao consultar exercícios: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao consultar exercícios: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } finally {
             gerenciador.fecharConexao(comando, resultado);
         }

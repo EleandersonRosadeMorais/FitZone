@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +8,7 @@ package tela;
 
 import controlar.ControladorDeInstrutor;
 import java.awt.event.KeyEvent;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 import modelo.Instrutor;
 import modelo.InstrutorLogado;
 import utilidade.Util;
@@ -253,11 +254,11 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
 
     private boolean verificarCampos() {
         if (edtEmail.getText().isEmpty()) {
-            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de E-mail");
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de E-mail", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            DialogManager.showWarningDialog(rootPane, "Por favor, preencha o campo de senha");
+            JOptionPane.showMessageDialog(rootPane, "Por favor, preencha o campo de senha", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
@@ -278,7 +279,7 @@ public class FrLogarInstrutor extends javax.swing.JFrame {
             telaMenu.setVisible(true);
             this.setVisible(false);
         } else {
-            DialogManager.showErrorDialog(rootPane, "Instrutor não encontrado");
+            JOptionPane.showMessageDialog(rootPane, "Instrutor não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 

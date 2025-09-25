@@ -9,11 +9,11 @@ import controlar.ControladorDeExercicio;
 import controlar.ControladorDeExercicioTreino;
 import controlar.ControladorDeTreino;
 import java.util.List;
-import utilidade.DialogManager;
 import modelo.Exercicio;
 import modelo.ExercicioTreino;
 import modelo.Treino;
 import utilidade.Util;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +58,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
         lblCriarTreino = new javax.swing.JLabel();
+        Background = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -206,7 +207,7 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/output-onlinepngtools (1).png"))); // NOI18N
         jPanel5.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 200, 140));
 
-        btnSair.setBackground(new java.awt.Color(255, 102, 255));
+        btnSair.setBackground(new java.awt.Color(255, 0, 0));
         btnSair.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnSair.setForeground(new java.awt.Color(0, 0, 0));
         btnSair.setText("Sair");
@@ -231,6 +232,11 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 140));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        jPanel1.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -293,28 +299,27 @@ public class FrAdicionarExercicio extends javax.swing.JFrame {
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCriarActionPerformed
-
-private void criar(int Exe, int Tre) {
-    try {
-        ExercicioTreino exeTre = new ExercicioTreino();
-        exeTre.setFkTreino(Tre);
-        exeTre.setFkExercicio(Exe);
-        exeTre.setCarga(Integer.parseInt(edtCarga.getText()));
-        exeTre.setRepeticoes(Integer.parseInt(edtRepeticoes.getText()));
-        exeTre.setSeries(Integer.parseInt(edtSeries.getText()));
-        exeTre.setOrdem(Integer.parseInt(edtOrdem.getText()));
-        ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
-        if (conExeTre.criar(exeTre)) {
-            DialogManager.showSuccessDialog(this, "Exercício adicionado com sucesso!");
-            new FrAdicionarExercicio().setVisible(true);
-            this.dispose();
-        } else {
-            DialogManager.showErrorDialog(this, "Erro ao adicionar exercício.");
+    private void criar(int Exe, int Tre) {
+        try {
+            ExercicioTreino exeTre = new ExercicioTreino();
+            exeTre.setFkTreino(Tre);
+            exeTre.setFkExercicio(Exe);
+            exeTre.setCarga(Integer.parseInt(edtCarga.getText()));
+            exeTre.setRepeticoes(Integer.parseInt(edtRepeticoes.getText()));
+            exeTre.setSeries(Integer.parseInt(edtSeries.getText()));
+            exeTre.setOrdem(Integer.parseInt(edtOrdem.getText()));
+            ControladorDeExercicioTreino conExeTre = new ControladorDeExercicioTreino();
+            if (conExeTre.criar(exeTre)) {
+                JOptionPane.showMessageDialog(this, "Exercício adicionado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                new FrAdicionarExercicio().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao adicionar exercício.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Erro: Verifique se todos os campos numéricos estão preenchidos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (NumberFormatException ex) {
-        DialogManager.showErrorDialog(this, "Erro: Verifique se todos os campos numéricos estão preenchidos corretamente.");
     }
-}
 
     /**
      * @param args the command line arguments
@@ -353,6 +358,7 @@ private void criar(int Exe, int Tre) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<Exercicio> cbxExercicios;

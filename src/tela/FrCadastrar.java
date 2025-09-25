@@ -11,7 +11,8 @@ import java.io.File;
 import javax.swing.Icon;
 import modelo.Usuario;
 import utilidade.Util;
-import utilidade.DialogManager;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +26,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     public FrCadastrar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setExtendedState(FrCadastrar.MAXIMIZED_BOTH);
     }
 
     /**
@@ -62,7 +64,6 @@ public class FrCadastrar extends javax.swing.JFrame {
         edtSenha = new javax.swing.JPasswordField();
         edtDataNascimento = new javax.swing.JFormattedTextField();
         btnCadastrar = new javax.swing.JButton();
-        chkAtivo = new javax.swing.JCheckBox();
         chkHomem = new javax.swing.JCheckBox();
         lblLogar = new javax.swing.JLabel();
         iconLogar = new javax.swing.JLabel();
@@ -314,10 +315,6 @@ public class FrCadastrar extends javax.swing.JFrame {
         });
         pnlSecundario.add(btnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 640, 220, 50));
 
-        chkAtivo.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        chkAtivo.setText("Ativo");
-        pnlSecundario.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 130, 30));
-
         buttonGroup1.add(chkHomem);
         chkHomem.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         chkHomem.setSelected(true);
@@ -470,7 +467,6 @@ public class FrCadastrar extends javax.swing.JFrame {
         edtObjetivo.setText("");
         imgFoto.setIcon(null);
         edtCpf.setText("");
-        chkAtivo.setSelected(false);
         chkHomem.setSelected(true);
     }
 
@@ -487,7 +483,6 @@ public class FrCadastrar extends javax.swing.JFrame {
         cliente.setObjetivo(edtObjetivo.getText());
         cliente.setImagem(imgFoto.getIcon());
         cliente.setCpf(Util.removerCpf(edtCpf.getText()));
-        cliente.setAtivo(chkAtivo.isSelected());
         if (chkHomem.isSelected()) {
             cliente.setSexo("homem");
         } else {
@@ -495,7 +490,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         }
         ControladorDeUsuario controller = new ControladorDeUsuario();
         if (controller.inserir(cliente)) {
-            DialogManager.showSuccessDialog(this, "Usuário inserido com sucesso!");
+            JOptionPane.showMessageDialog(this, "Usuário inserido com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             new FrLogar().setVisible(true);
             this.dispose();
         }
@@ -503,45 +498,45 @@ public class FrCadastrar extends javax.swing.JFrame {
 
     private boolean verificarCampos() {
         if (edtNome.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de nome");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o campo de nome", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (edtEmail.getText().isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de e-mail");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o campo de e-mail", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).isEmpty()) {
-            DialogManager.showWarningDialog(this, "Por favor, preencha o campo de senha");
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o campo de senha", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!edtNome.getText().matches("^[\\p{L} ]+$")) {
-            DialogManager.showWarningDialog(this, "O campo 'Nome' possui formato inválido");
+            JOptionPane.showMessageDialog(this, "O campo 'Nome' possui formato inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
-            DialogManager.showWarningDialog(this, "O campo 'Email' possui formato inválido");
+            JOptionPane.showMessageDialog(this, "O campo 'Email' possui formato inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
-            DialogManager.showWarningDialog(this, "O campo 'Data Nascimento' possui formato inválido");
+            JOptionPane.showMessageDialog(this, "O campo 'Data Nascimento' possui formato inválido", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (new String(edtSenha.getPassword()).length() < 8) {
-            DialogManager.showWarningDialog(this, "A senha deve ser maior que 8 dígitos");
+            JOptionPane.showMessageDialog(this, "A senha deve ser maior que 8 dígitos", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (Util.removerCpf(edtCpf.getText()).isEmpty()) {
-            DialogManager.showWarningDialog(this, "O campo do CPF do seu usuario nao pode estar vazio");
+            JOptionPane.showMessageDialog(this, "O campo do CPF do seu usuario nao pode estar vazio", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!(Util.validarCPF(edtCpf.getText()))) {
-            DialogManager.showWarningDialog(this, "Seu CPF deve ser valido e deve conter 11 numeros, ex: 123.456.789-00");
+            JOptionPane.showMessageDialog(this, "Seu CPF deve ser valido e deve conter 11 numeros, ex: 123.456.789-00", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         String senha = new String(edtSenha.getPassword());
         String confirmarSenha = new String(edtConfirmarSenha.getPassword());
         if (!senha.equals(confirmarSenha)) {
-            DialogManager.showWarningDialog(this, "Revise sua senha, pois ambas tem que serem iguais");
+            JOptionPane.showMessageDialog(this, "Revise sua senha, pois ambas tem que serem iguais", "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
@@ -588,7 +583,6 @@ public class FrCadastrar extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnLogar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chkAtivo;
     private javax.swing.JCheckBox chkHomem;
     private javax.swing.JCheckBox chkMulher;
     private javax.swing.JPasswordField edtConfirmarSenha;

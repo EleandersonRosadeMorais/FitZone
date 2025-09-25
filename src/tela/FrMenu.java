@@ -7,7 +7,7 @@ package tela;
 
 import controlar.ControladorDeAvaliacao;
 import controlar.ControladorDeTreino;
-import utilidade.DialogManager;
+import javax.swing.JOptionPane;
 import modelo.UsuarioLogado;
 import utilidade.Util;
 
@@ -49,6 +49,7 @@ public class FrMenu extends javax.swing.JFrame {
         lblLogo2 = new javax.swing.JLabel();
         lblDietaPerderPeso2 = new javax.swing.JLabel();
         btnSair7 = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Menu - Usuário");
@@ -164,7 +165,7 @@ public class FrMenu extends javax.swing.JFrame {
         lblDietaPerderPeso.setText("Menu");
         jPanel5.add(lblDietaPerderPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, -1, 150));
 
-        btnLogout.setBackground(new java.awt.Color(255, 102, 255));
+        btnLogout.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(0, 0, 0));
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Icone sair.png"))); // NOI18N
@@ -220,6 +221,11 @@ public class FrMenu extends javax.swing.JFrame {
 
         pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        pnlPrincipal.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -274,7 +280,7 @@ public class FrMenu extends javax.swing.JFrame {
         if (conAva.consultarExiste(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
             new FrSaude().setVisible(true);
         } else {
-            DialogManager.showWarningDialog(this, "Antes de você acessar a página de 'Saúde', deve preencher suas informações em 'Avaliação' na página de 'Menu'");
+            JOptionPane.showMessageDialog(this, "Antes de você acessar a página de 'Saúde', deve preencher suas informações em 'Avaliação' na página de 'Menu'", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSaudeMouseClicked
 
@@ -285,14 +291,12 @@ public class FrMenu extends javax.swing.JFrame {
     private void btnTreinosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTreinosMouseClicked
         ControladorDeTreino conTre = new ControladorDeTreino();
         if (conTre.verificarTreinoUsuario(UsuarioLogado.getUsuarioLogado().getPkUsuario())) {
-
+            FrTreinos dialog = new FrTreinos(this, true);
+            dialog.setVisible(true);
+            this.dispose();
         } else {
-            DialogManager.showWarningDialog(this, "Antes de você conferir seus treinos");
+            JOptionPane.showMessageDialog(this, "Você precisa que algum instrutor crie seu treino para acessar essa página", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-
-        FrTreinos dialog = new FrTreinos(this, true);
-        dialog.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnTreinosMouseClicked
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
@@ -349,6 +353,7 @@ public class FrMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnAvaliacao;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPerfil;

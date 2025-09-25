@@ -40,6 +40,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         lblLogo1 = new javax.swing.JLabel();
         lblAlterarPerfil = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FitZone - Menu - Instrutor");
@@ -137,7 +138,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         lblAlterarPerfil.setText("Menu");
         jPanel5.add(lblAlterarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 130, 140));
 
-        btnLogout.setBackground(new java.awt.Color(255, 102, 255));
+        btnLogout.setBackground(new java.awt.Color(255, 0, 0));
         btnLogout.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(0, 0, 0));
         btnLogout.setText("Logout");
@@ -158,6 +159,11 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
 
         pnlPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 145));
 
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Background.png"))); // NOI18N
+        Background.setText("jLabel1");
+        Background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
+        pnlPrincipal.add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +172,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -257,6 +263,7 @@ public class FrMenuInstrutor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConsultarTreinos;
     private javax.swing.JButton btnCriarTreino;
